@@ -1,0 +1,247 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.15 hero css start
+/*----------------------------------------*/
+
+.tp-hero {
+    &-height{
+        height: 850px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media #{$xxxl}{
+            height: 800px;
+        }
+        @media #{$xxl}{
+            height: 750px;
+        }
+        @media #{$xl}{
+            height: 700px;
+        }
+        @media #{$lg}{
+            height: 650px;
+        }
+        @media #{$md}{
+            height: 100%;
+            flex-wrap: wrap;
+        }
+        @media #{$xs}{
+            height: 100%;
+            flex-wrap: wrap;
+        }
+    }
+    &-thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 46.25%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+        @media #{$xxxl}{
+            width: 41.25%;
+        }
+        @media #{$lg}{
+            width: 48.25%;
+        }
+        @media #{$md,$xs} {
+            position: static;
+            width: 100%;
+            height: 100%;
+        }
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &-thumb-2 {
+        position: absolute;
+        right: -22.2%;
+        bottom: -2%;
+        z-index: -1;
+        @media #{$xxxl}{
+            right: -29.2%;
+        }
+        @media #{$xxl}{
+            right: -38.2%;
+        }
+        @media #{$xl,$lg,$md,$xs}{
+            display: none;
+        }
+    }
+    &-title {
+        font-size: 74px;
+        line-height: 1.35;
+        margin-bottom: 29px;
+        @media #{$xxxxl}{
+            font-size: 67px;
+        }
+        @media #{$xxxl}{
+            font-size: 64px;
+        }
+        @media #{$xxl}{
+            font-size: 60px;
+        }
+        @media #{$xl}{
+            font-size: 60px;
+        }
+        @media #{$lg}{
+            font-size: 50px;
+        }
+        @media #{$md}{
+            font-size: 60px;
+        }
+        @media #{$xs}{
+            font-size: 40px;
+        }
+    }
+    &-content{
+        padding-left: 91px;
+        @media #{$xxxl}{
+            padding-left: 30px;
+        }
+        @media #{$md}{
+            padding-top: 130px;
+            padding-bottom: 50px;
+            padding-left: 0;
+        }
+        @media #{$xs}{
+            padding-top: 90px;
+            padding-bottom: 50px;
+            padding-left: 0;
+        }
+        & p {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 36px;
+            margin-bottom: 48px;
+            color: var(--tp-common-black);
+            @media #{$xxxxl}{
+                padding-right: 90px;
+            }
+            @media #{$xxxl}{
+                padding-right: 90px;
+            }
+            @media #{$xxl}{
+                padding-right: 90px;
+            }
+            @media #{$lg}{
+                font-size: 16px;
+            }
+            @media #{$md}{
+                font-size: 16px;
+                padding-right: 90px;
+            }
+            @media #{$xs}{
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
+.tp-hero-2 {
+    &-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        & .tp-slider-title {
+            @media #{$md}{
+                font-size: 64px;
+            }
+        }
+    }
+    &-content {
+        padding-top: 212px;
+        padding-bottom: 202px;
+        @media #{$xxl}{
+           padding-top: 180px;
+        }
+        @media #{$xl}{
+            padding: 170px 0;
+        }
+        @media #{$lg}{
+            padding: 150px 0;
+        }
+        @media #{$md}{
+            padding: 140px 0;
+        }
+        @media #{$xs}{
+            padding: 120px 0;
+        }
+        @media #{$sm}{
+            padding: 135px 0;
+        }
+        & p {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 36px;
+            margin-right:60px;
+            padding-bottom: 52px;
+            color: var(--tp-common-white);
+            @media #{$xl}{
+                font-size: 16px;
+            }
+            @media #{$lg}{
+                font-size: 16px;
+                margin-right: 65px;
+            }
+            @media #{$md}{
+                font-size: 16px;
+                margin-right: 95px;
+            }
+            @media #{$xs}{
+                font-size: 16px;
+                margin: 0;
+            }
+
+        }
+    }
+    &-thumb {
+        position: absolute;
+        bottom: -3%;
+        right: 0;
+        z-index: 2;
+        -webkit-animation-name: float-bob-y;
+        animation-name: float-bob-y;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        @media #{$xxl}{
+            right: -13%;
+        }
+        @media #{$xl}{
+            bottom: -14%;
+            right: -16%;
+        }
+        @media #{$lg}{
+            bottom: -18%;
+            right: -26%;
+        }
+        @media #{$md,$xs}{
+            display: none;
+         }
+        & img {
+            @media #{$xl}{
+                transform: scale(.8);
+            }
+            @media #{$lg}{
+                transform: scale(.7);
+            }
+
+        }
+    }
+}

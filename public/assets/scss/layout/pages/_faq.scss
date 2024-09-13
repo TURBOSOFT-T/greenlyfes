@@ -1,0 +1,21 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  7.12 faq css start
+/*----------------------------------------*/
+.tp-faq {
+    &-bg {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &-wrap {
+        margin-right: 82px;
+        @media #{$lg}{
+            margin-right: 40px;  
+        }
+        @media #{$md,$xs}{
+            margin-right: 0;
+            margin-bottom: 60px;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.11 Breadcrumb
+/*----------------------------------------*/
+
+.breadcrumb{
+    &__overlay{
+        position: relative;
+        &::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background:linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+    }
+    &__content {
+        padding-top: 184px;
+        padding-bottom: 181px;
+        @media #{$xl}{
+            padding: 150px 0;
+        }
+        @media #{$lg,$md}{
+            padding: 130px 0;
+        }
+        @media #{$xs}{
+            padding: 110px 0;
+        }
+    }
+    &__title{
+        font-weight: 700;
+        font-size: 60px;
+        margin-bottom: 32px;
+        color: var(--tp-common-white);
+        @media #{$xl}{
+            font-size: 58px;
+        }
+        @media #{$lg}{
+            font-size:56px;
+        }
+        @media #{$md}{
+            font-size: 50px;
+        }
+        @media #{$xs}{
+            font-size: 38px;
+            margin-bottom: 20px;
+        } 
+        @media #{$sm}{
+            margin-bottom: 0;
+        }      
+    }
+    &__list{
+        display: inline-block;
+        padding: 0px 10px;
+        & span{
+            font-size: 18px;
+            text-transform: capitalize;   
+            color: var(--tp-common-white);  
+            @media #{$md,$xs}{
+                font-size: 15px;
+            }     
+            &.dvdr{
+                & i{
+                    font-size: 15px;
+                    transform: rotate(-12deg);
+                    display: inline-block; 
+                }
+            }
+            & a {
+                color: var(--tp-common-white);  
+            }
+            & b {
+                font-size: 20px;
+                color: var(--tp-theme-2);
+                @media #{$md,$xs}{
+                    font-size: 17px;
+                }    
+            }
+        }
+    }
+}

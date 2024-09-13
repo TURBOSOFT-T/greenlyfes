@@ -1,0 +1,135 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  7.22 solution css start
+/*----------------------------------------*/
+.tp-solution{
+    &-bg {
+        background-color: rgba(86, 139, 7, 0.08);
+    }
+    &-left {
+        @media #{$md,$xs}{
+            margin-bottom: 70px;
+        }
+    }
+    &-icon{
+        & span {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            line-height: 43px;
+            display: inline-block;
+            margin-right: 10px;
+            text-align: center;
+            color: var(--tp-common-white);
+            background-color: var(--tp-theme-1);
+        }
+    }
+    &-title {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    &-icon-content {
+        padding-top: 10px;
+        & p {
+            margin-bottom: 0;
+        }
+    }
+    &-contact{
+        &-icon {
+            & span {
+                display: inline-block;
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                line-height: 53px;
+                text-align: center;
+                margin-right: 10px;
+                color: var(--tp-theme-1);
+                border: 1px solid rgba(86, 139, 7, 0.5);
+                background-color: var(--tp-common-white);
+            }
+        }
+        &-content {
+            & i {
+                font-style: normal;
+                display: block;
+                margin-bottom: 5px;
+            }
+            & span {
+                font-weight: 600;
+                font-size: 20px;
+                display: block;
+                color: var(--tp-common-black);
+            }
+        }
+    }
+    &-thumb{
+        &-box {
+            padding-bottom: 80px;
+        }
+        &-2 {
+            position: absolute;
+            bottom: 0;
+            left: 8.5%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 6px solid var(--tp-common-white);
+            @media #{$xs}{
+                position: static;
+                margin-top: 20px;
+            }
+            & img {
+                border-radius: 12px;
+                transition: 1.3s all ease;
+                @media #{$xs}{
+                    width: 100%;
+                }
+            }
+            &:hover {
+                & img {
+                    transform: scale(1.1);
+                }
+            }
+
+        }
+    }
+    &-thumb{
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 12px;
+        &:hover {
+            & img {
+                transform: scale(1.1);
+            }
+        }
+        & img {
+            border-radius: 12px;
+            transition: 1.3s all ease;
+        }
+       
+    }
+    &-button-box {
+        & .tp-btn-theme{
+            @media #{$xs}{
+                margin-bottom: 20px;
+            }
+            @media #{$sm}{
+                margin-bottom: 0px;
+            }
+        }
+    }
+    &-award {
+        position: absolute;
+        top: 49%;
+        left: -16%;
+        z-index: 1;
+    }
+    &-shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        animation: zoom-2 3s infinite;
+    }
+}

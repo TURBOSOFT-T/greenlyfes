@@ -1,0 +1,40 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.16 newsletter css start
+/*----------------------------------------*/
+.tp-newsletter{
+    &-title-box {
+        @media #{$md,$xs}{
+            margin-bottom: 30px;
+        }
+    }
+    &-input-box{
+        margin-left: 16px;
+        @media #{$md,$xs}{
+            margin-left: 0;
+         }
+        & input {
+            height: 70px;
+            line-height: 70px;
+            padding-left: 30px;
+            padding-right: 240px;
+            color: var(--tp-common-black);
+            @media #{$md}{
+                height: 60px;
+                line-height: 60px;
+            }
+            @media #{$xs}{
+                height: 60px;
+                line-height: 60px;
+                padding-right: 185px;
+            }
+        }
+        & button {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+        }
+    }
+}

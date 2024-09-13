@@ -1,0 +1,73 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.9 cta css start
+/*----------------------------------------*/
+.tp-cta{
+    &-wrap {
+        margin-top: -140px;
+        padding: 46px 44px;
+        border-radius: 24px;
+        box-shadow: 0 81px 100px 0 rgba(24, 24, 24, 0.1);
+        @media #{$md}{
+            padding: 46px 17px;
+        }
+        @media #{$xs}{
+            padding: 46px 17px;
+            flex-wrap: wrap;
+        }
+    }
+    &-left {
+        @media #{$xs}{
+            flex-wrap: wrap;
+        }
+    }
+    &-thumb {
+        border-radius: 50%;
+        display: inline-block;
+        flex: 0 0 auto;
+        margin-right: 25px;
+        border: 4px solid var(--tp-common-white);
+        & img {
+            border-radius: 50%;
+        }
+    }
+    &-title {
+        font-weight: 700;
+        font-size: 30px;
+        margin-bottom: 20px;
+        @media #{$lg}{
+            font-size: 25px;  
+        }
+        @media #{$md,$xs}{
+            font-size: 23px;  
+        }
+    }
+    &-content {
+        width: 575px;
+        @media #{$lg}{
+            width: 450px;
+        }
+        @media #{$md}{
+            width: 330px;
+        }
+        @media #{$xs}{
+            width: 100%;
+            margin: 25px 0;
+        }
+        & p {
+            margin-bottom: 0;
+            @media #{$lg,$md,$xs}{
+                font-size: 15px;  
+            }
+        }
+    }
+    &-style-2{
+        @media #{$lg,$md,$xs}{
+            & .tp-cta-wrap {
+                margin-top: 150px;
+            }
+        }
+    }
+
+}

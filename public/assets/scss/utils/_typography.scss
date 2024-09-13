@@ -1,0 +1,23 @@
+// font url
+
+$font-url: 'https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet';
+
+// font family
+$font-family: (
+    'ff': (
+        'body': "'Noto Serif', serif",
+        'heading':  "'Noto Serif', serif",
+        'p':  "'Noto Serif', serif",
+        'fontawesome': '"Font Awesome 6 Pro"',
+    )
+);
+
+// font size
+$font-size: (
+    'fz': (
+        'body': 18px,
+        'p': 18px,
+    )
+);
+
+

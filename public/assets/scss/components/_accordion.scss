@@ -1,0 +1,207 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.12 Accordion
+/*----------------------------------------*/
+
+.tp-custom-accordion {
+    & .accordion-items {
+        &:last-child{
+            & .accordion-buttons {
+                border-bottom: none;
+            }
+        }
+    }
+    & .accordion-buttons {
+        position: relative;
+        width: 100%;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: left;
+        padding: 35px 20px;
+        padding-right: 60px;  
+        transition: .3s;
+        border-radius: 6px 6px 0 0;
+        font-family: var(--tp-ff-heading);
+        color: var(--tp-common-white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        @media #{$lg}{
+            font-size: 17px;
+        }  
+        @media #{$md}{
+            font-size: 16px;
+        }  
+        @media #{$xs}{
+            font-size: 17px;
+        }   
+        &::after {
+            position: absolute;
+            content: "\f068";
+            font-family: 'Font Awesome 5 Pro';
+            top: 30px;
+            right:20px;
+            font-weight: 700;
+            font-size: 12px;
+            opacity: 1;
+            transition: .3s;
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: var(--tp-common-white);
+            background-color: var(--tp-theme-1);
+            @media #{$xs}{
+              right: 20px;
+            } 
+        }
+        &:not(.collapsed) {
+            padding-bottom: 13px;
+            backdrop-filter: blur(25px);
+            background-color: #2f2923;
+            border-bottom: 1px solid transparent;
+        }
+        &.collapsed {
+            &::after {
+                content: '\f067';
+                color: var(--tp-theme-1);
+                background-color: var(--tp-common-white);
+            }
+        }
+       
+    }
+
+    & .accordion-body {
+        padding:0px 20px;
+        padding-bottom: 21px;
+        padding-right: 100px;
+        position: relative;
+        z-index: 1;
+        font-weight: 400;
+        font-size:18px;
+        line-height:30px;
+        color: var(--tp-common-white);
+        border-radius: 0 0 6px 6px;
+        &:not(.collapsed) {
+            backdrop-filter: blur(25px);
+            background-color: #2f2923;
+        }
+        @media #{$xl} {
+            font-size: 15px;
+        }
+        @media #{$lg}{
+            font-size: 14px;
+        }
+        @media #{$md}{
+            font-size: 14px;
+        }
+        @media #{$xs}{
+            font-size: 14px;
+            padding-right: 60px;
+        }
+        @media #{$sm}{
+            font-size: 14px;
+            padding-right: 120px;
+        }
+    }
+}
+.tp-custom-accordion-2 {
+    margin: 0 51px;
+    border-radius: 6px;
+    @media #{$lg,$md,$xs}{
+        margin: 0;
+    }
+    & .accordion-items {
+        margin-bottom: 20px;
+    }
+    & .accordion-buttons {
+        position: relative;
+        width: 100%;
+        font-weight: 600;
+        font-size: 20px;
+        text-align: left;
+        padding: 27px 40px;
+        padding-right: 60px;  
+        transition: .3s;
+        color: var(--tp-common-black);
+        border: 1px solid rgba(24, 24, 24, 0.1);
+        border-radius: 6px;
+        @media #{$lg}{
+            font-size: 17px;
+        }  
+        @media #{$md}{
+            font-size: 16px;
+        }  
+        @media #{$xs}{
+            font-size: 17px;
+        }   
+        &::after {
+            position: absolute;
+            content: "\f068";
+            font-family: 'Font Awesome 5 Pro';
+            top: 20px;
+            right:40px;
+            font-weight: 700;
+            font-size: 16px;
+            opacity: 1;
+            transition: .3s;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 4px;
+            color: var(--tp-common-black);
+            border: 1px solid rgba(24, 24, 24, 0.1);
+            @media #{$xs}{
+              right: 20px;
+            } 
+        }
+        &:not(.collapsed) {
+            border: 1px solid  transparent;
+            padding-bottom: 20px;
+            border-radius: 6px 6px 0 0;
+            background-color: rgba(86, 139, 7, 0.08);
+            &::after{
+                color: var(--tp-common-white);
+                border: 1px solid var(--tp-common-white);
+                background-color: var(--tp-theme-1);
+            }
+        }
+        &.collapsed {
+            &::after {
+                content: '\f067';                
+            }
+        }
+       
+    }
+
+    & .accordion-body {
+        padding:0px 40px;
+        padding-bottom: 21px;
+        padding-right: 40px;
+        position: relative;
+        z-index: 1;
+        font-weight: 400;
+        font-size:18px;
+        line-height:30px;
+        border-radius: 0 0 6px 6px;
+        background-color: rgba(86, 139, 7, 0.08);
+        @media #{$xl} {
+            font-size: 15px;
+        }
+        @media #{$lg}{
+            font-size: 14px;
+        }
+        @media #{$md}{
+            font-size: 14px;
+        }
+        @media #{$xs}{
+            font-size: 14px;
+            padding-right: 20px;
+        }
+        @media #{$sm}{
+            font-size: 14px;
+            padding-right: 120px;
+        }
+    }
+}

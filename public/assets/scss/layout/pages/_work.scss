@@ -1,0 +1,66 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  7.26 work css start
+/*----------------------------------------*/
+.tp-work{
+    &-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+        &::after{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background:linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+    }
+    &-icon {
+        width: 214px;
+        height: 200px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: cover;
+        & > span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+    }
+    &-title {
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--tp-common-white);
+    }
+    &-content {
+        & p {
+            color: var(--tp-common-white);
+        }
+    }
+    &-number {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        & span {
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            color: var(--tp-common-black);
+            background-color: var(--tp-theme-2);
+        }
+    }
+}

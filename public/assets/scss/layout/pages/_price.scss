@@ -1,0 +1,139 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.17 price css start
+/*----------------------------------------*/
+.tp-pricing {
+    &-title-box {
+        & p {
+            @media #{$xs}{
+                & br {
+                    display: none;
+                }
+            }  
+        }
+    }
+    &-item {
+        padding: 50px 40px;
+        padding-bottom: 40px;
+        border-radius: 12px;
+        background: rgba(86, 139, 7, 0.08);
+        border: 1px solid rgba(24, 24, 24, 0.08);
+        @media #{$md,$xs}{
+            padding: 50px 20px;
+            padding-bottom: 40px;
+        }
+        &.active {
+            background-color: var(--tp-theme-1);
+            & .tp-pricing-head {
+                & span {
+                    color: var(--tp-common-white);
+                }
+            }
+            & .tp-pricing-tag {
+                color: var(--tp-common-white);
+            }
+            & .tp-pricing-price {
+                color: var(--tp-common-white);
+            }
+            & .tp-pricing-list {
+                & ul {
+                    & li {
+                        color: var(--tp-common-white);
+                        & i {
+                            color: var(--tp-common-white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    &-top-text {
+        margin-left: 60px;
+        @media #{$xs}{
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        & p {
+            margin-bottom: 0;
+        }
+    }
+    &-head {
+        & span {
+            font-size: 16px;
+        }
+    }
+    &-tag {
+        font-weight: 600;
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+    &-price {
+        font-weight: 600;
+        font-size: 40px;
+        color: var(--tp-theme-1);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+        & span {
+            font-size: 16px;
+        }
+    }
+    &-list {
+        & ul {
+            & li {
+                position: relative;
+                list-style-type: none;
+                padding-left: 35px;
+                &:not(:last-child){
+                    margin-bottom: 14px;
+                }
+                & i {
+                    position: absolute;
+                    top: 6px;
+                    left: 0;
+                    color: var(--tp-theme-1);
+                }
+            }
+        }
+    }
+    &-shape {
+        position: absolute;
+        top: 7%;
+        right: 9%;
+    }
+    &-tab {
+        &-button {
+            & span {
+                font-weight: 400;
+                font-size: 18px;
+                color: #505050;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    &-switch-btn  {
+        width: 80px;
+        height: 36px;
+        border-radius: 50px;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        background-color: var(--tp-common-black);
+
+        & .nav-link {
+            width: 26px;
+            height: 26px;
+            padding: 0;
+            margin: 5px;
+            border-radius: 50%;
+            border: none;
+            transition: transform 0.2s ease-in-out;
+            &.active {
+                background-color: var(--tp-theme-1);
+            }
+        }
+    }
+} 

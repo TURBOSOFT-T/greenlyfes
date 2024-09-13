@@ -1,0 +1,274 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.14 funfact css start
+/*----------------------------------------*/
+.tp-funfact{
+    &-ptb {
+        padding-top: 385px;
+        padding-bottom: 65px;
+        margin-top: -316px;
+    }
+    &-plr {
+        padding: 0 15px;
+        @media #{$xs}{
+            padding: 0;
+        }
+    }
+    &-item {
+        @media #{$xs}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &-icon {
+        display: block;
+        & span {
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 30px;
+            margin-bottom: 20px;
+            color: var(--tp-common-white);
+            &::after{
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+    &-number {
+        font-size: 44px;
+        width: 150px;
+        text-align: center;
+        padding-bottom: 10px;
+        color: var(--tp-common-white);
+        & i {
+            font-style: normal;
+        }
+    }
+    &-item {
+        & span {
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--tp-common-white);
+            @media #{$xl}{
+                font-size: 18px;
+            }
+            @media #{$lg,$md,$xs}{
+                font-size: 17px;
+            }
+        }
+    }
+    &-col {
+        &-2 {
+            padding-left: 30px;
+            @media #{$lg,$md,$xs}{
+                padding-left: 0px;
+            }
+        }
+        &-3 {
+            padding-left: 85px;
+            @media #{$lg}{
+                padding-left: 16px;
+            }
+            @media #{$md,$xs}{
+                padding-left: 0px;
+            }
+        }
+    }
+    &-shape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+    &-style-2{
+        padding: 40px;
+        & .tp-funfact-icon { 
+            flex: 0 0 auto;
+            margin-right: 20px;
+            & span {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                width: auto;
+                &::after{
+                    display: none;
+                }
+            }
+        }
+        & .tp-funfact-item {
+            @media #{$lg,$md,$xs}{
+                margin-bottom: 30px;
+            }  
+            & span {
+                @media #{$xl}{
+                    font-size: 14px;
+                } 
+            }
+        }
+        & .tp-funfact-number {
+            width: auto;
+            text-align: start;
+            @media #{$xl}{
+                font-size: 37px;
+                padding-bottom: 0;
+            }
+        }
+        & .tp-funfact-col {
+            &-2 {
+                margin-left: -14px;
+                padding-left: 0;
+                @media #{$lg,$md,$xs}{
+                    padding-left: 0px;
+                    margin-left: 0;
+                }
+            }
+            &-3 {
+                padding-left: 25px;
+                @media #{$lg}{
+                    padding-left: 16px;
+                }
+                @media #{$md,$xs}{
+                    padding-left: 0px;
+                }
+            }
+        }
+    }
+}
+.tp-funfact-2{
+    &-wrap {
+        margin-left: 51px;
+        @media #{$lg,$md,$xs}{
+            margin-left: 0;
+        }
+    }
+    &-right{
+        margin-top: 100px;
+        @media #{$lg,$md,$xs}{
+            margin-top: 0;
+        }
+    }
+    &-item {
+        border-radius: 6px;
+        padding: 50px 20px;
+        padding-bottom: 45px;
+        background-color: var(--tp-theme-2);
+        & span {
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--tp-common-black);
+            transition: .3s;
+            @media #{$lg,$md,$xs}{
+                font-size: 16px;
+            }
+        }
+        &.tp-funfact-style-border{
+            background-color: transparent;
+            border: 1px dashed var(--tp-theme-1);
+            & .tp-funfact-2-icon {
+                & span {
+                    color: var(--tp-theme-1);
+                }
+                &::after{
+                    background: #578B07;
+                    opacity: 0.2;
+                }
+            } 
+            & span {
+                color: var(--tp-theme-1);
+            }
+            & .tp-funfact-2-number {
+               color: var(--tp-theme-1);
+
+            }
+        }
+        &.tp-funfact-style-theme{
+            background-color: var(--tp-theme-1);
+            & .tp-funfact-2-icon {
+                & span {
+                    color: var(--tp-common-white);
+                }
+                &::after{
+                    background: #fff;
+                    opacity: 0.2;
+                }
+            } 
+            & span {
+                color: var(--tp-common-white);
+            }
+            & .tp-funfact-2-number {
+               color: var(--tp-common-white);
+            }
+        }
+    }
+    &-icon {
+        position: relative;
+        padding-bottom: 32px;
+        margin-bottom: 18px;
+        display: inline-block;
+        &::after{
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 50%;
+            width: 150px;
+            height: 4px;
+            background: #181818;
+            opacity: 0.2;
+            transform: translateX(-50%);
+            transition: .3s;
+        }
+        & span {
+            color: var(--tp-common-black);
+            transition: .3s;
+        }
+    }
+    &-number {
+        font-weight: 700;
+        font-size: 44px;
+        margin-bottom: 15px;
+        transition: .3s;
+        @media #{$lg,$md,$xs}{
+            font-size: 30px;
+        }
+        & i {
+            font-style: normal;
+        }
+    }
+    &-shape {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+    &-style-2{
+        & .tp-funfact-2-item {
+            transition: .3s;
+            &.active {
+                background-color: var(--tp-theme-2);
+                & .tp-funfact-2-icon {
+                    & span {
+                        color: var(--tp-common-black);
+                    }
+                    &::after{
+                        background: #181818;
+                        opacity: 0.2;
+                    }
+                } 
+                & span {
+                    color: var(--tp-common-black);
+                }
+                & .tp-funfact-2-number {
+                   color: var(--tp-common-black);
+                }
+            }
+        }
+    }
+}

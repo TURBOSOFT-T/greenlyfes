@@ -1,0 +1,279 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  7.6 choose css start
+/*----------------------------------------*/
+.tp-choose {
+    &-ptb {
+        padding-top: 290px;
+        padding-bottom: 120px;
+        @media #{$lg,$md,$xs}{
+            padding-top:120px;
+        }
+    }
+    &-left {
+        @media #{$md,$xs}{
+            margin-bottom: 50px;
+        }
+    }
+    &-box {
+        margin-bottom: 5px;
+    }
+    &-icon {
+        margin-right: 10px;
+        & span {
+            font-size: 22px;
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            display: inline-block;
+            color: var(--tp-theme-1);
+            background-color: rgba(86, 139, 7, 0.08);
+        }
+    }
+    &-title {
+        font-weight: 600;
+        font-size: 24px;
+        margin-bottom: 13px;
+        @media #{$xl}{
+            font-size: 22px;
+        }
+    }
+    &-content {
+        padding-top: 10px;
+    }
+    &-text {
+        margin-right: 17px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(24, 24, 24, 0.3);
+    }
+    &-thumb {
+        position: absolute;
+        bottom: -2px;
+        right: 14.6%;
+        animation: tptranslateX2 3.5s infinite alternate;
+        @media #{$xxxl}{
+            right: 12.6%;  
+        }
+        @media #{$xxl}{
+            right: 6.6%;  
+        }
+        @media #{$xl}{
+            right: -1.6%;  
+        }
+        @media #{$lg}{
+            right: -10.4%;  
+        }
+        @media #{$md,$xs}{
+            position: static;
+            padding-top: 40px;
+            text-align: center;
+            animation: none;
+        }
+    }
+    &-shape-1 {
+        position: absolute;
+        bottom: 0;
+        right: -8%;
+        z-index: -1;
+        animation: tpswing-2 4s forwards infinite alternate;
+        transform-origin: bottom right;
+    }
+    &-style-2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        & .tp-choose-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        & .tp-choose-text{
+            border-bottom: none;
+            margin-bottom: 25px;
+        }
+        & .tp-choose-box {
+            margin-bottom: 12px;
+        }
+        &.tp-choose-inner-style {
+            & .tp-funfact-style-yellow {
+                & .tp-funfact-2-icon {
+                    &::after{
+                        background: var(--tp-common-black);
+                    }
+                }
+            }
+            & .tp-funfact-style-border {
+                border: 1px dashed var(--tp-common-white);
+                & span {
+                    color: var(--tp-common-white); 
+                }
+            }
+            & .tp-funfact-2-icon {
+                &::after{
+                    background: var(--tp-common-white);
+                }
+                & span {
+                    color: var(--tp-common-white);
+                }
+            }
+            & .tp-funfact-2-number {
+                color: var(--tp-common-white);
+            }
+        }
+    }
+}
+.tp-choose-2 {
+    &-thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 52.3%;
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        @media #{$lg}{
+            width: 46.3%;
+        }
+        @media #{$md,$xs}{
+            position: static;
+            width: 100%;
+            height: 500px;
+            margin-bottom: 50px;
+        }
+    }
+    &-list {
+        & ul {
+            & li {
+                padding-left: 35px;
+                font-weight: 600;
+                font-size: 20px;
+                list-style-type: none;
+                position: relative;
+                color: var(--tp-common-white);
+                &:not(:last-child){
+                    margin-bottom: 13px;
+                }
+                & i {
+                    position: absolute;
+                    top: 5px;
+                    left: 0;
+                    color: var(--tp-theme-1);
+                }
+            }
+        }
+    }
+}
+.tp-choose-3{
+    &-thumb{
+        @media #{$xs}{
+            margin-bottom: 30px;
+        }
+        & img {
+            border-radius: 6px;
+            width: 100%;
+        }
+        &-box {
+            margin-left: 39px;
+            @media #{$md,$xs}{
+                margin-left: 0;
+            }
+        }
+    }
+    &-award {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        transform: translateY(-50%);
+        @media #{$xs}{
+            display: none;
+        }
+    }
+    &-shape {
+        position: absolute;
+        right: 0;
+        top: 0;
+        animation: tpswing-3 3s forwards infinite alternate;
+        transform-origin: top left;
+    }
+}
+.tp-choose-4{
+    &-left {
+        margin-right: -4px;
+    }
+    &-right {
+        margin-left: 51px;
+        @media #{$md,$xs}{
+            margin-left: 0;
+            margin-top: 60px;
+        }
+    }
+}
+.tp-progress-bar {
+    &__item {
+        padding: 35px 0;
+        overflow: hidden;
+        padding-bottom: 5px;
+
+        & label {
+            font-weight: 600;
+            font-size: 20px;
+            padding-bottom: 5px;
+            color: var(--tp-common-black);
+            font-family: var(--font-family);
+            @media #{$xs}{
+                font-size: 14px; 
+            }
+        }
+    }
+
+    & .progress {
+        overflow: visible;
+        border-radius: 10px;
+        background: rgba(86, 139, 7, 0.08);
+        height: 8px;
+    }
+
+    & .progress-bar {
+        position: relative;
+        top: 0;
+        height: 100%;
+        overflow: visible;
+        background-color: var(--tp-theme-1);
+        border-radius: 30px;
+
+        & span {
+            position: absolute;
+            right: -20px;
+            top: -35px;
+            transform: translateY(-50%);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            color: var(--tp-common-white);
+            background-color: var(--tp-theme-1);
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+
+        }
+    }
+
+}
+.tp-overley{
+    position: relative;
+    &::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%);
+    }
+}
