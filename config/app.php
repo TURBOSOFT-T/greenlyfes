@@ -258,10 +258,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'description' => 'JKL CONSULTING est une entreprise spécialisée en intermediation  des 
+    'description' => 'GREENLYFE est une entreprise spécialisée en intermediation  des 
 entreprises. Nous intervenons dans cinq secteurs: les études, les produits 
 industriels, la médecine, informatique, et la conception électronique et mécanique',
-    'author' => 'JKL CONSULTING ',
+    'author' => 'GREENLYFE ',
 
     /*
     |--------------------------------------------------------------------------

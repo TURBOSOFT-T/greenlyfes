@@ -274,7 +274,7 @@
         </div>
         </div>
           
-        
+
 
         <!-- choose area start -->
         <div class="tp-choose-area tp-choose-style-2 fix p-relative pt-150 pb-110">
@@ -297,9 +297,10 @@
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
                                     <span>
-                                        <i class="fa-regular fa-circle-check">Notre domaine</i>
+                                        <i class="fa-regular fa-circle-check"></i>
                                     </span>
                                 </div>
+                                
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title"> {{$config->domaine ?? ' '}}</p>
                                 </div>
