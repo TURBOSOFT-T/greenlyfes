@@ -51,7 +51,7 @@
     <!-- Preloader -->
 
 
-    <div class="preloader-wrapper" style="background-color: #564c8d;">
+    <div class="preloader-wrapper" style="background-color: #171041;">
         <div class="preloader-container">
             <div class="preloader bounce-active">
                 <img src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="preloader">

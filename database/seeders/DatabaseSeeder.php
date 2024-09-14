@@ -39,11 +39,11 @@ class DatabaseSeeder extends Seeder
 
         $cat = new Config();
         $cat->frais = '15';
-        $cat->description = 'JKL CONSULTING est une entreprise spécialisée dans la médiation des 
+        $cat->description = 'GREENLYFE est une entreprise spécialisée dans la médiation des 
 entreprises. Nous intervenons dans cinq secteurs : les études, les produits 
 industriels, la médecine, informatique, et la conception électronique et mécanique.';
        $cat->telephone= '56399165';
-       $cat->email='jkl@gmail.com';
+       $cat->email='greenlyve@gmail.com';
        $cat->addresse='Tunis  Avenue Mohamed Melki 1005 El Omrane';
 
         $cat->save(); 

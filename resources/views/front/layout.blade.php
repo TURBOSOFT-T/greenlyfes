@@ -283,7 +283,7 @@
                         <div class="tp-choose-left">
                             <div class="tp-choose-title-box mb-20" style="text-align: justify">
                                 <span class="tp-section-subtitle">A propos de nous</span>
-                                <h6>Transformez vos défis en opportunités avec JKL CONSULTING
+                                <h6>Transformez vos défis en opportunités avec GREENLYFE
 
                                 </h6>
                             </div>
