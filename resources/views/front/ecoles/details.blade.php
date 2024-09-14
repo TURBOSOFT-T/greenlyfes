@@ -20,13 +20,13 @@
                         <div class="col-xxl-12">
                             <div class="breadcrumb__content z-index text-center">
                                 <div class="breadcrumb__section-title-box">
-                                    <h3 class="breadcrumb__title">Les détails sur l'école</h3>
+                                    <h3 class="breadcrumb__title">Les détails sur l'hôtel</h3>
                                 </div>
                                 <div class="breadcrumb__list">
                                     <span><a href="/">Home</a></span>
 
                                     <span class="dvdr"><i>/</i></span>
-                                    <span><b>Détails école</b></span>
+                                    <span><b>Détails hôtel</b></span>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="tp-sv-details-text mt-50 mb-50">
                                         <h3 class="tp-sv-details-title mb-20">
-                                            Les filières disponibles
+                                            Les chambres disponibles
                                         </h3>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">

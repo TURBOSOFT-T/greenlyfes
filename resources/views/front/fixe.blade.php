@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> @yield('titre') - JKL CONSULTING </title>
+    <title> @yield('titre') - GREENLYFE </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -278,8 +278,8 @@
                                     <li class="has-dropdown">
                                         <a href="#">Nos activités</a>
                                         <ul class="submenu tp-submenu">
-                                           <li><a href="{{ url('produits') }}">Produits Industriels</a></li>
-                                           <li><a  href="{{ url('schools') }}">Les études</a></li>
+                                           <li><a href="{{ url('produits') }}">Produits artisanaux</a></li>
+                                         {{--   <li><a  href="{{ url('schools') }}">Les Hotels</a></li> --}}
                                            <li><a href="{{ url('hopitaux') }}">La santé</a></li>
                                            
                                           
