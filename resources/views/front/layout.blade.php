@@ -296,7 +296,7 @@
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
                                     <span>
-                                        <i class="fa-regular fa-circle-check"></i>
+                                        <i class="fa-regular fa-circle-check">Notre domaine</i>
                                     </span>
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
