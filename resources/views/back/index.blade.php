@@ -81,9 +81,34 @@
           model='Order'>
           </x-back.box>
           @endif
+
+
+          @if($books)
+          <x-back.box
+            type='primary'
+            :number='$books'
+            title='Les nouveaux logements'
+            route='books.indexnew'
+            model='Book'>
+          </x-back.box>
+        @endif  
           
 
 
       </div>
   </div>
+  <br>
+  
+  <div class="row">
+    <div class="col-sm-6">
+        @include('back.stats')
+    </div>
+    <div class="col-sm-6">
+        @include('back.statcommande')
+    </div>
+    
+
+</div>
+
+
 @endsection

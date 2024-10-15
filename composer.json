@@ -26,7 +26,6 @@
         "webpatser/laravel-uuid": "^4.0",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-oracle": "^9.18"
-        
     },
     "require-dev": {
         "bestmomo/laravel5-artisan-language": "^0.3.2",

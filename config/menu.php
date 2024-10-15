@@ -55,7 +55,51 @@ return [
         ],
     ],
 
-    'Filières' => [
+    'Logements' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Les categories logements',
+                'role'  => 'admin',
+                'route' => 'logements.index',
+            ],
+            [
+                'name'  => 'Ajouter',
+                'role'  => 'admin',
+                'route' => 'logements.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'logements.edit',
+            ],
+        ],
+    ],
+
+    'Bookings' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Les  logements',
+                'role'  => 'admin',
+                'route' => 'books.index',
+            ],
+            [
+                'name'  => 'Ajouter',
+                'role'  => 'admin',
+                'route' => 'savebooks.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'books.edit',
+            ],
+        ],
+    ],
+
+   /*  'Filières' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -75,9 +119,9 @@ return [
                 'route' => 'filieres.edit',
             ],
         ],
-    ],
+    ], */
 
-    'Specialités' => [
+   /*  'Specialités' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -98,9 +142,9 @@ return [
             ],
         ],
     ],
+ */
 
-
-
+/* 
     'Les études' => [
         'icon' => 'list',
         'role'   => 'admin',
@@ -132,9 +176,9 @@ return [
             ],
         ],
     ],
+ */
 
-
-    'La Santé' => [
+   /*  'La Santé' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -165,7 +209,7 @@ return [
             ],
         ],
     ],
-
+ */
     'Products' => [
         'icon' => 'list',
         'role'   => 'admin',

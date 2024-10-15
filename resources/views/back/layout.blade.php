@@ -1,9 +1,16 @@
+@php
+$config = DB::table('configs')->first();
+$configs = DB::table('configs')->first();
+$service = DB::table('services')->get();
+$pages = DB::table('pages')->get();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@lang('Administration')</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/Image/parametres/' . $config->icon) }}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,17 +32,27 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block d-inline-block">
-            <a href="{{ route('home') }}" class="nav-link">@lang('Home Page')</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block d-inline-block">
-            <form action="{{ route('logout') }}" method="POST" hidden>
-                @csrf
-            </form>
-            <a class="nav-link" href="{{ route('logout') }}"
-                onclick="event.preventDefault(); this.previousElementSibling.submit();">
-                @lang('Logout')
-            </a>
-        </li>
+          <a href="{{ route('home') }}"  class="btn btn-outline-warning btn-sm mr-3">@lang('Home Page')</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block d-inline-block">
+          <form action="{{ route('logout') }}" method="POST" hidden>
+              @csrf
+          </form>
+          <a class="btn btn-outline-danger btn-sm mr-3" href="{{ route('logout') }}"
+              onclick="event.preventDefault(); this.previousElementSibling.submit();">
+              @lang('Déconnexion')
+          </a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block d-inline-block">
+      <a href="{{route('storage.link')}}"  class="btn btn-outline-warning btn-sm mr-3">
+        Storage Link
+    </a>
+      </li>
+    <li class="nav-item d-none d-sm-inline-block d-inline-block">
+    <a href="{{route('cache.clear')}}"  class="btn btn-outline-danger btn-sm mr-3">
+      Cache Clear
+    </a>
+    </li>
     </ul>
 
 </nav>

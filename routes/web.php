@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\{
     ConsultationController,
     InscriptionController,
     TestimonialController,
+    BookController as FrontBookController,
     
 };
 use App\Http\Controllers\Back\{
@@ -26,7 +27,7 @@ use App\Http\Controllers\Back\{
     ResourceController as BackResourceController,
     UserController as BackUserController,
     HeroPageController,
-    SponsorController ,
+    SponsorController,
     OrderController as BackOrderController,
     EcoleController,
     HopitalController,
@@ -37,11 +38,23 @@ use App\Http\Controllers\Back\{
     ProductController,
 
     ConfigController,
-    AccountController
+    AccountController,
+    BookController as BackBookController,
+
 };
 
 
 use App\Http\Controllers\Auth\LoginController;
+
+Route::get('cache-clear', function () {
+    Artisan::call('optimize:clear');
+    request()->session()->flash('success', 'Successfully cache cleared.');
+    return redirect()->back();
+})->name('cache.clear');
+
+
+// STORAGE LINKED ROUTE
+Route::get('storage-link', [AdminController::class, 'storageLink'])->name('storage.link');
 
 
 //////////////Dashboard , Account
@@ -77,7 +90,7 @@ Route::prefix('posts')->group(function () {
 
 
 
- 
+
     Route::name('posts.comments')->get('{post}/comments', [FrontCommentController::class, 'comments']);
     Route::name('posts.comments.store')->post('{post}/comments', [FrontCommentController::class, 'store'])->middleware('auth');
 });
@@ -90,18 +103,25 @@ Route::name('front.comments.destroy')->delete('comments/{comment}', [FrontCommen
 Route::get('schools', [FrontEcoleController::class, 'schools'])->name('schools');
 Route::get('details-ecole/{id}', [FrontEcoleController::class, 'details'])->name('details-ecole');
 Route::get('/filiere/{id}', [FrontEcoleController::class, 'school'])->where('id', '[0-9]+');
-Route::get('ecole/{id}', [FrontEcoleController::class,'show'])->name('ecole.show');
+Route::get('ecole/{id}', [FrontEcoleController::class, 'show'])->name('ecole.show');
 Route::get('rechercher', [FrontEcoleController::class, 'rechercher'])->name("rechercher");
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscription.store');
 
+////Books
+Route::get('bookings', [FrontBookController::class, 'logements'])->name('logement');
+Route::get('/logement/{id}', [FrontBookController::class, 'hopital'])->where('id', '[0-9]+');
+Route::get('details-book/{id}', [FrontBookController::class, 'details'])->name('details-book');
+Route::get('/book/{id}', [FrontHopitalController::class, 'show'])->name('book.show');
+Route::get('recherche', [FrontBookController::class, 'recherche'])->name("recherche");
+//Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 
 
 ////Hopitaux
 Route::get('hopitaux', [FrontHopitalController::class, 'hopitaux'])->name('hopitaux');
 Route::get('/specialite/{id}', [FrontHopitalController::class, 'hopital'])->where('id', '[0-9]+');
 Route::get('details-hopital/{id}', [FrontHopitalController::class, 'details'])->name('details-hopital');
-Route::get('/hopital/{id}', [FrontHopitalController::class,'show'])->name('hopital.show');
-Route::get('recherche', [FrontHopitalController::class, 'recherche'])->name("recherche");
+Route::get('/hopital/{id}', [FrontHopitalController::class, 'show'])->name('hopital.show');
+//Route::get('recherche', [FrontHopitalController::class, 'recherche'])->name("recherche");
 Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 
 /////temoignages
@@ -151,8 +171,12 @@ Route::prefix('admin')->group(function () {
         // Posts
         Route::resource('posts', BackPostController::class)->except(['show', 'create']);
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
-        
-      //  Route::name('posts.edit')->put('posts/{post}', [BackPostController::class, 'update']);
+
+ ///Logements
+ Route::resource('books', BackResourceController::class)->except(['show']);
+ Route::resource('savebooks', BackBookController::class);
+
+        //  Route::name('posts.edit')->put('posts/{post}', [BackPostController::class, 'update']);
         //Projects
         Route::resource('projects', 'ProductController')->except('show');
         // Users
@@ -162,9 +186,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('comments', BackResourceController::class)->except(['show', 'create', 'store']);
         Route::name('comments.indexnew')->get('newcomments', [BackResourceController::class, 'index']);
 
-           // Oders
-           Route::resource('orders', BackOrderController::class);
-            Route::name('orders.indexnew')->get('neworders', [BackResourceController::class, 'index']);
+        // Oders
+        Route::resource('orders', BackOrderController::class);
+        Route::name('orders.indexnew')->get('neworders', [BackResourceController::class, 'index']);
     });
 
     Route::middleware('admin')->group(function () {
@@ -179,6 +203,8 @@ Route::prefix('admin')->group(function () {
 
         Route::resource('specialites', BackResourceController::class)->except(['show']);
 
+       
+        Route::name('books.indexnew')->get('newbooks', [BackResourceController::class, 'index']);
 
         ///Ecoles
         Route::resource('ecoles', EcoleController::class);
@@ -194,47 +220,50 @@ Route::prefix('admin')->group(function () {
 
         /////Hopitals
         Route::resource('hopitals', BackResourceController::class)->except(['show']);
-       // Route::name('hopitals.indexnew')->get('newhopitals', [BackResourceController::class, 'index']);
+        // Route::name('hopitals.indexnew')->get('newhopitals', [BackResourceController::class, 'index']);
         Route::resource('hospitals', HopitalController::class);
         Route::resource('savehopitals', HopitalController::class);
         /////consultations
         Route::resource('consultations', BackResourceController::class)->except(['show']);
         Route::name('consultations.indexnew')->get('newconsultations', [BackResourceController::class, 'index']);
         Route::resource('saveconsultations', ConsultationController::class);
-       
+
 
         ////////Filieres
         Route::resource('filieres', BackResourceController::class)->except(['show']);
-        
-      
+
+
 
         // Products
         Route::resource('products', ProductController::class);
         Route::name('products.indexnew')->get('newproducts', [ProductController::class, 'index']);
         Route::resource('saveproducts', ProductController::class);
 
-     
+
         // Users
         Route::resource('users', BackUserController::class)->except(['show', 'create', 'store']);
         Route::name('users.indexnew')->get('newusers', [BackResourceController::class, 'index']);
 
         // Oders
-      Route::resource('commandes', BackOrderController::class);
-      Route::get('/commandes/{id}/envoyer-facture', [BackOrderController::class, 'sendInvoice'])->name('commandes.envoyer-facture');
+        Route::resource('commandes', BackOrderController::class);
+        Route::get('/commandes/{id}/envoyer-facture', [BackOrderController::class, 'sendInvoice'])->name('commandes.envoyer-facture');
 
-      Route::get('/commandes/{id}/facture', [BackOrderController::class, 'generateInvoice'])->name('commandes.facture');
-      Route::resource('orders', BackResourceController::class)->except(['show']);
-       Route::name('orders.indexnew')->get('neworders', [BackResourceController::class, 'index']);
+        Route::get('/commandes/{id}/facture', [BackOrderController::class, 'generateInvoice'])->name('commandes.facture');
+        Route::resource('orders', BackResourceController::class)->except(['show']);
+        Route::name('orders.indexnew')->get('neworders', [BackResourceController::class, 'index']);
 
         // Contacts
         Route::resource('contacts', BackResourceController::class)->only(['index', 'destroy']);
         Route::name('contacts.indexnew')->get('newcontacts', [BackResourceController::class, 'index']);
 
+        ///Logements
+        Route::resource('logements', BackResourceController::class)->except(['show']);
+
         ///Testimonitals
-        
+
         Route::name('testimonials.indexnew')->get('newtestimonials', [BackResourceController::class, 'index']);
-        
-       Route::resource('testimonials', TestimonialController::class);
+
+        Route::resource('testimonials', TestimonialController::class);
         Route::get('testimoniales/{id}/approve', [TestimonialController::class, 'approve'])->name('testimoniales.approve');
         Route::get('testimoniales/{id}/disapprove', [TestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
         Route::delete('testimoniales/{id}/destroy', [TestimonialController::class, 'destroy'])->name('testimoniales.destroy');
@@ -251,31 +280,27 @@ Route::prefix('admin')->group(function () {
 
 
         // Services
-       
+
         Route::resource('services', ServiceController::class);
 
         ////Sponsors
-       Route::resource('sponsors', SponsorController::class);
+        Route::resource('sponsors', SponsorController::class);
 
 
         Route::resource('contactadmins', ConfigController::class);
 
 
 
-         // all users
-         Route::get('/send/mail/view/all', [BackUserController::class, 'emailViewAll'])->name('send.email.view.all');
+        // all users
+        Route::get('/send/mail/view/all', [BackUserController::class, 'emailViewAll'])->name('send.email.view.all');
 
-         Route::post('/store/email/all', [BackUserController::class, 'storeAllUserEmail'])->name('store.alluser.email');
-
-
-         // single users
-         Route::get('/send/mail/view/{id}', [BackUserController::class, 'emailView'])->name('send.email.view');
-
-         Route::post('/store/email/{id}', [BackUserController::class, 'storeSingleEmail'])->name('store.user.email');
+        Route::post('/store/email/all', [BackUserController::class, 'storeAllUserEmail'])->name('store.alluser.email');
 
 
+        // single users
+        Route::get('/send/mail/view/{id}', [BackUserController::class, 'emailView'])->name('send.email.view');
 
-
+        Route::post('/store/email/{id}', [BackUserController::class, 'storeSingleEmail'])->name('store.user.email');
     });
 });
 

@@ -41,6 +41,7 @@
     <script src="/Script.js"></script>
 
     @yield('header')
+    
     @livewireStyles
 
 </head>
@@ -264,7 +265,7 @@
                     <div class="col-xl-2 col-lg-4 col-6">
                         <div class="tp-header-logo">
                             <a href="{{ route('home') }}">
-                                <img  src="{{ url('public/Image/parametres/' . $config->logoHeader) }}" alt="logo black" height="100" width="100">
+                                <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="logo black" height="100" width="100">
                             </a>
                         </div>
                     </div>
@@ -440,7 +441,7 @@
                             <div class="tp-footer-widget footer-col-1">
                                 <div class="tp-footer-logo">
                                     <a href="{{ route('home') }}">
-                                        <img  src="{{ url('public/Image/parametres/' . $config->image) }}" width="80" height="80" alt="logo footer">
+                                        <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" width="80" height="80" alt="logo footer">
                                     </a>
                                 </div>
                                 

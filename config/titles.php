@@ -23,6 +23,19 @@ return [
         'edit'    => 'Category Edit',
     ],
 
+    'logements' => [
+    'index'  => 'Logements',
+    'create' => 'Logement Creation',
+    'edit'   => 'Logement Edit',
+],
+
+
+'bookings' => [
+    'index'  => 'Bookings',
+    'create' => 'Bookig Creation',
+    'edit'   => 'Booking Edit',
+],
+
     'categories' => [
         'index'   => 'Products',
         'create'  => 'Product Creation',

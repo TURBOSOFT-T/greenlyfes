@@ -45,25 +45,6 @@ class ProductController extends Controller
     }
  
 
-/*  public function create($id = null)
-    {
-        $product = null;
-
-        if($id) {
-            $product = Product::findOrFail($id);
-            if($product->user_id === auth()->id()) {
-                $product->title .= ' (2)';
-                $product->slug .='-2';
-                $product->active = false;
-            } else {
-                $product = null;
-            }
-        }
-
-        $categories = Category::all()->pluck('title', 'id');
-
-        return view('back.products.form', compact('product', 'categories'));
-    } */
 
     public function store(ProductRequest $request)
     {
@@ -150,65 +131,5 @@ class ProductController extends Controller
 
 
 
-    public function addToCart($id)
-    {
-        $product = Product::findOrFail($id);
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "originalPrice" => $product->originalPrice,
-                "image" => $product->image
-            ];
-        }
-
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-    }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function updateCart(Request $request)
-    {
-        if ($request->id && $request->quantity) {
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
-        }
-    }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function remove(Request $request)
-    {
-        if ($request->id) {
-            $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed successfully');
-        }
-    }
-    public function clearAllCart()
-    {
-
-        session()->forget('cart');
-
-
-     
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-    }
+    
 }

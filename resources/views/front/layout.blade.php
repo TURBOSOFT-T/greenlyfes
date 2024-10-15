@@ -30,7 +30,8 @@
                                             <h1 class="display-10 mb-10 text-white animated slideInRight">
                                                 {{ $home->body }}
                                             </h1>
-                                            <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Voir plus</a>
+                                            <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Voir
+                                                plus</a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,30 +51,33 @@
         </div>
         <style>
             /* Assurez-vous que les images du carrousel sont responsives */
-.carousel-inner img {
-    width: 100%;
-    height: auto;
-}
+            .carousel-inner img {
+                width: 100%;
+                height: auto;
+            }
 
-/* Ajustez la taille du texte du carrousel pour les petits écrans */
-@media (max-width: 768px) {
-    .carousel-caption p,
-    .carousel-caption h1 {
-        font-size: 1rem; /* Ajustez la taille selon vos besoins */
-    }
+            /* Ajustez la taille du texte du carrousel pour les petits écrans */
+            @media (max-width: 768px) {
 
-    .carousel-caption .btn {
-        font-size: 0.875rem; /* Ajustez la taille du bouton selon vos besoins */
-    }
-}
+                .carousel-caption p,
+                .carousel-caption h1 {
+                    font-size: 1rem;
+                    /* Ajustez la taille selon vos besoins */
+                }
 
-/* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%; /* Ajustez la largeur des contrôles */
-    height: 100%;
-}
+                .carousel-caption .btn {
+                    font-size: 0.875rem;
+                    /* Ajustez la taille du bouton selon vos besoins */
+                }
+            }
 
+            /* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 5%;
+                /* Ajustez la largeur des contrôles */
+                height: 100%;
+            }
         </style>
 
         {{-- <div class="container-fluid px-0 mb-5  ">
@@ -119,13 +123,14 @@
         </div>
  --}}
 
-        
-   
+
+
 
         <!-- choose area start -->
         <div class="tp-choose-3-area tp-choose-style-2 fix p-relative pt-150 pb-110">
             <div class="tp-choose-3-shape d-none d-lg-block">
-                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400" alt="">
+                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400"
+                    alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center">
@@ -144,7 +149,7 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Notre mission</h5>
-                                    <p>{{$config->mission ?? ' '}}
+                                    <p>{{ $config->mission ?? ' ' }}
                                     </p>
                                 </div>
                             </div>
@@ -160,7 +165,7 @@
 
 
 
-                                        {{$config->vision ?? ' '}}
+                                        {{ $config->vision ?? ' ' }}
                                     </p>
                                 </div>
                             </div>
@@ -173,7 +178,7 @@
                                 <div class="tp-choose-content"style="text-align: justify">
                                     <h5 class="tp-choose-title">Nos valeurs</h5>
                                     <p>
-                                        {{$config->valeurs ?? ' '}}
+                                        {{ $config->valeurs ?? ' ' }}
                                     </p>
                                 </div>
                             </div>
@@ -182,10 +187,11 @@
                     <div class="col-xl-7 col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".7s">
                         <div class="tp-choose-3-thumb-box p-relative">
                             <div class="tp-choose-3-award">
-                                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" alt="" width="1200" height="600">
+                                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" alt=""
+                                    width="1200" height="600">
                             </div>
-                       
-                        </div> 
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,7 +199,158 @@
         <!-- choose area end -->
 
 
-        <!-- service area start -->
+
+      <!-- project area start -->
+      <div class="tp-project-3-area fix pt-150 pb-150">
+        <div class="container">
+           <div class="row">
+              <div class="col-xl-12">
+                 <div class="tp-project-3-filter masonary-menu text-center pb-60">
+                    <button data-filter="*" class="active"><span>All</span></button>
+                    <button data-filter=".cat1"><span>Lawn</span></button>
+                    <button data-filter=".cat2"><span>Landscape</span></button>
+                    <button data-filter=".cat3"><span>Nursery</span></button>
+                    <button data-filter=".cat4"><span>Garden</span></button>
+                 </div>
+              </div>
+           </div>
+           <div class="row grid gx-30">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat2 cat4">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-1.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Garden Care</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat2 cat4">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-2.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Tree Farm</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4 cat1">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-3.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Garden Design</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4 cat3 cat2">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-4.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Landscape Mower</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat1 cat4">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-5.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Planting</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat2 cat1 cat4">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-6.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Lawn care</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-7.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Flower Scape</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat1">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-8.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Vegetables</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat1 cat2">
+                 <div class="tp-project-3-item">
+                    <div class="tp-project-3-thumb">
+                       <img src="assets/img/project/project-5-9.jpg" alt="">
+                    </div>
+                    <div class="tp-project-3-content">
+                       <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Natural Garden</a></h4>
+                       <p>Interactively are is our support the services sucking web-readiness.</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-xl-12">
+                 <div class="basic-pagination text-center mt-20">
+                    <nav>
+                       <ul>
+                          <li>
+                             <a href="project.html">
+                                <span class="current"><i class="fa-solid fa-angle-left"></i></span>
+                             </a>
+                          </li>
+                          <li>
+                             <a class="current" href="project.html">1</a>
+                          </li>
+                          <li>
+                             <a href="project.html">2</a>
+                          </li>
+                          <li>
+                             <a href="project.html">3</a>
+                          </li>
+                          <li>
+                             <a href="project.html">4</a>
+                          </li>
+                          <li>
+                             <a href="project.html">
+                                <span><i class="fa-solid fa-angle-right"></i></span>
+                             </a>
+                          </li>
+                       </ul>
+                    </nav>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- project area end -->
+{{-- 
         <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
             <div class="container">
                 <div class="row">
@@ -220,14 +377,14 @@
                                             height="200 " border-radius="8px" class="rounded shadow" alt="">
                                     </div>
                                     <div class="tp-service-icon">
-                                    
+
                                     </div>
                                 </div>
                                 <div class="tp-service-content">
                                     <h4 class="tp-service-title"><a class="text-anim-2"
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
                                     </h4>
-                                    {{--  <p>Petite description</p> --}}
+
                                     <div class="tp-service-link">
                                         <a
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
@@ -246,7 +403,7 @@
                             </div>
                         </div>
                     @endforeach
-                    <!-- Ajouter le bouton ici -->
+
                     <div class="text-center mt-30">
                         <a href="{{ url('produits') }}" class="tp-btn">Voir tous les produits</a>
                     </div>
@@ -272,8 +429,8 @@
             </div>
 
         </div>
-        </div>
-          
+        </div> --}}
+
 
 
         <!-- choose area start -->
@@ -300,9 +457,9 @@
                                         <i class="fa-regular fa-circle-check"></i>
                                     </span>
                                 </div>
-                                
+
                                 <div class="tp-choose-content" style="text-align: justify">
-                                    <h5 class="tp-choose-title"> {{$config->domaine ?? ' '}}</p>
+                                    <h5 class="tp-choose-title"> {{ $config->domaine ?? ' ' }}</p>
                                 </div>
                             </div>
                             <div class="tp-choose-box d-flex align-items-start">
@@ -313,8 +470,8 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Notre Équipe</h5>
-                                    <p> 
-                                        {{$config->equipe ?? ' '}}
+                                    <p>
+                                        {{ $config->equipe ?? ' ' }}
                                     </p>
                                 </div>
 
@@ -460,9 +617,9 @@
             <div class="tp-contact-shape-1 ">
                 <img src="{{ url('public/Image/parametres/' . $config->imagecontact) }}" width="500" height="405"
                     alt="logo">
-         </div> 
-     
-            
+            </div>
+
+
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-6">
@@ -478,21 +635,21 @@
                                     font-size: 1rem;
                                     line-height: 1.6;
                                     color: #333;
-                                    text-align:justify;
+                                    text-align: justify;
                                 }
-                                
+
                                 @media (max-width: 768px) {
                                     .tp-contact-3-text {
                                         font-size: 0.875rem;
                                         padding: 10px;
                                     }
                                 }
-                                </style>
-                                
-                                <div class="tp-contact-3-text mb-25" style="text-align: justify">
-                                    <p>  {{$config->des_contact ?? ' '}}</p>
-                                </div>
-                                
+                            </style>
+
+                            <div class="tp-contact-3-text mb-25" style="text-align: justify">
+                                <p> {{ $config->des_contact ?? ' ' }}</p>
+                            </div>
+
                             <div class="tp-contact-2-box p-relative mb-25">
                                 <div class="tp-contact-2-icon">
                                     <span>
@@ -643,28 +800,27 @@
                         <div class="tp-testimonial-wrapper">
                             <div class="swiper-container tp-testimonial-3-active">
                                 <div class="swiper-wrapper">
-                                    @if($testimonials->isEmpty())
-                                    <p>Aucun témoignage disponible.</p>
-                                @else
-                                @foreach($testimonials as $testimonial)
-                                    <div class="swiper-slide">
-                                        <div class="tp-testimonial-item text-center">
-                                            <div class="tp-testimonial-avatar">
-                                                <img src="assets/img/testimonial/testi-3-1.png" alt="">
+                                    @if ($testimonials->isEmpty())
+                                        <p>Aucun témoignage disponible.</p>
+                                    @else
+                                        @foreach ($testimonials as $testimonial)
+                                            <div class="swiper-slide">
+                                                <div class="tp-testimonial-item text-center">
+                                                    <div class="tp-testimonial-avatar">
+                                                        <img src="assets/img/testimonial/testi-3-1.png" alt="">
+                                                    </div>
+                                                    <div class="tp-testimonial-author-info">
+                                                        <p class="pb-5">{{ $testimonial->message }}
+                                                        </p>
+                                                        <h4 class="tp-testimonial-title">{{ $testimonial->name }}</h4>
+                                                        {{-- <span>CEO Manager</span> --}}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="tp-testimonial-author-info">
-                                                <p class="pb-5">{{$testimonial->message}}
-                                                </p>
-                                                <h4 class="tp-testimonial-title">{{$testimonial->name}}</h4>
-                                                {{-- <span>CEO Manager</span> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    @endforeach
-                                    
+                                        @endforeach
+
                                     @endif
-                                 
+
                                 </div>
                                 <div class="tp-slider-dots text-center mt-40"></div>
                             </div>
@@ -681,7 +837,7 @@
 
                 <div id="successMessage" class="alert alert-success" style="display:none;"></div>
                 <div id="errorMessage" class="alert alert-danger" style="display:none;"></div>
-                
+
 
                 <!-- Button trigger modal -->
 
@@ -698,92 +854,95 @@
                         <h5 class="modal-title" id="exampleModalLabel">Témoignage</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                   
 
 
-                        <div class="modal-body">
-                            <form id="testimonialForm" action="{{ route('testimonial.store') }}" method="POST" class="testimonial-form p-4 rounded shadow-sm bg-light">
-                                @csrf
-                                <div class="form-group mb-4">
-                                    <label for="name" class="form-label text-muted">Nom</label>
-                                    <input type="text" class="form-control border-0 rounded-pill shadow-sm" id="name" name="name" placeholder="Votre nom" required>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="testimonial" class="form-label text-muted">Message</label>
-                                    <textarea class="form-control border-0 rounded-3 shadow-sm" id="testimonial" name="message" rows="8" placeholder="Votre message" required></textarea>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary rounded-pill shadow">Envoyer</button>
-                                </div>
-                            </form>
-                            
-                            @if ($errors->any())
-                                <div class="alert alert-danger mt-4">
-                                    <ul class="mb-0">
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            
-                            @if (session('success'))
-                                <div class="alert alert-success mt-4">
-                                    {{ session('success') }}
-                                </div>
-                            @endif <style>
-                                .testimonial-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #f8f9fa;
-}
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+                    <div class="modal-body">
+                        <form id="testimonialForm" action="{{ route('testimonial.store') }}" method="POST"
+                            class="testimonial-form p-4 rounded shadow-sm bg-light">
+                            @csrf
+                            <div class="form-group mb-4">
+                                <label for="name" class="form-label text-muted">Nom</label>
+                                <input type="text" class="form-control border-0 rounded-pill shadow-sm" id="name"
+                                    name="name" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="testimonial" class="form-label text-muted">Message</label>
+                                <textarea class="form-control border-0 rounded-3 shadow-sm" id="testimonial" name="message" rows="8"
+                                    placeholder="Votre message" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary rounded-pill shadow">Envoyer</button>
+                            </div>
+                        </form>
 
-.form-label {
-    font-weight: 600;
-    font-size: 1rem;
-}
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-4">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-.form-control {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    color: #495057;
-    background-color: #fff;
-    border-radius: 25px;
-}
+                        @if (session('success'))
+                            <div class="alert alert-success mt-4">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <style>
+                            .testimonial-form {
+                                max-width: 600px;
+                                margin: 0 auto;
+                                background-color: #f8f9fa;
+                            }
 
-textarea.form-control {
-    border-radius: 15px;
-}
+                            .form-group {
+                                margin-bottom: 1.5rem;
+                            }
 
-button.btn {
-    padding: 0.5rem 2rem;
-    font-size: 1.125rem;
-    transition: background-color 0.3s ease;
-}
+                            .form-label {
+                                font-weight: 600;
+                                font-size: 1rem;
+                            }
 
-button.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
+                            .form-control {
+                                padding: 0.75rem 1rem;
+                                font-size: 1rem;
+                                color: #495057;
+                                background-color: #fff;
+                                border-radius: 25px;
+                            }
 
-button.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
+                            textarea.form-control {
+                                border-radius: 15px;
+                            }
 
-.alert {
-    max-width: 600px;
-    margin: 1rem auto;
-}
+                            button.btn {
+                                padding: 0.5rem 2rem;
+                                font-size: 1.125rem;
+                                transition: background-color 0.3s ease;
+                            }
 
-                            </style>
-                         
-                        </div>
-                  
+                            button.btn-primary {
+                                background-color: #007bff;
+                                border-color: #007bff;
+                            }
+
+                            button.btn-primary:hover {
+                                background-color: #0056b3;
+                                border-color: #0056b3;
+                            }
+
+                            .alert {
+                                max-width: 600px;
+                                margin: 1rem auto;
+                            }
+                        </style>
+
+                    </div>
+
 
 
                 </div>
@@ -791,33 +950,36 @@ button.btn-primary:hover {
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('#testimonialForm').on('submit', function(e){
-        e.preventDefault(); // Empêcher l'envoi classique du formulaire
+        <script>
+            $(document).ready(function() {
+                $('#testimonialForm').on('submit', function(e) {
+                    e.preventDefault(); // Empêcher l'envoi classique du formulaire
 
-        $.ajax({
-            url: $(this).attr('action'),
-            method: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function(response) {
-                // Afficher le message de succès
-                $('#testimonialModal').modal('hide'); // Fermer le modal
-                
-                $('#successMessage').text('Témoignage créé avec succès! Il sera valide après confirmation des administrateurs').show(); 
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        method: $(this).attr('method'),
+                        data: $(this).serialize(),
+                        success: function(response) {
+                            // Afficher le message de succès
+                            $('#testimonialModal').modal('hide'); // Fermer le modal
 
-                setTimeout(function() {
-            location.reload();
-        }, 5000); 
-            },
-            error: function(response) {
-                // Afficher un message d'erreur si nécessaire
-                $('#errorMessage').text('Une erreur est survenue.').show(); // Afficher le message d'erreur
-            }
-        });
-    });
-});
-</script>
+                            $('#successMessage').text(
+                                'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs'
+                                ).show();
+
+                            setTimeout(function() {
+                                location.reload();
+                            }, 5000);
+                        },
+                        error: function(response) {
+                            // Afficher un message d'erreur si nécessaire
+                            $('#errorMessage').text('Une erreur est survenue.')
+                        .show(); // Afficher le message d'erreur
+                        }
+                    });
+                });
+            });
+        </script>
 
 
         <!-- testimonial area end -->
@@ -834,41 +996,43 @@ $(document).ready(function(){
                                 <div class="swiper-wrapper">
                                     @php
 
-                                    $products = DB::table('products')->latest()->take(15)->get();
-            
-                                @endphp
-                                @if ($products)
-                                @foreach($products as $product)
-                                    <div class="swiper-slide">
-                                        <div class="tp-project-2-item p-relative">
-                                            <div class="tp-project-2-thumb">
-                                                <img src="{{ url('public/Image/' . $product->image) }}" alt="">
+                                        $products = DB::table('products')->latest()->take(15)->get();
+
+                                    @endphp
+                                    @if ($products)
+                                        @foreach ($products as $product)
+                                            <div class="swiper-slide">
+                                                <div class="tp-project-2-item p-relative">
+                                                    <div class="tp-project-2-thumb">
+                                                        <img src="{{ url('public/Image/' . $product->image) }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="tp-project-2-content z-index">
+                                                        {{-- <span>Gardening</span> --}}
+                                                        <h4 class="tp-project-2-title"><a class="text-anim"
+                                                                href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 10))]) }}">{{ $product->name ?? ' ' }}</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="tp-project-2-button">
+                                                        <a class="tp-btn-project"
+                                                            href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 20))]) }}"><span>
+                                                                Voir détails</span>
+                                                            <i>
+                                                                <svg width="15" height="10" viewBox="0 0 15 10"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
+                                                                        fill="currentcolor" />
+                                                                </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="tp-project-2-content z-index">
-                                                {{-- <span>Gardening</span> --}}
-                                                <h4 class="tp-project-2-title"><a class="text-anim"
-                                                    href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 10))]) }}">{{$product->name ?? ' '}}</a></h4>
-                                            </div>
-                                            <div class="tp-project-2-button">
-                                                <a class="tp-btn-project"  href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 20))]) }}"><span>
-                                                        Voir détails</span>
-                                                    <i>
-                                                        <svg width="15" height="10" viewBox="0 0 15 10"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
-                                                                fill="currentcolor" />
-                                                        </svg>
-                                                    </i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    @endforeach
-                                    
+                                        @endforeach
+
                                     @endif
-                                
+
                                 </div>
                                 <div class="tp-slider-dots mt-40 text-center"></div>
                             </div>
