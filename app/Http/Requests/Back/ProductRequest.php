@@ -33,7 +33,9 @@ class ProductRequest extends FormRequest
             'name' => 'required|max:255',
             'slug' => ['required', 'max:255', new Slug, 'unique:products,slug' . $id],
           //  'category_id' => 'exists:categories,id',
-            'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+           // 'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+           'image' => 'sometimes|required|file|mimetypes:image/*',
+
             'description' => 'required|string',
     
             'category_id' => 'exists:categories,id',

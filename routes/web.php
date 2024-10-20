@@ -109,8 +109,8 @@ Route::post('/inscription', [InscriptionController::class, 'store'])->name('insc
 
 ////Books
 Route::get('bookings', [FrontBookController::class, 'logements'])->name('logement');
-Route::get('/logement/{id}', [FrontBookController::class, 'hopital'])->where('id', '[0-9]+');
-Route::get('details-book/{id}', [FrontBookController::class, 'details'])->name('details-book');
+Route::get('/logement/{id}', [FrontBookController::class, 'logement'])->where('id', '[0-9]+');
+Route::get('details-logement/{id}', [FrontBookController::class, 'details'])->name('details-logement');
 Route::get('/book/{id}', [FrontHopitalController::class, 'show'])->name('book.show');
 Route::get('recherche', [FrontBookController::class, 'recherche'])->name("recherche");
 //Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');

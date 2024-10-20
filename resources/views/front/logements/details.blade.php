@@ -1,499 +1,40 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+@extends('front.fixe')
+@section('titre', 'Détails')
+@section('body')
 
-<head>
-   <meta charset="utf-8">
-   <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title>Garlant – Landscaping & Gardening HTML Template</title>
-   <meta name="description" content="">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <main>
+        @php
+            $config = DB::table('configs')->first();
 
-   <!-- Place favicon.ico in the root directory -->
-   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
-
-   <!-- CSS here -->
-   <link rel="stylesheet" href="assets/css/bootstrap.css">
-   <link rel="stylesheet" href="assets/css/animate.css">
-   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
-   <link rel="stylesheet" href="assets/css/slick.css">
-   <link rel="stylesheet" href="assets/css/magnific-popup.css">
-   <link rel="stylesheet" href="assets/css/flaticon_broadx.css">
-   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
-   <link rel="stylesheet" href="assets/css/spacing.css">
-   <link rel="stylesheet" href="assets/css/custom-animation.css">
-   <link rel="stylesheet" href="assets/css/main.css">
-</head>
-
-<body>
-   <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
+        @endphp
 
 
-   <!-- Preloader -->
-   <div class="preloader-wrapper">
-      <div class="preloader-container">
-          <div class="preloader bounce-active">
-              <img src="assets/img/logo/preloader.png" alt="preloader">
-          </div>
-      </div>
-  </div>
-  <!-- Preloader End -->
 
-   <!-- back to top start -->
-   <div class="back-to-top-wrapper">
-      <button id="back_to_top" type="button" class="back-to-top-btn">
-         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-               stroke-linejoin="round" />
-         </svg>
-      </button>
-   </div>
-   <!-- back to top end -->
+        <main>
 
-   <!-- search popup start -->
-   <div class="search__popup">
-      <div class="container">
-         <div class="row">
-            <div class="col-xxl-12">
-               <div class="search__wrapper">
-                  <div class="search__top d-flex justify-content-between align-items-center">
-                     <div class="search__logo">
-                        <a href="index.html">
-                           <img src="assets/img/logo/logo-white.png" alt="">
-                        </a>
-                     </div>
-                     <div class="search__close">
-                        <button type="button" class="search__close-btn search-close-btn">
-                           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                 stroke-linejoin="round" />
-                              <path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                 stroke-linejoin="round" />
-                           </svg>
-                        </button>
-                     </div>
-                  </div>
-                  <div class="search__form">
-                     <form action="#">
-                        <div class="search__input">
-                           <input class="search-input-field" type="text" placeholder="Type here to search...">
-                           <span class="search-focus-border"></span>
-                           <button type="submit">
-                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                 <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
-                           </button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- search popup end -->
-
-   <!-- cart mini area start -->
-   <div class="cartmini__area">
-      <div class="cartmini__wrapper d-flex justify-content-between flex-column">
-         <div class="cartmini__top-wrapper">
-            <div class="cartmini__top p-relative">
-               <div class="cartmini__top-title">
-                  <h4>Shopping cart</h4>
-               </div>
-               <div class="cartmini__close">
-                  <button type="button" class="cartmini__close-btn cartmini-close-btn"><i
-                        class="fal fa-times"></i></button>
-               </div>
-            </div>
-            <div class="cartmini__shipping">
-               <p> Free Shipping for all orders over <span>$50</span></p>
-               <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                     data-width="70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-               </div>
-            </div>
-            <div class="cartmini__widget">
-               <div class="cartmini__widget-item">
-                  <div class="cartmini__thumb">
-                     <a href="product-details.html">
-                        <img src="assets/img/product/rc-1.jpg" alt="">
-                     </a>
-                  </div>
-                  <div class="cartmini__content">
-                     <h5 class="cartmini__title"><a href="product-details.html">Level Bolt Smart Lock</a></h5>
-                     <div class="cartmini__price-wrapper">
-                        <span class="cartmini__price">$46.00</span>
-                        <span class="cartmini__quantity">x2</span>
-                     </div>
-                  </div>
-                  <a href="#" class="cartmini__del"><i class="fa-regular fa-xmark"></i></a>
-               </div>
-            </div>
-         </div>
-         <div class="cartmini__checkout">
-            <div class="cartmini__checkout-title mb-30">
-               <h4>Subtotal:</h4>
-               <span>$113.00</span>
-            </div>
-          <div class="cartmini__checkout-btn">
-               <a href="cart.html" class="tp-btn-theme text-center mb-10 w-100"> view cart</a>
-               <a href="checkout.html" class="tp-btn-yellow text-center w-100"> checkout</a>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- cart mini area end -->
-
-   <!-- tp-offcanvus-area-start -->
-   <div class="tpoffcanvas-area">
-      <div class="tpoffcanvas">
-         <div class="tpoffcanvas__close-btn">
-            <button class="close-btn"><i class="fal fa-times"></i></button>
-         </div>
-         <div class="tpoffcanvas__logo">
-            <a href="index.html">
-               <img src="assets/img/logo/logo-white.png" alt="">
-            </a>
-         </div>
-         <div class="tpoffcanvas__title">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima incidunt eaque ab cumque, porro
-               maxime
-               autem sed.</p>
-         </div>
-         <div class="tp-main-menu-mobile d-xl-none"></div>
-         <div class="tpoffcanvas__contact-info">
-            <div class="tpoffcanvas__contact-title">
-               <h5>Contact us</h5>
-            </div>
-            <ul>
-               <li>
-                  <i class="fa-light fa-location-dot"></i>
-                  <a href="https://www.google.com/maps/@23.8223586,90.3661283,15z" target="_blank">Melbone st,
-                     Australia, Ny 12099</a>
-               </li>
-               <li>
-                  <i class="fas fa-envelope"></i>
-                  <a href="mailto:solaredge@gmail.com">themepure@gmail.com</a>
-               </li>
-               <li>
-                  <i class="fal fa-phone-alt"></i>
-                  <a href="tel:+48555223224">+48 555 223 224</a>
-               </li>
-            </ul>
-         </div>
-         <div class="tpoffcanvas__input">
-            <div class="tpoffcanvas__input-title">
-               <h4>Get UPdate</h4>
-            </div>
-            <form action="#">
-               <div class="p-relative">
-                  <input type="text" placeholder="Enter mail">
-                  <button>
-                     <i class="fas fa-paper-plane"></i>
-                  </button>
-               </div>
-            </form>
-         </div>
-         <div class="tpoffcanvas__social">
-            <div class="social-icon">
-               <a href="#"><i class="fab fa-twitter"></i></a>
-               <a href="#"><i class="fab fa-instagram"></i></a>
-               <a href="#"><i class="fab fa-facebook-f"></i></a>
-               <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="body-overlay"></div>
-   <!-- tp-offcanvus-area-end -->
-
-   <header class="tp-header-height">
-      <!-- header top area start -->
-      <div class="tp-header-top-area tp-header-top-height tp-header-top-inner-style theme-bg">
-         <div class="container">
-            <div class="row align-items-center">
-               <div class="col-xl-5 col-lg-4 col-md-6 col-sm-6 d-none d-sm-block">
-                  <div class="tp-header-top-social">
-                     <span>Follow Us On:</span>
-                     <a href="#">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M2.64192 11.3201H4.69292V6.21012H6.40792L6.66692 4.22212H4.69292V2.94812C4.69292 2.37412 4.85392 1.98212 5.67992 1.98212H6.73692V0.197117C6.55492 0.176117 5.93192 0.120117 5.20392 0.120117C3.67792 0.120117 2.64192 1.05112 2.64192 2.75212V4.22212H0.919922V6.21012H2.64192V11.3201Z"
-                              fill="currentcolor" />
-                        </svg>
-                     </a>
-                     <a href="#">
-                        <svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M3.70719 8.62092C4.44619 8.62557 5.17875 8.48344 5.8624 8.20278C6.54604 7.92212 7.16716 7.50852 7.68972 6.98595C8.21228 6.46339 8.62589 5.84228 8.90655 5.15863C9.18721 4.47499 9.32934 3.74242 9.32469 3.00342V2.74529C9.70776 2.46463 10.0393 2.11974 10.3047 1.72592C9.94398 1.88368 9.5623 1.98831 9.17156 2.03654C9.58584 1.7897 9.89668 1.40115 10.0466 0.942794C9.66048 1.17442 9.23711 1.33726 8.79531 1.42404C8.49778 1.10702 8.10406 0.896881 7.67508 0.826151C7.24609 0.75542 6.80576 0.828038 6.4222 1.03277C6.03864 1.2375 5.73325 1.56293 5.55327 1.9587C5.37329 2.35448 5.32875 2.79854 5.42656 3.22217C4.6417 3.18365 3.87375 2.98024 3.17272 2.6252C2.47169 2.27017 1.8533 1.77145 1.35781 1.16154C1.10797 1.59518 1.03224 2.10756 1.14596 2.59494C1.25968 3.08231 1.55435 3.50826 1.97031 3.78655C1.66346 3.77471 1.3637 3.69078 1.09531 3.54154V3.56342C1.09259 4.0166 1.24525 4.45702 1.52787 4.81129C1.81049 5.16556 2.20598 5.41226 2.64844 5.5103C2.36303 5.58706 2.06407 5.59902 1.77344 5.5453C1.90153 5.93178 2.14605 6.26917 2.47346 6.5112C2.80087 6.75323 3.19513 6.88805 3.60219 6.89717C2.90622 7.4574 2.04123 7.76577 1.14781 7.77217C0.991167 7.76764 0.834889 7.75449 0.679688 7.7328C1.58398 8.30894 2.63496 8.61269 3.70719 8.6078"
-                              fill="currentcolor" />
-                        </svg>
-                     </a>
-                     <a href="#">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M12.1505 4.78584C12.1446 4.34404 12.0619 3.90663 11.9061 3.49318C11.771 3.14443 11.5646 2.82771 11.3001 2.56324C11.0357 2.29878 10.7189 2.09239 10.3702 1.95726C9.96205 1.80405 9.53087 1.72121 9.09502 1.71226C8.53385 1.68718 8.35594 1.68018 6.93144 1.68018C5.50694 1.68018 5.32435 1.68018 4.76727 1.71226C4.33161 1.72127 3.90064 1.80412 3.49269 1.95726C3.14389 2.09229 2.82712 2.29865 2.56264 2.56313C2.29816 2.8276 2.09181 3.14438 1.95677 3.49318C1.80326 3.901 1.72059 4.33207 1.71235 4.76776C1.68727 5.32951 1.67969 5.50743 1.67969 6.93193C1.67969 8.35643 1.67969 8.53843 1.71235 9.09609C1.7211 9.53243 1.80335 9.96293 1.95677 10.3718C2.09203 10.7205 2.29854 11.0372 2.56311 11.3015C2.82767 11.5659 3.14447 11.7722 3.49327 11.9072C3.90011 12.0665 4.33115 12.1553 4.76785 12.1697C5.3296 12.1948 5.50752 12.2023 6.93202 12.2023C8.35652 12.2023 8.5391 12.2023 9.09619 12.1697C9.53203 12.1611 9.96323 12.0784 10.3714 11.9253C10.72 11.79 11.0366 11.5835 11.3011 11.3191C11.5655 11.0546 11.772 10.738 11.9073 10.3893C12.0607 9.98101 12.1429 9.55051 12.1517 9.11359C12.1768 8.55243 12.1844 8.37451 12.1844 6.94943C12.1832 5.52493 12.1832 5.34409 12.1505 4.78584ZM6.92794 9.62576C5.4381 9.62576 4.23119 8.41884 4.23119 6.92901C4.23119 5.43918 5.4381 4.23226 6.92794 4.23226C7.64316 4.23226 8.32909 4.51638 8.83483 5.02212C9.34057 5.52786 9.62469 6.21379 9.62469 6.92901C9.62469 7.64423 9.34057 8.33016 8.83483 8.8359C8.32909 9.34164 7.64316 9.62576 6.92794 9.62576ZM9.73202 4.76134C9.64942 4.76142 9.56761 4.74521 9.49129 4.71363C9.41496 4.68206 9.34561 4.63574 9.2872 4.57733C9.22879 4.51893 9.18247 4.44957 9.1509 4.37324C9.11932 4.29692 9.10311 4.21511 9.10319 4.13251C9.10319 4.04997 9.11944 3.96824 9.15103 3.89198C9.18262 3.81572 9.22892 3.74643 9.28728 3.68806C9.34565 3.6297 9.41494 3.5834 9.4912 3.55181C9.56745 3.52023 9.64919 3.50397 9.73173 3.50397C9.81427 3.50397 9.896 3.52023 9.97226 3.55181C10.0485 3.5834 10.1178 3.6297 10.1762 3.68806C10.2345 3.74643 10.2808 3.81572 10.3124 3.89198C10.344 3.96824 10.3603 4.04997 10.3603 4.13251C10.3603 4.48018 10.0791 4.76134 9.73202 4.76134Z"
-                              fill="currentcolor" />
-                           <path
-                              d="M6.99784 8.73934C7.96531 8.73934 8.74959 7.95506 8.74959 6.98759C8.74959 6.02013 7.96531 5.23584 6.99784 5.23584C6.03038 5.23584 5.24609 6.02013 5.24609 6.98759C5.24609 7.95506 6.03038 8.73934 6.99784 8.73934Z"
-                              fill="currentcolor" />
-                        </svg>
-                     </a>
-                     <a href="#">
-                        <svg width="13" height="9" viewBox="0 0 13 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M12.5527 1.57898C12.483 1.32 12.3465 1.08387 12.1569 0.894224C11.9672 0.704578 11.7311 0.568069 11.4721 0.498359C10.5184 0.240234 6.68587 0.240234 6.68587 0.240234C6.68587 0.240234 2.85338 0.240234 1.89963 0.498359C1.64064 0.568069 1.40451 0.704578 1.21487 0.894224C1.02522 1.08387 0.888711 1.32 0.819001 1.57898C0.640915 2.55166 0.554494 3.53891 0.560876 4.52773C0.554494 5.51656 0.640915 6.5038 0.819001 7.47648C0.888711 7.73547 1.02522 7.97159 1.21487 8.16124C1.40451 8.35089 1.64064 8.4874 1.89963 8.55711C2.85338 8.81523 6.68587 8.81523 6.68587 8.81523C6.68587 8.81523 10.5184 8.81523 11.4721 8.55711C11.7311 8.4874 11.9672 8.35089 12.1569 8.16124C12.3465 7.97159 12.483 7.73547 12.5527 7.47648C12.7308 6.5038 12.8173 5.51656 12.8109 4.52773C12.8173 3.53891 12.7308 2.55166 12.5527 1.57898ZM5.46087 6.36523V2.69023L8.6415 4.52773L5.46087 6.36523Z"
-                              fill="currentcolor" />
-                        </svg>
-                     </a>
-                  </div>
-               </div>
-               <div class="col-xl-7 col-lg-8 col-md-6 col-sm-6">
-                  <div class="tp-header-top-right text-center text-sm-end">
-                     <ul>
-                        <li class="d-none d-lg-inline-block">
-                           <span>
-                              <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M1.80179 6.21464C1.50413 4.25214 2.89007 2.48495 5.00726 1.83651C5.38317 1.72146 5.78882 1.75415 6.14146 1.92793C6.49409 2.10171 6.76714 2.40347 6.90491 2.77167L7.58382 4.58417C7.69297 4.87573 7.71254 5.19324 7.64002 5.49599C7.5675 5.79875 7.4062 6.07293 7.17679 6.28339L5.15726 8.13573C5.05766 8.22724 4.98344 8.34296 4.94182 8.47165C4.9002 8.60034 4.8926 8.73761 4.91976 8.87011L4.93773 8.95136L4.98773 9.15526C5.03226 9.32714 5.09945 9.56933 5.19398 9.85839C5.38148 10.4326 5.6807 11.2045 6.12601 11.9756C6.57132 12.7467 7.09007 13.392 7.4932 13.8412C7.70315 14.0751 7.9226 14.3003 8.15101 14.5162L8.21351 14.574C8.31452 14.6635 8.43699 14.7252 8.56897 14.7533C8.70095 14.7814 8.83796 14.7748 8.96663 14.7342L11.5807 13.9115C11.8777 13.8182 12.1958 13.8156 12.4943 13.9043C12.7927 13.993 13.0579 14.1688 13.2557 14.4092L14.4924 15.9107C15.008 16.5357 14.9471 17.4545 14.3541 18.0068C12.7338 19.517 10.5057 19.8271 8.9557 18.5803C7.05581 17.0479 5.45414 15.179 4.2307 13.067C2.99714 10.9563 2.17308 8.63098 1.80179 6.21464ZM6.55648 8.97245L8.23304 7.43495C8.69185 7.01404 9.01446 6.46566 9.15951 5.86016C9.30455 5.25465 9.26541 4.61962 9.0471 4.03651L8.36742 2.22401C8.09013 1.48349 7.54086 0.87659 6.83158 0.527032C6.1223 0.177474 5.30641 0.111574 4.55023 0.342765C1.92132 1.14745 -0.189618 3.50448 0.257257 6.44901C0.658037 9.05997 1.54782 11.5719 2.87991 13.8529C4.1995 16.1305 5.92697 18.1459 7.97601 19.7982C10.3002 21.6654 13.4049 21.0287 15.4198 19.1498C15.9963 18.6125 16.3461 17.8754 16.3979 17.0891C16.4498 16.3027 16.1997 15.5261 15.6987 14.9178L14.4619 13.4162C14.0662 12.9353 13.5358 12.5836 12.9387 12.4062C12.3417 12.2289 11.7053 12.234 11.1112 12.4209L8.94163 13.1037C8.84452 13.0038 8.74945 12.902 8.65648 12.7982C8.2106 12.3049 7.81612 11.7675 7.47913 11.1943C7.15108 10.6158 6.88277 10.0053 6.67835 9.37245C6.635 9.23996 6.59437 9.1066 6.55648 8.97245Z"
-                                    fill="currentcolor" />
-                              </svg>
-                           </span>
-                           <a class="text-anim" href="tel:6845550102">(684) 555-0102</a>
-                        </li>
-                        <li>
-                           <span>
-                              <svg width="21" height="17" viewBox="0 0 21 17" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M0.0839844 2.24984C0.0839844 1.6973 0.303478 1.1674 0.694179 0.776698C1.08488 0.385997 1.61478 0.166504 2.16732 0.166504H18.834C19.3865 0.166504 19.9164 0.385997 20.3071 0.776698C20.6978 1.1674 20.9173 1.6973 20.9173 2.24984V14.7498C20.9173 15.3024 20.6978 15.8323 20.3071 16.223C19.9164 16.6137 19.3865 16.8332 18.834 16.8332H2.16732C1.61478 16.8332 1.08488 16.6137 0.694179 16.223C0.303478 15.8323 0.0839844 15.3024 0.0839844 14.7498V2.24984ZM3.74961 2.24984L10.5007 8.15713L17.2517 2.24984H3.74961ZM18.834 3.63421L11.1871 10.3259C10.9972 10.4923 10.7532 10.5841 10.5007 10.5841C10.2481 10.5841 10.0041 10.4923 9.81419 10.3259L2.16732 3.63421V14.7498H18.834V3.63421Z"
-                                    fill="currentcolor" />
-                              </svg>
-                           </span>
-                           <a class="text-anim" href="mailto:manhhachkt08@gmail.com">manhhachkt08@gmail.com</a>
-                        </li>
-                        <li class="d-none d-lg-inline-block">
-                           <span>
-                              <svg width="19" height="23" viewBox="0 0 19 23" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M9.5 12.542C11.2259 12.542 12.625 11.1429 12.625 9.41699C12.625 7.6911 11.2259 6.29199 9.5 6.29199C7.77411 6.29199 6.375 7.6911 6.375 9.41699C6.375 11.1429 7.77411 12.542 9.5 12.542Z"
-                                    stroke="currentcolor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                 <path
-                                    d="M9.49935 1.0835C7.28921 1.0835 5.1696 1.96147 3.60679 3.52427C2.04399 5.08708 1.16602 7.20669 1.16602 9.41683C1.16602 11.3877 1.58477 12.6772 2.72852 14.1043L9.49935 21.9168L16.2702 14.1043C17.4139 12.6772 17.8327 11.3877 17.8327 9.41683C17.8327 7.20669 16.9547 5.08708 15.3919 3.52427C13.8291 1.96147 11.7095 1.0835 9.49935 1.0835Z"
-                                    stroke="currentcolor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                              </svg>
-                           </span>
-                           <a class="text-anim" target="_blank"
-                              href="https://www.google.com/maps/@31.9583573,117.7168124,10.96z?entry=ttu">8080 Railroad
-                              St.</a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- header top area end -->
-
-      <!-- header area start -->
-      <div id="header-sticky" class="tp-header-area">
-         <div class="container">
-            <div class="row align-items-center">
-               <div class="col-xl-2 col-lg-4 col-6">
-                  <div class="tp-header-logo">
-                     <a href="index.html"><img src="assets/img/logo/logo-black.png" alt=""></a>
-                  </div>
-               </div>
-               <div class="col-xl-6 d-none d-xl-block">
-                  <div class="tp-header-main-menu text-xxl-end text-center">
-                     <nav class="tp-main-menu-content">
-                        <ul>
-                           <li class="has-dropdown">
-                              <a href="index.html">Home</a>
-                              <div class="tp-submenu submenu has-homemenu">
-                                 <div class="row gx-6 row-cols-1 row-cols-md-2 row-cols-xl-4">
-                                    <div class="col homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="assets/img/menu/home-1.jpg" alt="">
-                                          <div class="homemenu-btn">
-                                             <a class="tp-menu-btn" href="index.html">Demo page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">
-                                             <a href="index.html">Home 01</a>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                    <div class="col homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="assets/img/menu/home-2.jpg" alt="">
-                                          <div class="homemenu-btn">
-                                             <a class="tp-menu-btn" href="index-2.html">Demo page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">
-                                             <a href="index-2.html">Home 02</a>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                    <div class="col homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="assets/img/menu/home-3.jpg" alt="">
-                                          <div class="homemenu-btn">
-                                             <a class="tp-menu-btn" href="index-3.html">Demo page</a>
-                                             
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">
-                                             <a href="index-3.html">Home 03</a>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                    <div class="col homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="assets/img/menu/home-4.jpg" alt="">
-                                          <div class="homemenu-btn">
-                                             <a class="tp-menu-btn" href="index-4.html">Demo page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">
-                                             <a href="index-4.html">Home 04</a>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                           <li class="has-dropdown">
-                              <a href="#">Pages</a>
-                              <ul class="submenu tp-submenu">
-                                 <li><a href="about-us.html">About Us</a></li>
-                                 <li><a href="project.html">Project</a></li>
-                                 <li><a href="project-details.html">Project Details</a></li>
-                                 <li><a href="team.html">Team</a></li>
-                                 <li><a href="team-details.html">Team Details</a></li>
-                                 <li><a href="testimonial.html">testimonial</a></li>
-                                 <li><a href="faq.html">Faq</a></li>
-                                 <li><a href="pricing.html">Pricing</a></li>
-                                 <li><a href="login.html">Login</a></li>
-                                 <li><a href="sign-up.html">Sign Up</a></li>
-                                 <li><a href="404.html">404</a></li>
-                              </ul>
-                           </li>
-                           <li class="has-dropdown">
-                              <a href="service.html">Service</a>
-                              <ul class="submenu tp-submenu">
-                                 <li><a href="service.html">Service</a></li>
-                                 <li><a href="service-details.html">Service Details</a></li>
-                              </ul>
-                           </li>
-                           <li class="has-dropdown">
-                              <a href="blog.html">News</a>
-                              <ul class="submenu tp-submenu">
-                                 <li><a href="blog.html">Blog</a></li>
-                                 <li><a href="blog-classic.html">Blog Classic</a></li>
-                                 <li><a href="blog-details.html">Blog Details</a></li>
-                              </ul>
-                           </li>
-                           <li class="has-dropdown">
-                              <a href="product.html">Shop</a>
-                              <ul class="submenu tp-submenu">
-                                 <li><a href="product.html">Shop</a></li>
-                                 <li><a href="product-details.html">Shop Details</a></li>
-                                 <li><a href="cart.html">Cart</a></li>
-                                 <li><a href="checkout.html">Checkout</a></li>
-                              </ul>
-                           </li>
-                           <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                     </nav>
-                  </div>
-               </div>
-               <div class="col-xl-4 col-lg-8 col-6">
-                  <div class="tp-header-right d-flex align-items-center justify-content-end">
-                     <div class="tp-header-right-icon d-none d-lg-block">
-                        <button class="search-open-btn">
-                           <span>
-                              <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M17.4994 17.4998L13.761 13.7548M15.8327 8.74984C15.8327 10.6285 15.0864 12.4301 13.758 13.7585C12.4296 15.0869 10.628 15.8332 8.74935 15.8332C6.87073 15.8332 5.06906 15.0869 3.74068 13.7585C2.41229 12.4301 1.66602 10.6285 1.66602 8.74984C1.66602 6.87122 2.41229 5.06955 3.74068 3.74116C5.06906 2.41278 6.87073 1.6665 8.74935 1.6665C10.628 1.6665 12.4296 2.41278 13.758 3.74116C15.0864 5.06955 15.8327 6.87122 15.8327 8.74984Z"
-                                    stroke="currentcolor" stroke-width="2" stroke-linecap="round" />
-                              </svg>
-                           </span>
-                        </button>
-                        <button class="cartmini-open-btn">
-                           <span>
-                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M2.5 4.99984H18.3333L15.8333 13.3332H5L2.5 4.99984ZM2.5 4.99984L1.875 2.9165M8.32667 9.1665H9.99333M9.99333 9.1665H11.66M9.99333 9.1665V7.49984M9.99333 9.1665V10.8332M9.16667 16.2498C9.16667 16.5814 9.03497 16.8993 8.80055 17.1337C8.56613 17.3681 8.24819 17.4998 7.91667 17.4998C7.58515 17.4998 7.2672 17.3681 7.03278 17.1337C6.79836 16.8993 6.66667 16.5814 6.66667 16.2498M14.1667 16.2498C14.1667 16.5814 14.035 16.8993 13.8006 17.1337C13.5661 17.3681 13.2482 17.4998 12.9167 17.4998C12.5851 17.4998 12.2672 17.3681 12.0328 17.1337C11.7984 16.8993 11.6667 16.5814 11.6667 16.2498"
-                                    stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                              </svg>
-                           </span>
-                        </button>
-                     </div>
-                     <div class="tp-header-btn d-none d-md-block">
-                        <a class="tp-btn-theme" href="contact.html"><span>Get Started Now</span></a>
-                     </div>
-                     <div class="tp-header-bar d-xl-none">
-                        <button class="tp-menu-bar"><i class="fa-solid fa-bars"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- header area end -->
-
-
-   </header>
-
-   <main>
-
-      <!-- breadcrumb area start -->
+     
       <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
-         data-background="assets/img/breadcrumb/breadcrumb.jpg">
+         data-background="/assets/img/breadcrumb/breadcrumb.jpg">
          <div class="container">
             <div class="row">
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Products Details</h3>
+                        <h3 class="breadcrumb__title">{{ $logement->name ?? '' }}</h3>
                      </div>
                      <div class="breadcrumb__list">
-                        <span><a href="index.html">Home</a></span>
+              {{--           <span><a href="index.html">Home</a></span>
                         <span class="dvdr"><i>/</i></span>
                         <span class="dvdr">Pages</span>
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Products Details</b></span>
+                        <span><b>Products Details</b></span> --}}
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- breadcrumb area end -->
-
-      <!--product-details-area-start -->
+  
       <div class="tp-product-details-area pt-130">
          <div class="container">
             <div class="row align-items-center">
@@ -504,22 +45,22 @@
                            <div class="tab-pane fade show active" id="nav-one" role="tabpanel"
                               aria-labelledby="nav-one-tab">
                               <div class="tp-shop-details__tab-big-img">
-                                 <img src="assets/img/product/pro-1-1.jpg" alt="">
+                                 <img src="/assets/img/product/pro-1-1.jpg" alt="">
                               </div>
                            </div>
                            <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
                               <div class="tp-shop-details__tab-big-img">
-                                 <img src="assets/img/product/pro-1-2.jpg" alt="">
+                                 <img src="/assets/img/product/pro-1-2.jpg" alt="">
                               </div>
                            </div>
                            <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab">
                               <div class="tp-shop-details__tab-big-img">
-                                 <img src="assets/img/product/pro-1-3.jpg" alt="">
+                                 <img src="/assets/img/product/pro-1-3.jpg" alt="">
                               </div>
                            </div>
                            <div class="tab-pane fade" id="nav-four" role="tabpanel" aria-labelledby="nav-four-tab">
                               <div class="tp-shop-details__tab-big-img">
-                                 <img src="assets/img/product/pro-1-1.jpg" alt="">
+                                 <img src="/assets/img/product/pro-1-1.jpg" alt="">
                               </div>
                            </div>
                         </div>
@@ -530,21 +71,21 @@
                               <button class="nav-links active" id="nav-one-tab" data-bs-toggle="tab"
                                  data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one"
                                  aria-selected="true">
-                                 <img src="assets/img/product/pro-sm-1-1.jpg" alt="">
+                                 <img src="/assets/img/product/pro-sm-1-1.jpg" alt="">
                               </button>
                               <button class="nav-links" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two"
                                  type="button" role="tab" aria-controls="nav-two" aria-selected="false">
-                                 <img src="assets/img/product/pro-sm-1-2.jpg" alt="">
+                                 <img src="/assets/img/product/pro-sm-1-2.jpg" alt="">
                               </button>
                               <button class="nav-links" id="nav-three-tab" data-bs-toggle="tab"
                                  data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three"
                                  aria-selected="false">
-                                 <img src="assets/img/product/pro-sm-1-3.jpg" alt="">
+                                 <img src="/assets/img/product/pro-sm-1-3.jpg" alt="">
                               </button>
                               <button class="nav-links" id="nav-four-tab" data-bs-toggle="tab"
                                  data-bs-target="#nav-four" type="button" role="tab" aria-controls="nav-four"
                                  aria-selected="false">
-                                 <img src="assets/img/product/pro-1-1.jpg" alt="">
+                                 <img src="/assets/img/product/pro-1-1.jpg" alt="">
                               </button>
                            </div>
                         </nav>
@@ -553,10 +94,12 @@
                </div>
                <div class="col-xl-6 col-lg-6">
                   <div class="tp-shop-details__right-wrap">
-                     <h3 class="tp-section-title">Nursery Premium Plant</h3>
+                     <h3 class="tp-section-title">{{ $logement->name ?? ' ' }}</h3>
                      <div class="tp-shop-details__price pb-10">
-                        <del>$475.00 </del>
-                        <span>$375.49</span>
+                       
+                        <ul>
+                           <span>Responsable:</span> <span> {{ $logement->user->name ?? ' ' }}</span>
+                        </ul>
                      </div>
                      <div class="tp-shop-details__ratting mb-20">
                         <i class="fa-solid fa-star"></i>
@@ -567,39 +110,28 @@
                         <span class="review-text">(5)</span>
                      </div>
                      <div class="tp-shop-details__color d-flex align-items-center mb-20">
-                        <i>Color:</i>
-                        <span class="tia"></span>
-                        <span class="black"></span>
-                        <span class="yellow"></span>
-                        <span class="ass"></span>
+                   
                      </div>
                      <div class="tp-shop-details__text-2 mb-25">
-                        <p>Dramatically interactive leadership through is functionalized ROI. Professionally the synergistic initiatives before effective rocket Dramatically create fully converts.
+                        <p style="text-align:justify">
+                            {!! $logement->meta_description?? ' ' !!}
+ 
                         </p>
                      </div>
                      <div class="tp-shop-details__product-info mb-35">
                         <span class="mb-15 d-block">Last 24 Stock Ready To Buy</span>
                         <ul>
-                           <li>Category:<span> Watch, Smartwatch, Apple</span></li>
+                           <li>Categorie:<span> {{ $logement->logements->title ?? '' }}</span></li>
                         </ul>
                      </div>
                      <div class="tp-shop-details__quantity-wrap  mb-30 d-flex align-items-center">
-                        <div class="tp-shop-details__quantity-box">
-                           <div class="tp-shop-details__quantity">
-                              <div class="tp-cart-minus"><i class="fal fa-minus"></i></div>
-                              <input type="text" value="1">
-                              <div class="tp-cart-plus"><i class="fal fa-plus"></i></div>
-                           </div>
-                        </div>
-                        <div class="tp-shop-details__btn mr-30">
-                           <a class="tp-btn-black-sm" href="cart.html"><span>Add To Cart</span></a>
-                        </div>                       
+                                     
                      </div>
                      <div class="tp-shop-details__btn text-center mb-40">
-                        <a class="tp-btn-theme" href="cart.html"><span>Buy Now</span></a>
+                        <a class="tp-btn-theme" href="#"><span>Message</span></a>
                      </div>
                      <div class="tp-shop-details__social">
-                        <span>Share Now:</span>
+                        <span>Partagez:</span>
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
                         <a href="#"><i class="fa-brands fa-twitter"></i></a>
@@ -618,28 +150,26 @@
                                  <li class="nav-item" role="presentation">
                                     <button class="nav-links active" id="home-tab-1" data-bs-toggle="tab"
                                        data-bs-target="#home-1" type="button" role="tab" aria-controls="home-1"
-                                       aria-selected="true"><span>Prodcut
-                                          Details</span></button>
+                                       aria-selected="true"><span>Description
+                                          </span></button>
                                  </li>
                                  <li class="nav-item" role="presentation">
                                     <button class="nav-links" id="information-tab" data-bs-toggle="tab"
                                        data-bs-target="#additional-information" type="button" role="tab"
-                                       aria-controls="additional-information" aria-selected="false"><span>Product Include</span></button>
+                                       aria-controls="additional-information" aria-selected="false"><span>Contacts</span></button>
                                  </li>
                                  <li class="nav-item" role="presentation">
                                     <button class="nav-links" id="reviews-tab" data-bs-toggle="tab"
                                        data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews"
-                                       aria-selected="false"><span>Product Review</span></button>
+                                       aria-selected="false"><span>Commentaires</span></button>
                                  </li>
                               </ul>
                            </div>
                            <div class="tab-content tp-content-tab" id="myTabContent-2">
                               <div class="tab-para tab-pane fade show active" id="home-1" role="tabpanel"
                                  aria-labelledby="home-tab-1">
-                                 <p class="mb-20 text-center">Holisticly coordinate user-centric resources through client-centric content. Completely embrace intermandated models for pandemic supply chains. <br> Synergistically facilitate ubiquitous platforms whereas error-free initiatives. Intrinsicly maintain visionary interfaces before orthogonal relationships. <br> Compellingly iterate world-class process improvements after resource-leveling materials.
-                                  </p>
-                                 <p class="pb-25 text-center"> Authoritatively maintain technically sound internal or "organic" sources whereas quality leadership. Conveniently customize team driven. Holisticly <br> coordinate user-centric resources through client-centric content. Completely embrace intermandated models for pandemic supply chains. Synergistically <br> facilitate ubiquitous platforms whereas error-free initiatives. Intrinsicly maintain visionary interfaces before orthogonal relationships. Compellingly <br> iterate world-class process improvements after resource-leveling materials.</p>
-                                
+                                 <p class="mb-20"  style="text-align: justify">    {!! $logement->body !!}          </p>
+                                 
                               </div>
                               <div class="tab-pane fade" id="additional-information" role="tabpanel"
                                  aria-labelledby="information-tab">
@@ -875,15 +405,13 @@
             </div>
          </div>
       </div>
-      <!-- product-details-area-end -->
-
-      <!-- product-area-start -->
+    
       <div class="tp-product-area pb-120">
          <div class="container">
             <div class="row">
                <div class="col-xl-12">
                   <div class="tp-product-title-box text-center mb-55">
-                     <h4 class="tp-section-title">Related Products</h4>
+                     <h4 class="tp-section-title">Les chambre disponibles</h4>
                   </div>
                </div>
             </div>
@@ -892,7 +420,7 @@
                   <div class="tp-product-item-2 mb-40">
                      <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
                         <a href="product-details.html">
-                           <img src="assets/img/product/product-2-1.png" alt="">
+                           <img src="/assets/img/product/product-2-1.png" alt="">
                         </a>
                         <!-- product action -->
                         <div class="tp-product-action-2 tp-product-action-blackStyle">
@@ -961,7 +489,7 @@
                   <div class="tp-product-item-2 mb-40">
                      <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
                         <a href="product-details.html">
-                           <img src="assets/img/product/product-2-2.png" alt="">
+                           <img src="/assets/img/product/product-2-2.png" alt="">
                         </a>
                         <!-- product action -->
                         <div class="tp-product-action-2 tp-product-action-blackStyle">
@@ -1030,7 +558,7 @@
                   <div class="tp-product-item-2 mb-40">
                      <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
                         <a href="product-details.html">
-                           <img src="assets/img/product/product-2-8.png" alt="">
+                           <img src="/assets/img/product/product-2-8.png" alt="">
                         </a>
                         <!-- product action -->
                         <div class="tp-product-action-2 tp-product-action-blackStyle">
@@ -1099,7 +627,7 @@
                   <div class="tp-product-item-2 mb-40">
                      <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
                         <a href="product-details.html">
-                           <img src="assets/img/product/product-2-4.png" alt="">
+                           <img src="/assets/img/product/product-2-4.png" alt="">
                         </a>
                         <!-- product action -->
                         <div class="tp-product-action-2 tp-product-action-blackStyle">
@@ -1169,48 +697,7 @@
       </div>
       <!-- product-area-end -->
 
-      <!-- brand area start -->
-      <div class="tp-brand-area tp-brand-bg" data-background="assets/img/shape/funfact/bg-3-1.jpg">
-         <div class="container">
-            <div class="row">
-               <div class="col-xl-12">
-                  <div class="tp-brand-wrap">
-                     <div class="swiper-container tp-brand-active">
-                        <div class="swiper-wrapper">
-                           <div class="swiper-slide">
-                              <div class="tp-brand-thumb text-center">
-                                 <img src="assets/img/brand/thumb-2-1.png" alt="">
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                              <div class="tp-brand-thumb text-center">
-                                 <img src="assets/img/brand/thumb-2-2.png" alt="">
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                              <div class="tp-brand-thumb text-center">
-                                 <img src="assets/img/brand/thumb-2-3.png" alt="">
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                              <div class="tp-brand-thumb text-center">
-                                 <img src="assets/img/brand/thumb-2-4.png" alt="">
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                              <div class="tp-brand-thumb text-center">
-                                 <img src="assets/img/brand/thumb-2-5.png" alt="">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- brand area end -->
-
+   
       <!-- contact area start -->
       <div class="tp-contact-2-area theme-bg-2 pt-75 pb-55 z-index">         
          <div class="container">
@@ -1218,7 +705,7 @@
                <div class="row align-items-center">
                   <div class="col-xl-4 d-none d-xl-block">
                      <div class="tp-contact-2-logo">
-                        <a href="index.html"><img src="assets/img/logo/logo-black.png" alt=""></a>
+                        <a href="index.html"><img src="/assets/img/logo/logo-black.png" alt=""></a>
                      </div>
                   </div>
                   <div class="col-xl-8">
@@ -1274,121 +761,9 @@
       <!-- contact area end -->
 
       
-   </main>
-
-   <footer>
-      
-      <div class="tp-footer-bg theme-bg-2">
-         <!-- footer area start -->
-         <div class="tp-footer-area tp-footer-border tp-footer-style-3 tp-footer-style-2 p-relative pt-80 pb-10">
-            <div class="tp-footer-shape-2">
-               <img src="assets/img/shape/footer/shape-1-1.png" alt="">
-            </div>
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 mb-50  wow tpfadeUp" data-wow-duration=".9s"
-                  data-wow-delay=".3s">
-                  <div
-                     class="tp-footer-widget footer-col-3-1">
-                     <h4 class="tp-footer-widget-title">Newsletter</h4>
-                        <div class="tp-footer-text">
-                           <p>The other hand we denounce <br>
-                              through toil and pain.</p>
-                        </div>   
-                        <div class="tp-footer-input-box mb-20 p-relative">
-                           <form action="#">
-                              <input type="email" placeholder="Your Email">
-                              <button class="tp-btn-theme"><span>Subscribe</span></button>
-                           </form>
-                        </div> 
-                        <div class="tp-footer-social">
-                           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                           <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                           <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                           <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        </div> 
-                  </div>
-                  </div>
-                  <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mb-50  wow tpfadeUp" data-wow-duration=".9s"
-                     data-wow-delay=".5s">
-                     <div class="tp-footer-widget footer-col-3-2">
-                        <h4 class="tp-footer-widget-title">Services</h4>
-                        <div class="tp-footer-widget-list">
-                           <ul>
-                              <li><a href="#">Gardening</a></li>
-                              <li><a href="#">Lawn</a></li>
-                              <li><a href="#">Management</a></li>
-                              <li><a href="#">Landscape</a></li>
-                              <li><a href="#"> Out Door</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-50  wow tpfadeUp" data-wow-duration=".9s"
-                     data-wow-delay=".7s">
-                     <div class="tp-footer-widget footer-col-3-3">
-                        <h4 class="tp-footer-widget-title">Solutions</h4>
-                        <div class="tp-footer-widget-list">
-                           <ul>
-                              <li><a href="#">Contact Us</a></li>
-                              <li><a href="#">App Download</a></li>
-                              <li><a href="#">Optimization</a></li>
-                              <li><a href="#">Market Place</a></li>
-                              <li><a href="#">Blog News</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>        
-                  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-50  wow tpfadeUp" data-wow-duration=".9s"
-                  data-wow-delay=".9s">
-                  <div class="tp-footer-widget footer-col-3-4">
-                     <h4 class="tp-footer-widget-title">About</h4>
-                     <div class="tp-footer-text">
-                        <p>On the other hand, we denounce with righteous indignation and is dislike men who are so beguiled  belongs to those.</p>
-                     </div>
-                     <a class="tp-btn-yellow" href="sign-up.html"><span>Sign Up</span></a>
-                  </div>
-               </div>
-               </div>
-            </div>
-         </div>
-         <!-- footer area end -->
-
-         <!-- copy-right area start -->
-         <div class="tp-copyright-area tp-copyright-height tp-copyright-style-4">
-            <div class="container">
-               <div class="row align-items-center">
-                  <div class="col-12 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">
-                     <div class="tp-copyright-text text-center">
-                        <p class="text-black">Copyright @ 2024 Garlant.All Rights Reserved.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- copy-right area end -->
-      </div>
-
-   </footer>
 
 
 
-   <!-- JS here -->
-   <script src="assets/js/vendor/jquery.js"></script>
-   <script src="assets/js/vendor/waypoints.js"></script>
-   <script src="assets/js/bootstrap-bundle.js"></script>
-   <script src="assets/js/ajax-form.js"></script>
-   <script src="assets/js/imagesloaded-pkgd.js"></script>
-   <script src="assets/js/isotope-pkgd.js"></script>
-   <script src="assets/js/magnific-popup.js"></script>
-   <script src="assets/js/nice-select.js"></script>
-   <script src="assets/js/purecounter.js"></script>
-   <script src="assets/js/range-slider.js"></script>
-   <script src="assets/js/wow.js"></script>
-   <script src="assets/js/slick.js"></script>
-   <script src="assets/js/swiper-bundle.js"></script>
-   <script src="assets/js/main.js"></script>
 
-</body>
-
-</html>
+</main>
+@endsection

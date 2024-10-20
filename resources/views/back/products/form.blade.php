@@ -115,7 +115,7 @@
                                 <div id="wrapper">
                                     @if(!isset($product) || $errors->has('image'))
                                     <div class="custom-file">
-                                        <input type="file" id="image" name="image"
+                                        <input type="file" id="image" name="image" accept="image/*"
                                             class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
                                             required>
                                         <label class="custom-file-label" for="image"></label>

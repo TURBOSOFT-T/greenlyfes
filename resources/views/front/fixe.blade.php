@@ -580,7 +580,7 @@
                         <div class="col-12">
                             <div class="tp-copyright-text text-center">
                                 <p class="text-white" style="font-size: 12px;">
-                                    Copyright @ 2024 JKL CONSULTING. Build by
+                                    Copyright @ {{ date('Y') }} GREENLYF. Build by
                                     <a href="#" style="color: #11ee75;"><b>TURBOSOFT</b></a>.
                                 </p>
                             </div>

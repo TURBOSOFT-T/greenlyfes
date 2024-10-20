@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use App\Events\ModelCreated;
 use Illuminate\Notifications\Notifiable;
 
-class Book extends Model
+class Room extends Model
 {
     use HasFactory, Notifiable;
 
+
     protected $fillable = [
        
-        'logement_id',
+        'book_id',
         'name',
         'slug',
         'short_description',
@@ -38,13 +39,6 @@ class Book extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-      
-
-
-
-    
-      
-      
 
        
     ];
@@ -53,18 +47,8 @@ class Book extends Model
         'created' => ModelCreated::class,
     ];
 
-    public function logements()
-    {
-      //  return $this->belon(Logement::class, 'logement_id', 'id');
-       return $this->belongsTo(Logement::class , 'logement_id', 'id');
-    }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
-    public function rooms(){
-        return $this->hasMany(Room::class, 'room_id', 'id');
+    public function book(){
+        return $this->belongsTo('App\Models\Book', 'book_id', 'id');
     }
 }

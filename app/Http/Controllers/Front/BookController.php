@@ -31,17 +31,17 @@ class BookController extends Controller
         $current_logement = Logement::with('books')->findOrFail($id);
         $books = $current_logement->books;
       
-        return view('front.hopitaux.index', compact('current_logement', 'logements', 'books'));
+        return view('front.logements.index', compact('current_logement', 'logements', 'books'));
     }
 
     public function details($id){
        // $hopital =Hopital:: findOrFail($id);
-        $book = Book::findOrFail($id);
+        $logement = Book::findOrFail($id);
        // dd($post);
+      //dd($logement);
+      // $logements = Logement::with('books')->get();
       
-       $logements = Logement::has('books')->get();
-      
-        return view('front.books.details', compact('book','logements'));
+        return view('front.logements.details', compact('logement'));
     }
 
     public function recherche(SearchRequest $request)
@@ -53,7 +53,7 @@ class BookController extends Controller
             ->paginate(10);
        // $title = __('Aucune non trouvée avec la recherche: ') . '<strong>' . $search . '</strong>';
      
-        return view('front.books.index', compact('books','logements'));
+        return view('front.logements.index', compact('books','logements'));
     }
 
     
