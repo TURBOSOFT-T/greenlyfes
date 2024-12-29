@@ -24,6 +24,7 @@ class BookController extends Controller
         return view('front.logements.index', compact('logements', 'users', 'follows', 'pages'));
     }
 
+   
 
     public function logement($id)
     {

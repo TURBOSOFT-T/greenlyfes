@@ -278,16 +278,16 @@
 
                                     </li>
                                    
-                                    <li class="has-dropdown">
+                              {{--       <li class="has-dropdown">
                                         <a href="#">Nos activités</a>
                                         <ul class="submenu tp-submenu">
                                            <li><a href="{{ url('produits') }}">Produits artisanaux</a></li>
-                                         {{--   <li><a  href="{{ url('schools') }}">Les Hotels</a></li> --}}
+                                         
                                            <li><a href="{{ url('hopitaux') }}">La santé</a></li>
                                            
                                           
                                         </ul>
-                                     </li>
+                                     </li> --}}
                                    {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
                                    <li><a href="{{ url('blog') }}">Blogs </a></li>
                                     <li><a href="{{ route('contacts.create') }}">Contact</a></li>
