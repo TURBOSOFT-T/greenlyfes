@@ -22,7 +22,7 @@
         @csrf
         {{-- <label for="active">Active:</label>
         <input type="checkbox" name="active" id="active"> --}}
-        <input type="hidden" name="post_id" value="{{ $post->id }}" />
+        <input type="hidden" name="post_id" value="{{ $post->id ??  ' '}}" />
         <div class="row">
             <div class="col-md-8">
 

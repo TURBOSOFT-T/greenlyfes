@@ -3,7 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Models\{Category, Page, Follow, Home, Project, Service, Post, Testimonial};
+use App\Models\{Category, Room,Page, Follow, Home, Project, Service, Post, Testimonial};
 use Cart;
 
 class HomeComposer
@@ -26,8 +26,8 @@ class HomeComposer
             'project'=>Project::all(),
             'posts'=>Post::select('*')->take('8')->get(),
             'testimonials' => Testimonial::where('active', true)->latest()->take(50)->get(),
-           // 'cartCount' => Cart::getTotalQuantity(),
-          //  'cartTotal' => Cart::getTotal(),
+            'rooms' => Room::select('*')->latest()->paginate(6),
+     
             
         ]);
     }

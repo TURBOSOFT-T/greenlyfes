@@ -11,8 +11,45 @@ class Reservation extends Model
 {
     use HasFactory, Notifiable;
 
+    protected $fillable = [
+        'user_id',
+        'room_id',
+   
+        'date_debut',
+        'date_fin',
+        'limit',
+        'rented',
+        'nb_personnes',
+        'prix_total',
+
+        'nom',
+            'prenom',
+            'email',
+
+            'adresse',
+            'ville',
+            'pays',
+            'telephone',
+            'note',
+
+            'mode',
+            'etat',
+     
+    ];
 
     protected $dispatchesEvents = [
         'created' => ModelCreated::class,
     ];
+
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function room(){
+        return $this->belongsTo(Room::class);
+    }
+
+
+    
 }

@@ -3,34 +3,34 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Les détails sur votre logement </h2>
+                <h2> Les détails sur  la chambre </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back to Product List</a>
+                <a class="btn btn-primary" href="{{ route('rooms.index') }}"> Back to List</a>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <h2>Nom: {{ $book->name }}</h2>
+        <h2>Nom: {{ $room->name }}</h2>
         <br>
-        <p><strong>Created At: </strong> {{ $book->created_at }}</p>
+        <p><strong>Created At: </strong> {{ $room->created_at }}</p>
 
         <br>
-        <p><strong>Description: </strong> {!! $book->body !!}</p>
+        <p><strong>Description: </strong> {!! $room->body !!}</p>
 
         <br>
-        <img class="w-50" {{-- src="{{ url('public/image/Products/' . $book->image) }}" --}} src="{{ url('public/Image/' . $book->image) }}">
+        <img class="w-50" {{-- src="{{ url('public/image/Products/' . $room->image) }}" --}} src="{{ url('public/Image/' . $room->image) }}">
         <br>
         <br>
         <div class="col-md-6">
 
             <p>Les Autres images :</p>
 
-            @foreach (json_decode($book->images) as $key => $image)
+            @foreach (json_decode($room->images) as $key => $image)
                 <img class="card-img-top mb-3 product-image" src="{{ url('public/Image/' . $image) }}"
                     style="width: 100px; height: 100px;">
-            @endforeach
+            @endforeach  
         </div>
         <br>
 
@@ -38,7 +38,7 @@
             <div class="addto-cart-btn">
 
 
-                @if (isset($book->video))
+                @if (isset($room->video))
                     <a class="rbt-btn btn-gradient hover-icon-reverse" id="play-video">
                         <span class="icon-reverse-wrapper">
                             <span class="btn-text"> Voir Détails en vidéo </span>
@@ -51,12 +51,12 @@
                     <!-- Le lecteur vidéo caché par défaut -->
                     <div id="video-container" style="display: none;">
                         <video width="640" height="360" controls>
-                            <source src="{{ asset('storage/' . $book->video) }}" type="video/mp4">
+                            <source src="{{ asset('storage/' . $room->video) }}" type="video/mp4">
                             Votre navigateur ne supporte pas la balise vidéo.
                         </video>
                     </div>
                 @else
-                    <p>Aucune vidéo disponible pour ce book.</p>
+                    <p>Aucune vidéo disponible pour cette chambre.</p>
                 @endif
             </div>
 
@@ -87,7 +87,7 @@
     <br>
     <br>
 
-    <a href="{{ route('books.index') }}" class="btn btn-primary">Back to book List</a>
+    <a href="{{ route('rooms.index') }}" class="btn btn-primary">Back to room List</a>
     </div>
 
     </div>

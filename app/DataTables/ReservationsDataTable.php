@@ -11,29 +11,35 @@ use Yajra\DataTables\Services\DataTable;
 
 class ReservationsDataTable extends DataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
-     */
+
+    use DataTableTrait;
+  
     public function dataTable($query)
     {
         return datatables()
             ->eloquent($query)
+
+            
+
+            ->editColumn('action', function ($order) {
+                return $this->button(
+                          'reservations.destroy', 
+                          $order->id, 
+                          'danger', 
+                          __('Delete'), 
+                          'trash-alt', 
+                          __('Really delete this Reservation  ?')
+                      );
+            })
             ->addColumn('action', 'reservations.action');
     }
 
-    /**
-     * Get query source of dataTable.
-     *
-     * @param \App\Models\Reservation $model
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
+   
     public function query(Reservation $model)
     {
         return $model->newQuery();
     }
+    
 
     /**
      * Optional method if you want to use html builder.
@@ -45,35 +51,27 @@ class ReservationsDataTable extends DataTable
         return $this->builder()
                     ->setTableId('reservations-table')
                     ->columns($this->getColumns())
+                   
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->dom('Blfrtip')
+                    ->lengthMenu();
     }
 
-    /**
-     * Get columns.
-     *
-     * @return array
-     */
+   
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('id')->title(__('ID')),
+   
+            Column::make('nom')->title(__('Nom ')), 
+            Column::make('prenom')->title(__('Prénom')),
+          
+            Column::make('telephone')->title(__('Téléphone')),
+            Column::make('email')->title(__('Email')),
+         
+        
+            Column::make('created_at')->title(__('Date commande')),
+            Column::computed('action')->title(__('Action'))->addClass('align-middle text-center'),
         ];
     }
 
@@ -87,3 +85,4 @@ class ReservationsDataTable extends DataTable
         return 'Reservations_' . date('YmdHis');
     }
 }
+

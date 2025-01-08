@@ -211,6 +211,16 @@
                     </div>
                 </div>
             </div>
+          <style>
+            .tp-service-4-thumb img {
+               
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+
+}
+
+          </style>
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-service-4-wrap">
@@ -224,7 +234,7 @@
                                 @foreach ($logements as $logement )
                                 <div class="swiper-slide">
                                     <div class="tp-service-4-item text-center">
-                                        <div class="tp-service-4-thumb">
+                                        <div class="tp-service-4-thumb  image-container">
                                             <img src="{{ url('public/Image/' . $logement->image) }}" alt="">
                                         </div>
                                         <div class="tp-service-4-content">
@@ -236,7 +246,9 @@
                                            fill="#578B07" />
                                      </svg>
                                   </span> --}}
-                                            <h4 class="tp-service-4-title"><a class="text-anim-3" href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a></h4>
+                                            <h4 class="tp-service-4-title"><a class="text-anim-3"
+                                                
+                                                href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -258,150 +270,166 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="tp-project-3-filter masonary-menu text-center pb-60">
-                        <button data-filter="*" class="active"><span>All</span></button>
-                        <button data-filter=".cat1"><span>Lawn</span></button>
-                        <button data-filter=".cat2"><span>Landscape</span></button>
-                        <button data-filter=".cat3"><span>Nursery</span></button>
-                        <button data-filter=".cat4"><span>Garden</span></button>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-5">
+                            <div class="tp-service-4-title-box text-center mb-55">
+                                <span class="tp-section-subtitle">Les chambres les plus populaires</span>
+                                {{-- <h4 class="tp-section-title">Our Awesome & Best
+                               Services</h4> --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row grid gx-30">
+<style>
+.tp-project-3-thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
+</style>
+                @foreach ($rooms as $room )
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat2 cat4">
                     <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-1.jpg" alt="">
+                        <div class="tp-project-3-thumb ">
+                            <img src="{{ url('public/Image/' . $room->image) }}" alt="">
                         </div>
                         <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Garden Care</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
+                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3"
+                                href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
+                                {{-- href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 10))]) }}" --}}>{{ $room->name ?? '' }}</a></h4>
+                            <p>{{ $room->meta_description ?? '' }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat2 cat4">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-2.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Tree Farm</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4 cat1">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-3.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Garden Design</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4 cat3 cat2">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-4.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Landscape Mower</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat1 cat4">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-5.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Planting</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat2 cat1 cat4">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-6.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Lawn care</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat4">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-7.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Flower Scape</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat1">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-8.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Vegetables</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat1 cat2">
-                    <div class="tp-project-3-item">
-                        <div class="tp-project-3-thumb">
-                            <img src="assets/img/project/project-5-9.jpg" alt="">
-                        </div>
-                        <div class="tp-project-3-content">
-                            <h4 class="tp-project-3-title mb-20"><a class="text-anim-3" href="project-details.html">Natural Garden</a></h4>
-                            <p>Interactively are is our support the services sucking web-readiness.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+           
+           
+            
+          
+            
             </div>
             <div class="row">
                 <div class="col-xl-12">
                     <div class="basic-pagination text-center mt-20">
                         <nav>
                             <ul>
-                                <li>
-                                    <a href="project.html">
-                                        <span class="current"><i class="fa-solid fa-angle-left"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="current" href="project.html">1</a>
-                                </li>
-                                <li>
-                                    <a href="project.html">2</a>
-                                </li>
-                                <li>
-                                    <a href="project.html">3</a>
-                                </li>
-                                <li>
-                                    <a href="project.html">4</a>
-                                </li>
-                                <li>
-                                    <a href="project.html">
-                                        <span><i class="fa-solid fa-angle-right"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
+                                {{ $rooms->links() }}
                         </nav>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+
+{{-- 
+    <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
+        <div class="container">
+           <div class="row">
+              <div class="col-xl-12">
+                 <div class="tp-video-2-title-box text-center mb-55">
+                    <h4 class="tp-section-title">Star Nursery , Follow Us <br>
+                       For The Latest Gardening Updates</h4>
+                 </div>
+              </div>
+           </div>
+           <div class="tp-video-2-wrap">
+              <div class="row align-items-center">
+                 <div class="col-xl-7 col-lg-6">
+                    <div class="tp-video-2-thumb p-relative">
+                       <img src="assets/img/video/video-bg-2.jpg" alt="">
+                       <div class="tp-video-play-icon">
+                          <a class="popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc">
+                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                   d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
+                                   fill="currentcolor" />
+                             </svg>
+                          </a>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-xl-5 col-lg-6">
+                    <div class="tp-video-2-right">
+                       <div class="tp-video-2-title-box mb-20">
+                          <span class="tp-section-subtitle">Only The Best Quality</span>
+                          <h4 class="tp-section-title">Your Favorite Plant
+                             Gardening Guides</h4>
+                       </div>
+                       <div class="tp-video-2-text mb-25">
+                          <p>Enthusiastically matrix future-proof platforms garden leadingedge impact digital
+                             photography services.</p>
+                       </div>
+                       <div class="tp-video-2-list-box">
+                          <ul>
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Starting Seeds Outdoors
+                             </li>
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Pest, Weed & fertilization
+                             </li>
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Landscape Maintenance
+                             </li>
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Lawn & Garden Care
+                             </li>
+                          </ul>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div> --}}
     <!-- project area end -->
     {{--
         <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
@@ -864,56 +892,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <style>
-                        .testimonial-form {
-                            max-width: 600px;
-                            margin: 0 auto;
-                            background-color: #f8f9fa;
-                        }
-
-                        .form-group {
-                            margin-bottom: 1.5rem;
-                        }
-
-                        .form-label {
-                            font-weight: 600;
-                            font-size: 1rem;
-                        }
-
-                        .form-control {
-                            padding: 0.75rem 1rem;
-                            font-size: 1rem;
-                            color: #495057;
-                            background-color: #fff;
-                            border-radius: 25px;
-                        }
-
-                        textarea.form-control {
-                            border-radius: 15px;
-                        }
-
-                        button.btn {
-                            padding: 0.5rem 2rem;
-                            font-size: 1.125rem;
-                            transition: background-color 0.3s ease;
-                        }
-
-                        button.btn-primary {
-                            background-color: #007bff;
-                            border-color: #007bff;
-                        }
-
-                        button.btn-primary:hover {
-                            background-color: #0056b3;
-                            border-color: #0056b3;
-                        }
-
-                        .alert {
-                            max-width: 600px;
-                            margin: 1rem auto;
-                        }
-
-                    </style>
+                   
 
                 </div>
 
@@ -923,38 +902,7 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#testimonialForm').on('submit', function(e) {
-                e.preventDefault(); // Empêcher l'envoi classique du formulaire
-
-                $.ajax({
-                    url: $(this).attr('action')
-                    , method: $(this).attr('method')
-                    , data: $(this).serialize()
-                    , success: function(response) {
-                        // Afficher le message de succès
-                        $('#testimonialModal').modal('hide'); // Fermer le modal
-
-                        $('#successMessage').text(
-                            'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs'
-                        ).show();
-
-                        setTimeout(function() {
-                            location.reload();
-                        }, 5000);
-                    }
-                    , error: function(response) {
-                        // Afficher un message d'erreur si nécessaire
-                        $('#errorMessage').text('Une erreur est survenue.')
-                            .show(); // Afficher le message d'erreur
-                    }
-                });
-            });
-        });
-
-    </script>
+   
 
 
     <!-- testimonial area end -->
@@ -1121,16 +1069,7 @@
                         <div class="swiper-container tp-brand-active">
 
                             <div class="swiper-wrapper">
-                                <style>
-                                    .tp-brand-thumb {
-                                        height: 100;
-                                        width: 100;
-                                        overflow: hidden;
-                                        border-radius: 10%;
-
-                                    }
-
-                                </style>
+                            
 
                             </div>
                         </div>
@@ -1234,6 +1173,39 @@
         </div>
     </div>
     <!-- brand area end -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#testimonialForm').on('submit', function(e) {
+                e.preventDefault(); // Empêcher l'envoi classique du formulaire
+
+                $.ajax({
+                    url: $(this).attr('action')
+                    , method: $(this).attr('method')
+                    , data: $(this).serialize()
+                    , success: function(response) {
+                        // Afficher le message de succès
+                        $('#testimonialModal').modal('hide'); // Fermer le modal
+
+                        $('#successMessage').text(
+                            'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs'
+                        ).show();
+
+                        setTimeout(function() {
+                            location.reload();
+                        }, 5000);
+                    }
+                    , error: function(response) {
+                        // Afficher un message d'erreur si nécessaire
+                        $('#errorMessage').text('Une erreur est survenue.')
+                            .show(); // Afficher le message d'erreur
+                    }
+                });
+            });
+        });
+
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>

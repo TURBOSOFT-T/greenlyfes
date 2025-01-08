@@ -49,6 +49,16 @@ class Room extends Model
 
 
     public function book(){
-        return $this->belongsTo('App\Models\Book', 'book_id', 'id');
+        return $this->belongsTo(Book::class, 'book_id', 'id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function reservation(){
+        return $this->hasMany(Reservation::class);
     }
 }

@@ -28,7 +28,8 @@ class AdminController extends Controller
         $orders = isRole('admin') ? $this->getUnreads($order) : null;
         $books = isRole('admin') ? $this->getUnreads($book) : null;
         $comments = $this->getUnreads($comment, isRole('redac'));
-     //   $reservations = $this->getUnreads($reservation , isRole('admin') || isRole('redac'));
+        $reservations = isRole('admin') ? $this->getUnreads($reservation) : null;
+     //  $reservations = $this->getUnreads($reservation , isRole('admin') || isRole('redac'));
 
 
 
@@ -75,7 +76,7 @@ class AdminController extends Controller
             $orderData[$month - 1] = $count;
         }
 
-        return view('back.index', compact('bookData','userData', 'orderData', 'books', 'posts', 'users', 'contacts', 'comments', 'inscriptions', 'consultations', 'testimonials', 'orders'));
+        return view('back.index', compact('reservations','bookData','userData', 'orderData', 'books', 'posts', 'users', 'contacts', 'comments', 'inscriptions', 'consultations', 'testimonials', 'orders'));
     }
 
     /**

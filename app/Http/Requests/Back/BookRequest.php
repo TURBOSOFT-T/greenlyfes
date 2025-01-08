@@ -34,7 +34,9 @@ class BookRequest extends FormRequest
             'meta_description' => 'nullable|max:160',
             'meta_keywords' => 'required|regex:' . $regex,
             'seo_title' => 'nullable|max:60',
-            'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+          //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+          'image' => 'sometimes|required|file|mimetypes:image/*',
+
           ///  'logements' => 'required',
             'tags' => 'nullable|regex:' . $regex,
             'logement_id' => 'exists:logements,id',

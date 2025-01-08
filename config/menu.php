@@ -99,6 +99,32 @@ return [
         ],
     ],
 
+
+    
+    'Rooms' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Les  chambres',
+                'role'  => 'admin',
+                'route' => 'rooms.index',
+            ],
+
+           
+            [
+                'name'  => 'Ajouter une chambre',
+                'role'  => 'admin',
+                'route' => 'saverooms.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'rooms.edit',
+            ],
+        ],
+    ],
+
    /*  'Filières' => [
         'icon' => 'list',
         'role'   => 'admin',
@@ -296,7 +322,7 @@ return [
             ],
         ],
     ],
-
+/* 
     'Sponsors' => [
         'icon' => 'list',
         'role'   => 'admin',
@@ -318,7 +344,7 @@ return [
             ],
         ],
     ],
-
+ */
 
     'Comments' => [
         'icon' => 'comment',
@@ -356,6 +382,26 @@ return [
                 'name'  => 'Nouvelles commandes',
                 'role'  => 'admin',
                 'route' => 'orders.index',
+            ],
+        
+        ],
+    ],
+
+    
+    'Réservation' => [
+        'icon' => 'comment',
+        'role'   => 'redac',
+        'children' => [
+            [
+                'name'  => 'Toutes les réservations',
+                'role'  => 'redac',
+                'route' => 'reservations.index',
+            ],
+
+            [
+                'name'  => 'Nouvelles Réservations',
+                'role'  => 'admin',
+                'route' => 'reservations.index',
             ],
         
         ],

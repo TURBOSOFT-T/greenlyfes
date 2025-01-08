@@ -36,12 +36,9 @@ class BookController extends Controller
     }
 
     public function details($id){
-       // $hopital =Hopital:: findOrFail($id);
+     
         $logement = Book::findOrFail($id);
-       // dd($post);
-      //dd($logement);
-      // $logements = Logement::with('books')->get();
-      
+   
         return view('front.logements.details', compact('logement'));
     }
 
@@ -50,10 +47,9 @@ class BookController extends Controller
         $search = $request->search;
         $logements = Logement::has('books')->get();
         $books = Book::where('title', 'like', '%'.$search.'%')
-          //  ->orWhere('body', 'like', '%'.$search.'%')
+       
             ->paginate(10);
-       // $title = __('Aucune non trouvée avec la recherche: ') . '<strong>' . $search . '</strong>';
-     
+      
         return view('front.logements.index', compact('books','logements'));
     }
 

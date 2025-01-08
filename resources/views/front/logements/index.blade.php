@@ -108,7 +108,7 @@
                   <div class="col-xl-8 col-lg-8">
                      <div class="row">  
                         @foreach($products as $product)
-                        @if ($products)
+                   
                         <div class="col-xl-4 col-md-6 col-sm-6">
                            <div class="tp-product-item-2 mb-40">
                               <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
@@ -146,7 +146,7 @@
                               </div>
                            </div>
                         </div>
-                        @endif
+                   
                         @endforeach
          
                         <div class="pagination-wrapper d-flex justify-content-center">

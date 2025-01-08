@@ -2,89 +2,210 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\DataTables\BooksDataTable;
+use App\DataTables\RoomsDataTable;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Models\Room;
+use App\Models\{Room, Book};
+use App\Http\Requests\Back\RoomRequest;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 class RoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    
+    protected $dataTable;
+
+  
+    public function index(RoomsDataTable $dataTable)
     {
-        //
+        return $dataTable->render('back.shared.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $books = Book::all();
+     
+        return view('back.rooms.form', compact('books'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreRoomRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRoomRequest $request)
+   
+    public function store(RoomRequest $request)
     {
-        //
+        $user = Auth::user();
+
+
+        $input = $request->all();
+
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['image'] = $filename;
+
+        } if ($request->hasFile('images')) {
+
+            $images = [];
+            foreach ($request->file('images') as $file) {
+                
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+    
+                
+                $file->move('public/Image/', $filename);
+    
+                
+                $images[] = $filename;
+            }
+            $input['images'] = json_encode($images);
+        }
+
+
+         
+    if ($request->hasFile('video')) {
+        $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Room $room)
-    {
-        //
+
+
+
+        $user->rooms()->create($input);
+
+        return redirect()->route('rooms.index')->with('success', 'La chambre a bien été ajoutée');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Room $room)
+ 
+     public function show(string $id)
     {
-        //
+         
+        $room = Room::find($id);
+    
+        $room->decodedImages = json_decode($room->images, true);
+        return view('back.rooms.show', compact('room'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateRoomRequest  $request
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateRoomRequest $request, Room $room)
+    public function edit(string $id)
     {
-        //
+        $room = Room::findOrFail($id);
+        $logements = Book::all()->pluck('title', 'id');
+     
+        return view('back.rooms.edit', compact('room', 'logements'));
+     
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Room $room)
+
+
+    public function update(RoomRequest $request, $id)
     {
-        //
+
+        $user = Auth::user();
+      
+        $input =
+            Room::findOrFail($id);
+        $img = Room::find($id);
+        File::delete(public_path('/public/Image' . $img->image));
+
+        if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image du serveur
+            if ($img->image) {
+                unlink(public_path('public/Image/'. $img->image));
+            }
+
+
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['image'] = $filename;
+        }
+
+        if ($request->hasFile('images')) {
+            
+            $oldImages = json_decode($input->images);
+            if ($oldImages) {
+                foreach ($oldImages as $oldImage) {
+                    $oldImagePath = public_path('public/Image/' . $oldImage);
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
+                }
+            }
+    
+           
+            $newImages = [];
+            
+           
+            foreach ($request->file('images') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+                $file->move(public_path('public/Image'), $filename);
+                $newImages[] = $filename;
+            }
+    
+          
+            $input['images'] = json_encode($newImages);
+        }
+
+
+        // Gestion de la vidéo
+        if ($request->hasFile('video')) {
+            if ($input->video) {
+                unlink(public_path('storage/'. $input->video));
+            }
+            $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
+        }
+        
+
+   
+      
+
+    $input->name = $request->name;
+    $input->price = $request->price;
+    $input->slug = $request->slug;
+ 
+    $input->description = $request->description;
+  
+        $user->rooms()->save($input);
+
+        return redirect()->route('rooms.index')->with('success', 'Room updated successfully!');
     }
+
+
+
+
+    public function destroy($id)
+    {
+        $img = Room::find($id);
+        File::delete(public_path('/public/Image/' . $img->image));
+        if ($img->images) {
+            foreach (json_decode($img->images) as $image) {
+                if (file_exists(public_path('/public/Image/' . $image))) {
+                    unlink(public_path('/public/Image/' . $image));
+                }
+            }
+        }
+
+       // if ($request->hasFile('video')) {
+            if ($img->video) {
+                unlink(public_path('storage/'. $img->video));
+            }
+         
+      
+
+         Room::findOrFail($id)->forceDelete();
+        return redirect()->route('rooms.index')
+            ->with('success', 'Room deleted successfully');
+    }
+
+
 }

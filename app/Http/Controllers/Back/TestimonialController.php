@@ -50,6 +50,52 @@ class TestimonialController extends Controller
     }
 
 
+    public function approve($id)
+    {
+        $testimonial = Testimonial::find($id);
+        
+        if ($testimonial) {
+            $testimonial->active = true; 
+            $testimonial->save();
+            
+            return redirect()->route('testimonials.index')
+                             ->with('success', 'Témoignage approuvé avec succès.');
+        }
+    
+        return redirect()->route('testimonials.index')
+                         ->with('error', 'Témoignage introuvable.');
+    }
 
+    public function disapprove($id)
+{
+    $testimonial = Testimonial::find($id);
+
+    if ($testimonial) {
+        $testimonial->active = false; 
+        $testimonial->save();
+
+        return redirect()->route('testimonials.index')
+                         ->with('success', 'Témoignage désapprouvé avec succès.');
+    }
+
+    return redirect()->route('testimonials.index')
+                     ->with('error', 'Témoignage introuvable.');
+}
+
+ 
+    public function destroy($id)
+    {
+        $testimonial = Testimonial::find($id);
+    
+        if ($testimonial) {
+            $testimonial->delete();
+    
+            return redirect()->route('testimonials.index')
+                             ->with('success', 'Témoignage supprimé avec succès.');
+        }
+    
+        return redirect()->route('testimonials.index')
+                         ->with('error', 'Témoignage introuvable.');
+    }
 
 }

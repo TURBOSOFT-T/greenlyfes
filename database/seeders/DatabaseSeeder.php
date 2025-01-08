@@ -251,11 +251,10 @@ industriels, la médecine, informatique, et la conception électronique et méca
         // Pages
         $items = [
             ['about-us', 'About us'],
-            ['Intership', 'Intership'],
-            ['Tutorials', 'Tutorials'],
+       
             ['Projects', 'Projects'],
             ['Services', 'Services'],
-            ['privacy-policy', 'Privacy Policy'],
+        
         ];
 
         foreach($items as $item) {

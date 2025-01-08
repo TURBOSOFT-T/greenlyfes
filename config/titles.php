@@ -24,14 +24,21 @@ return [
     ],
 
     'logements' => [
-    'index'  => 'Logements',
+    'index'  => 'Le categories de logement',
     'create' => 'Logement Creation',
     'edit'   => 'Logement Edit',
 ],
 
 
-'bookings' => [
-    'index'  => 'Bookings',
+'books' => [
+    'index'  => 'Les appartements',
+    'create' => 'Bookig Creation',
+    'edit'   => 'Booking Edit',
+],
+
+
+'rooms' => [
+    'index'  => 'Les chambres',
     'create' => 'Bookig Creation',
     'edit'   => 'Booking Edit',
 ],
@@ -78,6 +85,12 @@ return [
         'index'  => 'Commandes',
         'indexnew' => 'Nouvelles Commandes',
         'edit'   => 'Command Edit',
+    ],
+
+    'reservations' => [
+        'index'  => 'Reservations',
+        'indexnew' => 'Nouvelles reservations',
+        'edit'   => ' Edit',
     ],
     'heros' => [
         'index'  => 'Heros',

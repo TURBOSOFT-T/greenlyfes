@@ -55,6 +55,9 @@ $pages = DB::table('pages')->get();
     </li>
     </ul>
 
+
+    
+
 </nav>
 <!-- /.navbar -->
   <!-- /.navbar -->
@@ -136,7 +139,7 @@ $pages = DB::table('pages')->get();
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2024 {{ config(('app.name'), 'TURBOSOFT') }}.</strong>
+    <strong>Copyright &copy; {{ date('Y') }} {{ config(('app.name'), 'TURBOSOFT') }}.</strong>
   </footer>
 </div>
 <!-- ./wrapper -->

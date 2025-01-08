@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\File;
 
 class BookController extends Controller
 {
+
+    
+    protected $dataTable;
+
     /**
      * Display a listing of the resource.
      *
@@ -36,14 +40,7 @@ class BookController extends Controller
         return redirect(route('home'));
     }
 
-    protected $dataTable;
-
-    public function index1()
-    {     $books=
-        Book::latest()->paginate(5);;
-        return view('back.books.index', compact('books'));
-    }
-
+  
 
     public function create()
     {

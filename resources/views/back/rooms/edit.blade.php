@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit book</h2>
+                <h2>Edit room</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('rooms.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -24,23 +24,23 @@
     @endif
 
 
-    <form action="{{ route('books.update', $book->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('rooms.update', $room->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
        @method('PUT')
-<input type = "hidden" name = "id" value = "{{ $book->id }} " />
+<input type = "hidden" name = "id" value = "{{ $room->id }} " />
 
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
                     <strong>Title:</strong>
-                    <input type="text" name="name" value="{{ $book->name }}" class="form-control"
+                    <input type="text" name="name" value="{{ $room->name }}" class="form-control"
                         placeholder="Title" required>
                 </div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
                     <strong>Prix:</strong>
-                    <input type="number" name="price" value="{{ $book->price }}" class="form-control"
+                    <input type="number" name="price" value="{{ $room->price }}" class="form-control"
                         placeholder="Prix" required>
                 </div>
             </div> 
@@ -48,16 +48,16 @@
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
                     <strong>Slug:</strong>
-                    <input type="text" name="slug" value="{{ $book->slug }}" class="form-control"
+                    <input type="text" name="slug" value="{{ $room->slug }}" class="form-control"
                         placeholder="Title" required>
                 </div>
             </div>
 
-            @if (isset($book) && !$errors->has('image'))
+            @if (isset($room) && !$errors->has('image'))
                 <div>
                     <p>
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
-                        <img class="card-img-top book-image" src="{{ url('public/Image/' . $book->image) }}">
+                        <img class="card-img-top room-image" src="{{ url('public/Image/' . $room->image) }}">
 
                     </div>
                     </p>
@@ -74,8 +74,8 @@
 
                 <p>Les Autres images :</p>
     
-                @foreach (json_decode($book->images) as $key => $image)
-                    <img class="card-img-top mb-3 book-image" src="{{ url('public/Image/' . $image) }}"
+                @foreach (json_decode($room->images) as $key => $image)
+                    <img class="card-img-top mb-3 room-image" src="{{ url('public/Image/' . $image) }}"
                         style="width: 100px; height: 100px;">
                 @endforeach
 
@@ -91,7 +91,7 @@
                 <div class="addto-cart-btn">
 
 
-                    @if (isset($book->video))
+                    @if (isset($room->video))
                         <a class="rbt-btn btn-gradient hover-icon-reverse" id="play-video">
                             <span class="icon-reverse-wrapper">
                                 <span class="btn-text"> Voir Détails en vidéo </span>
@@ -104,12 +104,12 @@
                         <!-- Le lecteur vidéo caché par défaut -->
                         <div id="video-container" style="display: none;">
                             <video width="640" height="360" controls>
-                                <source src="{{ asset('storage/' . $book->video) }}" type="video/mp4">
+                                <source src="{{ asset('storage/' . $room->video) }}" type="video/mp4">
                                 Votre navigateur ne supporte pas la balise vidéo.
                             </video>
                         </div>
                     @else
-                        <p>Aucune vidéo disponible pour ce book.</p>
+                        <p>Aucune vidéo disponible pour cette chambre.</p>
                     @endif
                 </div>
 
@@ -149,8 +149,8 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label class="form-label">Content</label>
-                <textarea rows="4" cols="50" name="boby" value="{{ $book->body }}" class="form-control"
-                    placeholder="Add content" required> {!! $book->body !!}</textarea>
+                <textarea rows="4" cols="50" name="boby" value="{{ $room->body }}" class="form-control"
+                    placeholder="Add content" required> {!! $room->body !!}</textarea>
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror

@@ -9,16 +9,7 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-/*
-    public function __construct()
-    {
-        $this->middleware('auth');
-    } */
+  
 
     public function create()
     {
@@ -27,12 +18,7 @@ class ContactController extends Controller
  public function about(){
     return view('front.about.about');
  }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Front\ContactRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(ContactRequest $request)
     {
         if($request->user()) {

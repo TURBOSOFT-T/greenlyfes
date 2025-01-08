@@ -23,10 +23,10 @@
                 <div class="card">
 
                     <form method="post"
-                        action="{{ Route::currentRouteName() === 'savebooks.edit' ? route('savebooks.update', $book->id) : route('savebooks.store') }}"
+                        action="{{ Route::currentRouteName() === 'saverooms.edit' ? route('saverooms.update', $room->id) : route('saverooms.store') }}"
                         enctype="multipart/form-data">
 
-                        @if (Route::currentRouteName() === 'savebooks.edit')
+                        @if (Route::currentRouteName() === 'saverooms.edit')
                             @method('PUT')
                         @endif
 
@@ -43,16 +43,16 @@
 
                                 <x-back.card type='info' :outline="true" title=''>
 
-                                    <x-back.input title='Name' name='name' :value="isset($book) ? $book->name : ''" input='text'
+                                    <x-back.input title='Name' name='name' :value="isset($room) ? $room->name : ''" input='text'
                                         :required="true">
                                     </x-back.input>
 
-                                    <x-back.input title='Slug' name='slug' :value="isset($book) ? $book->slug : ''" input='text'
+                                    <x-back.input title='Slug' name='slug' :value="isset($room) ? $room->slug : ''" input='text'
                                         :required="true">
                                     </x-back.input>
 
                                     <x-back.card type='primary' title='Excerpt'>
-                                        <x-back.input name='excerpt' :value="isset($book) ? $book->excerpt : ''" input='textarea' :required="true">
+                                        <x-back.input name='excerpt' :value="isset($room) ? $room->excerpt : ''" input='textarea' :required="true">
                                         </x-back.input>
                                     </x-back.card>
 
@@ -67,14 +67,14 @@
 
                                     {{--     <x-back.card type='primary' title='Description'>
                                     <x-back.input name='description' id="description-editor"
-                                        :value="isset($book) ? $book->description : ''" input='textarea' rows=10
+                                        :value="isset($room) ? $room->description : ''" input='textarea' rows=10
                                         :required="true">
                                     </x-back.input>
                                 </x-back.card> --}}
 
                                     {{--     <x-back.card type='primary' title='Description'>
                                     <textarea name="description" id="description-editor" rows="10" cols="130" required>
-                                        {{ isset($book) ? $book->description : '' }}
+                                        {{ isset($room) ? $room->description : '' }}
                                     </textarea>
                                 </x-back.card> --}}
 
@@ -108,11 +108,11 @@
                                 <x-back.card type='warning' :outline="false" title='Categories' :required="true">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>Category:</strong>
-                                            <select name="logement_id" id="logement_id" class='form-control'>
-                                                <option hidden>-- Category--</option>
-                                                @foreach ($logements as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            <strong>Logement:</strong>
+                                            <select name="book_id" id="book_id" class='form-control'>
+                                                <option hidden>-- Logement--</option>
+                                                @foreach ($books as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -123,14 +123,14 @@
 
                                 <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
                                     <label for="description">Image Principale</label>
-                                    @if (isset($book) && !$errors->has('image'))
+                                    @if (isset($room) && !$errors->has('image'))
                                         <div>
-                                            <p><img src="{{ asset('images/thumbs/' . $book->image) }}"></p>
+                                            <p><img src="{{ asset('images/thumbs/' . $room->image) }}"></p>
                                             <button id="changeImage" class="btn btn-warning">Changer d'image</button>
                                         </div>
                                     @endif
                                     <div id="wrapper">
-                                        @if (!isset($book) || $errors->has('image'))
+                                        @if (!isset($room) || $errors->has('image'))
                                             <div class="custom-file">
                                                 <input type="file" id="image" name="image"
                                                     class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
@@ -160,13 +160,13 @@
 
 
                                 <x-back.card type='info' :outline="false" title='SEO'>
-                                    <x-back.input title='META Description' name='meta_description' :value="isset($produc) ? $book->meta_description : ''"
+                                    <x-back.input title='META Description' name='meta_description' :value="isset($produc) ? $room->meta_description : ''"
                                         input='textarea' :required="true">
                                     </x-back.input>
-                                    <x-back.input title='META Keywords' name='meta_keywords' :value="isset($book) ? $book->meta_keywords : ''"
+                                    <x-back.input title='META Keywords' name='meta_keywords' :value="isset($room) ? $room->meta_keywords : ''"
                                         input='textarea' :required="true">
                                     </x-back.input>
-                                    <x-back.input title='SEO Title' name='seo_title' :value="isset($book) ? $book->seo_title : ''" input='text'
+                                    <x-back.input title='SEO Title' name='seo_title' :value="isset($room) ? $room->seo_title : ''" input='text'
                                         :required="true">
                                     </x-back.input>
                                 </x-back.card>

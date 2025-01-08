@@ -65,6 +65,6 @@ class Book extends Model
     }
 
     public function rooms(){
-        return $this->hasMany(Room::class, 'room_id', 'id');
+        return $this->hasMany(Room::class);
     }
 }

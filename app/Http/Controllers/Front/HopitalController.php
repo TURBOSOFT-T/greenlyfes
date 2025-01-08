@@ -35,9 +35,9 @@ class HopitalController extends Controller
     }
 
     public function details($id){
-       // $hopital =Hopital:: findOrFail($id);
+    
         $hopital = Hopital::with('specialites')->findOrFail($id);
-       // dd($post);
+       
       
        $specialites = Specialite::has('hopitals')->get();
       

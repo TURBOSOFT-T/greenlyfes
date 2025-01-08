@@ -149,6 +149,10 @@ class User extends Authenticatable
         return $this->hasMany(Book::class );
     }
 
+    public function rooms(){
+        return $this->hasMany(Room::class);
+    }
+
     /**
      * Get the reviews the user has made.
      */
@@ -185,5 +189,5 @@ class User extends Authenticatable
         return [];
     } */
 
-
+ 
 }

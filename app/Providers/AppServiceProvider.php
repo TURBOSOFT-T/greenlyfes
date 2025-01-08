@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\{ Blade, View, Route };
 use Cart;
+use Illuminate\Pagination\Paginator;
 
 
 
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         setlocale(LC_TIME, config('app.locale'));
+        Paginator::useTailwind();
 
         View::composer(['front.layout', 'front.index','front.fixe', 'front.blogs.details'], HomeComposer::class);
 

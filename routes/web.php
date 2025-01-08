@@ -19,6 +19,8 @@ use App\Http\Controllers\Front\{
     InscriptionController,
     TestimonialController,
     BookController as FrontBookController,
+    RoomController as FrontRoomController,
+    ReservationController as FrontReservationController,
     
 };
 use App\Http\Controllers\Back\{
@@ -31,6 +33,7 @@ use App\Http\Controllers\Back\{
     OrderController as BackOrderController,
     EcoleController,
     HopitalController,
+   
 
 
     ServiceController,
@@ -40,18 +43,19 @@ use App\Http\Controllers\Back\{
     ConfigController,
     AccountController,
     BookController as BackBookController,
+    RoomController as  BackRoomController,
+    ReservationController as BackReservationController,
 
 };
 
 
 use App\Http\Controllers\Auth\LoginController;
-
+/////Maintenance
 Route::get('cache-clear', function () {
     Artisan::call('optimize:clear');
     request()->session()->flash('success', 'Successfully cache cleared.');
     return redirect()->back();
 })->name('cache.clear');
-
 
 // STORAGE LINKED ROUTE
 Route::get('storage-link', [AdminController::class, 'storageLink'])->name('storage.link');
@@ -74,23 +78,17 @@ Route::name('home')->get('/', [FrontPostController::class, 'index']);
 //Route::name('category')->get('category/{category:slug}', [FrontPostController::class, 'category']);
 Route::name('author')->get('author/{user}', [FrontPostController::class, 'user']);
 Route::name('tag')->get('tag/{tag:slug}', [FrontPostController::class, 'tag']);
-//Route::name('page')->get('page/{page:slug}', FrontPageController::class);
-//Route::name('page')->get('page/{page:slug}', FrontPageController::class);
+
 Route::name('follow')->get('page/{page:slug}', FrontPageController::class);
 Route::get('page/{page:slug}', FrontPageController::class)->name('page');
 
 
 Route::get('searchs', [FrontPostController::class, 'searchs'])->name("searchs");
-
 Route::post('/posts/{post}/comments', [FrontCommentController::class, 'storeComment'])->name('comments.store');
 
 ///////Blogs
 Route::prefix('posts')->group(function () {
     Route::name('posts.display')->get('{slug}', [FrontPostController::class, 'show']);
-
-
-
-
     Route::name('posts.comments')->get('{post}/comments', [FrontCommentController::class, 'comments']);
     Route::name('posts.comments.store')->post('{post}/comments', [FrontCommentController::class, 'store'])->middleware('auth');
 });
@@ -110,10 +108,16 @@ Route::post('/inscription', [InscriptionController::class, 'store'])->name('insc
 ////Books
 Route::get('bookings', [FrontBookController::class, 'logements'])->name('logement');
 Route::get('/logement/{id}', [FrontBookController::class, 'logement'])->where('id', '[0-9]+');
-Route::get('details-logement/{id}', [FrontBookController::class, 'details'])->name('details-logement');
+Route::get('details-logement/{id}/{slug}', [FrontBookController::class, 'details'])->name('details-logement');
 Route::get('/book/{id}', [FrontHopitalController::class, 'show'])->name('book.show');
 Route::get('recherche', [FrontBookController::class, 'recherche'])->name("recherche");
 //Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
+
+///Rooms
+Route::get('rooms', [FrontRoomController::class, 'rooms'])->name('rooms');
+Route::get('/details-room/{id}/{slug}', [FrontRoomController::class, 'details'])->name('details-room');
+
+Route::get('/room/{id}', [FrontRoomController::class, 'show'])->name('room.show');
 
 
 ////Hopitaux
@@ -148,6 +152,30 @@ Route::get('/commandes/{id}', [OrderController::class, 'commandes'])->name('comm
 Route::post('/order', [OrderController::class, 'confirmOrder'])->name('order.confirm');
 Route::get('/thank-you', [FrontProduct::class, 'index'])->name('thank-you');
 
+///Reservation
+
+Route::get('/check-reserved-dates', function () {
+    $reservations = Reservation::all(['date_debut', 'date_fin']);
+    $reservedDates = $reservations->map(function ($reservation) {
+        return [
+            'date_debut' => $reservation->date_debut->toDateString(),
+            'date_fin' => $reservation->date_fin->toDateString(),
+        ];
+    });
+    
+    return response()->json($reservedDates);
+})->name('check-reserved-dates');
+
+Route::post('/get-reservations-by-month', [FrontReservationController::class, 'getReservationsByMonth']);
+
+Route::post('/get-room-reservations', [FrontReservationController::class, 'getRoomReservations']);
+
+Route::post('/check-availability', [FrontReservationController::class, 'checkAvailability'])->name('check.availability');
+
+Route::get('/reservation/{id}/{slug}', [FrontReservationController::class, 'reservation'])->name('reservation');
+Route::post('/reservation', [FrontReservationController::class,'confirm'])->name('store.reservation');
+
+Route::get('/thank-yous', [FrontReservationController::class, 'index'])->name('thank-yous');
 
 require __DIR__ . '/auth.php';
 
@@ -162,7 +190,15 @@ Route::name('language')->get('language/{lang}', 'HomeController@language');
 
 Route::prefix('admin')->group(function () {
 
+
+
+    Route::middleware('auth')->group(function () {
+        // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
+    });
+
     Route::middleware('redac')->group(function () {
+
+
 
         // Dashboard
         Route::name('admin')->get('/', [AdminController::class, 'index']);
@@ -172,9 +208,20 @@ Route::prefix('admin')->group(function () {
         Route::resource('posts', BackPostController::class)->except(['show', 'create']);
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
 
- ///Logements
- Route::resource('books', BackResourceController::class)->except(['show']);
- Route::resource('savebooks', BackBookController::class);
+        ///Logements
+        Route::resource('books', BackResourceController::class)->except(['show']);
+        Route::resource('savebooks', BackBookController::class);
+
+        ///Réservations
+        Route::resource('reservations', BackResourceController::class)->except(['show']);
+       // Route::name('reservations.indexnew')->get('newusers', [BackResourceController::class, 'index']);
+
+
+
+        //////Rooms
+       Route::resource('rooms', BackRoomController::class)->except(['show']);
+       Route::resource('saverooms', BackRoomController::class);
+ 
 
         //  Route::name('posts.edit')->put('posts/{post}', [BackPostController::class, 'update']);
         //Projects
@@ -256,8 +303,17 @@ Route::prefix('admin')->group(function () {
         Route::resource('contacts', BackResourceController::class)->only(['index', 'destroy']);
         Route::name('contacts.indexnew')->get('newcontacts', [BackResourceController::class, 'index']);
 
+        // Rooms
+      //  Route::resource('rooms', BackRoomController::class)->except(['show']);
+        Route::name('rooms.indexnew')->get('newrooms', [BackRoomController::class, 'index']);
+
+
+        Route::name('reservations.indexnew')->get('newreservations', [BackResourceController::class, 'index']);
+
         ///Logements
         Route::resource('logements', BackResourceController::class)->except(['show']);
+
+        
 
         ///Testimonitals
 
@@ -307,8 +363,6 @@ Route::prefix('admin')->group(function () {
 Route::middleware('ajax')->group(function () {
     Route::post('message', 'UserController@message')->name('message');
 });
-// Home page
-//Route::view('/', 'home')->name('home');
 
 
 Route::post('/register', [LoginController::class, 'store'])

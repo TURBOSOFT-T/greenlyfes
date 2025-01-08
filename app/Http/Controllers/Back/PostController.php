@@ -19,53 +19,49 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
-    /**
-     * Create the controller instance.
-     *
-     * @return void
-     */
-   /*  public function __construct()
-    {
-        $this->authorizeResource(Post::class, 'post');
-    } */
-
-    /**
-     * Display a listing of the posts.
-     *
-     * @param  \App\DataTables\PostsDataTable  $dataTable
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index(PostsDataTable $dataTable)
     {
         return $dataTable->render('back.shared.index');
     }
 
   
-    /**
-     * Show the form for creating a new post.
-     *
-     * @param  Integer $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function create($id = null)
-    {
-        $post = null;
+{
+    $post = null;
 
-        if($id) {
-            $post = Post::findOrFail($id);
-            if($post->user_id === auth()->id()) {
-                $post->title .= ' (2)';
-                $post->slug .='-2';
-                $post->active = false;
-            } else {
-                $post = null;
-            }
+    if ($id) {
+        $post = Post::find($id);
+
+        if ($post && $post->user_id === auth()->id()) {
+            // Clone the post
+            $post->title = $post->title . ' (2)';
+            $post->slug = $this->generateUniqueSlug($post->slug . '-2');
+            $post->active = false;
+        } else {
+            $post = null; // Reset post if conditions aren't met
         }
-
-        $categories = Category::all()->pluck('title', 'id');
-
-        return view('back.posts.form', compact('post', 'categories'));
     }
+
+    $categories = Category::all()->pluck('title', 'id');
+
+    return view('back.posts.form', compact('post', 'categories'));
+}
+
+private function generateUniqueSlug($slug)
+{
+    $originalSlug = $slug;
+    $counter = 1;
+
+    while (Post::where('slug', $slug)->exists()) {
+        $slug = $originalSlug . '-' . $counter;
+        $counter++;
+    }
+
+    return $slug;
+}
+
 
   
     public function store(PostRequest $request, PostRepository $repository)
@@ -88,7 +84,6 @@ class PostController extends Controller
 
   $post=  $user->posts()->create($input);
 
-  //  $post = $request->user()->posts()->create($request->all());
 
     $this->saveCategoriesAndTags($post, $request);
 
@@ -122,39 +117,22 @@ class PostController extends Controller
    
 
 
-    /**
-     * Show the form for editing the specified post.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Post $post)
     {
         $categories = Category::all()->pluck('title', 'id');
-       // $post->load('categories', 'tags');
+     
 
        $post = Post::find($post->id);
-       //$ecole = Ecole::find($id);
-//dd($post);
+   
         return view('back.posts.form', compact('post', 'categories'));
     }
 
-    /**
-     * Update the specified post in storage.
-     *
-     * @param  \App\Http\Requests\Back\PostRequest  $request
-     * @param  \App\Repositories\PostRepository $repository
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    
+  
         public function update(Request $request, PostRepository $repository, $id)
     {
         $user = Auth::user();
         $post = $user->posts()->findOrFail($id);
-    
-        // Autoriser l'utilisateur à mettre à jour le post
-        //$this->authorize('update', $post);
     
         $input = $request->all();
     
@@ -188,33 +166,13 @@ class PostController extends Controller
     }
     
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Post $post)
     {
         $post->delete();
 
         return response()->json();
     }
-/*
-    public function ShareWidget()
-    {
-        $shareComponent = \Share::page(
-            'https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/',
-            'Your share text comes here',
-        )
-        ->facebook()
-        ->twitter()
-        ->linkedin()
-        ->telegram()
-        ->whatsapp()
-        ->reddit();
 
-        return view('posts', compact('shareComponent'));
-    }*/
 
 }
