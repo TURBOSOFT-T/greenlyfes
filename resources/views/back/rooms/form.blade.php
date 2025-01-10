@@ -46,6 +46,9 @@
                                     <x-back.input title='Name' name='name' :value="isset($room) ? $room->name : ''" input='text'
                                         :required="true">
                                     </x-back.input>
+                                    <x-back.input title='Prix' name='price' :value="isset($room) ? $room->price : ''" input='text'
+                                        :required="true">
+                                    </x-back.input>
 
                                     <x-back.input title='Slug' name='slug' :value="isset($room) ? $room->slug : ''" input='text'
                                         :required="true">

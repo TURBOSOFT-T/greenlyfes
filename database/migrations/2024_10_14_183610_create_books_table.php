@@ -32,10 +32,10 @@ class CreateBooksTable extends Migration
             $table->string('title')->nullable();
 
             $table->string('seo_title')->nullable();
-            $table->text('excerpt')->nullable();
-            $table->text('body')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();
+            $table->longText('excerpt')->nullable();
+            $table->longText('body')->nullable();
+            $table->longText('meta_description')->nullable();
+            $table->longText('meta_keywords')->nullable();
             
 
           

@@ -30,10 +30,10 @@ class BookRequest extends FormRequest
             'name' => 'required|max:255',
             'body' => 'required|max:65000',
             'slug' => ['required', 'max:255', new Slug, 'unique:books,slug' . $id],
-            'excerpt' => 'nullable|max:500',
-            'meta_description' => 'nullable|max:160',
+            'excerpt' => 'nullable|max:50000',
+            'meta_description' => 'nullable|max:50060',
             'meta_keywords' => 'required|regex:' . $regex,
-            'seo_title' => 'nullable|max:60',
+            'seo_title' => 'nullable|max:600',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
           'image' => 'sometimes|required|file|mimetypes:image/*',
 

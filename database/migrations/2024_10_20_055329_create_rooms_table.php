@@ -23,19 +23,19 @@ class CreateRoomsTable extends Migration
 
             $table->string('name')->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->longText('short_description')->nullable();
+           
             $table->longText('description')->nullable();
             $table->boolean('active')->default(true);
        
 
 
 
-            $table->string('title')->nullable();
+     
 
             $table->string('seo_title')->nullable();
-            $table->text('excerpt')->nullable();
-            $table->text('body')->nullable();
-            $table->text('meta_description')->nullable();
+            $table->longText('excerpt')->nullable();
+            $table->longText('body')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
             
 
@@ -47,8 +47,8 @@ class CreateRoomsTable extends Migration
             $table->decimal('price')->nullable();
             $table->decimal('originalPrice')->nullable();
 
-            $table->decimal('prix', 13, 3);
-            $table->decimal('prix_achat', 13, 3);
+            $table->decimal('prix', 13, 3)->nullable();
+            $table->decimal('prix_achat', 13, 3)->nullable();
             $table->decimal('discountPrice')->nullable();
 
 
