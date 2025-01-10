@@ -79,6 +79,10 @@
             </tr>
         @endforeach
     </table>
+
+    <div class="pagination">
+        {{ $testimonials->links('pagination::bootstrap-4') }}
+    </div>
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

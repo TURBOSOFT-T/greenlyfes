@@ -143,13 +143,19 @@ $(document).ready(function() {
                 // Afficher le message de succès
                 $('#testimonialModal').modal('hide'); // Fermer le modal
 
+                    // Réinitialiser les champs du formulaire
+                    $('#testimonialForm')[0].reset();
+
+
                 $('#successMessage').text(
                     'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs'
                 ).show();
 
+             
+
                 setTimeout(function() {
                     location.reload();
-                }, 5000);
+                }, 100);
             }
             , error: function(response) {
                 // Afficher un message d'erreur si nécessaire
@@ -159,5 +165,9 @@ $(document).ready(function() {
         });
     });
 });
+
+/* Table réservations */
+
+
 
 

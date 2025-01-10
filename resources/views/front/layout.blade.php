@@ -23,15 +23,16 @@
                     <div class="carousel-caption d-none d-md-block">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-10 text-start">
+                                <div class="col-lg-10 text-center">
                                     <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">
                                         {{ $home->title }}
                                     </p>
                                     <h1 class="display-10 mb-10 text-white animated slideInRight">
                                         {{ $home->body }}
                                     </h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Voir
-                                        plus</a>
+                                    <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -49,79 +50,7 @@
             </button>
         </div>
     </div>
-    <style>
-        /* Assurez-vous que les images du carrousel sont responsives */
-        .carousel-inner img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Ajustez la taille du texte du carrousel pour les petits écrans */
-        @media (max-width: 768px) {
-
-            .carousel-caption p,
-            .carousel-caption h1 {
-                font-size: 1rem;
-                /* Ajustez la taille selon vos besoins */
-            }
-
-            .carousel-caption .btn {
-                font-size: 0.875rem;
-                /* Ajustez la taille du bouton selon vos besoins */
-            }
-        }
-
-        /* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-            /* Ajustez la largeur des contrôles */
-            height: 100%;
-        }
-
-    </style>
-
-    {{-- <div class="container-fluid px-0 mb-5  ">
-            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-
-
-                <div class="carousel-inner">
-
-                    @foreach ($homes as $key => $home)
-                        <div class="carousel-item   {{ $key == 0 ? 'active' : '' }}">
-    <img class="w-100" src="{{ url('public/Image/' . $home->image) }}" width="700" height="800" alt="Image">
-    <div class="carousel-caption">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-start">
-                    <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">
-                        {{ $home->title }}
-                    </p>
-                    <h1 class="display-10 mb-10 text-white  animated slideInRight">
-                        {{ $home->body }}</h1>
-                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Voir
-                        plus</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    @endforeach
-
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-
-    </div>
-    --}}
-
+  
 
 
 
@@ -135,8 +64,11 @@
                 <div class="col-xl-5 col-lg-6  wow tpfadeLeft" data-wow-duration=".9s" data-wow-delay=".5s">
                     <div class="tp-choose-left">
                         <div class="tp-choose-title-box mb-20">
-                            <span class="tp-section-subtitle">Pouquoi nous choisir?</span>
-                            <h1>Notre professionnalisme
+                            <span class="tp-section-subtitle">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Porquoi nous choisir') }} ?
+                            </span>
+                            <h1>
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Notre professionnalisme') }}
                             </h1>
                         </div>
                         <div class="tp-choose-box d-flex align-items-start">
@@ -146,8 +78,11 @@
                                 </span>
                             </div>
                             <div class="tp-choose-content" style="text-align: justify">
-                                <h5 class="tp-choose-title">Notre mission</h5>
-                                <p>{{ $config->mission ?? ' ' }}
+                                <h5 class="tp-choose-title">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Notre mission') }}
+                                </h5>
+                                <p>
+                                    {!! \App\Helpers\TranslationHelper::TranslateText($config->mission ?? '') !!}
                                 </p>
                             </div>
                         </div>
@@ -158,12 +93,13 @@
                                 </span>
                             </div>
                             <div class="tp-choose-content" style="text-align: justify">
-                                <h5 class="tp-choose-title">Notre vision</h5>
+                                <h5 class="tp-choose-title"> {{ \App\Helpers\TranslationHelper::TranslateText('Notre vision') }}</h5>
                                 <p>
 
 
 
                                     {{ $config->vision ?? ' ' }}
+                                    {!! \App\Helpers\TranslationHelper::TranslateText($config->vision ?? '') !!}
                                 </p>
                             </div>
                         </div>
@@ -174,9 +110,13 @@
                                 </span>
                             </div>
                             <div class="tp-choose-content" style="text-align: justify">
-                                <h5 class="tp-choose-title">Nos valeurs</h5>
+                                <h5 class="tp-choose-title">
+                                    
+                                    {{ \App\Helpers\TranslationHelper::TranslateText(' Nos Valeurs') }}
+                                </h5>
                                 <p>
-                                    {{ $config->valeurs ?? ' ' }}
+                                  
+                                     {!! \App\Helpers\TranslationHelper::TranslateText($config->valeurs ?? '')!!}
                                 </p>
                             </div>
                         </div>
@@ -205,32 +145,21 @@
             <div class="row justify-content-center">
                 <div class="col-xl-5">
                     <div class="tp-service-4-title-box text-center mb-55">
-                        <span class="tp-section-subtitle">Nos logements</span>
+                        <span class="tp-section-subtitle">
+                            {{ \App\Helpers\TranslationHelper::TranslateText('Nos logements') }}
+                        </span>
                         {{-- <h4 class="tp-section-title">Our Awesome & Best
                        Services</h4> --}}
                     </div>
                 </div>
             </div>
-          <style>
-            .tp-service-4-thumb img {
-               
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-
-}
-
-          </style>
+      
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-service-4-wrap">
                         <div class="swiper-container tp-service-4-active">
                             <div class="swiper-wrapper">
-                                @php
-
-                                $logements = DB::table('books')->take(15)->get();
-
-                                @endphp
+                           
                                 @foreach ($logements as $logement )
                                 <div class="swiper-slide">
                                     <div class="tp-service-4-item text-center">
@@ -238,14 +167,7 @@
                                             <img src="{{ url('public/Image/' . $logement->image) }}" alt="">
                                         </div>
                                         <div class="tp-service-4-content">
-                                            {{-- <span>
-                                     <svg width="54" height="50" viewBox="0 0 54 50" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M28.3169 25.3932C26.9776 25.3964 25.6727 25.7614 24.583 26.4376C23.4932 27.1138 22.6725 28.0677 22.2347 29.1672L19.8143 28.8976C18.7196 28.7283 17.5913 28.8603 16.587 29.275L2.49885 35.0438C1.48878 35.4555 0.699795 36.1891 0.295397 37.0924C-0.109001 37.9957 -0.0978074 38.9996 0.326658 39.896L3.36772 46.3117C3.60009 46.7938 3.94521 47.2287 4.3812 47.5889C4.8172 47.9491 5.33457 48.2267 5.90053 48.4041C6.46649 48.5815 7.0687 48.6548 7.66899 48.6195C8.26929 48.5841 8.85458 48.4408 9.38779 48.1987L13.4219 46.3117C14.3742 45.8732 15.4802 45.7579 16.525 45.9882L33.5922 49.8161C34.9416 50.1565 36.3912 50.0209 37.6262 49.4387L51.5903 42.8612C52.6624 42.3485 53.4589 41.4896 53.8073 40.4704C54.1558 39.4513 54.0282 38.354 53.4522 37.416H53.3901C52.797 36.4584 51.7951 35.7413 50.5997 35.4187C49.4044 35.096 48.111 35.1937 46.9977 35.6907L43.2119 37.416V30.9463C43.1957 29.4779 42.517 28.0736 41.3217 27.0352C40.1264 25.9969 38.5098 25.4073 36.8194 25.3932H34.4611V14.0175C37.7745 13.7213 40.8538 12.397 43.1338 10.2876C45.4139 8.1782 46.7417 5.42522 46.8736 2.53393V1.67132C46.8819 1.45442 46.8399 1.23829 46.75 1.03579C46.6602 0.833297 46.5244 0.648574 46.3507 0.492627C46.1769 0.33668 45.9689 0.212698 45.7388 0.128065C45.5088 0.0434327 45.2615 -0.000120348 45.0117 2.49767e-07H43.9566C40.4892 0.132866 37.2058 1.39265 34.7573 3.52962C32.3088 5.66659 30.874 8.52474 30.7373 11.5375V12.4001V13.4784C28.397 11.3442 25.1908 10.087 21.8003 9.97399H20.1867C19.933 9.9698 19.6811 10.0107 19.4463 10.0941C19.2115 10.1776 18.9988 10.3018 18.8213 10.4592C18.6401 10.6134 18.4971 10.7982 18.401 11.0022C18.305 11.2061 18.2579 11.425 18.2627 11.6453V13.0471C18.4115 15.8898 19.77 18.5832 22.0748 20.6053C24.3796 22.6274 27.4666 23.8341 30.7373 23.9915V25.3932H28.3169ZM22.0485 13.2627C24.2751 13.4221 26.3643 14.2629 27.9441 15.6352C29.5239 17.0076 30.4917 18.8225 30.6752 20.7567C28.4486 20.5973 26.3594 19.7565 24.7797 18.3842C23.1999 17.0118 22.2321 15.1969 22.0485 13.2627ZM43.0877 3.34264C42.7631 5.20973 41.7548 6.93633 40.2122 8.26667C38.6696 9.59702 36.6747 10.4603 34.5231 10.7288C34.8478 8.86169 35.8561 7.13509 37.3987 5.80475C38.9413 4.4744 40.9361 3.61107 43.0877 3.34264ZM48.7975 38.4942C48.9151 38.4387 49.0444 38.4044 49.1776 38.3934C49.3108 38.3824 49.4452 38.3949 49.5728 38.4301C49.7003 38.4654 49.8183 38.5226 49.9197 38.5985C50.0211 38.6744 50.1038 38.7673 50.1629 38.8716H50.2249C50.3363 39.0582 50.3597 39.275 50.2902 39.4763C50.2207 39.6775 50.0637 39.8474 49.8526 39.9499L35.8885 46.6352C35.5061 46.8085 35.0615 46.8472 34.6472 46.743L17.518 42.9151C15.576 42.4831 13.5185 42.6945 11.7462 43.5082L7.7121 45.3952C7.63554 45.4311 7.55115 45.4526 7.4644 45.4583C7.37766 45.464 7.29049 45.4539 7.20856 45.4284C7.12663 45.403 7.05176 45.3629 6.98883 45.3108C6.92589 45.2586 6.87628 45.1955 6.84322 45.1256L3.7401 38.656C3.67678 38.527 3.67376 38.3817 3.73169 38.2509C3.78962 38.12 3.90394 38.0139 4.05041 37.9551L18.2007 32.1863C18.5101 32.0599 18.8579 32.0221 19.1937 32.0785H19.3178L34.1507 33.8038C34.3867 33.8307 34.6017 33.9352 34.7518 34.0956C34.9018 34.256 34.9754 34.4603 34.9576 34.6664C34.9288 34.867 34.8198 35.0525 34.6497 35.1905C34.4795 35.3284 34.259 35.4101 34.0266 35.4212H26.2067C25.262 35.4212 24.3514 35.728 23.6538 36.2814C22.9562 36.8348 22.522 37.5948 22.4365 38.4121C22.3509 39.2294 22.6203 40.045 23.1916 40.6986C23.7628 41.3522 24.5948 41.7967 25.524 41.9447L36.5091 43.7238C36.912 43.7838 37.3263 43.727 37.6883 43.5621L48.7975 38.4942ZM39.4881 30.9463V39.0873L36.5712 40.4351L26.2067 38.7638H34.0266C35.1951 38.7547 36.3181 38.3692 37.1781 37.682C38.0381 36.9947 38.5737 36.0546 38.6813 35.0438C38.7576 34.0241 38.3925 33.0164 37.6576 32.2184C36.9228 31.4205 35.8713 30.8899 34.7093 30.7307L26.1447 29.5985C26.3907 29.2807 26.7235 29.0209 27.1134 28.8421C27.5033 28.6634 27.9381 28.5713 28.3789 28.5741H36.8194C37.5329 28.5882 38.2116 28.8444 38.7104 29.2877C39.2091 29.7311 39.4883 30.3264 39.4881 30.9463Z"
-                                           fill="#578B07" />
-                                     </svg>
-                                  </span> --}}
+                                         
                                             <h4 class="tp-service-4-title"><a class="text-anim-3"
                                                 
                                                 href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a></h4>
@@ -273,7 +195,9 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-5">
                             <div class="tp-service-4-title-box text-center mb-55">
-                                <span class="tp-section-subtitle">Les chambres les plus populaires</span>
+                                <span class="tp-section-subtitle">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Les chambres les plus populaires') }}</span>
+                                </span>
                                 {{-- <h4 class="tp-section-title">Our Awesome & Best
                                Services</h4> --}}
                             </div>
@@ -282,15 +206,7 @@
                 </div>
             </div>
             <div class="row grid gx-30">
-<style>
-.tp-project-3-thumb img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
 
-
-</style>
                 @foreach ($rooms as $room )
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat2 cat4">
                     <div class="tp-project-3-item">
@@ -298,11 +214,16 @@
                             <img src="{{ url('public/Image/' . $room->image) }}" alt="">
                         </div>
                         <div class="tp-project-3-content">
+                            <span class="tp-product-price-2 new-price">{{ $room->price ?? '' }} <x-devise></x-devise></span>
+                        </div>
+                       
+                        <div class="tp-project-3-content">
                             <h4 class="tp-project-3-title mb-20"><a class="text-anim-3"
                                 href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
-                                {{-- href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 10))]) }}" --}}>{{ $room->name ?? '' }}</a></h4>
-                            <p>{{ $room->meta_description ?? '' }}</p>
+                                >{{ $room->name ?? '' }}</a></h4>
+                          
                         </div>
+                       
                     </div>
                 </div>
                 @endforeach
@@ -517,9 +438,11 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="tp-choose-left">
                         <div class="tp-choose-title-box mb-20" style="text-align: justify">
-                            <span class="tp-section-subtitle">A propos de nous</span>
-                            <h6>Transformez vos défis en opportunités avec GREENLYFE
-
+                            <span class="tp-section-subtitle">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('A propos de nous') }}
+                            </span>
+                            <h6>
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Transformez vos défis en opportunités avec GREENLYFE') }}
                             </h6>
                         </div>
                         <div class="tp-choose-text" style="text-align: justify">
@@ -654,27 +577,12 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="tp-contact-3-left">
                         <div class="tp-contact-3-title-box mb-20">
-                            <span class="tp-section-subtitle">Nous contactez</span>
+                            <span class="tp-section-subtitle">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Nous contactez') }}
+                            </span>
                             <h4 class="tp-section-title"></h4>
                         </div>
-                        <style>
-                            .tp-contact-3-text {
-                                margin-bottom: 25px;
-                                padding: 15px;
-                                font-size: 1rem;
-                                line-height: 1.6;
-                                color: #333;
-                                text-align: justify;
-                            }
-
-                            @media (max-width: 768px) {
-                                .tp-contact-3-text {
-                                    font-size: 0.875rem;
-                                    padding: 10px;
-                                }
-                            }
-
-                        </style>
+                      
 
                         <div class="tp-contact-3-text mb-25" style="text-align: justify">
                             <p> {{ $config->des_contact ?? ' ' }}</p>
@@ -689,7 +597,8 @@
                                 </span>
                             </div>
                             <div class="tp-contact-2-text">
-                                <span>Phone:</span>
+                                <span>
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Téléphone') }}:</span>
                                 <a class="text-anim-2" href="#">{{ $config->telephone }}</a>
                             </div>
                         </div>
@@ -762,9 +671,8 @@
 
                                 <div class="col-md-12 mb-50">
                                     <div class="tp-contact-input-box p-relative">
-                                        {{-- <textarea name="message" type="text" row="5" required placeholder="Votre message"> --}}
-
-                                        <textarea name="message" rows="12" cols="35">Laissez votre message.</textarea><br>
+                                        <textarea name="message" rows="12" cols="35">
+                                            {{ \App\Helpers\TranslationHelper::TranslateText('Laissez votre message') }}.</textarea><br>
 
                                         <span class="tp-contact-icon">
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -780,7 +688,9 @@
                                 </div>
                             </div>
                             <button class="tp-btn-theme" type="submit">
-                                <span>Envoyer</span>
+                                <span>
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Envoyer') }}
+                                </span>
                             </button>
                             <p class="ajax-response"></p>
                         </form>
@@ -797,7 +707,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-testimonial-title-box text-center mb-45">
-                        <h4 class="tp-section-title">Nos témoignages</h4>
+                        <h4 class="tp-section-title">
+                            {{ \App\Helpers\TranslationHelper::TranslateText('Ce que pensent nos clients') }}
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -807,7 +719,10 @@
                         <div class="swiper-container tp-testimonial-3-active">
                             <div class="swiper-wrapper">
                                 @if ($testimonials->isEmpty())
-                                <p>Aucun témoignage disponible.</p>
+                                <p>
+
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Aucun témoignage disponible.') }}
+                                </p>
                                 @else
                                 @foreach ($testimonials as $testimonial)
                                 <div class="swiper-slide">
@@ -835,8 +750,9 @@
             </div>
 
             <div class="text-center mt-30">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Laissez votre témoignage
+                <button type="button"  class="tp-btn-theme"{{-- class="btn btn-primary" --}} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    
+                    {{ \App\Helpers\TranslationHelper::TranslateText('Laissez un avis') }}
                 </button>
             </div>
 
@@ -873,7 +789,9 @@
                             <textarea class="form-control border-0 rounded-3 shadow-sm" id="testimonial" name="message" rows="8" placeholder="Votre message" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary rounded-pill shadow">Envoyer</button>
+                            <button type="submit" class="tp-btn-theme">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Envoyer') }}
+                            </button>
                         </div>
                     </form>
 
@@ -901,6 +819,9 @@
             </div>
         </div>
     </div>
+   
+    
+
 
    
 
@@ -1133,7 +1054,9 @@
                             <div class="tp-slider-dots z-index text-center mt-50"></div>
                         </div>
                         <div class="text-center mt-30">
-                            <a href="{{ url('blog') }}" class="tp-btn">Voir tous les blogs</a>
+                            <a  class="tp-btn-theme" href="{{ url('blog') }}" class="tp-btn">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Voir toutes les nouvelles') }}
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1174,39 +1097,8 @@
     </div>
     <!-- brand area end -->
 
+  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#testimonialForm').on('submit', function(e) {
-                e.preventDefault(); // Empêcher l'envoi classique du formulaire
-
-                $.ajax({
-                    url: $(this).attr('action')
-                    , method: $(this).attr('method')
-                    , data: $(this).serialize()
-                    , success: function(response) {
-                        // Afficher le message de succès
-                        $('#testimonialModal').modal('hide'); // Fermer le modal
-
-                        $('#successMessage').text(
-                            'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs'
-                        ).show();
-
-                        setTimeout(function() {
-                            location.reload();
-                        }, 5000);
-                    }
-                    , error: function(response) {
-                        // Afficher un message d'erreur si nécessaire
-                        $('#errorMessage').text('Une erreur est survenue.')
-                            .show(); // Afficher le message d'erreur
-                    }
-                });
-            });
-        });
-
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>

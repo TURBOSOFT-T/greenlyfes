@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
 
             $table->unsignedBigInteger('book_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('id_promotion')->nullable()->default(null);
 
 
             $table->string('name')->nullable();
@@ -43,7 +44,11 @@ class CreateRoomsTable extends Migration
 
            
             $table->string('tags')->nullable();
+            $table->decimal('price')->nullable();
             $table->decimal('originalPrice')->nullable();
+
+            $table->decimal('prix', 13, 3);
+            $table->decimal('prix_achat', 13, 3);
             $table->decimal('discountPrice')->nullable();
 
 

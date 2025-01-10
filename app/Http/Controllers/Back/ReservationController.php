@@ -48,10 +48,12 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show($id)
     {
-        //
+        $reservation = Reservation::findOrFail($id);
+        return view('back.reservations.show', compact('reservation'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -59,10 +61,12 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reservation $reservation)
+    public function edit($id)
     {
-        //
+        $reservation = Reservation::findOrFail($id);
+        return view('back.reservations.edit', compact('reservation'));
     }
+    
 
     /**
      * Update the specified resource in storage.

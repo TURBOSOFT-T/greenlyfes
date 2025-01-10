@@ -8,6 +8,8 @@ use App\Http\{
 };
 use App\Models\{Room, Book};
 use App\Http\Requests\Back\RoomRequest;
+use App\Http\Requests\Back\RoomUpdateRequest;
+
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 
@@ -96,6 +98,7 @@ class RoomController extends Controller
     public function edit(string $id)
     {
         $room = Room::findOrFail($id);
+      //  dd($room);
         $logements = Book::all()->pluck('title', 'id');
      
         return view('back.rooms.edit', compact('room', 'logements'));
@@ -104,13 +107,12 @@ class RoomController extends Controller
 
 
 
-    public function update(RoomRequest $request, $id)
+    public function update(RoomUpdateRequest $request, $id)
     {
 
         $user = Auth::user();
       
-        $input =
-            Room::findOrFail($id);
+        $input = Room::findOrFail($id);
         $img = Room::find($id);
         File::delete(public_path('/public/Image' . $img->image));
 
@@ -172,6 +174,7 @@ class RoomController extends Controller
     $input->name = $request->name;
     $input->price = $request->price;
     $input->slug = $request->slug;
+    $input->price = $request->price;
  
     $input->description = $request->description;
   

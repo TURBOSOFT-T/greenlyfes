@@ -2,7 +2,7 @@
  --}}@php
     $config = DB::table('configs')->first();
     $configs = DB::table('configs')->first();
-    $service =DB::table('services')->get();
+    $service = DB::table('services')->get();
     $pages = DB::table('pages')->get();
 @endphp
 <!doctype html>
@@ -15,15 +15,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ isset($post) && $post->seo_title ? $post->seo_title :  config('app.name') }}</title>
-    <meta name="description" content="{{ isset($post) && $post->meta_description ? $post->meta_description : __(config('app.description')) }}">
+    <title>{{ isset($post) && $post->seo_title ? $post->seo_title : config('app.name') }}</title>
+    <meta name="description"
+        content="{{ isset($post) && $post->meta_description ? $post->meta_description : __(config('app.description')) }}">
     <meta name="author" content="{{ isset($post) ? $post->user->name : __(config('app.author')) }}">
-    @if(isset($post) && $post->meta_keywords)
+    @if (isset($post) && $post->meta_keywords)
         <meta name="keywords" content="{{ $post->meta_keywords }}">
     @endif
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/Image/Parametres/' . $config->icon) }}"> 
-   {{--  <img class="card-img-top product-image" src="{{ url('public/Image/Parametres/' . $config->logo) }}"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/Image/Parametres/' . $config->icon) }}">
+    {{--  <img class="card-img-top product-image" src="{{ url('public/Image/Parametres/' . $config->logo) }}"> --}}
     <!-- CSS here -->
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/animate.css">
@@ -37,22 +38,33 @@
     <link rel="stylesheet" href="/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     
+        <!-- FullCalendar CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+        <!-- FullCalendar JS -->
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+        <!-- Moment.js (nécessaire pour certaines fonctionnalités) -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+
+
     <script src="/Script.js"></script>
 
     @yield('header')
-    
+    @yield('room')
+    @yield('logement')
     @livewireStyles
 
 </head>
 
 <body>
- 
+
 
     <!-- Preloader -->
 
 
-{{--     <div class="preloader-wrapper" style="background-color: #171041;">
+    {{--     <div class="preloader-wrapper" style="background-color: #171041;">
         <div class="preloader-container">
             <div class="preloader bounce-active">
                 <img src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="preloader">
@@ -76,7 +88,7 @@
     <!-- back to top end -->
 
 
-    
+
     <!-- search popup start -->
     <div class="search__popup">
         <div class="container">
@@ -86,7 +98,8 @@
                         <div class="search__top d-flex justify-content-between align-items-center">
                             <div class="search__logo">
                                 <a href="{{ route('home') }}">
-                                    <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="" width="5" height="5">
+                                    <img src="{{ url('public/Image/parametres/' . $config->logo) }}" alt=""
+                                        width="5" height="5">
                                 </a>
                             </div>
                             <div class="search__close">
@@ -137,11 +150,12 @@
             </div>
             <div class="tpoffcanvas__logo">
                 <a href="{{ route('home') }}">
-                    <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="logo white" width="5" height="5">
+                    <img src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="logo white" width="5"
+                        height="5">
                 </a>
             </div>
             <div class="tpoffcanvas__title">
-               {{--  <p>{{ $config->description }}</p> --}}
+                {{--  <p>{{ $config->description }}</p> --}}
             </div>
             <div class="tp-main-menu-mobile d-xl-none"></div>
             <div class="tpoffcanvas__contact-info">
@@ -150,35 +164,34 @@
                 </div>
 
                 <ul>
-                     <li>
+                    <li>
                         <i class="fa-light fa-location-dot"></i>
                         <a href="https://www.google.com/maps/@23.8223586,90.3661283,15z"
                             target="_blank">{{ $config->addresse }}</a>
-                    </li> 
-                     <li>
+                    </li>
+                    <li>
                         <i class="fas fa-envelope"></i>
                         {{ $config->email }}
                     </li>
                     <li>
                         <i class="fal fa-phone-alt"></i>
                         {{ $config->telephone }}
-                    </li> 
+                    </li>
                 </ul>
 
 
             </div>
             <div class="tp-footer-widget footer-col-2">
                 <h4 class="tp-footer-widget-title">Nos pages</h4>
-                
+
                 <div class="tp-footer-widget-list">
-                   
+
                     <ul>
 
-                        @foreach ($pages as $page )
-                        <li><a href="{{ url('page', $page->slug) }}">{{$page->title}}</a></li>
-                        
-                        @endforeach 
-                       
+                        @foreach ($pages as $page)
+                            <li><a href="{{ url('page', $page->slug) }}">{{ $page->title }}</a></li>
+                        @endforeach
+
                     </ul>
                 </div>
 
@@ -186,22 +199,22 @@
                     <h4 class="tp-footer-widget-title">Nos liens</h4>
                     <div class="tp-footer-widget-list">
                         <ul>
-                            @foreach($follows as $follow)
-                            <li><a href="{{ $follow->href }}">{{ $follow->title }}</a></li>
+                            @foreach ($follows as $follow)
+                                <li><a href="{{ $follow->href }}">{{ $follow->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tpoffcanvas__input">
-             
+
             </div>
             <div class="tpoffcanvas__social">
                 <div class="social-icon">
-                     <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a> 
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
                 </div>
             </div>
         </div>
@@ -215,7 +228,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-4 col-md-6 col-sm-6 d-none d-sm-block">
-                     
+
 
                     </div>
                     <div class="col-xl-7 col-lg-8 col-md-6 col-sm-6">
@@ -232,7 +245,7 @@
                                                 fill="currentcolor" />
                                         </svg>
                                     </span>
-                                    <a class="text-anim" href="#"> {{ $config->telephone }} </a> 
+                                    <a class="text-anim" href="#"> {{ $config->telephone }} </a>
                                 </li>
                                 <li>
 
@@ -244,7 +257,7 @@
                                                 fill="currentcolor" />
                                         </svg>
                                     </span>
-                                    <a class="text-anim">{{ $config->email }} </a> 
+                                    <a class="text-anim">{{ $config->email }} </a>
                                 </li>
 
                             </ul>
@@ -265,7 +278,8 @@
                     <div class="col-xl-2 col-lg-4 col-6">
                         <div class="tp-header-logo">
                             <a href="{{ route('home') }}">
-                                <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="logo black" height="100" width="100">
+                                <img src="{{ url('public/Image/parametres/' . $config->logo) }}" alt="logo black"
+                                    height="100" width="100">
                             </a>
                         </div>
                     </div>
@@ -274,11 +288,13 @@
                             <nav class="tp-main-menu-content">
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a href="/">Accueil</a>
+                                        <a href="/">
+                                            {{ \App\Helpers\TranslationHelper::TranslateText('Accueil') }}
+                                        </a>
 
                                     </li>
-                                   
-                              {{--       <li class="has-dropdown">
+
+                                    {{--       <li class="has-dropdown">
                                         <a href="#">Nos activités</a>
                                         <ul class="submenu tp-submenu">
                                            <li><a href="{{ url('produits') }}">Produits artisanaux</a></li>
@@ -288,27 +304,21 @@
                                           
                                         </ul>
                                      </li> --}}
-                                   {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
-                                   <li><a href="{{ url('blog') }}">Blogs </a></li>
+                                    {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
+                                    <li><a href="{{ url('blog') }}">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Actualités') }}
+                                    </a></li>
                                     <li><a href="{{ route('contacts.create') }}">Contact</a></li>
                                     @guest
-
-
-
-                                       
-
                                         <li>
                                             <a href="{{ url('login') }}">Connexion</a>
                                         </li>
                                     @else
-                                       
                                         @if (auth()->user()->role != 'user')
-                                            <li><a href="{{ url('admin') }}" class="nav-item nav-link">Administration</a>
+                                            <li><a href="{{ url('admin') }}"
+                                                    class="nav-item nav-link">Administration</a>
                                             </li>
                                         @endif
-
-
-
 
                                     @endguest
 
@@ -322,7 +332,7 @@
                     <div class="col-xl-4 col-lg-8 col-6">
                         <div class="tp-header-right d-flex align-items-center justify-content-end">
                             <div class="tp-header-right-icon d-none d-lg-block">
-                                 <button class="search-open-btn">
+                                <button class="search-open-btn">
                                     <span>
                                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -331,18 +341,8 @@
                                                 stroke="currentcolor" stroke-width="2" stroke-linecap="round" />
                                         </svg>
                                     </span>
-                                </button> 
-                             {{--    <button class="cartmini-open-btn">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M2.5 4.99984H18.3333L15.8333 13.3332H5L2.5 4.99984ZM2.5 4.99984L1.875 2.9165M8.32667 9.1665H9.99333M9.99333 9.1665H11.66M9.99333 9.1665V7.49984M9.99333 9.1665V10.8332M9.16667 16.2498C9.16667 16.5814 9.03497 16.8993 8.80055 17.1337C8.56613 17.3681 8.24819 17.4998 7.91667 17.4998C7.58515 17.4998 7.2672 17.3681 7.03278 17.1337C6.79836 16.8993 6.66667 16.5814 6.66667 16.2498M14.1667 16.2498C14.1667 16.5814 14.035 16.8993 13.8006 17.1337C13.5661 17.3681 13.2482 17.4998 12.9167 17.4998C12.5851 17.4998 12.2672 17.3681 12.0328 17.1337C11.7984 16.8993 11.6667 16.5814 11.6667 16.2498"
-                                            stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <span>
-                                        <span id="count-panier-span"></span>
-                                </button> --}}
+                                </button>
+                          
 
                             </div>
                             @if (auth()->user())
@@ -352,7 +352,7 @@
                                     <div class="dropdown">
                                         <button class="btn btn-success dropdown-toggle p-3 " type="button"
                                             id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ Auth::user()->name }} {{ Auth::user()->last_name }}
+                                            {{ Auth::user()->name }} 
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"
                                             style="padding:0%; font-size:100%;padding:0%">
@@ -366,7 +366,7 @@
                                                 <span>Mes favoris</span>
 
                                             </a> --}}
-                                           {{--  <a class="dropdown-item" href="{{ route('profile') }}">
+                                            {{--  <a class="dropdown-item" href="{{ route('profile') }}">
                                                 <i class="bx bx-tachometer"></i>
                                                 <span>Paramètres</span>
 
@@ -375,7 +375,8 @@
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                                Déconnexion
+                                                
+                                                {{ \App\Helpers\TranslationHelper::TranslateText('Déconnexion') }}
                                             </a>
                                             {{-- <a class="nav-link" href="{{ route('dashboard') }}">Dashboad</a> --}}
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -386,11 +387,49 @@
                                     </div>
                                 </div>
                             @endif
+
+                            <style>
+                                 
+                           
+                        </style>
+
+
+                          
+
+                            <div class="custom-dropdown">
+                                <form action="{{ route('locale.change') }}" method="POST">
+                                    @csrf
+                                    <div class="dropdown">
+                                        <button class="dropbtn">
+                                            {{ app()->getLocale() == 'fr' ? 'Français' : 'English' }}
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button type="submit" name="locale" value="fr" class="dropdown-item">
+                                                <img src="https://img.icons8.com/color/20/france-circular.png"
+                                                    alt="fr">
+                                                
+                                                {{ \App\Helpers\TranslationHelper::TranslateText('Français') }}
+                                            </button>
+                                            <button type="submit" name="locale" value="en" class="dropdown-item">
+                                                <img src="https://img.icons8.com/color/20/great-britain-circular.png"
+                                                    alt="en">
+                                                
+                                                {{ \App\Helpers\TranslationHelper::TranslateText('Anglais') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+    
                             <div class="tp-header-bar d-xl-none">
                                 <button class="tp-menu-bar"><i class="fa-solid fa-bars"></i></button>
                             </div>
                         </div>
                     </div>
+
+
+                    
+
                 </div>
             </div>
         </div>
@@ -409,28 +448,12 @@
 
 
     </main>
-   
+
     <footer>
-        <div class="tp-footer-bg tp-footer-overley responsive-background" data-background="{{ url('public/Image/parametres/' . $config->imagefooter) }}">
-            <style>
-                .responsive-background {
-    background-size: cover;      /* Ensure the image covers the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    width:auto;                 /* Ensure the container is full width */
-    height: auto;                /* Let the height adjust based on content */
-    min-height: 300px;           /* Set a minimum height if needed */
-}
+        <div class="tp-footer-bg tp-footer-overley responsive-background"
+            data-background="{{ url('public/Image/parametres/' . $config->imagefooter) }}">
 
 
-
-@media (max-width: 768px) {
-    .tp-footer-bg {
-        height: 200px; /* Ajuste la hauteur pour les petits écrans */
-    }
-}
-            </style>
-           
             <!-- footer area start -->
             <div class="tp-footer-area tp-footer-border pt-40 pb-5">
 
@@ -441,42 +464,39 @@
                             <div class="tp-footer-widget footer-col-1">
                                 <div class="tp-footer-logo">
                                     <a href="{{ route('home') }}">
-                                        <img  src="{{ url('public/Image/parametres/' . $config->logo) }}" width="80" height="80" alt="logo footer">
+                                        <img src="{{ url('public/Image/parametres/' . $config->logo) }}"
+                                            width="80" height="80" alt="logo footer">
                                     </a>
                                 </div>
-                                
-                                <style>
-                                    .text-justify {
-    text-align: justify;
-}
 
-                                </style>
+
                                 <div class="tp-footer-text">
-                                     <p class="text-justify">{{ $config->description }}</p> 
+                                    <p class="text-justify">{{ $config->description }}</p>
                                 </div>
                                 <div class="tp-footer-social">
                                     {{--  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                                     <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
                                     <a href="#"><i class="fa-brands fa-twitter"></i></a> --}}
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-50  wow tpfadeUp" data-wow-duration=".9s"
                             data-wow-delay=".5s">
                             <div class="tp-footer-widget footer-col-2">
-                                <h4 class="tp-footer-widget-title">Nos pages</h4>
-                                
+                                <h4 class="tp-footer-widget-title">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Pages') }}
+                                </h4>
+
                                 <div class="tp-footer-widget-list">
-                                   
+
                                     <ul>
 
-                                        @foreach ($pages as $page )
-                                        <li><a href="{{ url('page', $page->slug) }}">{{$page->title}}</a></li>
-                                        
-                                        @endforeach 
-                                       
+                                        @foreach ($pages as $page)
+                                            <li><a href="{{ url('page', $page->slug) }}">{{ $page->title }}</a></li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </div>
@@ -484,11 +504,13 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-50  wow tpfadeUp" data-wow-duration=".9s"
                             data-wow-delay=".7s">
                             <div class="tp-footer-widget footer-col-3">
-                                <h4 class="tp-footer-widget-title">Nos liens</h4>
+                                <h4 class="tp-footer-widget-title">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText(' Nos Liens') }}
+                                </h4>
                                 <div class="tp-footer-widget-list">
                                     <ul>
-                                        @foreach($follows as $follow)
-                                        <li><a href="{{ $follow->href }}">{{ $follow->title }}</a></li>
+                                        @foreach ($follows as $follow)
+                                            <li><a href="{{ $follow->href }}">{{ $follow->title }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -499,7 +521,9 @@
                             <div
                                 class="tp-footer-widget d-flex  justify-content-start justify-content-xl-end align-items-center footer-col-4">
                                 <div>
-                                    <h4 class="tp-footer-widget-title">Contact Us</h4>
+                                    <h4 class="tp-footer-widget-title">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Nous contacter') }}
+                                    </h4>
                                     <ul>
                                         <li>
                                             <div class="tp-footer-widget-contact-box d-flex align-items-center">
@@ -514,9 +538,11 @@
                                                     </span>
                                                 </div>
                                                 <div class="tp-footer-widget-contact-text">
-                                                    <b>Phone:</b>
+                                                    <b>
+                                                        {{ \App\Helpers\TranslationHelper::TranslateText('Téléphone') }}
+                                                        :</b>
 
-                                                   <a class="text-anim" href="#"> {{ $config->telephone }}</a> 
+                                                    <a class="text-anim" href="#"> {{ $config->telephone }}</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -535,7 +561,7 @@
                                                 <div class="tp-footer-widget-contact-text">
                                                     <b>Email:</b>
 
-                                                    <a class="text-anim" href="#"> {{ $config->email }}</a> 
+                                                    <a class="text-anim" href="#"> {{ $config->email }}</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -558,9 +584,8 @@
                                                 </div>
                                                 <div class="tp-footer-widget-contact-text">
                                                     <b>Location:</b>
-                                                     <a class="text-anim"
-                                                        href="#"
-                                                        target="_blank"> {{ $config->addresse }} </a>
+                                                    <a class="text-anim" href="#" target="_blank">
+                                                        {{ $config->addresse }} </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -580,7 +605,7 @@
                         <div class="col-12">
                             <div class="tp-copyright-text text-center">
                                 <p class="text-white" style="font-size: 12px;">
-                                    Copyright @ {{ date('Y') }} GREENLYF. Build by
+                                    Copyright @ {{ date('Y') }} GREENLYFES. Build by
                                     <a href="#" style="color: #11ee75;"><b>TURBOSOFT</b></a>.
                                 </p>
                             </div>
@@ -588,33 +613,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- copy-right area end -->
         </div>
-<style>
 
-.tp-footer-widget-title {
-    font-size: 16px; /* Taille de titre plus petite */
-}
-
-.tp-footer-text p {
-    font-size: 14px; /* Taille de texte plus petite */
-    line-height: 1.5; /* Ajuster l'espacement entre les lignes */
-}
-
-.tp-footer-widget-list ul li a {
-    font-size: 14px; /* Taille de lien plus petite */
-}
-
-    .tp-footer-widget {
-    margin-bottom: 30px; /* Réduction de l'espacement entre les widgets */
-}
-
-.tp-footer-widget.footer-col-4 {
-    justify-content: center; /* Alignement central pour économiser de l'espace */
-}
-
-</style>
     </footer>
 
     <!-- JS here -->

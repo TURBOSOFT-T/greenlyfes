@@ -17,7 +17,7 @@ use App\Http\Controllers\Front\{
     HopitalController as FrontHopitalController,
     ConsultationController,
     InscriptionController,
-    TestimonialController,
+    TestimonialController ,
     BookController as FrontBookController,
     RoomController as FrontRoomController,
     ReservationController as FrontReservationController,
@@ -33,6 +33,7 @@ use App\Http\Controllers\Back\{
     OrderController as BackOrderController,
     EcoleController,
     HopitalController,
+    TestimonialController as BackTestimonialController,
    
 
 
@@ -50,9 +51,14 @@ use App\Http\Controllers\Back\{
 
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LocaleController;
+
+Route::post('/locale', [LocaleController::class ,'change'])->name("locale.change");
+ 
 /////Maintenance
 Route::get('cache-clear', function () {
     Artisan::call('optimize:clear');
+    
     request()->session()->flash('success', 'Successfully cache cleared.');
     return redirect()->back();
 })->name('cache.clear');
@@ -109,7 +115,7 @@ Route::post('/inscription', [InscriptionController::class, 'store'])->name('insc
 Route::get('bookings', [FrontBookController::class, 'logements'])->name('logement');
 Route::get('/logement/{id}', [FrontBookController::class, 'logement'])->where('id', '[0-9]+');
 Route::get('details-logement/{id}/{slug}', [FrontBookController::class, 'details'])->name('details-logement');
-Route::get('/book/{id}', [FrontHopitalController::class, 'show'])->name('book.show');
+
 Route::get('recherche', [FrontBookController::class, 'recherche'])->name("recherche");
 //Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 
@@ -165,6 +171,10 @@ Route::get('/check-reserved-dates', function () {
     
     return response()->json($reservedDates);
 })->name('check-reserved-dates');
+Route::get('/check-occupied-periods', [FrontReservationController::class, 'checkOccupiedPeriods'])->name('check.occupied.periods');
+
+
+Route::post('/calculate-total-price', [FrontReservationController::class, 'calculateTotalPrice']);
 
 Route::post('/get-reservations-by-month', [FrontReservationController::class, 'getReservationsByMonth']);
 
@@ -214,6 +224,13 @@ Route::prefix('admin')->group(function () {
 
         ///Réservations
         Route::resource('reservations', BackResourceController::class)->except(['show']);
+      //  Route::name('reservations-show', BackReservationController::class, 'reservations')->name('reservations-show');
+       // Route::resource('showreservations', BackReservationController::class);
+        Route::get('reservations/{id}', [BackReservationController::class, 'show'])->name('reservations.show');
+        Route::get('editreservations/{id}/edit', [BackReservationController::class, 'edit'])->name('editreservations.edit');
+
+
+
        // Route::name('reservations.indexnew')->get('newusers', [BackResourceController::class, 'index']);
 
 
@@ -319,11 +336,12 @@ Route::prefix('admin')->group(function () {
 
         Route::name('testimonials.indexnew')->get('newtestimonials', [BackResourceController::class, 'index']);
 
-        Route::resource('testimonials', TestimonialController::class);
-        Route::get('testimoniales/{id}/approve', [TestimonialController::class, 'approve'])->name('testimoniales.approve');
-        Route::get('testimoniales/{id}/disapprove', [TestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
-        Route::delete('testimoniales/{id}/destroy', [TestimonialController::class, 'destroy'])->name('testimoniales.destroy');
-        Route::get('testimoniale/{id}/destroy', [TestimonialController::class, 'destroy'])->name('testimoniale.destroy');
+     Route::resource('testimonials', BackTestimonialController::class);
+      //  Route::resource('testimonials', BackResourceController::class)->except(['show']);
+        Route::get('testimoniales/{id}/approve', [BackTestimonialController::class, 'approve'])->name('testimoniales.approve');
+        Route::get('testimoniales/{id}/disapprove', [BackTestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
+        Route::delete('testimoniales/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniales.destroy');
+        Route::get('testimoniale/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniale.destroy');
 
         // Follows
         Route::resource('follows', BackResourceController::class)->except(['show']);

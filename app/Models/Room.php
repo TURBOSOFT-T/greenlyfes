@@ -28,6 +28,7 @@ class Room extends Model
         'meta_keywords',
         'tags',
         'originalPrice',
+        'price',
         'discountPrice',
         'stock',
         'stock_alert',
@@ -35,6 +36,7 @@ class Room extends Model
         'images',
         'video',
         'user_id',
+        'id_promotion',
        
         'created_at',
         'updated_at',
@@ -61,4 +63,42 @@ class Room extends Model
     public function reservation(){
         return $this->hasMany(Reservation::class);
     }
+
+
+    
+    public function reservations_items(){
+        return $this->hasMany(ReservationItem::class, 'room_id', 'id');
+    }
+
+
+     public function getPrice()
+    {
+        if ($this->id_promotion) {
+            $promotion = promotions::find($this->id_promotion);
+            if ($promotion) {
+                $prices = $this->price - ($this->price * ($promotion->pourcentage / 100));
+                return $prices;
+            } else {
+                return $this->price;
+            }
+        } else {
+            return $this->price;
+        }
+
+    }
+
+    public function inPromotion()
+    {
+        if ($this->id_promotion) {
+            $promotion = promotions::find($this->id_promotion);
+            if ($promotion) {
+                return $promotion;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 }

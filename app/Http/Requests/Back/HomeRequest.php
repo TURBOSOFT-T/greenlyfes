@@ -27,7 +27,9 @@ class HomeRequest extends FormRequest
         $id = $this->method() === 'PUT' ? ',' . basename($this->url()) : '';
         return $rules = [
             'title' => 'required|max:255',
-               'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+             //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+             'image' => 'sometimes|required|file|mimetypes:image/*',
+            //   'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif',
             'body' => 'required|string',
             'slug' => ['required', 'max:255', new Slug, 'unique:homes,slug' . $id],
 

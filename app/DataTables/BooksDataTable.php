@@ -42,16 +42,7 @@ class BooksDataTable extends DataTable
             ->addColumn('action', 'books.action');
     }
 
-    /**
-     * Get query source of dataTable.
-     *
-     * @param \App\Models\Book $model
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    /* public function query(Book $model)
-    {
-        return $model->newQuery();
-    } */
+  
     public function query(Book $model)
     {
         $query = $model->newQuery();
@@ -60,11 +51,7 @@ class BooksDataTable extends DataTable
         }
         return $query;
     }
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
-     */
+  
     public function html()
     {
         return $this->builder()
@@ -75,11 +62,7 @@ class BooksDataTable extends DataTable
             ->lengthMenu();
     }
 
-    /**
-     * Get columns.
-     *
-     * @return array
-     */
+  
     protected function getColumns()
     {
         return [
@@ -93,11 +76,7 @@ class BooksDataTable extends DataTable
         ];
     }
 
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
+   
     protected function filename()
     {
         return 'Books_' . date('YmdHis');

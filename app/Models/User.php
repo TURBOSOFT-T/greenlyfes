@@ -150,7 +150,7 @@ class User extends Authenticatable
     }
 
     public function rooms(){
-        return $this->hasMany(Room::class);
+        return $this->hasMany(Room::class , 'user_id', 'id' );
     }
 
     /**

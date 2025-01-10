@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('reservations:cancel-unpaid')->daily();
         Schedule::command('database:backup')->daily();
+        $schedule->command('promotions:check')->daily();
     }
 
     /**

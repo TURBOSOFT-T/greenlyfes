@@ -7,6 +7,28 @@ return [
         'route'  => 'admin',
         'icon'   => 'tachometer-alt',
     ],
+
+    'Categories Articles' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All categories',
+                'role'  => 'admin',
+                'route' => 'categories.index',
+            ],
+            [
+                'name'  => 'Add',
+                'role'  => 'admin',
+                'route' => 'categories.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'categories.edit',
+            ],
+        ],
+    ],
     'Posts' => [
         'icon' => 'file-alt',
         'role'   => 'redac',
@@ -33,29 +55,9 @@ return [
             ],
         ],
     ],
-    'Categories' => [
-        'icon' => 'list',
-        'role'   => 'admin',
-        'children' => [
-            [
-                'name'  => 'All categories',
-                'role'  => 'admin',
-                'route' => 'categories.index',
-            ],
-            [
-                'name'  => 'Add',
-                'role'  => 'admin',
-                'route' => 'categories.create',
-            ],
-            [
-                'name'  => 'fake',
-                'role'  => 'admin',
-                'route' => 'categories.edit',
-            ],
-        ],
-    ],
+ 
 
-    'Logements' => [
+    'Categories Logements' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -77,7 +79,7 @@ return [
         ],
     ],
 
-    'Bookings' => [
+    'Appartemens' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -236,7 +238,7 @@ return [
         ],
     ],
  */
-    'Products' => [
+   /*  'Products' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -256,7 +258,7 @@ return [
                 'route' => 'saveproducts.edit',
             ],
         ],
-    ],
+    ], */
     'Utilisateurs' => [
         'icon' => 'user',
         'role'   => 'admin',
@@ -301,7 +303,7 @@ return [
         ],
     ],
 
-    'Services' => [
+ /*    'Services' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -321,7 +323,7 @@ return [
                 'route' => 'services.edit',
             ],
         ],
-    ],
+    ], */
 /* 
     'Sponsors' => [
         'icon' => 'list',
@@ -368,7 +370,7 @@ return [
         ],
     ],
 
-    'Commandes' => [
+/*     'Commandes' => [
         'icon' => 'comment',
         'role'   => 'redac',
         'children' => [
@@ -386,7 +388,7 @@ return [
         
         ],
     ],
-
+ */
     
     'Réservation' => [
         'icon' => 'comment',

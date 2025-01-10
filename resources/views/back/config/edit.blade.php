@@ -283,12 +283,12 @@
                 @endif
             </div>
 
-
+{{-- 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imageeducation'))
                     <div>
                         <strong>Image entête école(1920*500):</strong>
-                        <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
+                        <p>
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
                                 src="{{ url('public/Image/parametres/' . $config->imageeducation) }}" width="50"
@@ -302,13 +302,13 @@
                         </div>
                     </div>
                 @endif
-            </div>
+            </div> --}}
 
-            <div class="col-xs-12 col-sm-12 col-md-3">
+           {{--  <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imagesante'))
                     <div>
                         <strong>Image pour entête santé(1920*500):</strong>
-                        <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
+                        <p>
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
                                 src="{{ url('public/Image/parametres/' . $config->imagesante) }}" width="50"
@@ -323,13 +323,13 @@
                     </div>
                 @endif
             </div>
-
-
+ --}}
+{{-- 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imageindustrielle'))
                     <div>
-                        <strong>Image entête  pour produits industriels (1920*500):</strong>
-                        <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
+                        <strong>Image entête  pour produits  (1920*500):</strong>
+                        <p>
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
                                 src="{{ url('public/Image/parametres/' . $config->imageindustrielle) }}" width="50"
@@ -344,7 +344,7 @@
                     </div>
                 @endif
             </div>
-
+ --}}
             <br><br>
             <br><br>
 

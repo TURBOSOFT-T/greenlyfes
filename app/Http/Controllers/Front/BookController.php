@@ -38,7 +38,10 @@ class BookController extends Controller
     public function details($id){
      
         $logement = Book::findOrFail($id);
-   
+        //dd($logement);
+        if (!$logement) {
+            abort(404, 'Logement not found');
+        }
         return view('front.logements.details', compact('logement'));
     }
 

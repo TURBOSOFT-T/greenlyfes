@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Front;
+use App\Http\{
+    Controllers\Controller,
+
+};
 
 use App\Repositories\PostRepository;
-use App\Http\Controllers\Controller;
+
 
 use App\Http\Requests\Front\ContactRequest;
 use App\Models\Testimonial;
@@ -18,7 +22,8 @@ class TestimonialController extends Controller
 
     public function index()
     {
-        $testimonials = Testimonial::all();
+       // $testimonials = Testimonial::all();
+       $testimonials = Testimonial::paginate(10);
         return view('back.temoignages.index', compact('testimonials'));
        
     }

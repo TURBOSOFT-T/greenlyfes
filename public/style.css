@@ -95,3 +95,224 @@ button.btn-primary:hover {
     border-radius: 10%;
 
 }
+
+
+ /* Assurez-vous que les images du carrousel sont responsives */
+ .carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Ajustez la taille du texte du carrousel pour les petits écrans */
+@media (max-width: 768px) {
+
+    .carousel-caption p,
+    .carousel-caption h1 {
+        font-size: 1rem;
+        /* Ajustez la taille selon vos besoins */
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.875rem;
+        /* Ajustez la taille du bouton selon vos besoins */
+    }
+}
+
+/* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    /* Ajustez la largeur des contrôles */
+    height: 100%;
+}
+
+
+.tp-project-3-thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
+    /* Assurez-vous que les images du carrousel sont responsives */
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Ajustez la taille du texte du carrousel pour les petits écrans */
+    @media (max-width: 768px) {
+
+        .carousel-caption p,
+        .carousel-caption h1 {
+            font-size: 1rem;
+            /* Ajustez la taille selon vos besoins */
+        }
+
+        .carousel-caption .btn {
+            font-size: 0.875rem;
+            /* Ajustez la taille du bouton selon vos besoins */
+        }
+    }
+
+    /* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+        /* Ajustez la largeur des contrôles */
+        height: 100%;
+    }
+
+
+    .tp-service-4-thumb img {
+               
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    
+    }
+
+    .tp-project-3-thumb img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    
+    .tp-contact-3-text {
+        margin-bottom: 25px;
+        padding: 15px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #333;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .tp-contact-3-text {
+            font-size: 0.875rem;
+            padding: 10px;
+        }
+    }
+
+
+
+
+    /* footer */
+
+    .tp-footer-widget-title {
+        font-size: 16px; /* Taille de titre plus petite */
+    }
+    
+    .tp-footer-text p {
+        font-size: 14px; /* Taille de texte plus petite */
+        line-height: 1.5; /* Ajuster l'espacement entre les lignes */
+    }
+    
+    .tp-footer-widget-list ul li a {
+        font-size: 14px; /* Taille de lien plus petite */
+    }
+    
+        .tp-footer-widget {
+        margin-bottom: 30px; /* Réduction de l'espacement entre les widgets */
+    }
+    
+    .tp-footer-widget.footer-col-4 {
+        justify-content: center; /* Alignement central pour économiser de l'espace */
+    }
+
+    .responsive-background {
+        background-size: cover;      /* Ensure the image covers the entire container */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        width:auto;                 /* Ensure the container is full width */
+        height: auto;                /* Let the height adjust based on content */
+        min-height: 300px;           /* Set a minimum height if needed */
+    }
+    
+    
+    
+    @media (max-width: 768px) {
+        .tp-footer-bg {
+            height: 200px; /* Ajuste la hauteur pour les petits écrans */
+        }
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+
+
+    /* Menu langue */
+
+    .custom-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: #ffffff;
+        color: #000;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropbtn img {
+        margin-right: 8px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        min-width: 150px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .dropdown-content .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .dropdown-content .dropdown-item img {
+        margin-right: 8px;
+    }
+
+    .dropdown-content .dropdown-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+ /* Reservations */
+
+ #calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+

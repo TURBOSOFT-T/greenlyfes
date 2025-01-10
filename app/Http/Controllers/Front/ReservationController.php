@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Models\{Reservation, Room, Config};
+use App\Models\{Reservation, Room, Reservations_item,Config};
 
 
 use App\Http\Requests\StoreReservationRequest;
@@ -59,23 +59,73 @@ public function getReservationsByMonth(Request $request)
 
     return response()->json($reservedPeriods);
 }
-
-  
 public function checkAvailability(Request $request)
 {
-    $roomId = $request->room_id;
-    $dateDebut = $request->date_debut;
-    $dateFin = $request->date_fin;
+    // Validate input
+    $validated = $request->validate([
+        'room_id' => 'required|exists:rooms,id',
+        'date_debut' => 'required|date|before:date_fin',
+        'date_fin' => 'required|date|after:date_debut',
+        'limit' => 'required|date|before:date_debut', // Ensure limit is before date_debut
+    ]);
 
+    $roomId = $validated['room_id'];
+    $dateDebut = Carbon::parse($validated['date_debut']);
+    $dateFin = Carbon::parse($validated['date_fin']);
+    $limit = Carbon::parse($validated['limit']);
+
+    // Check for overlapping reservations
     $isBooked = Reservation::where('room_id', $roomId)
         ->where(function ($query) use ($dateDebut, $dateFin) {
             $query->whereBetween('date_debut', [$dateDebut, $dateFin])
-                  ->orWhereBetween('date_fin', [$dateDebut, $dateFin]);
+                  ->orWhereBetween('date_fin', [$dateDebut, $dateFin])
+                  ->orWhere(function ($query) use ($dateDebut, $dateFin) {
+                      $query->where('date_debut', '<=', $dateDebut)
+                            ->where('date_fin', '>=', $dateFin);
+                  });
         })->exists();
 
     return response()->json(['isBooked' => $isBooked]);
 }
-  
+
+
+public function calculateTotalPrice(Request $request)
+    {
+        $request->validate([
+            'room_id' => 'required|exists:rooms,id',
+            'date_debut' => 'required|date|before:date_fin',
+            'date_fin' => 'required|date|after:date_debut',
+        ]);
+
+        // Récupérer la chambre et ses informations
+        $room = Room::find($request->room_id);
+
+        // Récupérer les dates de début et de fin
+        $date_debut = Carbon::parse($request->date_debut);
+        $date_fin = Carbon::parse($request->date_fin);
+
+        // Calculer le nombre de nuits
+        $numberOfNights = $date_debut->diffInDays($date_fin);
+
+        // Calculer le prix total (prix par nuit * nombre de nuits)
+        $totalPrice = $room->price * $numberOfNights;
+
+        // Retourner la réponse en JSON avec le prix total
+        return response()->json([
+            'totalPrice' => number_format($totalPrice, 2),
+            'numberOfNights' => $numberOfNights,
+            'roomName' => $room->name,
+        ]);
+    }
+
+
+    public function checkOccupiedPeriods(Request $request)
+{
+    $occupiedPeriods = Reservation::select('date_debut', 'date_fin')->get();
+
+    return response()->json($occupiedPeriods);
+}
+
 
   public function confirm(Request $request)
   {
@@ -107,6 +157,17 @@ public function checkAvailability(Request $request)
 
     $connecte = Auth::user();
     $configs = config::firstOrFail();
+
+    $room = Room::find($request->input('room_id'));
+
+    // Calcul de la durée du séjour
+    $date_debut = Carbon::parse($request->input('date_debut'));
+    $date_fin = Carbon::parse($request->input('date_fin'));
+    $duration = $date_debut->diffInDays($date_fin);
+    
+    // Calcul du prix total (prix par nuit * durée)
+    $totalPrice = $room->getPrice() * $duration;
+
  
 if($connecte){
   $reservation = new Reservation([
@@ -157,13 +218,7 @@ if($connecte){
     
 
 
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'telephone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ];
+  ]);
 }
 
     $reservation->save();
@@ -180,10 +235,55 @@ if($connecte){
       
     ]);   
       
-  $existingUsersWithEmail = User::where('email', $request['email'])->exists();
+/*   $existingUsersWithEmail = User::where('email', $request['email'])->exists();
   if (!$existingUsersWithEmail) {
     $user->save();
+} */
+if (!$connecte) {
+  // Vérifier si l'utilisateur existe déjà par son email
+  $existingUser = User::where('email', $request->input('email'))->first();
+
+  if (!$existingUser) {
+      // Créer un nouvel utilisateur
+      $user = User::create([
+      'first_name' => $request->input('nom'),
+      'last_name' => $request->input('prenom'),
+      'email' => $request->input('email'),
+      'phone' => $request->input('telephone'),
+      'password' => Hash::make($request->input('telephone')),
+     'adress' => $request->input('adress'),
+      ]);
+  } else {
+      // Utilisateur existant
+      $user = $existingUser;
+  }
+} else {
+  // Utilisateur connecté
+  $user = $connecte;
 }
+
+$room = Room::find($request->input('room_id'));
+
+$items=   Reservations_item::create([
+  'reservation_id' => $reservation->id,
+
+
+  'room_id' => $request->input('room_id'),
+  'nb_personnes'=>$request->input('nb_personnes'),
+
+   'user_id' => $user->id,
+    'prix' => $room->getPrice(),
+
+  //  'date_debut' => $request->input('date_debut'),
+    //'date_fin' => $request->input('date_fin'),
+   // 'limit' => $request->input('limit'),
+   // 'note' => $request->input('note'),
+ 'created_at' => now(),
+  
+
+
+]);
+
 
    
 

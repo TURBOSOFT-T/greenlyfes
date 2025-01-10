@@ -19,17 +19,47 @@ class ReservationsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 
+         
+            ->editColumn('etat', function ($reservation) {
+                // Exemple : ajouter une classe ou un badge basé sur la valeur de l'état
+                switch ($reservation->etat) {
+                    case 'attente':
+                        return '<span class="badge badge-warning">' . __('En attente') . '</span>';
+                    case 'confirmé':
+                        return '<span class="badge badge-success">' . __('Confirmé') . '</span>';
+                    case 'annulé':
+                        return '<span class="badge badge-danger">' . __('Annulé') . '</span>';
+                    default:
+                        return $reservation->etat;
+                }
+            })
+            ->rawColumns(['etat', 'action']) // Per
+
             
 
-            ->editColumn('action', function ($order) {
-                return $this->button(
-                          'reservations.destroy', 
-                          $order->id, 
-                          'danger', 
-                          __('Delete'), 
-                          'trash-alt', 
-                          __('Really delete this Reservation  ?')
-                      );
+            ->editColumn('action', function ($reservation) {
+                // Bouton "Voir les détails"
+                $viewButton = '<a href="' . route('reservations.show', $reservation->id) . '" class="btn btn-info btn-sm" title="' . __('Voir les détails') . '">
+                                <i class="fas fa-eye"></i> 
+                              </a>';
+
+
+                              $editButton = '<a href="' . route('editreservations.edit', $reservation->id) . '" class="btn btn-warning btn-sm" title="' . __('Modifier') . '">
+                              <i class="fas fa-edit"></i> 
+                            </a>';
+
+                // Bouton "Supprimer"
+                $deleteButton = $this->button(
+                    'reservations.destroy', 
+                    $reservation->id, 
+                    'danger', 
+                    __('Delete'), 
+                    'trash-alt', 
+                    __('Really delete this Reservation  ?')
+                );
+
+                // Retourner les deux boutons
+                return $viewButton . ' ' . $editButton . ' ' . $deleteButton;
             })
             ->addColumn('action', 'reservations.action');
     }
@@ -68,6 +98,8 @@ class ReservationsDataTable extends DataTable
           
             Column::make('telephone')->title(__('Téléphone')),
             Column::make('email')->title(__('Email')),
+            Column::make('mode')->title(__('Mode de paiement')),
+            Column::make('etat')->title(__('État')), 
          
         
             Column::make('created_at')->title(__('Date commande')),

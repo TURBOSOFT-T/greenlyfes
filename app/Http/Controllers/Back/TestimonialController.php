@@ -1,22 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Back;
+
+use App\Http\{
+    Controllers\Controller,
+
+};
 
 use App\Repositories\PostRepository;
-use App\Http\Controllers\Controller;
+
 
 use App\Http\Requests\Front\ContactRequest;
 use App\Models\Testimonial;
 use App\Http\Requests\StoreTestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use Illuminate\Support\Facades\Request;
+use App\Mail\TestimonialCreated; 
+use Illuminate\Support\Facades\Mail;
 
 class TestimonialController extends Controller
 {
     protected $dataTable;
+   
     public function index()
     {
-        return app()->make($this->dataTable)->render('back.shared.index');
+       // $testimonials = Testimonial::all();
+       $testimonials = Testimonial::paginate(10);
+        return view('back.temoignages.index', compact('testimonials'));
+       
     }
     /**
      * Show the form for creating a new resource.

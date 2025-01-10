@@ -32,7 +32,8 @@ class ServiceRequest extends FormRequest
             'titre' => 'nullable|max:255',
             'description' => 'nullable|max:605000',
           //  'icon' => 'nullable|required|image|mimes:jpeg,png,jpg,gif',
-            'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+          //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'sometimes|required|file|mimetypes:image/*',
             'body' => 'nullable|string',
             'slug' => ['required', 'max:255', new Slug, 'unique:services,slug' . $id],
 
