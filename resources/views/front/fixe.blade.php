@@ -395,7 +395,7 @@
 
 
                           
-
+{{-- 
                             <div class="custom-dropdown">
                                 <form action="{{ route('locale.change') }}" method="POST">
                                     @csrf
@@ -420,7 +420,7 @@
                                     </div>
                                 </form>
                             </div>
-    
+     --}}
                             <div class="tp-header-bar d-xl-none">
                                 <button class="tp-menu-bar"><i class="fa-solid fa-bars"></i></button>
                             </div>
