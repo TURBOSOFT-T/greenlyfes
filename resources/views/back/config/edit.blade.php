@@ -324,6 +324,7 @@
                 @endif
             </div>
  --}}
+ 
 {{-- 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imageindustrielle'))
