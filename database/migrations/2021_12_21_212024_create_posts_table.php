@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('seo_title')->nullable();
-            $table->text('excerpt');
-            $table->text('body');
+            $table->text('excerpt')->nullable();
+            $table->text('body')->nullable();
             $table->text('meta_description');
             $table->text('meta_keywords');
             $table->boolean('active')->default(false);

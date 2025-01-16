@@ -17,7 +17,7 @@ class CreatePromotionsTable extends Migration
             $table->id();
             $table->string('titre')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
-            $table->integer("pourcentage");
+            $table->integer("pourcentage")->nullable();
             $table->dateTime("debut")->nullable();
             $table->dateTime("fin")->nullable();
             $table->enum("statut", ["Programmer","En cours", "Terminer"])->default("Programmer");
