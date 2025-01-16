@@ -87,7 +87,7 @@
     <br>
     <br>
 
-    <a href="{{ route('books.index') }}" class="btn btn-primary">Back to book List</a>
+    <a href="{{ route('books.index') }}" class="btn btn-primary">Back to List</a>
     </div>
 
     </div>
