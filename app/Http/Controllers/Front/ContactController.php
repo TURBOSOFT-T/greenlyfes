@@ -33,4 +33,23 @@ class ContactController extends Controller
 
         return back()->with ('status', __('Your message has been recorded, we will respond as soon as possible.'));
     }
+
+    public function destroy($id)
+{
+    try {
+        $contact = Contact::findOrFail($id); // Trouver le contact
+        $contact->delete(); // Supprimer le contact
+
+        return response()->json([
+            'success' => true,
+            'message' => __('The contact has been successfully deleted.'),
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => __('An error occurred while deleting the contact.'),
+        ], 500);
+    }
+}
+
 }
