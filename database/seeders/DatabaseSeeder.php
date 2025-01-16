@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
 entreprises. Nous intervenons dans cinq secteurs: les études, les produits 
 artisanaux, la santé, informatique, et le tourisme';
        $cat->telephone= '56399165';
-       $cat->email='greenlyves@gmail.com';
+       $cat->email='greenlyfes@gmail.com';
        $cat->addresse='Tunis ';
 
         $cat->save(); 
