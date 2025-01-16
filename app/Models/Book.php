@@ -31,6 +31,7 @@ class Book extends Model
         'stock',
         'stock_alert',
         'image',
+        'cover',
         'images',
         'video',
         'user_id',

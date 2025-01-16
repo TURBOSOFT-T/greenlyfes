@@ -24,6 +24,7 @@ class Room extends Model
         'seo_title',
         'excerpt',
         'body',
+        'cover',
         'meta_description',
         'meta_keywords',
         'tags',

@@ -14,6 +14,8 @@
         <meta name="author" content="greenlyfes.com">
         <meta property="og:title" content="{{ $logement->nom }}">
         <meta property="og:description" content="{{ $logement->description ?? '' }}">
+        <meta property="og:description" content="{{ $logement->meta_description ?? '' }}">
+
         <meta property="og:image:width" content="1200" >
       
         <meta property="og:image" content="{{ $logement->image }}">
@@ -44,7 +46,7 @@
 
 
             <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
-                data-background="/assets/img/breadcrumb/breadcrumb.jpg">
+                data-background="{{ url('public/Image/' . $logement->cover ?? '' ) }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xxl-12">
@@ -502,7 +504,7 @@
                                     <div class="tp-product-item-2 mb-40">
                                         <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
                                             <a
-                                                href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">
+                                                href="{{ route('details-room', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">
                                                 <img src="{{ url('public/Image/' . $logement->image) }}" alt="">
                                             </a>
 
@@ -511,7 +513,7 @@
 
                                             <h3 class="tp-product-title-2">
                                                 <a
-                                                    href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a>
+                                                    href="{{ route('details-room', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a>
                                             </h3>
                                             <div class="tp-product-price-wrapper-2 mb-15">
                                                 <span class="tp-product-price-2 new-price">{{ $logement->price ?? '' }} <x-devise></x-devise></span>
@@ -539,7 +541,7 @@
 
 
             <!-- contact area start -->
-            <div class="tp-contact-2-area theme-bg-2 pt-75 pb-55 z-index">
+      {{--       <div class="tp-contact-2-area theme-bg-2 pt-75 pb-55 z-index">
                 <div class="container">
                     <div class="tp-contact-2-bg white-bg tp-contact-2-style-2">
                         <div class="row align-items-center">
@@ -613,7 +615,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- contact area end -->
 
 

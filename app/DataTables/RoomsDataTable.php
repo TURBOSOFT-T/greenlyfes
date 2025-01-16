@@ -8,6 +8,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Route;
 
 class RoomsDataTable extends DataTable
 {
@@ -52,9 +53,39 @@ class RoomsDataTable extends DataTable
      */
     public function query(Room $model)
     {
-        return $model->newQuery();
-    }
 
+        $query = isRole('redac')? auth()->user()->rooms() : $model->newQuery();
+
+        if (Route::currentRouteNamed('rooms.indexnew')) {
+            $query->has('unreadNotifications');
+        }
+        return $query;
+        
+    
+    }
+    public function query1(Room $room)
+    {
+        $query = isRole('redac') ? auth()->user()->rooms() : $room->newQuery();
+
+        if (Route::currentRouteNamed('rooms.indexnew')) {
+            $query->has('unreadNotifications');
+        }
+
+        return $query->select(
+            'rooms.id',
+            'slug',
+            'title',
+            'active',
+            'rooms.created_at',
+            'rooms.updated_at',
+            'user_id'
+        )
+            ->with(
+             
+                'book:title'
+            )
+           ;
+    }
 
     
 
@@ -84,7 +115,8 @@ class RoomsDataTable extends DataTable
         return [
             Column::make('name')->title(__('Title')),
             Column::make('slug')->title(__('Slug')),
-            Column::make('meta_description')->title(__('Description')),
+            Column::make('created_at')->title(__('Date')),
+          
 
             //  Column::make('description')->title(__('Descrition')),
             //  Column::computed('posts_count')->title(__('Posts'))->addClass('text-center align-middle'),

@@ -53,9 +53,15 @@ class BookController extends Controller
 
     public function store(BookRequest $request)
     {
+        $validated = $request->validate([
+           // 'name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255',
+        ]);
 
         $user = Auth::user();
 
+  // Générer le slug si vide
+  $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
 
         $input = $request->all();
 
@@ -67,7 +73,20 @@ class BookController extends Controller
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
 
-        } if ($request->hasFile('images')) {
+        } 
+
+        
+        if ($request->hasFile('cover')) {
+
+            $file = $request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['cover'] = $filename;
+
+        }
+        
+        if ($request->hasFile('images')) {
 
             $images = [];
             foreach ($request->file('images') as $file) {
@@ -106,17 +125,7 @@ class BookController extends Controller
 
       
         $book = Book::find($id);
-      /*   $user = auth()->user();
-
-        if ($user && !$produit->views()->where('user_id', $user->id)->exists()) {
-           
-            $produit->views()->create(['user_id' => $user->id]);
-            
-         
-            $produit->increment('views');
-        } */
-    
-       // $produit->increment('views');
+ 
         $book->decodedImages = json_decode($book->images, true);
         
         return view('back.books.show', compact('book'));
@@ -146,6 +155,8 @@ class BookController extends Controller
             Book::findOrFail($id);
         $img = Book::find($id);
         File::delete(public_path('/public/Image' . $img->image));
+        File::delete(public_path('/public/Image' . $img->cover));
+
 
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image du serveur
@@ -162,6 +173,20 @@ class BookController extends Controller
             $input['image'] = $filename;
         }
 
+        if ($request->hasFile('cover')) {
+            // Supprimer l'ancienne image du serveur
+            if ($img->image) {
+                unlink(public_path('public/Image/'. $img->image));
+            }
+
+
+
+            $file = $request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['cover'] = $filename;
+        }
         if ($request->hasFile('images')) {
             
             $oldImages = json_decode($input->images);
@@ -220,6 +245,8 @@ class BookController extends Controller
     {
         $img = Book::find($id);
         File::delete(public_path('/public/Image/' . $img->image));
+        File::delete(public_path('/public/Image' . $img->cover));
+
         if ($img->images) {
             foreach (json_decode($img->images) as $image) {
                 if (file_exists(public_path('/public/Image/' . $image))) {

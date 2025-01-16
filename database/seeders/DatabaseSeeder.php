@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         User::withoutEvents(function () {
             // Create 1 admin
             User::factory()->count(1)->create([
-                'name' => 'Admin Thomas',
+                'name' => 'Admin ',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('123456789'), // password
                 'role' => 'admin',
@@ -39,12 +39,12 @@ class DatabaseSeeder extends Seeder
 
         $cat = new Config();
         $cat->frais = '15';
-        $cat->description = 'GREENLYFE est une entreprise spécialisée dans la médiation des 
-entreprises. Nous intervenons dans cinq secteurs : les études, les produits 
-industriels, la médecine, informatique, et la conception électronique et mécanique.';
+        $cat->description = 'GREENLYFES est une entreprise spécialisée en intermediation  des 
+entreprises. Nous intervenons dans cinq secteurs: les études, les produits 
+artisanaux, la santé, informatique, et le tourisme';
        $cat->telephone= '56399165';
-       $cat->email='greenlyve@gmail.com';
-       $cat->addresse='Tunis  Avenue Mohamed Melki 1005 El Omrane';
+       $cat->email='greenlyves@gmail.com';
+       $cat->addresse='Tunis ';
 
         $cat->save(); 
 

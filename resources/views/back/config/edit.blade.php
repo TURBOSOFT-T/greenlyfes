@@ -108,7 +108,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('logo'))
                     <div>
-                        <strong>Logo:</strong>
+                        <strong>Logo(170*50):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -117,7 +117,7 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="logo">Logo:</label>
+                            <label for="logo">Logo(170*50):</label>
                             <input type="file" class="form-control-file" id="logo" name="logo">
                         </div>
                     </div>
@@ -127,7 +127,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('logo'))
                     <div>
-                        <strong>Logo footer:</strong>
+                        <strong>Logo footer(170*50):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -136,7 +136,7 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="image">Logo footer:</label>
+                            <label for="image">Logo footer(170*50):</label>
                             <input type="file" class="form-control-file" id="image" name="image">
                         </div>
                     </div>
@@ -146,7 +146,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('logoHeader'))
                     <div>
-                        <strong>Logo Header:</strong>
+                        <strong>Logo Header(170*50):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -155,7 +155,7 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="logoHeader">Logo Header:</label>
+                            <label for="logoHeader">Logo Header(170*50):</label>
                             <input type="file" class="form-control-file" id="logo" name="logoHeader">
                         </div>
                     </div>
@@ -165,7 +165,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imagefooter'))
                     <div>
-                        <strong>Image pour le footer:</strong>
+                        <strong>Image pour le footer(1920*591):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -185,7 +185,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imagergister'))
                     <div>
-                        <strong>Image pour Register:</strong>
+                        <strong>Image pour Register(764*770):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -195,7 +195,7 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="imagergister">Image register:</label>
+                            <label for="imagergister">Image register(764*770):</label>
                             <input type="file" class="form-control-file" id="imagergister" name="imagergister">
                         </div>
                     </div>
@@ -204,7 +204,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imagelogin'))
                     <div>
-                        <strong>Image pour login:</strong>
+                        <strong>Image pour login(764*770):</strong>
                         <p>{{-- <img class="w-50" src="{{ url('public/image/Products/' . $produit->image) }}"> --}}
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -214,7 +214,7 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="imagelogin">Image login:</label>
+                            <label for="imagelogin">Image login(764*770):</label>
                             <input type="file" class="form-control-file" id="imagelogin" name="imagelogin">
                         </div>
                     </div>

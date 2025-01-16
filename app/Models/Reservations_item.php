@@ -13,7 +13,7 @@ class Reservations_item extends Model
     'user_id',
     'reservation_id',
     'room_id',
- 
+'total',
  
     'nb_personnes',
   
@@ -24,7 +24,7 @@ class Reservations_item extends Model
     ];
 
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');

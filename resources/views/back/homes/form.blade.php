@@ -50,7 +50,7 @@
                                 </x-back.input>
 
                                 <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
-                                    <label for="description">Image</label>
+                                    <label for="description">Image (1920*850)</label>
                                     @if(isset($home) && !$errors->has('image'))
                                     <div>
                                         <p><img src="{{ asset('images/thumbs/' . $home->image) }}"></p>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Book, User, Post, Comment, Consultation, Contact, Inscription, Order, Reservation, Testimonial};
+use App\Models\{Book, User, Post, Comment,Room, Consultation, Contact, Inscription, Order, Reservation, Testimonial};
 use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
@@ -17,7 +17,7 @@ class AdminController extends Controller
      *
      * @return View
      */
-    public function index(Reservation $reservation, Book $book, Post $post, Order $order, User $user, Comment $comment, Contact $contact, Inscription $inscription, Consultation $consultation, Testimonial $testimonial)
+    public function index(Reservation $reservation,Room $room, Book $book, Post $post, Order $order, User $user, Comment $comment, Contact $contact, Inscription $inscription, Consultation $consultation, Testimonial $testimonial)
     {
         $users = isRole('admin') ? $this->getUnreads($user) : null;
         $contacts = isRole('admin') ? $this->getUnreads($contact) : null;
@@ -29,7 +29,8 @@ class AdminController extends Controller
         $books = isRole('admin') ? $this->getUnreads($book) : null;
         $comments = $this->getUnreads($comment, isRole('redac'));
         $reservations = isRole('admin') ? $this->getUnreads($reservation) : null;
-     //  $reservations = $this->getUnreads($reservation , isRole('admin') || isRole('redac'));
+        $rooms = isRole('admin') ? $this->getUnreads($room) :null;
+    // $reservations = $this->getUnreads($reservation , isRole('redac'));
 
 
 
@@ -76,7 +77,7 @@ class AdminController extends Controller
             $orderData[$month - 1] = $count;
         }
 
-        return view('back.index', compact('reservations','bookData','userData', 'orderData', 'books', 'posts', 'users', 'contacts', 'comments', 'inscriptions', 'consultations', 'testimonials', 'orders'));
+        return view('back.index', compact('rooms','reservations','bookData','userData', 'orderData', 'books', 'posts', 'users', 'contacts', 'comments', 'inscriptions', 'consultations', 'testimonials', 'orders'));
     }
 
     /**
@@ -93,11 +94,16 @@ class AdminController extends Controller
                 $query->where('users.id', auth()->id());
             }) :
             $model->newQuery();
-        $query = $redac ?
+       /*  $query = $redac ?
             $model->whereHas('book.user', function ($query) {
                 $query->where('users.id', auth()->id());
             }) :
-            $model->newQuery();
+            $model->newQuery(); */
+           /*  $query = $redac?
+            $model->whereHas('reservation.user', function ($query) {
+                $query->where('users.id', auth()->id());
+            }) :    
+            $model->newQuery(); */
 
         return $query->has('unreadNotifications')->count();
     }

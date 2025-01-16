@@ -46,7 +46,7 @@
 
 
             <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
-                data-background="/assets/img/breadcrumb/breadcrumb.jpg">
+                data-background="{{ url('public/Image/' . $room->book->cover ?? '') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xxl-12">
@@ -161,7 +161,7 @@
                                 <div class="tp-shop-details__product-info mb-35">
                                     {{-- <span class="mb-15 d-block">Last 24 Stock Ready To Buy</span> --}}
                                     <ul>
-                                        <li>Categorie:{{-- <span> {{ $room->rooms->title ?? '' }}</span> --}}</li>
+                                        <li>Appartement:<span> {{ $room->book->name ?? '' }}</span> </li>
                                     </ul>
                                 </div>
                                 <div class="tp-shop-details__quantity-wrap  mb-30 d-flex align-items-center">
@@ -477,7 +477,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="tp-product-title-box text-center mb-55">
-                                <h4 class="tp-section-title">Les chambres pour le même appartement</h4>
+                                <h4 class="tp-section-title">Les autres chambres pour: {{ $room->book->name ?? '' }}</h4>
                             </div>
                         </div>
                     </div>
@@ -525,7 +525,7 @@
 
 
             <!-- contact area start -->
-            <div class="tp-contact-2-area theme-bg-2 pt-75 pb-55 z-index">
+         {{--    <div class="tp-contact-2-area theme-bg-2 pt-75 pb-55 z-index">
                 <div class="container">
                     <div class="tp-contact-2-bg white-bg tp-contact-2-style-2">
                         <div class="row align-items-center">
@@ -599,7 +599,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- contact area end -->
 
 

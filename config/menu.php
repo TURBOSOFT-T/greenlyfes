@@ -81,21 +81,21 @@ return [
 
     'Appartemens' => [
         'icon' => 'list',
-        'role'   => 'admin',
+        'role'   => 'redac',
         'children' => [
             [
                 'name'  => 'Les  logements',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'books.index',
             ],
             [
                 'name'  => 'Ajouter',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'savebooks.create',
             ],
             [
                 'name'  => 'fake',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'books.edit',
             ],
         ],
@@ -105,23 +105,23 @@ return [
     
     'Rooms' => [
         'icon' => 'list',
-        'role'   => 'admin',
+        'role'   => 'redac',
         'children' => [
             [
                 'name'  => 'Les  chambres',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'rooms.index',
             ],
 
            
             [
                 'name'  => 'Ajouter une chambre',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'saverooms.create',
             ],
             [
                 'name'  => 'fake',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'rooms.edit',
             ],
         ],
@@ -403,7 +403,7 @@ return [
             [
                 'name'  => 'Nouvelles Réservations',
                 'role'  => 'admin',
-                'route' => 'reservations.index',
+                'route' => 'reservations.indexnew',
             ],
         
         ],

@@ -238,7 +238,8 @@
                     <div class="basic-pagination text-center mt-20">
                         <nav>
                             <ul>
-                                {{ $rooms->links() }}
+                           
+                                {!! $rooms->links('pagination::bootstrap-4') !!}
                         </nav>
                     </div>
                 </div>

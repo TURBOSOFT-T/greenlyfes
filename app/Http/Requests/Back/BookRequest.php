@@ -36,6 +36,7 @@ class BookRequest extends FormRequest
             'seo_title' => 'nullable|max:500',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
           'image' => 'sometimes|required|file|mimetypes:image/*',
+          'cover' => 'sometimes|required|file|mimetypes:image/*',
 
           ///  'logements' => 'required',
             'tags' => 'nullable|regex:' . $regex,

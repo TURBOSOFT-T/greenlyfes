@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         $id = basename($this->url());
 
         return $rules = [
-            'name' => 'required|max:255|unique:users,name,' . $id,
+            'name' => 'nullable|max:255' . $id,
             'email' => 'required|email|max:255|unique:users,email,' . $id
         ];
     }

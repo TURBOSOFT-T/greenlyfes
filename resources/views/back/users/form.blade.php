@@ -36,7 +36,7 @@
                         name='email'
                         :value='$user->email'
                         input='text'
-                        :required="true">
+                        :required="false">
                     </x-back.input>
                     <x-back.input
                         title='Role'

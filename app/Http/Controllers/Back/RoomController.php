@@ -33,15 +33,32 @@ class RoomController extends Controller
 
     public function create()
     {
-        $books = Book::all();
+       // $books = Book::all();
+       $user = auth()->user();
+
+       // Vérifier si l'utilisateur est admin
+       if ($user->isAdmin()) {
+           // Si l'utilisateur est admin, récupérer tous les livres
+           $books = Book::all();
+       } else {
+           // Sinon, récupérer uniquement les livres de l'utilisateur
+           $books = Book::where('user_id', $user->id)->get();
+       }
      
         return view('back.rooms.form', compact('books'));
     }
 
    
     public function store(RoomRequest $request)
-    {
-        $user = Auth::user();
+    {     $validated = $request->validate([
+        
+         'slug' => 'nullable|string|max:255',
+     ]);
+
+     $user = Auth::user();
+
+// Générer le slug si vide
+$validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
 
 
         $input = $request->all();
@@ -54,7 +71,20 @@ class RoomController extends Controller
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
 
-        } if ($request->hasFile('images')) {
+        } 
+
+             
+        if ($request->hasFile('cover')) {
+
+            $file = $request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['cover'] = $filename;
+
+        }
+        
+        if ($request->hasFile('images')) {
 
             $images = [];
             foreach ($request->file('images') as $file) {
@@ -115,6 +145,8 @@ class RoomController extends Controller
         $input = Room::findOrFail($id);
         $img = Room::find($id);
         File::delete(public_path('/public/Image' . $img->image));
+        File::delete(public_path('/public/Image' . $img->cover));
+
 
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image du serveur
@@ -129,6 +161,22 @@ class RoomController extends Controller
             $filename = time() . '.' . $extension;
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
+        }
+
+
+        if ($request->hasFile('cover')) {
+            // Supprimer l'ancienne image du serveur
+            if ($img->image) {
+                unlink(public_path('public/Image/'. $img->image));
+            }
+
+
+
+            $file = $request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['cover'] = $filename;
         }
 
         if ($request->hasFile('images')) {
@@ -190,6 +238,8 @@ class RoomController extends Controller
     {
         $img = Room::find($id);
         File::delete(public_path('/public/Image/' . $img->image));
+        File::delete(public_path('/public/Image' . $img->cover));
+
         if ($img->images) {
             foreach (json_decode($img->images) as $image) {
                 if (file_exists(public_path('/public/Image/' . $image))) {

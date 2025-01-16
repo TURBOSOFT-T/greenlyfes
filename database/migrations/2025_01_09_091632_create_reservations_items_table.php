@@ -25,6 +25,7 @@ class CreateReservationsItemsTable extends Migration
             $table->decimal('prix_unitaire', 13, 3)->default(10);
             $table->decimal('prix', 13, 3)->nullable();
             $table->decimal('benefice', 13, 3)->default();
+            $table->decimal('total', 13, 3)->default(10);
             $table->unsignedBigInteger('payment_method_id')->nullable();
            
 

@@ -100,10 +100,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-info" id="showCalendarBtn"
-                                                        data-bs-toggle="modal" data-bs-target="#calendarModal">
+                                              
+
+                                                    <button type="button" class="btn btn-info" id="showCalendarBtn" data-bs-toggle="modal" data-bs-target="#calendarModal" data-room-id="{{ $room->id }}">
                                                         Voir les périodes Réservées
                                                     </button>
+                                                    
                                                 </div>
 
                                                 <div class="modal fade" id="calendarModal" tabindex="-1"
@@ -215,7 +217,7 @@
 
                                                     <span class="amount" id="room-price"
                                                         data-prix="{{ $room->getPrice() }}">
-                                                        {{ number_format($room->getPrice(), 2)   }} <x-devise></x-devise>
+                                                        {{ number_format($room->getPrice(), 2) }} <x-devise></x-devise>
                                                     </span>
                                                 </td>
 
@@ -234,13 +236,12 @@
                                 <!-- Affichage du prix total -->
                                 <div class="form-grp">
 
-                                    {{--  <input type="text" class="form-control" id="days_reserved" disabled> --}}
                                     <div class="form-control" id="days_reserved">Nombre de jours réservés : 0</div>
 
                                 </div>
                                 <br>
                                 <br>
-                                <div class="form-control" id="prix-total">Total : 0 
+                                <div class="form-control" id="prix-total">Total : 0
                                     <x-devise></x-devise>
                                 </div>
 
@@ -410,10 +411,12 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                var calendarInitialized = false; // Évite la réinitialisation multiple
+                var calendarInitialized = false; 
                 var calendarEl = document.getElementById('calendar');
-
                 $('#calendarModal').on('shown.bs.modal', function() {
+                    var roomId = document.querySelector('#showCalendarBtn').getAttribute('data-room-id');
+                    var occupiedPeriodsUrl = `/check-occupied-periods`;
+
                     if (!calendarInitialized) {
                         var calendar = new FullCalendar.Calendar(calendarEl, {
                             initialView: 'dayGridMonth',
@@ -424,8 +427,10 @@
                             },
                             events: function(fetchInfo, successCallback, failureCallback) {
                                 $.ajax({
-                                    url: '{{ route('check.occupied.periods') }}',
-                                    method: 'GET',
+
+                            
+                                url: '/check-occupied-periods/' + roomId,
+                            method: 'GET',
                                     success: function(data) {
                                         var events = data.map(function(period) {
                                             return {
@@ -434,7 +439,7 @@
                                                 end: moment(period.date_fin)
                                                     .add(1, 'days').format(
                                                         'YYYY-MM-DD'),
-                                                color: '#ff0000' // Rouge pour indiquer les périodes occupées
+                                                color: '#ff0000' 
                                             };
                                         });
                                         successCallback(events);
@@ -449,21 +454,17 @@
                         });
 
                         calendar.render();
-                        calendarInitialized = true; // Marque le calendrier comme initialisé
+                        calendarInitialized = true; 
                     }
                 });
+
+
             });
         </script>
 
 
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">

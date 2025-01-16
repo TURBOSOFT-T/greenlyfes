@@ -37,6 +37,7 @@ class RoomRequest extends FormRequest
             'seo_title' => 'nullable|max:600',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
           'image' => 'sometimes|required|file|mimetypes:image/*',
+          'cover' => 'sometimes|required|file|mimetypes:image/*',
           ///  'logements' => 'required',
             'tags' => 'nullable|regex:' . $regex,
             'book_id' => 'exists:books,id',

@@ -34,6 +34,7 @@ use App\Http\Controllers\Back\{
     EcoleController,
     HopitalController,
     TestimonialController as BackTestimonialController,
+    SlugController,
    
 
 
@@ -52,6 +53,13 @@ use App\Http\Controllers\Back\{
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LocaleController;
+use Illuminate\Http\Request;
+
+
+Route::get('/room/check-slug', [SlugController::class, 'checkRoom']);
+
+Route::get('/book/check-slug', [SlugController::class, 'checkBook']);
+
 
 Route::post('/locale', [LocaleController::class ,'change'])->name("locale.change");
  
@@ -171,8 +179,9 @@ Route::get('/check-reserved-dates', function () {
     
     return response()->json($reservedDates);
 })->name('check-reserved-dates');
-Route::get('/check-occupied-periods', [FrontReservationController::class, 'checkOccupiedPeriods'])->name('check.occupied.periods');
+//Route::get('check-occupied-periods', [FrontReservationController::class, 'checkOccupiedPeriods'])->name('check.occupied.periods');
 
+Route::get('check-occupied-periods/{roomId}', [FrontReservationController::class, 'getOccupiedPeriods'])->name('check.occupied.periods');
 
 Route::post('/calculate-total-price', [FrontReservationController::class, 'calculateTotalPrice']);
 
@@ -219,10 +228,19 @@ Route::prefix('admin')->group(function () {
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
 
         ///Logements
+        
+        ///Logements
+        Route::resource('logements', BackResourceController::class)->except(['show']);
+
         Route::resource('books', BackResourceController::class)->except(['show']);
         Route::resource('savebooks', BackBookController::class);
 
         ///Réservations
+        
+        Route::name('reservations.indexnew')->get('newreservations', [BackResourceController::class, 'index']);
+        Route::get('/reservations/create', [BackResourceController::class, 'create'])->name('reservations.create');
+
+
         Route::resource('reservations', BackResourceController::class)->except(['show']);
       //  Route::name('reservations-show', BackReservationController::class, 'reservations')->name('reservations-show');
        // Route::resource('showreservations', BackReservationController::class);
@@ -324,11 +342,6 @@ Route::prefix('admin')->group(function () {
       //  Route::resource('rooms', BackRoomController::class)->except(['show']);
         Route::name('rooms.indexnew')->get('newrooms', [BackRoomController::class, 'index']);
 
-
-        Route::name('reservations.indexnew')->get('newreservations', [BackResourceController::class, 'index']);
-
-        ///Logements
-        Route::resource('logements', BackResourceController::class)->except(['show']);
 
         
 

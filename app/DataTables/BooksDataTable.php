@@ -17,6 +17,9 @@ class BooksDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->editColumn('rooms_count', function ($book) {
+                return $this->badge($book->rooms_count, 'secondary');
+            })
             ->editColumn('action', function ($book) {
                 return $this->button(
                     'savebooks.show',
@@ -39,10 +42,36 @@ class BooksDataTable extends DataTable
                         __('Really delete this Book?')
                     );
             })
-            ->addColumn('action', 'books.action');
+           ->addColumn('action', 'books.action');
+
     }
 
-  
+
+    public function query(Book $post)
+    {
+        $query = isRole('redac') ? auth()->user()->books() : $post->newQuery();
+
+        if (Route::currentRouteNamed('books.indexnew')) {
+            $query->has('unreadNotifications');
+        }
+
+        return $query->select(
+            'books.id',
+            'slug',
+            'name',
+            'active',
+            'books.created_at',
+            'books.updated_at',
+            'user_id'
+        )
+            ->with(
+             
+                'logements:title'
+            )
+           ;
+    }
+
+  /* 
     public function query(Book $model)
     {
         $query = $model->newQuery();
@@ -50,7 +79,7 @@ class BooksDataTable extends DataTable
             $query->has('unreadNotifications');
         }
         return $query;
-    }
+    } */
   
     public function html()
     {
@@ -68,10 +97,11 @@ class BooksDataTable extends DataTable
         return [
             Column::make('name')->title(__('Title')),
             Column::make('slug')->title(__('Slug')),
-            Column::make('meta_description')->title(__('Description')),
+         //   Column::make('meta_description')->title(__('Description')),
+         Column::make('created_at')->title(__('Date')),
 
             //  Column::make('description')->title(__('Descrition')),
-            //  Column::computed('posts_count')->title(__('Posts'))->addClass('text-center align-middle'),
+          //    Column::computed('rooms_count')->title(__('Rooms'))->addClass('text-center align-middle'),
             Column::computed('action')->title(__('Action'))->addClass('align-middle text-center'),
         ];
     }

@@ -54,6 +54,7 @@ class CreateRoomsTable extends Migration
 
             $table->integer('stock')->nullable();
             $table->integer('stock_alert')->nullable();
+            $table->string('cover')->nullable();
             $table->string('image')->nullable();
             $table->string('images')->nullable();
             $table->string('video')->nullable();

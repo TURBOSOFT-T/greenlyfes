@@ -22,7 +22,7 @@
             <div class="col-sm-12">
                 <div class="card">
 
-                    <form method="post"
+                    <form id="roomForm" method="post"
                         action="{{ Route::currentRouteName() === 'saverooms.edit' ? route('saverooms.update', $room->id) : route('saverooms.store') }}"
                         enctype="multipart/form-data">
 
@@ -122,6 +122,33 @@
                                     </div>
                                 </x-back.card>
 
+{{-- 
+
+                                <div class="form-group{{ $errors->has('cover') ? ' is-invalid' : '' }}">
+                                    <label for="description">Image de la page</label>
+                                    @if (isset($room) && !$errors->has('cover'))
+                                        <div>
+                                            <p><img src="{{ asset('images/thumbs/' . $room->cover) }}"></p>
+                                            <button id="changeCover" class="btn btn-warning">Changer d'image</button>
+                                        </div>
+                                    @endif
+                                    <div id="wrapper">
+                                        @if (!isset($room) || $errors->has('cover'))
+                                            <div class="custom-file">
+                                                <input type="file" id="cover" name="cover"
+                                                    class="{{ $errors->has('cover') ? ' is-invalid ' : '' }}custom-file-input"
+                                                    required>
+                                                <label class="custom-file-label" for="cover"></label>
+                                                @if ($errors->has('cover'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('cover') }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div> --}}
+
 
 
                                 <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
@@ -220,6 +247,98 @@
             });
         });
     </script>
+
+
+<script>
+    $(document).ready(() => {
+        $('form').on('change', '#cover', e => {
+            $(e.currentTarget).next('.custom-file-label').text(e.target.files[0].name);
+        });
+        $('#changeCover').click(e => {
+            $(e.currentTarget).parent().hide();
+            $('#wrapper').html(`
+      <div id="cover" class="custom-file">
+        <input type="file" id="cover" name="cover" class="custom-file-input" required>
+        <label class="custom-file-label" for="cover"></label>
+      </div>`);
+        });
+    });
+</script>
+
+
+
+<script>
+    document.getElementById('name').addEventListener('input', function() {
+        const name = this.value;
+        const slug = name
+            .toLowerCase()                 // Convertir en minuscules
+            .replace(/[^a-z0-9\s-]/g, '') // Supprimer les caractères spéciaux
+            .replace(/\s+/g, '-')         // Remplacer les espaces par des tirets
+            .replace(/-+/g, '-');         // Réduire plusieurs tirets en un seul
+
+        document.getElementById('slug').value = slug;
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('roomForm').addEventListener('submit', async function (e) {
+    e.preventDefault(); // Empêche l'envoi du formulaire par défaut
+
+    const name = document.getElementById('name').value.trim();
+    const slug = document.getElementById('slug').value.trim();
+
+    // Étape 1 : Vérification des champs obligatoires
+    if (!name || !slug) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Tous les champs doivent être remplis.',
+        });
+        return;
+    }
+
+    // Étape 2 : Vérification des doublons
+    const slugExists = await checkSlugAvailability(slug);
+    if (slugExists) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Doublon détecté',
+            text: `Le slug "${slug}" est déjà utilisé. Choisissez un autre.`,
+        });
+        return;
+    }
+
+    // Étape 3 : Si tout est correct, soumettre le formulaire
+    Swal.fire({
+        icon: 'success',
+        title: 'Succès',
+        text: 'Formulaire validé avec succès !',
+    }).then(() => {
+        e.target.submit(); // Soumettre le formulaire
+    });
+});
+
+// Fonction pour vérifier si le slug existe déjà
+async function checkSlugAvailability(slug) {
+    try {
+        const response = await fetch(`/room/check-slug?slug=${encodeURIComponent(slug)}`);
+        if (!response.ok) throw new Error('Erreur réseau');
+        const result = await response.json();
+        return result.exists; // Retourne true si le slug existe
+    } catch (error) {
+        console.error('Erreur lors de la vérification du slug :', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur serveur',
+            text: 'Impossible de vérifier le slug actuellement.',
+        });
+        return true; // Empêche la soumission en cas de problème serveur
+    }
+}
+
+</script>
 @endsection
 
 @endsection

@@ -40,7 +40,7 @@ class ReservationController extends Controller
   }
 
 
-public function getReservationsByMonth(Request $request)
+public function getReservationsByMonth(Request $request,$id)
 {
     $roomId = $request->room_id;
     $month = $request->month; // Le mois au format "Y-m" (ex : 2025-01)
@@ -126,16 +126,23 @@ public function calculateTotalPrice(Request $request)
     return response()->json($occupiedPeriods);
 }
 
+public function getOccupiedPeriods($roomId)
+{
+    // Logique pour récupérer les périodes occupées pour cette chambre
+    $periods = Reservation::where('room_id', $roomId)->get();
+
+    return response()->json($periods);
+}
+
+
 
   public function confirm(Request $request)
   {
     $request->validate([
-
       'nom' => ['required', 'string', 'max:255'],
       'prenom' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
       'email' => 'required',    
-     //   'phone' => 'required',
         'address' => 'nullable',   
         'note' => 'nullable',
         'date_fin' => 'required|date|after_or_equal:date_debut',
@@ -160,14 +167,6 @@ public function calculateTotalPrice(Request $request)
 
     $room = Room::find($request->input('room_id'));
 
-    // Calcul de la durée du séjour
-    $date_debut = Carbon::parse($request->input('date_debut'));
-    $date_fin = Carbon::parse($request->input('date_fin'));
-    $duration = $date_debut->diffInDays($date_fin);
-    
-    // Calcul du prix total (prix par nuit * durée)
-    $totalPrice = $room->getPrice() * $duration;
-
  
 if($connecte){
   $reservation = new Reservation([
@@ -187,21 +186,12 @@ if($connecte){
   
      'note' => $request->input('note'),
  
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'telephone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ];
+  ]);
 } else{
 
   $reservation = new Reservation([
-
-
 'nom' => $request->input('nom'),
 'prenom' => $request->input('prenom'),
-
   'email' => $request->input('email'),
   'address' => $request->input('address'),
   'telephone' => $request->input('telephone'),
@@ -210,14 +200,7 @@ if($connecte){
   'date_fin' => $request->input('date_fin'),
   'limit' => $request->input('limit'),
   'nb_personnes'=>$request->input('nb_personnes'),
-
-
- 
   'note' => $request->input('note'),
-
-    
-
-
   ]);
 }
 
@@ -235,16 +218,10 @@ if($connecte){
       
     ]);   
       
-/*   $existingUsersWithEmail = User::where('email', $request['email'])->exists();
-  if (!$existingUsersWithEmail) {
-    $user->save();
-} */
-if (!$connecte) {
-  // Vérifier si l'utilisateur existe déjà par son email
-  $existingUser = User::where('email', $request->input('email'))->first();
 
+if (!$connecte) {
+  $existingUser = User::where('email', $request->input('email'))->first();
   if (!$existingUser) {
-      // Créer un nouvel utilisateur
       $user = User::create([
       'first_name' => $request->input('nom'),
       'last_name' => $request->input('prenom'),
@@ -252,6 +229,7 @@ if (!$connecte) {
       'phone' => $request->input('telephone'),
       'password' => Hash::make($request->input('telephone')),
      'adress' => $request->input('adress'),
+    
       ]);
   } else {
       // Utilisateur existant
@@ -264,6 +242,15 @@ if (!$connecte) {
 
 $room = Room::find($request->input('room_id'));
 
+    // Calcul de la durée du séjour
+    $date_debut = Carbon::parse($request->input('date_debut'));
+    $date_fin = Carbon::parse($request->input('date_fin'));
+    $duration = $date_debut->diffInDays($date_fin);
+    
+    // Calcul du prix total (prix par nuit * durée)
+    $totalPrice = $room->getPrice() * $duration;
+    
+//dd($totalPrice);
 $items=   Reservations_item::create([
   'reservation_id' => $reservation->id,
 
@@ -273,11 +260,9 @@ $items=   Reservations_item::create([
 
    'user_id' => $user->id,
     'prix' => $room->getPrice(),
+    'prix_unitaire' => $room->getPrice(),
+    'total' => $totalPrice,
 
-  //  'date_debut' => $request->input('date_debut'),
-    //'date_fin' => $request->input('date_fin'),
-   // 'limit' => $request->input('limit'),
-   // 'note' => $request->input('note'),
  'created_at' => now(),
   
 

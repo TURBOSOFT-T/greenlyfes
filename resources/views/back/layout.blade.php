@@ -18,6 +18,16 @@ $pages = DB::table('pages')->get();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css" />
+
+
+
+  <!-- CSS -->
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+<!-- JavaScript -->
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -61,9 +71,14 @@ $pages = DB::table('pages')->get();
 </nav>
 <!-- /.navbar -->
   <!-- /.navbar -->
+<style>
+.custom-bg {
+    background-color: #3b3232; /* Remplacez cette couleur par celle que vous souhaitez */
+}
 
+</style>
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar custom-bg sidebar-dark-primary elevation-4">
     <!-- Sidebar -->
     <div class="sidebar">
 
@@ -153,5 +168,37 @@ $pages = DB::table('pages')->get();
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js"></script>
 @yield('js')
+
+<style>
+  .main-sidebar {
+    position: fixed;
+    height: 100vh; /* Assure que la sidebar couvre toute la hauteur de l'écran */
+    overflow-y: auto; /* Permet de scroller si nécessaire */
+}
+.content-wrapper {
+    margin-left: 250px; /* Ajuste l'espace pour que le contenu ne chevauche pas la sidebar */
+}
+
+
+
+    /* Sidebar fixe */
+    .main-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh; /* Couvre toute la hauteur de l'écran */
+            background-color: #3b3232; /* Couleur personnalisée */
+            overflow-y: auto; /* Ajoute un défilement si le contenu déborde */
+        }
+
+       
+
+</style>
+
+<script>
+  $("[data-widget='pushmenu']").PushMenu();
+</script>
+
 </body>
 </html>

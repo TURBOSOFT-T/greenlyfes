@@ -6,7 +6,7 @@
                 <h2> Les détails sur votre logement </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back to Product List</a>
+                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
             </div>
         </div>
     </div>

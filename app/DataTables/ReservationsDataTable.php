@@ -8,11 +8,13 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Route;
 
 class ReservationsDataTable extends DataTable
 {
 
     use DataTableTrait;
+    
   
     public function dataTable($query)
     {
@@ -65,11 +67,33 @@ class ReservationsDataTable extends DataTable
     }
 
    
-    public function query(Reservation $model)
-    {
-        return $model->newQuery();
-    }
     
+    public function query1(Reservation $model)
+    {
+        $query = $model->newQuery();
+
+        if(Route::currentRouteNamed('reservations.indexnew')) {
+            $query->has('unreadNotifications');
+        }
+        return $query;
+    }
+
+    public function query(Reservation $reservation)
+    {
+        
+        $query = isRole('redac') ? 
+            $reservation->whereHas('room.user', function ($query) {
+                $query->where('users.id', auth()->id());
+            }) : 
+            $reservation->newQuery();
+
+        if(Route::currentRouteNamed('reservations.indexnew')) {
+            $query->has('unreadNotifications');
+        }
+
+        return $query->with('user:id,name,valid', 'room:id,title,slug');
+    }
+
 
     /**
      * Optional method if you want to use html builder.
@@ -84,7 +108,14 @@ class ReservationsDataTable extends DataTable
                    
                     ->minifiedAjax()
                     ->dom('Blfrtip')
-                    ->lengthMenu();
+                    ->orderBy(1)
+                    ->buttons([
+                        Button::make('create')
+                            ->text('<i class="fas fa-plus"></i> ' . __('Ajouter une Réservation'))
+                            ->action("window.location = '" . route('reservations.create') . "';")
+                            ->className('btn btn-primary'),
+                    ])
+                    ->lengthMenu([10, 25, 50, 100]); // Options de pagination
     }
 
    

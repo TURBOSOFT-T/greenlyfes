@@ -10,7 +10,7 @@
             @endif
 
             @if ($users)
-                <x-back.box type='success' :number='$users' title='New users' route='users.indexnew' model='user'>
+                <x-back.box type='success' :number='$users' title='Nouvels utilisateurs' route='users.indexnew' model='user'>
                 </x-back.box>
             @endif
 
@@ -58,7 +58,16 @@
  <x-back.box type='primary' :number='$reservations' title='Les nouvelles reservations' route='reservations.indexnew'
                     model='Reservation'>
                 </x-back.box>
+            @endif 
+
+            @if ($rooms)
+            <x-back.box type='success' :number='$rooms' title='Les nouvelles chambres' route='rooms.indexnew'
+            model='Room'>
+            </x-back.box>
             @endif
+
+                
+           
 
 
 

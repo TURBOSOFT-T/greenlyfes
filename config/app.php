@@ -269,10 +269,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'description' => 'GREENLYFE est une entreprise spécialisée en intermediation  des 
+    'description' => 'GREENLYFES est une entreprise spécialisée en intermediation  des 
 entreprises. Nous intervenons dans cinq secteurs: les études, les produits 
-industriels, la médecine, informatique, et la conception électronique et mécanique',
-    'author' => 'GREENLYFE ',
+artisanaux, la santé, informatique, et le tourisme',
+    'author' => 'GREENLYFEES ',
 
     /*
     |--------------------------------------------------------------------------
