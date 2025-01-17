@@ -131,7 +131,6 @@ public function list(Request $request)
     return view('users.index', compact('data'))
     ->with('i', ($request->input('page', 1) - 1) * 5);
 }
-  
 
 
 

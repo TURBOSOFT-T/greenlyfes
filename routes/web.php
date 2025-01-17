@@ -254,7 +254,7 @@ Route::prefix('admin')->group(function () {
 
 
         //////Rooms
-       Route::resource('rooms', BackResourceController::class)->except(['show']);
+       Route::resource('rooms', BackRoomController::class)->except(['show']);
        Route::resource('saverooms', BackRoomController::class);
  
 
@@ -336,12 +336,6 @@ Route::prefix('admin')->group(function () {
 
         // Contacts
         Route::resource('contacts', BackResourceController::class)->only(['index', 'destroy']);
-     //   Route::resource('conta', BackResourceController::class)->except(['show']);
-      // Route::delete('conta/{id}', [ContactController::class, 'destroy'])->name('conta.destroy');
-   // Route::resource('conta', \App\Http\Controllers\Back\ResourceController::class);
-
-
-        
         Route::name('contacts.indexnew')->get('newcontacts', [BackResourceController::class, 'index']);
 
         // Rooms

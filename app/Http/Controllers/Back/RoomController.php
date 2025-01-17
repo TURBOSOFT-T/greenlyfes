@@ -33,18 +33,17 @@ class RoomController extends Controller
 
     public function create()
     {
-      //  $books = Book::all();
-          // Récupérer l'utilisateur actuellement connecté
-    $user = auth()->user();
+       // $books = Book::all();
+       $user = auth()->user();
 
-    // Vérifier si l'utilisateur est admin
-    if ($user->isAdmin()) {
-        // Si l'utilisateur est admin, récupérer tous les livres
-        $books = Book::all();
-    } else {
-        // Sinon, récupérer uniquement les livres de l'utilisateur
-        $books = Book::where('user_id', $user->id)->get();
-    }
+       // Vérifier si l'utilisateur est admin
+       if ($user->isAdmin()) {
+           // Si l'utilisateur est admin, récupérer tous les livres
+           $books = Book::all();
+       } else {
+           // Sinon, récupérer uniquement les livres de l'utilisateur
+           $books = Book::where('user_id', $user->id)->get();
+       }
      
         return view('back.rooms.form', compact('books'));
     }
