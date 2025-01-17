@@ -303,6 +303,28 @@ return [
         ],
     ],
 
+    'Galleries' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Toutes les galleries',
+                'role'  => 'admin',
+                'route' => 'galleries.index',
+            ],
+            [
+                'name'  => 'Ajouter gallerie',
+                'role'  => 'admin',
+                'route' => 'galleries.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'galleries.edit',
+            ],
+        ],
+    ],
+
  /*    'Services' => [
         'icon' => 'list',
         'role'   => 'admin',

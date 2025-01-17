@@ -97,6 +97,12 @@ return [
         'create' => 'Hero Creation',
         'edit'   => 'Hero Edit',
     ],
+
+    'galleries' => [
+        'index'  => 'galleries',
+        'create' => 'Gallery Creation',
+        'edit'   => 'Gallery Edit',
+    ],
     'services' => [
         'index'  => 'Services',
         'create' => 'Services Creation',

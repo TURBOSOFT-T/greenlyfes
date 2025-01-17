@@ -47,6 +47,7 @@ use App\Http\Controllers\Back\{
     BookController as BackBookController,
     RoomController as  BackRoomController,
     ReservationController as BackReservationController,
+    GallerieController as BackGalleryController
 
 };
 
@@ -364,6 +365,11 @@ Route::prefix('admin')->group(function () {
         // Heros
         Route::resource('homes', BackResourceController::class)->except(['show']);
         Route::resource('heros', HeroPageController::class);
+
+        ///Galleries
+        Route::resource('galleries', BackResourceController::class)->except(['show']);
+        Route::resource('savegalleries', BackGalleryController::class);
+   //     Route::name('galleries.create')->get('galleries/create}', [BackGalleryController::class, 'create']);
 
 
         // Services

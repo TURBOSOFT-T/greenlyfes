@@ -33,7 +33,7 @@ class BooksDataTable extends DataTable
                         'warning',
                         __('Edit'),
                         'edit'
-                    ) . $this->button(
+                    ) . $this->deleteButton(
                         'books.destroy',
                         $book->id,
                         'danger',
@@ -44,6 +44,64 @@ class BooksDataTable extends DataTable
             })
            ->addColumn('action', 'books.action');
 
+    }
+
+    protected function deleteButton($route, $id, $type, $text, $icon, $confirmation = null)
+    {
+        $url = route($route, $id);
+        $csrfToken = csrf_token();
+        $confirmationText = $confirmation ?? 'Êtes-vous sûr de vouloir supprimer cet élément ?';
+    
+        return "
+        <button type='button' class='btn btn-$type' onclick=\"
+            Swal.fire({
+                title: '$confirmationText',
+                text: 'Cette action est irréversible !',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, supprimer !',
+                cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch('$url', {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '$csrfToken',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire(
+                                'Supprimé !',
+                                ' Suppression avec succès.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire(
+                                'Erreur !',
+                                'Un problème est survenu lors de la suppression.',
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire(
+                            'Erreur !',
+                            'Un problème est survenu lors de la suppression.',
+                            'error'
+                        );
+                    });
+                }
+            });
+        \">
+            <i class='fas fa-$icon'></i> $text
+        </button>
+        ";
     }
 
 

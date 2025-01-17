@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use App\Events\ModelCreated;
 
-class Gallerie extends Model
+class Gallery extends Model
 {
     use HasFactory, Notifiable;
 

@@ -23,10 +23,10 @@
             <div class="card">
 
                 <form method="post"
-                    action="{{ Route::currentRouteName() === 'services.edit' ? route('services.update', $service->id) : route('services.store') }}"
+                    action="{{ Route::currentRouteName() === 'galleries.edit' ? route('galleries.update', $gallery->id) : route('savegalleries.store') }}"
                     enctype="multipart/form-data">
 
-                    @if(Route::currentRouteName() === 'services.edit')
+                    @if(Route::currentRouteName() === 'galleries.edit')
                     @method('PUT')
                     @endif
 
@@ -42,23 +42,23 @@
                             @endif
 
                             <x-back.card type='info' :outline="true" title=''>
-                                <x-back.input title='Title' name='title' :value="isset($service) ? $service->title : ''"
+                                <x-back.input title='Title' name='titre' :value="isset($gallery) ? $gallery->titre : ''"
                                     input='text' :required="true">
                                 </x-back.input>
-                                <x-back.input title='Slug' name='slug' :value="isset($service) ? $service->slug : ''"
+                               {{--  <x-back.input title='Slug' name='slug' :value="isset($gallery) ? $gallery->slug : ''"
                                     input='text' :required="true">
-                                </x-back.input>
+                                </x-back.input> --}}
 
                                 <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
-                                    <label for="description">Image</label>
+                                    <label for="description">Image(640*516):</label>
                                     @if(isset($home) && !$errors->has('image'))
                                     <div>
-                                        <p><img src="{{ asset('images/thumbs/' . $service->image) }}"></p>
+                                        <p><img src="{{ asset('images/thumbs/' . $gallery->image) }}"></p>
                                         <button id="changeImage" class="btn btn-warning">Changer d'image</button>
                                     </div>
                                     @endif
                                     <div id="wrapper">
-                                        @if(!isset($service) || $errors->has('image'))
+                                        @if(!isset($gallery) || $errors->has('image'))
                                         <div class="custom-file">
                                             <input type="file" id="image" name="image"
                                                 class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
@@ -77,8 +77,8 @@
                               
 
                                <x-back.card type='primary' title='Description'>
-                                <x-back.input name='body'
-                                    :value="isset($service) ? $service->body : ''" input='textarea' rows=5
+                                <x-back.input name='description'
+                                    :value="isset($gallery) ? $gallery->description : ''" input='textarea' rows=5
                                     :required="true">
                                 </x-back.input>
                             </x-back.card>

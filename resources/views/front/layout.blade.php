@@ -564,7 +564,107 @@
     </div>
     <!-- choose area end -->
 
+ <!-- project area start -->
+ <div class="tp-project-2-area fix pb-130">
+    <div class="container-fluid p-0">
+       <div class="row">
+          <div class="col-xl-12">
+             <div class="tp-project-2-wrapper">
+                <div class="swiper-container tp-project-2-active">
+                   <div class="swiper-wrapper">
+                    @foreach ($galleries as $gallery)
+                    <div class="swiper-slide">
+                        <div class="tp-project-2-item p-relative">
 
+                         
+                            
+                          
+                            
+                           <div class="tp-project-2-thumb">
+                              <img src="{{ url('public/Image/' . $gallery->image) }}" alt="" width="300" height="300">
+                           </div>
+                           <div class="tp-project-2-content z-index">
+                            {{--   <span>Garde</span> --}}
+                              <h4 class="tp-project-2-title"><a class="text-anim" href="#">{{ $gallery->titre ?? '' }}</a></h4>
+                           </div>
+                           <div class="tp-project-2-button">
+                              <a class="tp-btn-project"
+                              data-bs-toggle="modal" 
+                    data-bs-target="#galleryModal" 
+                    data-title="{{ $gallery->titre }}" 
+                    data-description="{{ $gallery->description }}" 
+                    data-image="{{ url('public/Image/' . $gallery->image) }}"
+                              
+                              href="#"><span>Read More</span>
+                                 <i>
+                                    <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
+                                          fill="currentcolor" />
+                                    </svg>
+                                 </i>
+                              </a>
+                           </div>
+                        </div>
+                     </div>  
+                    @endforeach
+                     
+                    
+                   </div>
+                   <div class="tp-slider-dots mt-40 text-center"></div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="galleryModalLabel">Détails</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img id="modal-image" src="" alt="" class="img-fluid mb-4" />
+                </div>
+                <h4 id="modal-title"></h4>
+                <p id="modal-description"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var galleryModal = document.getElementById('galleryModal');
+    galleryModal.addEventListener('show.bs.modal', function (event) {
+        // Récupère le bouton qui déclenche le modal
+        var button = event.relatedTarget;
+
+        // Récupère les données
+        var title = button.getAttribute('data-title');
+        var description = button.getAttribute('data-description');
+        var image = button.getAttribute('data-image');
+
+        // Met à jour les éléments du modal
+        var modalTitle = galleryModal.querySelector('#modal-title');
+        var modalDescription = galleryModal.querySelector('#modal-description');
+        var modalImage = galleryModal.querySelector('#modal-image');
+
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        modalImage.src = image;
+    });
+});
+
+</script>
+ <!-- project area end -->
 
     <!-- contact area start -->
     <div class="tp-contact-area tp-contact-2-style-2 tp-contact-style-3 theme-bg-2 p-relative">

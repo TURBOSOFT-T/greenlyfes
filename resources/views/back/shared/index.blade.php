@@ -23,6 +23,9 @@
 @elseif(Route::currentRouteName() === 'books.index')
 
 <a class="btn btn-primary mb-3" href="{{ route('savebooks.create') }}" role="button">Créer logement</a>
+@elseif(Route::currentRouteName() === 'galleries.index')
+
+<a class="btn btn-primary mb-3" href="{{ route('savegalleries.create') }}" role="button">Créer Gallerie</a>
 
 @elseif(Route::currentRouteName() === 'posts.index')
 
