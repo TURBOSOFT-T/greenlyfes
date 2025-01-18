@@ -360,7 +360,7 @@
 
 
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="mission" class="form-label">Pourquoi nous choisir(Notre Mission)</label>
+                <label for="mission" class="form-label">Pourquoi nous choisir(Bungalows et Espaces Privés)</label>
                 <textarea id="mission" rows="4" cols="50" name="mission" class="form-control"
                     placeholder="Ajouter le description de votr mission" >{{ old('mission', $config->mission) }}</textarea>
                 @error('mission')
@@ -370,7 +370,7 @@
             <br><br>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="vision" class="form-label">Pourquoi nous choisir(Notre vision)</label>
+                <label for="vision" class="form-label">Pourquoi nous choisir(Club House et Espaces Communautaires)</label>
                 <textarea id="vision" rows="4" cols="50" name="vision" class="form-control"
                     placeholder="Ajouter le description de votre vision" >{{ old('vision', $config->vision) }}</textarea>
                 @error('vision')
@@ -380,7 +380,7 @@
             <br><br>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="valeurs" class="form-label">Pourquoi nous choisir(Nos valeurs)</label>
+                <label for="valeurs" class="form-label">Pourquoi nous choisir(Séjours et Services Proposés)</label>
                 <textarea id="valeurs" rows="4" cols="50" name="valeurs" class="form-control"
                     placeholder="Ajouter le description de vos valeurs" >{{ old('valeurs', $config->valeurs) }}</textarea>
                 @error('valeurs')
@@ -390,7 +390,7 @@
             <br><br>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="domaine" class="form-label">A propos de nous(Nos domaines d'd’Intervention)</label>
+                <label for="domaine" class="form-label">A propos de nous(Séjours Longs et Immersion)</label>
                 <textarea id="domaine" rows="4" cols="50" name="domaine" class="form-control"
                     placeholder="Ajouter le description de votre domaine " >{{ old('domaine', $config->domaine) }}</textarea>
                 @error('domaine')
@@ -400,7 +400,7 @@
             <br><br>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="equipe" class="form-label">A propos de nous(Notre équipe)</label>
+                <label for="equipe" class="form-label">A propos de nous(Alimentation Saine et Locale)</label>
                 <textarea id="equipe" rows="4" cols="50" name="equipe" class="form-control"
                     placeholder="Ajouter le description de votre équipe" >{{ old('equipe', $config->equipe) }}</textarea>
                 @error('equipe')

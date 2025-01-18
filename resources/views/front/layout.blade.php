@@ -74,9 +74,9 @@
                                 <span class="tp-section-subtitle">
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Porquoi nous choisir') }} ?
                                 </span>
-                                <h1>
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('Notre professionnalisme') }}
-                                </h1>
+                                <h3>
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Infrastructure et Aménagement') }}
+                                </h3>
                             </div>
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Notre mission') }}
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Bungalows et Espaces Privés') }}
                                     </h5>
                                     <p>
                                         {!! \App\Helpers\TranslationHelper::TranslateText($config->mission ?? '') !!}
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Notre vision') }}</h5>
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Club House et Espaces Communautaires') }}</h5>
                                     <p>
 
 
@@ -120,7 +120,7 @@
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">
 
-                                        {{ \App\Helpers\TranslationHelper::TranslateText(' Nos Valeurs') }}
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Espaces Communs et Activités') }}
                                     </h5>
                                     <p>
 
@@ -461,7 +461,7 @@
                         <div class="tp-choose-left">
                             <div class="tp-choose-title-box mb-20" style="text-align: justify">
                                 <span class="tp-section-subtitle">
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('A propos de nous') }}
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Séjours et Services Proposés') }}
                                 </span>
                                 <h6>
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Transformez vos défis en opportunités avec GREENLYFE') }}
@@ -481,7 +481,7 @@
                                 </div>
 
                                 <div class="tp-choose-content" style="text-align: justify">
-                                    <h5 class="tp-choose-title">Notre Domaine</p>
+                                    <h5 class="tp-choose-title">Séjours Longs et Immersion</p>
                                         <p>
                                             {{ $config->domaine ?? ' ' }}
                                         </p>
@@ -495,7 +495,7 @@
                                     </span>
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
-                                    <h5 class="tp-choose-title">Notre Équipe</h5>
+                                    <h5 class="tp-choose-title">Alimentation Saine et Locale</h5>
                                     <p>
                                         {{ $config->equipe ?? ' ' }}
                                     </p>
