@@ -58,10 +58,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('/room/check-slug', [SlugController::class, 'checkRoom']);
-
 Route::get('/book/check-slug', [SlugController::class, 'checkBook']);
-
-
 Route::post('/locale', [LocaleController::class ,'change'])->name("locale.change");
  
 /////Maintenance
@@ -180,7 +177,6 @@ Route::get('/check-reserved-dates', function () {
     
     return response()->json($reservedDates);
 })->name('check-reserved-dates');
-//Route::get('check-occupied-periods', [FrontReservationController::class, 'checkOccupiedPeriods'])->name('check.occupied.periods');
 
 Route::get('check-occupied-periods/{roomId}', [FrontReservationController::class, 'getOccupiedPeriods'])->name('check.occupied.periods');
 
@@ -208,6 +204,16 @@ Route::name('language')->get('language/{lang}', 'HomeController@language');
 |--------------------------------------------------------------------------|
 */
 
+
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::get('rents', function () {
+        return view('back.dashboard', ['title' => 'Mes réservations']);
+    })->name('rents');
+    Route::get('payments', function () {
+        return view('back.dashboard', ['title' => 'Mes paiements']);
+    })->name('payments');
+});
+
 Route::prefix('admin')->group(function () {
 
 
@@ -217,9 +223,6 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware('redac')->group(function () {
-
-
-
         // Dashboard
         Route::name('admin')->get('/', [AdminController::class, 'index']);
         // Purge
@@ -227,36 +230,29 @@ Route::prefix('admin')->group(function () {
         // Posts
         Route::resource('posts', BackPostController::class)->except(['show', 'create']);
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
-
-        ///Logements
-        
+  
         ///Logements
         Route::resource('logements', BackResourceController::class)->except(['show']);
 
         Route::resource('books', BackResourceController::class)->except(['show']);
         Route::resource('savebooks', BackBookController::class);
+      
 
         ///Réservations
-        
         Route::name('reservations.indexnew')->get('newreservations', [BackResourceController::class, 'index']);
         Route::get('/reservations/create', [BackResourceController::class, 'create'])->name('reservations.create');
-
-
         Route::resource('reservations', BackResourceController::class)->except(['show']);
       //  Route::name('reservations-show', BackReservationController::class, 'reservations')->name('reservations-show');
        // Route::resource('showreservations', BackReservationController::class);
         Route::get('reservations/{id}', [BackReservationController::class, 'show'])->name('reservations.show');
         Route::get('editreservations/{id}/edit', [BackReservationController::class, 'edit'])->name('editreservations.edit');
-
-
-
        // Route::name('reservations.indexnew')->get('newusers', [BackResourceController::class, 'index']);
-
-
-
         //////Rooms
        Route::resource('rooms', BackRoomController::class)->except(['show']);
        Route::resource('saverooms', BackRoomController::class);
+      // Route::get('/reservations/{room_id}', [BackReservationController::class, 'reservations'])->name('reservations.create');
+       Route::get('/reservations/create/{room_id}', [BackReservationController::class, 'create'])->name('reservations.create');
+
  
 
         //  Route::name('posts.edit')->put('posts/{post}', [BackPostController::class, 'update']);
@@ -283,10 +279,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('savecategories', CategoryController::class);
 
         /////specialites
-
         Route::resource('specialites', BackResourceController::class)->except(['show']);
 
-       
         Route::name('books.indexnew')->get('newbooks', [BackResourceController::class, 'index']);
 
         ///Ecoles
@@ -299,8 +293,6 @@ Route::prefix('admin')->group(function () {
         Route::name('inscriptions.indexnew')->get('newinscriptions', [BackResourceController::class, 'index']);
         Route::resource('saveinscriptions', InscriptionController::class);
 
-        /////Ecoles
-
         /////Hopitals
         Route::resource('hopitals', BackResourceController::class)->except(['show']);
         // Route::name('hopitals.indexnew')->get('newhopitals', [BackResourceController::class, 'index']);
@@ -311,17 +303,13 @@ Route::prefix('admin')->group(function () {
         Route::name('consultations.indexnew')->get('newconsultations', [BackResourceController::class, 'index']);
         Route::resource('saveconsultations', ConsultationController::class);
 
-
         ////////Filieres
         Route::resource('filieres', BackResourceController::class)->except(['show']);
-
-
 
         // Products
         Route::resource('products', ProductController::class);
         Route::name('products.indexnew')->get('newproducts', [ProductController::class, 'index']);
         Route::resource('saveproducts', ProductController::class);
-
 
         // Users
         Route::resource('users', BackUserController::class)->except(['show', 'create', 'store']);
@@ -343,14 +331,11 @@ Route::prefix('admin')->group(function () {
       //  Route::resource('rooms', BackRoomController::class)->except(['show']);
         Route::name('rooms.indexnew')->get('newrooms', [BackRoomController::class, 'index']);
 
-
-        
-
         ///Testimonitals
 
         Route::name('testimonials.indexnew')->get('newtestimonials', [BackResourceController::class, 'index']);
 
-     Route::resource('testimonials', BackTestimonialController::class);
+       Route::resource('testimonials', BackTestimonialController::class);
       //  Route::resource('testimonials', BackResourceController::class)->except(['show']);
         Route::get('testimoniales/{id}/approve', [BackTestimonialController::class, 'approve'])->name('testimoniales.approve');
         Route::get('testimoniales/{id}/disapprove', [BackTestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
@@ -371,24 +356,17 @@ Route::prefix('admin')->group(function () {
         Route::resource('savegalleries', BackGalleryController::class);
    //     Route::name('galleries.create')->get('galleries/create}', [BackGalleryController::class, 'create']);
 
-
         // Services
-
         Route::resource('services', ServiceController::class);
 
         ////Sponsors
         Route::resource('sponsors', SponsorController::class);
 
-
         Route::resource('contactadmins', ConfigController::class);
-
-
 
         // all users
         Route::get('/send/mail/view/all', [BackUserController::class, 'emailViewAll'])->name('send.email.view.all');
-
         Route::post('/store/email/all', [BackUserController::class, 'storeAllUserEmail'])->name('store.alluser.email');
-
 
         // single users
         Route::get('/send/mail/view/{id}', [BackUserController::class, 'emailView'])->name('send.email.view');

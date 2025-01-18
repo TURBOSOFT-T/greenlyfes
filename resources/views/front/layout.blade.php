@@ -196,7 +196,7 @@
                         <div class="col-xl-5">
                             <div class="tp-service-4-title-box text-center mb-55">
                                 <span class="tp-section-subtitle">
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('Les chambres les plus populaires') }}</span>
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Les dernière publications') }}</span>
                                 </span>
                                 {{-- <h4 class="tp-section-title">Our Awesome & Best
                                Services</h4> --}}
@@ -567,6 +567,21 @@
  <!-- project area start -->
  <div class="tp-project-2-area fix pb-130">
     <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5">
+                        <div class="tp-service-4-title-box text-center mb-55">
+                            <span class="tp-section-subtitle">
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Galleries') }}</span>
+                            </span>
+                            {{-- <h4 class="tp-section-title">Our Awesome & Best
+                           Services</h4> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
        <div class="row">
           <div class="col-xl-12">
              <div class="tp-project-2-wrapper">
@@ -595,7 +610,7 @@
                     data-description="{{ $gallery->description }}" 
                     data-image="{{ url('public/Image/' . $gallery->image) }}"
                               
-                              href="#"><span>Read More</span>
+                              href="#"><span>Voir plus</span>
                                  <i>
                                     <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
                                        xmlns="http://www.w3.org/2000/svg">
@@ -853,7 +868,7 @@
             <div class="text-center mt-30">
                 <button type="button"  class="tp-btn-theme"{{-- class="btn btn-primary" --}} data-bs-toggle="modal" data-bs-target="#exampleModal">
                     
-                    {{ \App\Helpers\TranslationHelper::TranslateText('Laissez un avis') }}
+                    {{ \App\Helpers\TranslationHelper::TranslateText('Laissez un témoignage') }}
                 </button>
             </div>
 
@@ -1111,8 +1126,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-blog-title-box text-center mb-60">
-                        <span class="tp-section-subtitle">Recent Blogs</span>
-                        <h4 class="tp-section-title">Latest Blog & News</h4>
+                        <span class="tp-section-subtitle">Les actualités</span>
+                        <h4 class="tp-section-title"></h4>
                     </div>
                 </div>
             </div>

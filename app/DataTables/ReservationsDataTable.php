@@ -124,15 +124,6 @@ class ReservationsDataTable extends DataTable
         ";
     }
     
-    public function query1(Reservation $model)
-    {
-        $query = $model->newQuery();
-
-        if(Route::currentRouteNamed('reservations.indexnew')) {
-            $query->has('unreadNotifications');
-        }
-        return $query;
-    }
 
     public function query(Reservation $reservation)
     {
@@ -151,11 +142,7 @@ class ReservationsDataTable extends DataTable
     }
 
 
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
-     */
+ 
     public function html()
     {
         return $this->builder()

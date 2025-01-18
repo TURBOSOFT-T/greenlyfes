@@ -5,7 +5,7 @@ use App\DataTables\RoomsDataTable;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Models\Reservation;
+use App\Models\{Reservation,Room, Config};
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 
@@ -26,10 +26,31 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($room_id = null)
     {
-        //
+        $room = $room_id ? Room::findOrFail($room_id) : null;
+
+        $configs = Config::firstOrFail();
+      //  $room =Room:: findOrFail($id);
+    
+    
+    
+   //  return view('back.reservations.checkout', compact('room'));
+return view('front.reservations.checkout', compact('configs','room'));
     }
+
+
+    public function reservation($id)
+    {
+      $configs = Config::firstOrFail();
+      $room =Room:: findOrFail($id);
+  
+  
+      return view('front.reservations.checkout', compact('configs','room'));
+  
+    }
+  
+    
 
     /**
      * Store a newly created resource in storage.

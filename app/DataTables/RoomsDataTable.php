@@ -14,7 +14,68 @@ class RoomsDataTable extends DataTable
 {
    
     use DataTableTrait;
+
     public function dataTable($query)
+{
+    return datatables()
+        ->eloquent($query)
+
+        ->editColumn('action', function ($room) {
+            // Bouton pour afficher les détails de la chambre
+            $viewButton = $this->button(
+                'saverooms.show',
+                $room->id,
+                'info',
+                __('Voir Détails'),
+                'eye'
+            );
+
+            // Bouton pour éditer la chambre
+            $editButton = $this->button(
+                'saverooms.edit',
+                $room->id,
+                'warning',
+                __('Edit'),
+                'edit'
+            );
+
+            // Bouton pour supprimer la chambre
+            $deleteButton = $this->deleteButton(
+                'rooms.destroy',
+                $room->id,
+                'danger',
+                __('Delete'),
+                'trash-alt',
+                __('Really delete this room?')
+            );
+
+            // Nouveau bouton pour créer une réservation pour cette chambre
+            $reservationButton = $this->button(
+                'reservations.create',
+                ['room_id' => $room->id ],
+                'success',
+                __('Ajouter Réservation'),
+                'plus-circle'
+            );
+
+            // Retourner tous les boutons combinés
+            return $viewButton . ' ' . $editButton . ' ' . $deleteButton . ' ' . $reservationButton;
+        })
+        
+        ->addColumn('action', 'rooms.action');
+}
+protected function button($route, $parameters, $type, $text, $icon)
+{
+    $url = route($route, $parameters);
+
+    return "
+        <a href='$url' class='btn btn-$type btn-sm' title='$text'>
+            <i class='fas fa-$icon'></i> $text
+        </a>
+    ";
+}
+
+    public function dataTable1($query)
     {
         return datatables()
             ->eloquent($query)

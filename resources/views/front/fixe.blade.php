@@ -356,9 +356,13 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"
                                             style="padding:0%; font-size:100%;padding:0%">
-                                            {{-- <a class="dropdown-item" href="{{ route('comptes') }}">
+
+                                          {{--   <a href="{{ route('rents') }}" class="cursor-pointer mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-110 duration-300 ease-in-out">
+                                                Mon tableau de bord
+                                              </a> --}}
+                                            {{--  <a class="dropdown-item" href="{{ route('rents') }}">
                                                 <i class="bx bx-tachometer text-left"></i>
-                                                <span>Mes commandes</span>
+                                                <span>Mes réservations</span>
                                             </a> --}}
 
                                             {{-- <a class="dropdown-item" href="{{ route('favories') }}">
