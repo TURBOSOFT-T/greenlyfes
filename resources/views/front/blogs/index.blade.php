@@ -43,12 +43,12 @@
             <div class="col-12">
                 <div class="breadcrumb__content z-index text-center">
                     <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Nos blogs</h3>
+                        <h3 class="breadcrumb__title">Nos  actualités</h3>
                     </div>
                     <div class="breadcrumb__list">
                         <span><a href="#">Accueil</a></span>
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Blogs</b></span>
+                        <span><b>Actualités</b></span>
                     </div>
                 </div>
             </div>
