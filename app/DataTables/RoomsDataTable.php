@@ -51,7 +51,7 @@ class RoomsDataTable extends DataTable
 
             // Nouveau bouton pour créer une réservation pour cette chambre
             $reservationButton = $this->button(
-                'reservations.create',
+                'reservation.create',
                 ['room_id' => $room->id ],
                 'success',
                 __('Ajouter Réservation'),

@@ -251,7 +251,7 @@ Route::prefix('admin')->group(function () {
        Route::resource('rooms', BackRoomController::class)->except(['show']);
        Route::resource('saverooms', BackRoomController::class);
       // Route::get('/reservations/{room_id}', [BackReservationController::class, 'reservations'])->name('reservations.create');
-       Route::get('/reservations/create/{room_id}', [BackReservationController::class, 'create'])->name('reservations.create');
+       Route::get('/reservation/create/{room_id}', [BackReservationController::class, 'create'])->name('reservation.create');
 
  
 
