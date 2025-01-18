@@ -34,7 +34,7 @@
                                                 {{ $home->title }}
                                             </p>
                                             <h1 class="display-10 mb-10 text-white animated slideInRight">
-                                                {{ $home->body }}
+                                                {!!  $home->body !!}
                                             </h1>
                                             <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
                                                 {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
