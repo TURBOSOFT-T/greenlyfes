@@ -22,9 +22,15 @@
                             <img class="d-block w-100" src="{{ url('public/Image/' . $home->image) }}" alt="Image">
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="container">
+                                    <style>
+                                        .custom-text-white {
+    color: white !important;
+}
+
+                                    </style>
                                     <div class="row justify-content-center">
                                         <div class="col-lg-10 text-center">
-                                            <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">
+                                            <p class="fs-5 fw-medium custom-text-white text-primary text-uppercase animated slideInRight">
                                                 {{ $home->title }}
                                             </p>
                                             <h1 class="display-10 mb-10 text-white animated slideInRight">
