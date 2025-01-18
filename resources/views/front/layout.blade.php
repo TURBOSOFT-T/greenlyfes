@@ -162,7 +162,11 @@
                         <div class="tp-service-4-wrap">
                             <div class="swiper-container tp-service-4-active">
                                 <div class="swiper-wrapper">
-
+                                    @if ($logements->isEmpty())
+                                    <div class="alert alert-info">
+                                        <p>Aucun logement n'est disponible pour le moment.</p>
+                                    </div>
+                                @else
                                     @foreach ($logements as $logement)
                                         <div class="swiper-slide">
                                             <div class="tp-service-4-item text-center">
@@ -179,6 +183,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    @endif
 
 
                                 </div>
