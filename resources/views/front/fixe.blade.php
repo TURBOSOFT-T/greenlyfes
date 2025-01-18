@@ -23,7 +23,7 @@
         <meta name="keywords" content="{{ $post->meta_keywords }}">
     @endif
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/Image/Parametres/' . $config->icon) }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/Image/parametres/' . $config->icon) }}">
     {{--  <img class="card-img-top product-image" src="{{ url('public/Image/Parametres/' . $config->logo) }}"> --}}
     <!-- CSS here -->
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
