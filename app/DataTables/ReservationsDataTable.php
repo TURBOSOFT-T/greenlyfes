@@ -51,7 +51,7 @@ class ReservationsDataTable extends DataTable
                             </a>';
 
                 // Bouton "Supprimer"
-                $deleteButton = $this->button(
+                $deleteButton = $this->deleteButton(
                     'reservations.destroy', 
                     $reservation->id, 
                     'danger', 
