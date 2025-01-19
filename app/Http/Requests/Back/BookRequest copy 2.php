@@ -29,13 +29,14 @@ class BookRequest extends FormRequest
         return $rules = [
             'name' => 'required|max:255',
             'body' => 'required|max:65000',
-            'slug' => ['required', 'max:255', new Slug, 'unique:books,slug' . $id],
+            'slug' => ['required', 'max:5055', new Slug, 'unique:books,slug' . $id],
             'excerpt' => 'nullable|max:50000',
-            'meta_description' => 'nullable|max:50060',
+            'meta_description' => 'nullable|max:5060',
             'meta_keywords' => 'required|regex:' . $regex,
-            'seo_title' => 'nullable|max:600',
+            'seo_title' => 'nullable|max:500',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
           'image' => 'sometimes|required|file|mimetypes:image/*',
+          'cover' => 'sometimes|required|file|mimetypes:image/*',
 
           ///  'logements' => 'required',
             'tags' => 'nullable|regex:' . $regex,

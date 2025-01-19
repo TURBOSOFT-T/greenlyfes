@@ -166,8 +166,8 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
 
         if ($request->hasFile('cover')) {
             // Supprimer l'ancienne image du serveur
-            if ($img->image) {
-                unlink(public_path('public/Image/'. $img->image));
+            if ($img->cover) {
+                unlink(public_path('public/Image/'. $img->cover));
             }
 
 

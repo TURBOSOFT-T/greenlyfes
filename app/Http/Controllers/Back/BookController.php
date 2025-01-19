@@ -6,7 +6,7 @@ use App\DataTables\BooksDataTable;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Http\Requests\Back\BookRequest;
+use App\Http\Requests\Back\{BookRequest,BookUpdateRequest} ;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
@@ -144,20 +144,20 @@ class BookController extends Controller
 
 
 
-    public function update(BookRequest $request, $id)
+    public function update(BookUpdateRequest  $request, $id)
     {
 
         $user = Auth::user();
-        $article = Book::findOrFail($id);
 
 
-        $input =
-            Book::findOrFail($id);
-        $img = Book::find($id);
-        File::delete(public_path('/public/Image' . $img->image));
-        File::delete(public_path('/public/Image' . $img->cover));
+        $input = $request->all();
+        $input = Book::findOrFail($id);
+       $img = Book::find($id);
+        File::delete(public_path('/public/Image' . $input->image));
+        File::delete(public_path('/public/Image' . $input->cover));
 
 
+   
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image du serveur
             if ($img->image) {
@@ -175,7 +175,7 @@ class BookController extends Controller
 
         if ($request->hasFile('cover')) {
             // Supprimer l'ancienne image du serveur
-            if ($img->image) {
+            if ($img->cover) {
                 unlink(public_path('public/Image/'. $img->image));
             }
 
@@ -235,7 +235,7 @@ class BookController extends Controller
   
         $user->books()->save($input);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
+        return redirect()->route('books.index')->with('success', 'Product updated successfully!');
     }
 
 

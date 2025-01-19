@@ -37,13 +37,7 @@
                         placeholder="Title" required>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                    <strong>Prix:</strong>
-                    <input type="number" name="price" value="{{ $book->price }}" class="form-control"
-                        placeholder="Prix" required>
-                </div>
-            </div> 
+          
 
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
