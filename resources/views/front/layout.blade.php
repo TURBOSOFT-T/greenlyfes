@@ -58,12 +58,28 @@
         </div>
 
 
+<style>
+    .responsive-image {
+    width: 100%;      /* L'image occupe toute la largeur */
+    height: 300px;    /* Hauteur fixe */
+    object-fit: cover; /* Ajuste le contenu sans déformer */
+}
 
+
+@media (max-width: 768px) {
+    .responsive-image {
+        max-width: 100%; /* Pleine largeur sur mobile */
+        height: auto;
+    }
+}
+
+
+</style>
 
         <!-- choose area start -->
         <div class="tp-choose-3-area tp-choose-style-2 fix p-relative pt-150 pb-110">
-            <div class="tp-choose-3-shape d-none d-lg-block">
-                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400"
+            <div class="tp-choose-3-shape  d-sm-block">
+                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400"
                     alt="">
             </div>
             <div class="container">
@@ -132,8 +148,8 @@
                     </div>
                     <div class="col-xl-7 col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".7s">
                         <div class="tp-choose-3-thumb-box p-relative">
-                            <div class="tp-choose-3-award">
-                                <img src="{{ url('public/Image/parametres/' . $config->imageabout) }}" alt=""
+                            <div class="tp-choose-3-award"  style="width: 100%; max-width: 800px; margin: auto;">
+                                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" alt=""
                                     width="1200" height="600">
                             </div>
 
