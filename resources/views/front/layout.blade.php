@@ -78,7 +78,7 @@
 
         <!-- choose area start -->
         <div class="tp-choose-3-area tp-choose-style-2 fix p-relative pt-150 pb-110">
-            <div class="tp-choose-3-shape  d-sm-block">
+            <div class="tp-choose-3-shape  d-sm-block" >
                 <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400"
                     alt="">
             </div>
@@ -171,7 +171,7 @@
                     <div class="col-xl-5">
                         <div class="tp-service-4-title-box text-center mb-55">
                             <span class="tp-section-subtitle">
-                                {{ \App\Helpers\TranslationHelper::TranslateText('Nos logements') }}
+                                {{ \App\Helpers\TranslationHelper::TranslateText(' KDO CONCIERGERIE') }}
                             </span>
                             {{-- <h4 class="tp-section-title">Our Awesome & Best
                        Services</h4> --}}
