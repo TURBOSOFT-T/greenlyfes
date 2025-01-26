@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="postbox__text mb-45">
                                             <p class="mb-10" style="text-align: justify;">
-                                                {{ $post->body }}
+                                                {!! $post->body !!}
                                             </p>
                                         </div>
 
