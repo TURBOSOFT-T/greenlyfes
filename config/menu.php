@@ -392,7 +392,7 @@ return [
         ],
     ],
 
-/*     'Commandes' => [
+     'Commandes' => [
         'icon' => 'comment',
         'role'   => 'redac',
         'children' => [
@@ -404,13 +404,13 @@ return [
 
             [
                 'name'  => 'Nouvelles commandes',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'orders.index',
             ],
         
         ],
     ],
- */
+ 
     
     'Réservation' => [
         'icon' => 'comment',

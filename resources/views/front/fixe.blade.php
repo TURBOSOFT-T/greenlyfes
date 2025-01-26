@@ -54,6 +54,7 @@
     @yield('header')
     @yield('room')
     @yield('logement')
+    @yield('product')
     @livewireStyles
 
 </head>

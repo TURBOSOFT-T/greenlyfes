@@ -8,6 +8,42 @@
     $service =DB::table('services')->get();
 @endphp
 
+<head>
+   @section('product')
+       <meta name="description" content="{{ $product->name ?? ' ' }}">
+       <meta name="author" content="greenlyfes.com">
+       <meta property="og:title" content="{{ $product->nom }}">
+       <meta property="og:description" content="{{ $product->description ?? '' }}">
+       <meta property="og:description" content="{{ $product->meta_description ?? '' }}">
+
+       <meta property="og:image:width" content="1200" >
+     
+       <meta property="og:image" content="{{ $product->image }}">
+       <meta property="og:type" content="product">
+       <meta property="og:price:amount" content="{{ $product->price }} DT">
+
+       <meta property="og:availability" content="{{ $product->statut }}">
+
+       <meta property="product:price:amount" content="{{ $product->price }} DT">
+
+       <meta property="logemment:availability" content="{{ $product->statut }}">
+       <meta name="robots" content="index, follow">
+
+
+       <meta name="csrf-token" content="{{ csrf_token() }}">
+       <title>{{ isset($product) && $product->seo_title ? $product->seo_title :  config('app.name') }}</title>
+       <meta name="description" content="{{ isset($product) && $product->meta_description ? $product->meta_description : __(config('app.description')) }}">
+       <meta name="author" content="{{ isset($product) ? $product->user->name : __(config('app.author')) }}">
+       @if(isset($product) && $product->meta_keywords)
+           <meta name="keywords" content="{{ $product->meta_keywords }}">
+       @endif
+
+
+   @endsection 
+
+</head>
+
+
 
 
    <main>
