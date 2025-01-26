@@ -23,6 +23,7 @@ class CategoriesDataTable extends DataTable
             ->editColumn('posts_count', function ($category) {
                 return $this->badge($category->posts_count, 'secondary');
             })
+          
             ->editColumn('action', function ($category) {
                 return $this->button(
                           'categories.edit', 

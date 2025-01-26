@@ -96,7 +96,7 @@ class ReservationsDataTable extends DataTable
                         if (response.ok) {
                             Swal.fire(
                                 'Supprimé !',
-                                'La catégorie a été supprimée avec succès.',
+                                'La réservation a été supprimée avec succès.',
                                 'success'
                             ).then(() => {
                                 location.reload();

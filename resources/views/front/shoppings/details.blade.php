@@ -33,8 +33,7 @@
        <meta name="csrf-token" content="{{ csrf_token() }}">
        <title>{{ isset($product) && $product->seo_title ? $product->seo_title :  config('app.name') }}</title>
        <meta name="description" content="{{ isset($product) && $product->meta_description ? $product->meta_description : __(config('app.description')) }}">
-       <meta name="author" content="{{ isset($product) ? $product->user->name : __(config('app.author')) }}">
-       @if(isset($product) && $product->meta_keywords)
+         @if(isset($product) && $product->meta_keywords)
            <meta name="keywords" content="{{ $product->meta_keywords }}">
        @endif
 

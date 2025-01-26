@@ -77,15 +77,15 @@
                               
 
                                <x-back.card type='primary' title='Description'>
-                             {{--    <x-back.input name='description'
+                               <x-back.input name='description'
                                     :value="isset($gallery) ? $gallery->description : ''" input='textarea' rows=5
                                     :required="true">
-                                </x-back.input> --}}
+                                </x-back.input> 
 
-                                <div class="form-group">
+                            {{--     <div class="form-group">
                                     <label><strong>Description :</strong></label>
                                     <textarea class="ckeditor form-control" name="description"></textarea>
-                                </div>
+                                </div> --}}
                             </x-back.card>
                             </x-back.card>
 
