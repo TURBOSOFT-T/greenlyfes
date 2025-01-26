@@ -1154,17 +1154,9 @@
 
 
 
-
-        <!-- testimonial area end -->
-
-        <!-- work area start -->
-
-     
-        <!-- faq area end -->
-
-        <!-- service area start -->
+{{-- 
         <div class="tp-service-3-area tp-service-3-inner-style  fix pt-105 pb-100 p-relative">
-            {{--   <div class="container">
+              <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-testimonial-title-box text-center mb-60">
@@ -1208,7 +1200,7 @@
                     </div>
                 </div>
                 @endforeach
- --}}
+ 
             <!-- Modal Structure -->
             <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel"
                 aria-hidden="true">
@@ -1259,27 +1251,7 @@
         </div>
         </div>
         </div>
-
-        <!-- brand area start -->
-        <div class="tp-brand-area pb-150">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tp-brand-wrap">
-                            <div class="swiper-container tp-brand-active">
-
-                                <div class="swiper-wrapper">
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- brand area end -->
-
+ --}}
 
 
 

@@ -72,7 +72,9 @@
                 
                 <div class="form-group">
                     <label><strong>Description :</strong></label>
-                    <textarea class="ckeditor form-control" name="body"></textarea>
+                    <textarea class="ckeditor form-control" name="body" :value="isset($post) ? $post->body : ''" 
+                         input='textarea'
+                        ></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">@lang('Submit')</button>

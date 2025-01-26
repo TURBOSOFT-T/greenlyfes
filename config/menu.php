@@ -325,7 +325,7 @@ return [
         ],
     ],
 
- /*    'Services' => [
+    /*  'Services' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -345,7 +345,7 @@ return [
                 'route' => 'services.edit',
             ],
         ],
-    ], */
+    ],  */
 /* 
     'Sponsors' => [
         'icon' => 'list',
