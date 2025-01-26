@@ -134,23 +134,40 @@ if($connecte){
      'adress' => $request->input('adress'),
       
     ]);
+
+
+    
+if (!$connecte) {
+  $existingUser = User::where('email', $request->input('email'))->first();
+  if (!$existingUser) {
+      $user = User::create([
+      'first_name' => $request->input('nom'),
+      'last_name' => $request->input('prenom'),
+      'email' => $request->input('email'),
+      'phone' => $request->input('telephone'),
+      'password' => Hash::make($request->input('telephone')),
+     'adress' => $request->input('adress'),
+    
+      ]);
+  } else {
+      // Utilisateur existant
+      $user = $existingUser;
+  }
+} else {
+  // Utilisateur connecté
+  $user = $connecte;
+}
+
   
   
     
-      
-  $existingUsersWithEmail = User::where('email', $request['email'])->exists();
 
-  if (!$existingUsersWithEmail) {
-   
-   
-
- 
-    $user->save();
-}
 //$produit = Product::find($request['product_id']);
    $items = OrderProduct :: create([
     'order_id' => $order->id,
     'product_id' => $request->input('product_id'),
+    'user_id' => $user->id,
+    'created_at' => now(),
 
   ]); 
 // dd($items);

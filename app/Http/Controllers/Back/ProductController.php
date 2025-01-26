@@ -7,7 +7,8 @@ use App\Http\{
     Controllers\Controller,
 };
 
-use App\Http\Requests\Back\ProductRequest;
+use App\Http\Requests\Back\{ProductRequest,ProductUpdateRequest};
+
 
 use App\Models\Product;
 
@@ -48,6 +49,16 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
+        $validated = $request->validate([
+        
+            'slug' => 'nullable|string|max:255',
+        ]);
+   
+        $user = Auth::user();
+   
+   // Générer le slug si vide
+   $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
+        
 
         $user = Auth::user();
 
@@ -86,7 +97,7 @@ class ProductController extends Controller
 
 
 
-    public function update(ProductRequest $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
 
 
@@ -98,14 +109,21 @@ class ProductController extends Controller
         $input =
             Product::findOrFail($id);
         $img = Product::find($id);
-        File::delete(public_path('/public/Image/Products/' . $img->image));
+        File::delete(public_path('public/Image/' . $img->image));
 
+     
         if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image du serveur
+            if ($img->image) {
+                unlink(public_path('public/Image/'. $img->image));
+            }
+
+
 
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('public/Image/Products/', $filename);
+            $file->move('public/Image/', $filename);
             $input['image'] = $filename;
         }
 
@@ -123,7 +141,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $img = Product::find($id);
-        File::delete(public_path('/public/Image/Products/' . $img->image));
+        File::delete(public_path('/public/Image/' . $img->image));
          Product::findOrFail($id)->forceDelete();
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully');

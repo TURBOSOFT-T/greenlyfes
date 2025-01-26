@@ -238,27 +238,27 @@ return [
         ],
     ],
  */
-   /*  'Products' => [
+  'Products' => [
         'icon' => 'list',
-        'role'   => 'admin',
+        'role'   => 'redac',
         'children' => [
             [
                 'name'  => 'All Products',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'products.index',
             ],
             [
                 'name'  => 'Add New Product',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'saveproducts.create',
             ],
             [
                 'name'  => 'fake',
-                'role'  => 'admin',
+                'role'  => 'redac',
                 'route' => 'saveproducts.edit',
             ],
         ],
-    ], */
+    ], 
     'Utilisateurs' => [
         'icon' => 'user',
         'role'   => 'admin',

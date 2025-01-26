@@ -652,6 +652,93 @@
         </div>
         <!-- choose area end -->
 
+        
+        <!-- service area start -->
+        <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="tp-service-title-box mb-55">
+                            <span class="tp-section-subtitle">les dernières publications</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-30">
+                    @php
+
+                        $prods = DB::table('products')->latest()->take(9)->get();
+
+                    @endphp
+                    @foreach ($prods as $key => $produit)
+                        <div class="col-xl-4 col-lg-4 col-md-6 mb-30 wow tpfadeUp" data-wow-duration=".9s"
+                            data-wow-delay=".3s">
+                            <div class="tp-service-item text-center">
+                                <div class="tp-service-thumb-box p-relative">
+                                    <div class="tp-service-thumb">
+                                        <img src="{{ url('public/Image/' . $produit->image) }}" width="200 "
+                                            height="200 " border-radius="8px" class="rounded shadow" alt="">
+                                    </div>
+                                    <div class="tp-service-icon">
+                                    
+                                    </div>
+                                </div>
+                                <div class="tp-service-content">
+                                    <div>
+                                        <h3>{{$produit->price ?? ' '}}  <x-devise></x-devise></h3>
+    
+                                     </div>
+                                    <h4 class="tp-service-title"><a class="text-anim-2"
+                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
+                                    </h4>
+                                    {{--  <p>Petite description</p> --}}
+                                    <div class="tp-service-link">
+                                        <a
+                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
+                                            Details Produit
+                                            <span>
+                                                <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <!-- Ajouter le bouton ici -->
+                    <div class="text-center mt-30">
+                        <a href="{{ url('produits') }}" class="tp-btn">Voir tous les produits</a>
+                    </div>
+                    <style>
+                        .tp-btn {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            background-color: #0bfa3f;
+                            color: white;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            border-radius: 5px;
+                            transition: background-color 0.3s ease;
+                        }
+
+                        .tp-btn:hover {
+                            background-color: #11ea2b;
+                            text-decoration: none;
+                        }
+                    </style>
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+        <br><br><br>
+
         <!-- project area start -->
         <div class="tp-project-2-area fix pb-130">
             <div class="container-fluid p-0">
@@ -1072,64 +1159,7 @@
 
         <!-- work area start -->
 
-        <!-- project area start -->
-        <div class="tp-project-2-area fix pb-130">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tp-project-2-wrapper">
-                            <div class="swiper-container tp-project-2-active">
-                                <div class="swiper-wrapper">
-                                    @php
-
-                                        $products = DB::table('products')->latest()->take(15)->get();
-
-                                    @endphp
-                                    @if ($products)
-                                        @foreach ($products as $product)
-                                            <div class="swiper-slide">
-                                                <div class="tp-project-2-item p-relative">
-                                                    <div class="tp-project-2-thumb">
-                                                        <img src="{{ url('public/Image/' . $product->image) }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="tp-project-2-content z-index">
-                                                        {{-- <span>Gardening</span> --}}
-                                                        <h4 class="tp-project-2-title"><a class="text-anim"
-                                                                href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 10))]) }}">{{ $product->name ?? ' ' }}</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="tp-project-2-button">
-                                                        <a class="tp-btn-project"
-                                                            href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 20))]) }}"><span>
-                                                                Voir détails</span>
-                                                            <i>
-                                                                <svg width="15" height="10" viewBox="0 0 15 10"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                        d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
-                                                                        fill="currentcolor" />
-                                                                </svg>
-                                                            </i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-
-                                    @endif
-
-                                </div>
-                                <div class="tp-slider-dots mt-40 text-center"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- project area end -->
-
-
+     
         <!-- faq area end -->
 
         <!-- service area start -->

@@ -33,7 +33,7 @@ class Product extends Model
 
 
     ];
-     public $timestamps = false;
+     public $timestamps = true;
 
     public function users()
     {

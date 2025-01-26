@@ -18,9 +18,11 @@
     <h2>Title: {{ $produit->name }}</h2>
     <br>
     <p><strong>Created At: </strong> {{ $produit->created_at }}</p>
+    <br>
+    <p><strong>Original Price: </strong> {{ $produit->price }}</p>
     
     <br>
-    <p><strong>Description: </strong> {{ $produit->description }}</p>
+    <p><strong>Description: </strong> {!! $produit->description !!}</p>
 
     <br>
     <img class="w-50" {{-- src="{{ url('public/image/Products/' . $produit->image) }}" --}} src="{{ url('public/Image/' . $produit->image) }}">

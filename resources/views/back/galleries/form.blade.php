@@ -77,10 +77,15 @@
                               
 
                                <x-back.card type='primary' title='Description'>
-                                <x-back.input name='description'
+                             {{--    <x-back.input name='description'
                                     :value="isset($gallery) ? $gallery->description : ''" input='textarea' rows=5
                                     :required="true">
-                                </x-back.input>
+                                </x-back.input> --}}
+
+                                <div class="form-group">
+                                    <label><strong>Description :</strong></label>
+                                    <textarea class="ckeditor form-control" name="description"></textarea>
+                                </div>
                             </x-back.card>
                             </x-back.card>
 
@@ -100,6 +105,13 @@
 </div>
 
 @section('js')
+
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
 <script>

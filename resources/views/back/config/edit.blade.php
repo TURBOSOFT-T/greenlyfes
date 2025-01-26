@@ -325,11 +325,11 @@
             </div>
  --}}
  
-{{-- 
+
             <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imageindustrielle'))
                     <div>
-                        <strong>Image entête  pour produits  (1920*500):</strong>
+                        <strong>Image entête  pour la boutique  (1920*500):</strong>
                         <p>
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -339,13 +339,13 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="imageindustrielle">Image entête produits induxtriels(1920*500):</label>
+                            <label for="imageindustrielle">Image entête Boutique(1920*500):</label>
                             <input type="file" class="form-control-file" id="imageindustrielle" name="imageindustrielle">
                         </div>
                     </div>
                 @endif
             </div>
- --}}
+ 
             <br><br>
             <br><br>
 

@@ -106,16 +106,11 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
     if ($request->hasFile('video')) {
         $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
     }
-
-
-
-
         $user->rooms()->create($input);
 
         return redirect()->route('rooms.index')->with('success', 'La chambre a bien été ajoutée');
     }
 
- 
      public function show(string $id)
     {
          

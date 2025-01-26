@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre','Blogs')
+@section('titre','Détails sur le produit')
 @section('body')
 
 <main>
@@ -97,6 +97,7 @@
                   <div class="tp-shop-details__right-wrap">
                      <h3 class="tp-section-title">{{$product->name}}</h3>
                      <div class="tp-shop-details__price pb-10">
+                        {{ $product->price }}   <x-devise></x-devise>
                       
                      </div>
                      <div class="tp-shop-details__ratting mb-20">
@@ -115,7 +116,7 @@
                         <span class="ass"></span> --}}
                      </div>
                      <div class="tp-shop-details__text-2 mb-25">
-                        <p>{{ Str::limit($product->description, 50) }} </p>
+                        <p>{!! Str::limit($product->description, 50) !!} </p>
                      </div>
                      <div class="tp-shop-details__product-info mb-35">
                         
@@ -164,7 +165,7 @@
                            <div class="tab-content tp-content-tab" id="myTabContent-2">
                               <div class="tab-para tab-pane fade show active" id="home-1" role="tabpanel"
                                  aria-labelledby="home-tab-1">
-                                 <p class="mb-20 text-center">{{$product->description}} </p>
+                                 <p class="mb-20 text-center">{!! $product->description !!} </p>
                                 
                               </div>
                               <div class="tab-pane fade" id="additional-information" role="tabpanel"

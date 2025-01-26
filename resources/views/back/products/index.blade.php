@@ -27,7 +27,7 @@
         <th>Name</th>
 
       
-        <th>Description</th>
+        <th>Prix</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($products as $produit)
@@ -37,7 +37,7 @@
         <td>{{ $produit->name }}</td>
       
         
-        <td>{{ $produit->description }}</td>
+        <td>{{ $produit->price }}</td>
         <td>
             {{-- <form action="#" method="POST">
 

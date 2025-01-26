@@ -38,6 +38,15 @@
             </div>
         </div>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Price:</strong>
+                <input type="text" name="price" value="{{ $produit->price }}" class="form-control" placeholder="Title"
+                    required>
+            </div>
+        </div>
+
+
        
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -65,7 +74,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <label class="form-label">Content</label>
-            <textarea rows="4" cols="50" name="description" value="{{ $produit->description }}" class="form-control"
+            <textarea rows="4" cols="50" name="description" value="{!! $produit->description !!}" class="form-control"
                 placeholder="Add content" required></textarea>
             @error('title')
             <p class="text-danger">{{ $message }}</p>

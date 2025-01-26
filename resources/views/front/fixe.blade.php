@@ -294,6 +294,9 @@
 
                                     </li>
 
+                                    <li><a href="{{ url('produits') }}">Boutique</a></li>
+
+
                                     {{--       <li class="has-dropdown">
                                         <a href="#">Nos activités</a>
                                         <ul class="submenu tp-submenu">

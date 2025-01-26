@@ -59,6 +59,7 @@ use Illuminate\Http\Request;
 
 Route::get('/room/check-slug', [SlugController::class, 'checkRoom']);
 Route::get('/book/check-slug', [SlugController::class, 'checkBook']);
+Route::get('/product/check-slug', [SlugController::class, 'checkProduct']);
 Route::post('/locale', [LocaleController::class ,'change'])->name("locale.change");
  
 /////Maintenance

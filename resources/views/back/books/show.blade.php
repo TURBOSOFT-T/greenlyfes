@@ -19,6 +19,8 @@
         <br>
         <p><strong>Description: </strong> {!! $book->body !!}</p>
 
+
+        
         <br>
         <img class="w-50" {{-- src="{{ url('public/image/Products/' . $book->image) }}" --}} src="{{ url('public/Image/' . $book->image) }}">
         <br>

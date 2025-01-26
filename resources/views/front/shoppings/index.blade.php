@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre','Blogs')
+@section('titre','Boutique')
 @section('body')
 
 <main>
@@ -25,14 +25,14 @@
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Produits</h3>
+                        <h3 class="breadcrumb__title">Boutique</h3>
                      </div>
                      <div class="breadcrumb__list">
                         <span><a href="/">Accueil</a></span>
                         <span class="dvdr"><i>/</i></span>
                        
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Produits</b></span>
+                        <span><b>Boutique</b></span>
                      </div>
                   </div>
                </div>
@@ -131,7 +131,10 @@
                                     <a href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 10))]) }}">{{$product->name}}</a>
                                  </h3>
                                  <div class="tp-product-price-wrapper-2 mb-15">
-                                   {{--  <span class="tp-product-price-2 new-price">$166.00</span> --}}
+                                     <span class="tp-product-price-2 new-price">
+                                       
+                                       {{ $product->price }}   <x-devise></x-devise>
+                                    </span> 
                                  </div>
                                  <div class="tp-product-button">
                                     <a class="tp-btn-price w-100 text-center" href="{{ route('details-produits', ['id' => $product->id, 'slug' => Str::slug(Str::limit($product->name, 10))]) }}">

@@ -8,6 +8,7 @@ use App\Http\{
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Book;
+use App\Models\Product;
 
 class SlugController extends Controller
 {
@@ -34,6 +35,20 @@ class SlugController extends Controller
 
         $slug = $request->query('slug');
         $exists = Book::where('slug', $slug)->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
+
+
+    public function checkProduct(Request $request)
+    {
+        $request->validate([
+            'slug' => 'required|string|max:255',
+            
+        ]);
+
+        $slug = $request->query('slug');
+        $exists = Product::where('slug', $slug)->exists();
 
         return response()->json(['exists' => $exists]);
     }
