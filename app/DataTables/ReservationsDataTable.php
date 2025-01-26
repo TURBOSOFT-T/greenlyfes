@@ -138,7 +138,9 @@ class ReservationsDataTable extends DataTable
             $query->has('unreadNotifications');
         }
 
-        return $query->with('user:id,name,valid', 'room:id,slug');
+       // return $query->with('user:id,name,valid', 'room:id,title,slug');
+        return $query;
+
     }
 
 
