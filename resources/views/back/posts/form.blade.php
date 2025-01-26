@@ -57,7 +57,7 @@
                     </x-back.input>
                 </x-back.card>
 
-                <x-back.card
+               {{--  <x-back.card
                     type='primary'
                     title='Body'>
                     <x-back.input
@@ -67,7 +67,13 @@
                         rows=10
                         :required="true">
                     </x-back.input>
-                </x-back.card>
+                </x-back.card> --}}
+
+                
+                <div class="form-group">
+                    <label><strong>Description :</strong></label>
+                    <textarea class="ckeditor form-control" name="body"></textarea>
+                </div>
 
                 <button type="submit" class="btn btn-primary">@lang('Submit')</button>
 
@@ -209,6 +215,13 @@
 
     
 @section('js')
+
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
 <script>
