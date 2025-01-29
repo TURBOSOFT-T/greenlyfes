@@ -252,15 +252,153 @@
                                 <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
                                     value="Confirmer la réservation">
                             </div>
-                        </div>
+                           {{--  <button type="button" class="btn btn-danger btn-block"  data-bs-toggle="modal"  data-bs-target="#StripeCardModal">Payement avec Stripe</button>
+                  --}}       </div>
                     </div>
                     </form>
                 </div>
             </div>
 
+            <div class="modal fade" id="StripeCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pay with Stripe</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body  tp-checkout-bill-area">
+                            <form role="form" action="{{ url('payement') }}" method="POST"
+                                class="require-validation" data-cc-on-file="false" id="payment-form">
+        
+                                {{ csrf_field() }}
+        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div><p class="stripe-error py-3 text-danger"></p></div>
+                                    </div>
+                                   {{--  <div class="col-md-12 required">
+                                        <div class="form-group">
+                                            <label class="control-label">Name on Card</label>
+                                            <input type="text" class="form-control" required size="4">
+                                        </div>
+                                    </div> --}}
 
+                                    <div class="form-grp">
+                                        <label for="">Name on Card :</label><span class="error-message"
+                                            id="email-error"></span><br>
+                                        <input type="text" class="form-control" name="email"
+                                             required  size="4">
+                                    </div>
+        
+                                    <div class="col-md-12 required">
+                                        <div class="form-group">
+                                            <label class="control-label">Card Number</label>
+                                            <input type="text" autocomplete='off' class="form-control card-number" required size="20">
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-4 required">
+                                        <div class="form-group">
+                                            <label class='control-label'>CVC</label>
+                                            <input type="text" autocomplete="off" class="form-control card-cvc" required placeholder="ex. 311" size="4">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label"> Month</label>
+                                            <input type="text" class="form-control card-expiry-month" required placeholder="MM" size="2">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class='control-label'> Year</label>
+                                            <input type="text" class="form-control card-expiry-year" required placeholder="YYYY" size="4">
+                                        </div>
+                                    </div>
+        
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-12 form-group d-none">
+                                        <div class="alert-danger alert">
+                                            <h6 class="inp-error">Please correct the errors and try again.</h6>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr>
+                                        <input type="hidden" name="stipe_payment_btn" value="1">
+                                        <button type="submit" class="btn btn-primary btn-sm btn-block">Payez avec Stripe</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </section>
+
+
+        
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+$(function() {
+    var $form = $(".require-validation");
+    $('form.require-validation').bind('submit', function(e) {
+        var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]',
+                            'input[type=password]',
+                            'input[type=text]',
+                            'input[type=file]',
+                            'textarea'].join(', '),
+            $inputs       = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('.inp-error'),
+            valid         = true;
+            $errorMessage.addClass('d-none');
+        $('.has-error').removeClass('has-error');
+
+        $inputs.each(function(i, el) {
+            var $input = $(el);
+            if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('d-none');
+                e.preventDefault();
+            }
+        });
+
+        if (!$form.data('cc-on-file')) {
+            var StripeKey = "pk_test_51QmJrMB7NGEfr3imEqtrbGBUV4nyPpgK6mZp7OHrpo18MgS30SYNOuZ5Ew3Y6y7EZq9OrVafeyr8lwj9u4QehtSb00fr8ED0PG";
+
+            e.preventDefault();
+            Stripe.setPublishableKey(StripeKey);
+            Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+            }, stripeResponseHandler);
+        }
+
+    });
+
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            $('.stripe-error').text(response.error.message);
+        } else {
+            var token = response['id'];
+            $form.find('input[type=text]').empty();
+            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            $form.get(0).submit();
+        }
+    }
+
+});
+</script>
 
 
         <script>

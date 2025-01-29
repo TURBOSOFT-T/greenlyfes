@@ -165,6 +165,8 @@ Route::get('/commandes/{id}', [OrderController::class, 'commandes'])->name('comm
 Route::post('/order', [OrderController::class, 'confirmOrder'])->name('order.confirm');
 Route::get('/thank-you', [FrontProduct::class, 'index'])->name('thank-you');
 
+
+
 ///Reservation
 
 Route::get('/check-reserved-dates', function () {
@@ -193,6 +195,11 @@ Route::get('/reservation/{id}/{slug}', [FrontReservationController::class, 'rese
 Route::post('/reservation', [FrontReservationController::class,'confirm'])->name('store.reservation');
 
 Route::get('/thank-yous', [FrontReservationController::class, 'index'])->name('thank-yous');
+
+Route::post('/payement', [FrontReservationController::class, 'payement'])->name('payement');
+Route::get('/success', [FrontReservationController::class, 'success'])->name('success');
+Route::get('/cancel', [FrontReservationController::class, 'cancel'])->name('cancel');
+
 
 require __DIR__ . '/auth.php';
 

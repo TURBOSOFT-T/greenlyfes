@@ -1,249 +1,242 @@
 @extends('back.layout')
 
 @section('css')
-    <style>
-        .custom-file-label::after {
-            content: "Parcourir";
-        }
-    </style>
+<style>
+    .custom-file-label::after {
+        content: "Parcourir";
+    }
+
+</style>
 @endsection
 
 @section('main')
-    <div class="container-fluid">
-        @if (session()->has('alert'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('alert') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
+<div class="container-fluid">
+    @if (session()->has('alert'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('alert') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
 
-                    <form id="bookForm" method="post"
-                        action="{{ Route::currentRouteName() === 'savebooks.edit' ? route('savebooks.update', $book->id) : route('savebooks.store') }}"
-                        enctype="multipart/form-data">
+                <form id="bookForm" method="post" action="{{ Route::currentRouteName() === 'savebooks.edit' ? route('savebooks.update', $book->id) : route('savebooks.store') }}" enctype="multipart/form-data">
 
-                        @if (Route::currentRouteName() === 'savebooks.edit')
-                            @method('PUT')
-                        @endif
+                    @if (Route::currentRouteName() === 'savebooks.edit')
+                    @method('PUT')
+                    @endif
 
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-8">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-8">
 
-                                <x-back.validation-errors :errors="$errors" />
+                            <x-back.validation-errors :errors="$errors" />
 
-                                @if (session('ok'))
-                                    <x-back.alert type='success' title="{!! session('ok') !!}">
-                                    </x-back.alert>
-                                @endif
+                            @if (session('ok'))
+                            <x-back.alert type='success' title="{!! session('ok') !!}">
+                            </x-back.alert>
+                            @endif
 
-                                <x-back.card type='info' :outline="true" title=''>
+                            <x-back.card type='info' :outline="true" title=''>
 
-                                    <x-back.input title='Name' name='name' :value="isset($book) ? $book->name : ''" input='text'
-                                        :required="true">
+                                <x-back.input title='Name' name='name' :value="isset($book) ? $book->name : ''" input='text' :required="true">
+                                </x-back.input>
+
+                                <x-back.input title='Slug' name='slug' :value="isset($book) ? $book->slug : ''" input='text' :required="true">
+                                </x-back.input>
+
+                                <x-back.card type='primary' title='Excerpt'>
+                                    <x-back.input name='excerpt' :value="isset($book) ? $book->excerpt : ''" input='textarea' :required="true">
                                     </x-back.input>
-
-                                    <x-back.input title='Slug' name='slug' :value="isset($book) ? $book->slug : ''" input='text'
-                                        :required="true">
-                                    </x-back.input>
-
-                                    <x-back.card type='primary' title='Excerpt'>
-                                        <x-back.input name='excerpt' :value="isset($book) ? $book->excerpt : ''" input='textarea' :required="true">
-                                        </x-back.input>
-                                    </x-back.card>
+                                </x-back.card>
 
 
 
 
 
-                                    {{-- <div>
+                                {{-- <div>
                                     <label for="images">Images (Many):</label>
                                     <input type="file" name="images[]" id="images" multiple required>
                                 </div> --}}
 
-                                    {{--     <x-back.card type='primary' title='Description'>
+                                {{-- <x-back.card type='primary' title='Description'>
                                     <x-back.input name='description' id="description-editor"
                                         :value="isset($book) ? $book->description : ''" input='textarea' rows=10
                                         :required="true">
                                     </x-back.input>
                                 </x-back.card> --}}
 
-                                    {{--     <x-back.card type='primary' title='Description'>
+                                {{-- <x-back.card type='primary' title='Description'>
                                     <textarea name="description" id="description-editor" rows="10" cols="130" required>
                                         {{ isset($book) ? $book->description : '' }}
-                                    </textarea>
-                                </x-back.card> --}}
+                                </textarea>
+                            </x-back.card> --}}
 
-                                    <div class="form-group">
-                                        <label><strong>Description :</strong></label>
-                                        <textarea class="ckeditor form-control" name="body"></textarea>
-                                    </div>
-
-
-
-
-                                </x-back.card>
-
-
-
-
-
-
-                                <button type="submit" class="btn btn-primary">@lang('Submit')</button>
-
+                            <div class="form-group">
+                                <label><strong>Description :</strong></label>
+                                <textarea class="ckeditor form-control" name="body"></textarea>
                             </div>
 
-                            <div class="col-md-4">
 
-                                {{--  <x-back.card type='primary' :outline="false" title='Publication'>
+
+
+                            </x-back.card>
+
+
+
+
+
+
+                            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            {{-- <x-back.card type='primary' :outline="false" title='Publication'>
                                 <x-back.input name='active' :value="isset($post) ? $post->active : false"
                                     input='checkbox' label="Active">
                                 </x-back.input>
                             </x-back.card> --}}
 
-                                <x-back.card type='warning' :outline="false" title='Categories' :required="true">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Category:</strong>
-                                            <select name="logement_id" id="logement_id" class='form-control'>
-                                                <option hidden>-- Category--</option>
-                                                @foreach ($logements as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                            <x-back.card type='warning' :outline="false" title='Categories' :required="true">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Category:</strong>
+                                        <select name="logement_id" id="logement_id" class='form-control'>
+                                            <option hidden>-- Category--</option>
+                                            @foreach ($logements as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </x-back.card>
+                                </div>
+                            </x-back.card>
 
 
-                                
-                                <div class="form-group{{ $errors->has('cover') ? ' is-invalid' : '' }}">
-                                    <label for="description">Image de l'entête page(1920*591)</label>
-                                    @if (isset($book) && !$errors->has('cover'))
-                                        <div>
-                                            <p><img src="{{ asset('images/thumbs/' . $book->cover) }}"></p>
-                                            <button id="changeCover" class="btn btn-warning">Changer d'image</button>
+
+                            <div class="form-group{{ $errors->has('cover') ? ' is-invalid' : '' }}">
+                                <label for="description">Image de l'entête page(1920*591)</label>
+                                @if (isset($book) && !$errors->has('cover'))
+                                <div>
+                                    <p><img src="{{ asset('images/thumbs/' . $book->cover) }}"></p>
+                                    <button id="changeCover" class="btn btn-warning">Changer d'image</button>
+                                </div>
+                                @endif
+                                <div id="wrapper">
+                                    @if (!isset($book) || $errors->has('cover'))
+                                    <div class="custom-file">
+                                        <input type="file" id="cover" name="cover" class="{{ $errors->has('cover') ? ' is-invalid ' : '' }}custom-file-input" required>
+                                        <label class="custom-file-label" for="cover"></label>
+                                        @if ($errors->has('cover'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('cover') }}
                                         </div>
-                                    @endif
-                                    <div id="wrapper">
-                                        @if (!isset($book) || $errors->has('cover'))
-                                            <div class="custom-file">
-                                                <input type="file" id="cover" name="cover"
-                                                    class="{{ $errors->has('cover') ? ' is-invalid ' : '' }}custom-file-input"
-                                                    required>
-                                                <label class="custom-file-label" for="cover"></label>
-                                                @if ($errors->has('cover'))
-                                                    <div class="invalid-feedback">
-                                                        {{ $errors->first('cover') }}
-                                                    </div>
-                                                @endif
-                                            </div>
                                         @endif
                                     </div>
-                                </div>
-
-
-
-                                <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
-                                    <label for="description">Image Principale</label>
-                                    @if (isset($book) && !$errors->has('image'))
-                                        <div>
-                                            <p><img src="{{ asset('images/thumbs/' . $book->image) }}"></p>
-                                            <button id="changeImage" class="btn btn-warning">Changer d'image</button>
-                                        </div>
                                     @endif
-                                    <div id="wrapper">
-                                        @if (!isset($book) || $errors->has('image'))
-                                            <div class="custom-file">
-                                                <input type="file" id="image" name="image"
-                                                    class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
-                                                    required>
-                                                <label class="custom-file-label" for="image"></label>
-                                                @if ($errors->has('image'))
-                                                    <div class="invalid-feedback">
-                                                        {{ $errors->first('image') }}
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        @endif
-                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label> Autres Images suplémentaires</label>
-                                    <input type="file" name="images[]" class="form-control" multiple>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="video"><strong>Vidéo :</strong></label>
-                                    <input type="file" class="form-control" name="video" accept="video/*">
-                                </div>
-
-
-
-
-                                <x-back.card type='info' :outline="false" title='SEO'>
-                                    <x-back.input title='META Description' name='meta_description' :value="isset($produc) ? $book->meta_description : ''"
-                                        input='textarea' :required="true">
-                                    </x-back.input>
-                                    <x-back.input title='META Keywords' name='meta_keywords' :value="isset($book) ? $book->meta_keywords : ''"
-                                        input='textarea' :required="true">
-                                    </x-back.input>
-                                    <x-back.input title='SEO Title' name='seo_title' :value="isset($book) ? $book->seo_title : ''" input='text'
-                                        :required="true">
-                                    </x-back.input>
-                                </x-back.card>
-
-
                             </div>
+
+
+
+                            <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
+                                <label for="description">Image Principale</label>
+                                @if (isset($book) && !$errors->has('image'))
+                                <div>
+                                    <p><img src="{{ asset('images/thumbs/' . $book->image) }}"></p>
+                                    <button id="changeImage" class="btn btn-warning">Changer d'image</button>
+                                </div>
+                                @endif
+                                <div id="wrapper">
+                                    @if (!isset($book) || $errors->has('image'))
+                                    <div class="custom-file">
+                                        <input type="file" id="image" name="image" class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input" required>
+                                        <label class="custom-file-label" for="image"></label>
+                                        @if ($errors->has('image'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('image') }}
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label> Autres Images suplémentaires</label>
+                                <input type="file" name="images[]" class="form-control" multiple>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="video"><strong>Vidéo :</strong></label>
+                                <input type="file" class="form-control" name="video" accept="video/*">
+                            </div>
+
+
+
+
+                            <x-back.card type='info' :outline="false" title='SEO'>
+                                <x-back.input title='META Description' name='meta_description' :value="isset($produc) ? $book->meta_description : ''" input='textarea' :required="true">
+                                </x-back.input>
+                                <x-back.input title='META Keywords' name='meta_keywords' :value="isset($book) ? $book->meta_keywords : ''" input='textarea' :required="true">
+                                </x-back.input>
+                                <x-back.input title='SEO Title' name='seo_title' :value="isset($book) ? $book->seo_title : ''" input='text' :required="true">
+                                </x-back.input>
+                            </x-back.card>
+
+
                         </div>
+                    </div>
 
 
-                    </form>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 @section('js')
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.ckeditor').ckeditor();
-        });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
-    <script>
-        $(function() {
-            $('#slug').keyup(function() {
-                $(this).val(getSlug($(this).val()))
-            })
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
 
-            $('#title').keyup(function() {
-                $('#slug').val(getSlug($(this).val()))
-            })
-        });
-    </script>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
+<script>
+    $(function() {
+        $('#slug').keyup(function() {
+            $(this).val(getSlug($(this).val()))
+        })
 
-    <script>
-        $(document).ready(() => {
-            $('form').on('change', '#image', e => {
-                $(e.currentTarget).next('.custom-file-label').text(e.target.files[0].name);
-            });
-            $('#changeImage').click(e => {
-                $(e.currentTarget).parent().hide();
-                $('#wrapper').html(`
+        $('#title').keyup(function() {
+            $('#slug').val(getSlug($(this).val()))
+        })
+    });
+
+</script>
+
+<script>
+    $(document).ready(() => {
+        $('form').on('change', '#image', e => {
+            $(e.currentTarget).next('.custom-file-label').text(e.target.files[0].name);
+        });
+        $('#changeImage').click(e => {
+            $(e.currentTarget).parent().hide();
+            $('#wrapper').html(`
           <div id="image" class="custom-file">
             <input type="file" id="image" name="image" class="custom-file-input" required>
             <label class="custom-file-label" for="image"></label>
           </div>`);
-            });
         });
-    </script>
+    });
+
+</script>
 
 
 <script>
@@ -260,19 +253,21 @@
       </div>`);
         });
     });
+
 </script>
 
 <script>
     document.getElementById('name').addEventListener('input', function() {
         const name = this.value;
         const slug = name
-            .toLowerCase()                 // Convertir en minuscules
+            .toLowerCase() // Convertir en minuscules
             .replace(/[^a-z0-9\s-]/g, '') // Supprimer les caractères spéciaux
-            .replace(/\s+/g, '-')         // Remplacer les espaces par des tirets
-            .replace(/-+/g, '-');         // Réduire plusieurs tirets en un seul
+            .replace(/\s+/g, '-') // Remplacer les espaces par des tirets
+            .replace(/-+/g, '-'); // Réduire plusieurs tirets en un seul
 
         document.getElementById('slug').value = slug;
     });
+
 </script>
 
 
@@ -280,60 +275,60 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.getElementById('bookForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Empêche l'envoi du formulaire par défaut
+    document.getElementById('bookForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
-    const name = document.getElementById('name').value.trim();
-    const slug = document.getElementById('slug').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const slug = document.getElementById('slug').value.trim();
 
-    // Étape 1 : Vérification des champs obligatoires
-    if (!name || !slug) {
+        // Étape 1 : Vérification des champs obligatoires
+        if (!name || !slug) {
+            Swal.fire({
+                icon: 'error'
+                , title: 'Erreur'
+                , text: 'Tous les champs doivent être remplis.'
+            , });
+            return;
+        }
+
+        // Étape 2 : Vérification des doublons
+        const slugExists = await checkSlugAvailability(slug);
+        if (slugExists) {
+            Swal.fire({
+                icon: 'error'
+                , title: 'Doublon détecté'
+                , text: `Le slug "${slug}" est déjà utilisé. Choisissez un autre.`
+            , });
+            return;
+        }
+
+        // Étape 3 : Si tout est correct, soumettre le formulaire
         Swal.fire({
-            icon: 'error',
-            title: 'Erreur',
-            text: 'Tous les champs doivent être remplis.',
+            icon: 'success'
+            , title: 'Succès'
+            , text: 'Formulaire validé avec succès !'
+        , }).then(() => {
+            e.target.submit(); // Soumettre le formulaire
         });
-        return;
-    }
-
-    // Étape 2 : Vérification des doublons
-    const slugExists = await checkSlugAvailability(slug);
-    if (slugExists) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Doublon détecté',
-            text: `Le slug "${slug}" est déjà utilisé. Choisissez un autre.`,
-        });
-        return;
-    }
-
-    // Étape 3 : Si tout est correct, soumettre le formulaire
-    Swal.fire({
-        icon: 'success',
-        title: 'Succès',
-        text: 'Formulaire validé avec succès !',
-    }).then(() => {
-        e.target.submit(); // Soumettre le formulaire
     });
-});
 
-// Fonction pour vérifier si le slug existe déjà
-async function checkSlugAvailability(slug) {
-    try {
-        const response = await fetch(`/book/check-slug?slug=${encodeURIComponent(slug)}`);
-        if (!response.ok) throw new Error('Erreur réseau');
-        const result = await response.json();
-        return result.exists; // Retourne true si le slug existe
-    } catch (error) {
-        console.error('Erreur lors de la vérification du slug :', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Erreur serveur',
-            text: 'Impossible de vérifier le slug actuellement.',
-        });
-        return true; // Empêche la soumission en cas de problème serveur
+    // Fonction pour vérifier si le slug existe déjà
+    async function checkSlugAvailability(slug) {
+        try {
+            const response = await fetch(`/book/check-slug?slug=${encodeURIComponent(slug)}`);
+            if (!response.ok) throw new Error('Erreur réseau');
+            const result = await response.json();
+            return result.exists; // Retourne true si le slug existe
+        } catch (error) {
+            console.error('Erreur lors de la vérification du slug :', error);
+            Swal.fire({
+                icon: 'error'
+                , title: 'Erreur serveur'
+                , text: 'Impossible de vérifier le slug actuellement.'
+            , });
+            return true; // Empêche la soumission en cas de problème serveur
+        }
     }
-}
 
 </script>
 @endsection

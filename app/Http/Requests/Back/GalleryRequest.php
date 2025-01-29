@@ -29,6 +29,10 @@ class GalleryRequest extends FormRequest
             'titre' => 'required|max:255',
              //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
              'image' => 'sometimes|required|file|mimetypes:image/*',
+           //  'video' => ' sometimes|required',
+           'video' => 'required|file|mimetypes:video/*',
+          // 'video' => 'sometimes|required|file|mimetypes:video/mp4,video/mpeg,video/ogg,video/webm,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/3gpp,video/3gpp2',
+      
             //   'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif',
             'description' => 'required|string',
         //    'slug' => ['required', 'max:255', new Slug, 'unique:homes,slug' . $id],

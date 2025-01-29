@@ -32,7 +32,7 @@
 
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
 
                             <x-back.validation-errors :errors="$errors" />
 
@@ -49,7 +49,7 @@
                                     input='text' :required="true">
                                 </x-back.input> --}}
 
-                                <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
+                               {{--  <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
                                     <label for="description">Image(640*516):</label>
                                     @if(isset($home) && !$errors->has('image'))
                                     <div>
@@ -72,7 +72,7 @@
                                         </div>
                                         @endif
                                     </div>
-                                </div>
+                                </div> --}}
 
                               
 
@@ -92,6 +92,54 @@
 
 
                             <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+
+                        </div>
+
+                        
+                        <div class="col-md-4">
+
+                       
+
+                           
+
+
+                            <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
+                                <label for="description">Image(640*516):</label>
+                                @if(isset($home) && !$errors->has('image'))
+                                <div>
+                                    <p><img src="{{ asset('images/thumbs/' . $gallery->image) }}"></p>
+                                    <button id="changeImage" class="btn btn-warning">Changer d'image</button>
+                                </div>
+                                @endif
+                                <div id="wrapper">
+                                    @if(!isset($gallery) || $errors->has('image'))
+                                    <div class="custom-file">
+                                        <input type="file" id="image" name="image"
+                                            class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
+                                            required>
+                                        <label class="custom-file-label" for="image"></label>
+                                        @if ($errors->has('image'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('image') }}
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                         
+
+                            <div class="form-group">
+                                <label for="video"><strong>Vidéo :</strong></label>
+                                <input type="file" class="form-control" name="video" accept="video/*">
+                            </div>
+
+
+
+
+
 
                         </div>
                     </div>

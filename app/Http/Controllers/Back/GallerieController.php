@@ -56,6 +56,11 @@ class GallerieController extends Controller
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
         }
+     
+         
+    if ($request->hasFile('video')) {
+        $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
+    }
 
         Gallerie::create($input);
         return redirect()->route('galleries.index');
@@ -125,6 +130,16 @@ class GallerieController extends Controller
             $file->move('public/Image/', $filename);
              $input['image'] = $filename; // Ajoute le chemin de la nouvelle image aux données d'entrée
          }
+
+         if ($request->hasFile('video')) {
+            // Vérification et suppression de l'ancienne vidéo (si applicable)
+            if (!empty($request->video_old) && Storage::disk('public')->exists($request->video_old)) {
+                Storage::disk('public')->delete($request->video_old);
+            }
+    
+            $videoPath = $request->file('video')->store('videos', 'public');
+            $input['video'] = $videoPath;
+        }
      
          // Met à jour l'enregistrement avec les nouvelles données
          $home->update($input);

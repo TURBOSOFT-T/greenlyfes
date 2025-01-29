@@ -9,6 +9,10 @@
             $sponsors = DB::table('sponsors')->get();
         @endphp
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 
 
@@ -467,7 +471,107 @@
     </div>
     </div> --}}
 
+ <!-- video area start -->
+{{--  <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="assets/img/video/video-bg.jpg">
+    <div class="container">
+       <div class="row justify-content-center">
+        @if ($galleries->isEmpty())
+        <div class="alert alert-info">
+            <p>Aucune gallerie n'est disponible pour le moment.</p>
+        </div>
+    @else
+        <div class="video-container d-flex flex-wrap justify-content-center">
+            @foreach ($galleries as $gallery)
+            <div class="col-xl-3 video-item mb-4">
+                <div class="tp-video-content text-center">
+                    <h4 class="tp-video-title mb-45">{{ $gallery->titre ?? ' ' }} <br></h4>
+                    <div class="tp-video-play-icon mb-65">
+                        <a class="popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z" fill="currentcolor" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="tp-video-button">
+                        <a class="tp-btn-border-white popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc"><span>Watch A Video</span></a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @endif
+       </div>
+    </div>
+ </div> --}}
 
+ <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="{{ url('public/Image/parametres/' . $config->imageeducation ?? '') }}">
+    <div class="container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @if ($galleries->isEmpty())
+                    <div class="alert alert-info">
+                        <p>Aucune galerie n'est disponible pour le moment.</p>
+                    </div>
+                @else
+                    @foreach ($galleries as $gallery)
+                        <div class="swiper-slide">
+                            <div class="tp-video-content text-center">
+                                <h4 class="tp-video-title mb-45">{{ $gallery->titre ?? ' ' }}</h4>
+                                <div class="tp-video-play-icon mb-65">
+                                    <a class="popup-video" href="{{ asset('storage/' . $gallery->video) }}">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
+                                                fill="currentcolor" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="tp-video-button">
+                                    <a class="tp-btn-border-white popup-video" href="{{ asset('storage/' . $gallery->video) }}"><span>Watch A Video</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+            <!-- Boutons de navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+ --}}
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 4, // Nombre de vidéos visibles en même temps
+        spaceBetween: 1, // Espace entre les vidéos
+        loop: true, // Défilement en boucle
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        autoplay: {
+            delay: 3000, // Défilement automatique toutes les 3 secondes
+            disableOnInteraction: false, // Continue même après interaction
+        },
+    });
+</script>
+
+
+
+ <!-- video area end -->
 
         <!-- choose area start -->
         <div class="tp-choose-area tp-choose-style-2 fix p-relative pt-150 pb-110">

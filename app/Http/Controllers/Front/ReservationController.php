@@ -25,6 +25,10 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Stripe\Charge;
+use Stripe\Stripe;
+
+
 
 class ReservationController extends Controller
 {
@@ -33,10 +37,7 @@ class ReservationController extends Controller
   {
     $configs = Config::firstOrFail();
     $room =Room:: findOrFail($id);
-
-
     return view('front.reservations.checkout', compact('configs','room'));
-
   }
 
 
@@ -48,7 +49,6 @@ public function getReservationsByMonth(Request $request,$id)
     $reservations = Reservation::where('room_id', $roomId)
         ->whereBetween('date_debut', [$month . '-01', $month . '-31']) // Limiter aux dates du mois
         ->get();
-
     // Formater les périodes réservées
     $reservedPeriods = $reservations->map(function ($reservation) {
         return [
@@ -271,7 +271,15 @@ $items=   Reservations_item::create([
 
 
    
+if(isset($_POST['stipe_payment_btn']))
+{
+  return " payement avec stripe
+  ";
+}
 
+if ($request->has('stripe_payment_btn')) {
+  return redirect()->route('payement', $request->all());
+}
 
 
     return redirect()->route('thank-yous');
@@ -281,7 +289,74 @@ $items=   Reservations_item::create([
 
  
 
+public function payement(Request $request)
+{
+    Stripe::setApiKey(env('STRIPE_SECRET'));
 
+    $room = Room::find($request->input('room_id'));
+
+    $date_debut = \Carbon\Carbon::parse($request->input('date_debut'));
+    $date_fin = \Carbon\Carbon::parse($request->input('date_fin'));
+    $duration = $date_debut->diffInDays($date_fin);
+    $totalPrice = $room->getPrice() * $duration;
+
+    $session = Session::create([
+        'payment_method_types' => ['card'],
+        'line_items' => [[
+            'price_data' => [
+                'currency' => 'eur',
+                'product_data' => [
+                    'name' => 'Réservation - ' . $room->name,
+                ],
+                'unit_amount' => $totalPrice, // En centimes
+            ],
+            'quantity' => 1,
+        ]],
+        'mode' => 'payment',
+        'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
+        'cancel_url' => route('cancel'),
+    ]);
+
+    return redirect($session->url);
+}
+
+public function success(Request $request)
+{
+    return view('success');
+}
+
+public function cancel()
+{
+    return view('cancel');
+}
+public function stripeorder(Request $request)
+{    
+    if(isset($_POST['stipe_payment_btn']))
+    {
+        $stripetoken = $request->input('stripeToken');
+        $STRIPE_SECRET = "YOUR_STRIPE_SECRET";
+        Stripe::setApiKey($STRIPE_SECRET);
+        \Stripe\Charge::create([
+            'amount' => 100 * 100,
+            'currency' => 'usd',
+            'description' => "Thank you for purchasing with Fabcart",
+            'source' => $stripetoken,
+            'shipping' => [
+                'name' => "User Name",
+                'phone' => "+1XXXXXXX",
+                'address' => [
+                    'line1' => "Address 1",
+                    'line2' => "Address 2",
+                    'postal_code' => "Zipcode",
+                    'city' => "City",
+                    'state' => "State",
+                    'country' => 'US',
+                ],
+            ],
+        ]);
+        return redirect('/thank-you')->with('status','Order has been placed Successfully');
+    }
+}
 
 
   
@@ -290,6 +365,13 @@ $items=   Reservations_item::create([
   {
 
     return view('front.reservations.thankyou');
+  }
+
+
+  public function message(Request $request)
+  {
+
+    return view('front.reservations.payement');
   }
 
 }
