@@ -516,7 +516,7 @@
                     @foreach ($galleries as $gallery)
                         <div class="swiper-slide">
                             <div class="tp-video-content text-center">
-                                <h4 class="tp-video-title mb-45">{{ $gallery->titre ?? ' ' }}</h4>
+                                <h1 class="tp-video-title mb-45"   style="font-size: 14px;">{{ $gallery->titre ?? ' ' }}</h1>
                                 <div class="tp-video-play-icon mb-65">
                                     <a class="popup-video" href="{{ asset('storage/' . $gallery->video) }}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -528,7 +528,7 @@
                                     </a>
                                 </div>
                                 <div class="tp-video-button">
-                                    <a class="tp-btn-border-white popup-video" href="{{ asset('storage/' . $gallery->video) }}"><span>Watch A Video</span></a>
+                                    <a class="tp-btn-border-white popup-video " style="font-size: 14px;" href="{{ asset('storage/' . $gallery->video) }}"><span>Voir la Vidéo</span></a>
                                 </div>
                             </div>
                         </div>
