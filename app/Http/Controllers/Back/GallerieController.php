@@ -148,10 +148,31 @@ class GallerieController extends Controller
          return redirect()->route('galleries.index')->with('success', 'Gallerie mise à jour avec succès!');
      }
      
-     public function destroy(Gallerie $gallerie)
-     {
-         $this->deleteImages($gallerie);
-         $gallerie->delete();
-         return redirect(route('galleries.index'));
-     }
+  
+
+
+     public function destroy11($id)
+{
+    // Trouver la galerie à supprimer
+    $gallery = Gallerie::findOrFail($id);
+    File::delete(public_path('/public/Image/' . $gallery->image));
+    // Supprimer la galerie
+    // Supprimer le fichier image si il existe
+
+
+    if ($request->hasFile('video')) {
+        $videoPath = public_path('storage/videos/' . $gallery->video);
+        if (file_exists($videoPath)) {
+            unlink($videoPath); // Supprimer la vidéo
+        }
+    }
+
+
+    // Supprimer l'entrée dans la base de données
+    $gallery->delete();
+
+    // Rediriger après la suppression
+    return redirect()->route('galleries.index')->with('success', 'Galerie supprimée avec succès.');
+}
+
 }

@@ -364,6 +364,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('savegalleries', BackGalleryController::class);
    //     Route::name('galleries.create')->get('galleries/create}', [BackGalleryController::class, 'create']);
 
+       Route::delete('galleries/{id}', [BackGalleryController::class, 'destroy'])->name('galleries.destroy');
+
         // Services
         Route::resource('services', ServiceController::class);
 
