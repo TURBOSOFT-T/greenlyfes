@@ -56,11 +56,17 @@ class GallerieController extends Controller
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
         }
+
+        $fileName = $request->video->getClientOriginalName();
+        $input = 'videos/' . $fileName;
+        $isFileUploaded = Storage::disk('public')->put($input, file_get_contents($request->video));
+        $url = Storage::disk('public')->url($input);
+ 
      
-         
+/*          
     if ($request->hasFile('video')) {
         $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
-    }
+    } */
 
         Gallerie::create($input);
         return redirect()->route('galleries.index');

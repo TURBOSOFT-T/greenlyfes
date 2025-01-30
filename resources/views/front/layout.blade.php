@@ -518,7 +518,7 @@
                             <div class="tp-video-content text-center">
                                 <h1 class="tp-video-title mb-45"   style="font-size: 14px;">{{ $gallery->titre ?? ' ' }}</h1>
                                 <div class="tp-video-play-icon mb-65">
-                                    <a class="popup-video" href="{{ asset('storage/' . $gallery->video) }}">
+                                    <a class="popup-video" href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -528,7 +528,7 @@
                                     </a>
                                 </div>
                                 <div class="tp-video-button">
-                                    <a class="tp-btn-border-white popup-video " style="font-size: 14px;" href="{{ asset('storage/' . $gallery->video) }}"><span>Voir la Vidéo</span></a>
+                                    <a class="tp-btn-border-white popup-video " style="font-size: 14px;" href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}"><span>Voir la Vidéo</span></a>
                                 </div>
                             </div>
                         </div>
