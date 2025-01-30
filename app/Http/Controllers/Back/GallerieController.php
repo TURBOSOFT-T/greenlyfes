@@ -151,7 +151,7 @@ class GallerieController extends Controller
   
 
 
-     public function destroy11($id)
+     public function destroy($id)
 {
     // Trouver la galerie à supprimer
     $gallery = Gallerie::findOrFail($id);
@@ -162,6 +162,13 @@ class GallerieController extends Controller
 
     if ($request->hasFile('video')) {
         $videoPath = public_path('storage/videos/' . $gallery->video);
+        if (file_exists($videoPath)) {
+            unlink($videoPath); // Supprimer la vidéo
+        }
+    }
+
+    if ($gallery->video) {
+        $videoPath = storage_path('app/public/videos/' . $gallery->video); // Chemin complet de la vidéo
         if (file_exists($videoPath)) {
             unlink($videoPath); // Supprimer la vidéo
         }

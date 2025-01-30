@@ -23,6 +23,7 @@
         "livewire/livewire": "^2.12",
         "php-open-source-saver/jwt-auth": "^2.2",
         "phpoffice/phpspreadsheet": "^1.9",
+        "spatie/pdf-to-image": "^1.2",
         "stichoza/google-translate-php": "^5.2",
         "stripe/stripe-php": "^9.9",
         "unisharp/laravel-filemanager": "^2.6",
