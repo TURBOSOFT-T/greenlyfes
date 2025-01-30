@@ -11,6 +11,7 @@ use App\Http\Requests\StoreGallerieRequest;
 use App\Http\Requests\UpdateGallerieRequest;
 use App\Http\Requests\Back\GalleryRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
@@ -57,16 +58,16 @@ class GallerieController extends Controller
             $input['image'] = $filename;
         }
 
-        $fileName = $request->video->getClientOriginalName();
+       /*  $fileName = $request->video->getClientOriginalName();
         $input = 'videos/' . $fileName;
         $isFileUploaded = Storage::disk('public')->put($input, file_get_contents($request->video));
-        $url = Storage::disk('public')->url($input);
+        $url = Storage::disk('public')->url($input); */
  
      
-/*          
+          
     if ($request->hasFile('video')) {
         $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
-    } */
+    } 
 
         Gallerie::create($input);
         return redirect()->route('galleries.index');
