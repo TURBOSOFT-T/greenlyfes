@@ -763,7 +763,7 @@
                 <div class="row">
                     <div class="col-xl-5 col-lg-6">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle">les dernières publications</span>
+                            <span class="tp-section-subtitle">Notre conciergerie</span>
 
                         </div>
                     </div>
@@ -816,7 +816,7 @@
                     @endforeach
                     <!-- Ajouter le bouton ici -->
                     <div class="text-center mt-30">
-                        <a href="{{ url('produits') }}" class="tp-btn">Voir tous les produits</a>
+                        <a href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
                     </div>
                     <style>
                         .tp-btn {
@@ -1420,7 +1420,7 @@
                             </div>
                             <div class="text-center mt-30">
                                 <a class="tp-btn-theme" href="{{ url('blog') }}" class="tp-btn">
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('Voir toutes les nouvelles') }}
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Voir tout') }}
                                 </a>
                             </div>
                         </div>

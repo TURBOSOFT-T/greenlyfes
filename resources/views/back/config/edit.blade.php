@@ -304,10 +304,10 @@
                 @endif
             </div> 
 
-           {{--  <div class="col-xs-12 col-sm-12 col-md-3">
+          <div class="col-xs-12 col-sm-12 col-md-3">
                 @if (isset($config) && !$errors->has('imagesante'))
                     <div>
-                        <strong>Image pour entête santé(1920*500):</strong>
+                        <strong>Image pour entête FAQ(1920*500):</strong>
                         <p>
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
                             <img class="card-img-top product-image"
@@ -317,13 +317,13 @@
                         </div>
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="imagesante">Image entête santé(1920*500):</label>
+                            <label for="imagesante">Image entête FAQ(1920*500):</label>
                             <input type="file" class="form-control-file" id="imagesante" name="imagesante">
                         </div>
                     </div>
                 @endif
             </div>
- --}}
+ 
  
 
             <div class="col-xs-12 col-sm-12 col-md-3">

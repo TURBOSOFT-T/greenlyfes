@@ -55,13 +55,13 @@
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Les détails du produit</h3>
+                        <h3 class="breadcrumb__title">Les détails </h3>
                      </div>
                      <div class="breadcrumb__list">
                         <span><a href="/">Home</a></span>
                       
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Détails produit</b></span>
+                        <span><b>Détails</b></span>
                      </div>
                   </div>
                </div>

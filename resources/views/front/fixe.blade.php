@@ -295,7 +295,7 @@
 
                                     </li>
 
-                                    <li><a href="{{ url('produits') }}">Boutique</a></li>
+                                    <li><a href="{{ url('produits') }}">Conciergerie</a></li>
 
 
                                     {{--       <li class="has-dropdown">
@@ -309,20 +309,21 @@
                                         </ul>
                                      </li> --}}
                                     {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
-                                    <li><a href="{{ url('blog') }}">
+                                     <li><a href="{{ url('blog') }}">
                                         {{ \App\Helpers\TranslationHelper::TranslateText('Actualités') }}
-                                    </a></li>
+                                    </a></li> 
+                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                                     <li><a href="{{ route('contacts.create') }}">Contact</a></li>
                                     @guest
                                         <li>
                                             <a href="{{ url('login') }}">Connexion</a>
                                         </li>
-                                    @else
+                                   {{--  @else
                                         @if (auth()->user()->role != 'user')
                                             <li><a href="{{ url('admin') }}"
                                                     class="nav-item nav-link">Administration</a>
                                             </li>
-                                        @endif
+                                        @endif --}}
 
                                     @endguest
 
@@ -374,11 +375,15 @@
                                                 <span>Mes favoris</span>
 
                                             </a> --}}
-                                            {{--  <a class="dropdown-item" href="{{ route('profile') }}">
-                                                <i class="bx bx-tachometer"></i>
-                                                <span>Paramètres</span>
 
-                                            </a> --}}
+                                          
+                                        @if (auth()->user()->role != 'user')
+                                              <a class="dropdown-item" href="{{ url('admin') }}">
+                                                <i class="bx bx-tachometer"></i>
+                                                <span>Dashboard</span>
+
+                                            </a>
+                                            @endif
 
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();

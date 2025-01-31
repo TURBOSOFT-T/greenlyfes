@@ -18,6 +18,10 @@ class ContactController extends Controller
  public function about(){
     return view('front.about.about');
  }
+
+ public function faq(){
+    return view('front.faq.faq');
+ }
    
     public function store(ContactRequest $request)
     {

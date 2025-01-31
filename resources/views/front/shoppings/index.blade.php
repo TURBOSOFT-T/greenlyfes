@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre','Boutique')
+@section('titre','Conciergerie')
 @section('body')
 
 <main>
@@ -25,14 +25,14 @@
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Boutique</h3>
+                        <h3 class="breadcrumb__title">Conciergerie</h3>
                      </div>
                      <div class="breadcrumb__list">
                         <span><a href="/">Accueil</a></span>
                         <span class="dvdr"><i>/</i></span>
                        
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Boutique</b></span>
+                        <span><b>Conciergerie</b></span>
                      </div>
                   </div>
                </div>

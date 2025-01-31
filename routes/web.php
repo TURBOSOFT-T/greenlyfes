@@ -149,6 +149,9 @@ Route::resource('testimonial', TestimonialController::class);
 Route::resource('contacts', ContactController::class, ['only' => ['create', 'store', 'contact', 'about']]);
 Route::resource('contact', ContactController::class);
 Route::get('about', [ContactController::class, 'about'])->name('about');
+Route::get('faq', [ContactController::class, 'faq'])->name('faq');
+
+
 
 
 // Products
