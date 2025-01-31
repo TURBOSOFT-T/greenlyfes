@@ -65,9 +65,9 @@ class GallerieController extends Controller
  
      
           
-    if ($request->hasFile('video')) {
+  /*   if ($request->hasFile('video')) {
         $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
-    } 
+    }  */
 
         Gallerie::create($input);
         return redirect()->route('galleries.index');

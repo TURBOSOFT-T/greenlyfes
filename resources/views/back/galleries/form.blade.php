@@ -133,7 +133,7 @@
 
                             <div class="form-group">
                                 <label for="video"><strong>Vidéo :</strong></label>
-                                <input type="file" class="form-control" name="video" accept="video/*">
+                                <input type="text" class="form-control" name="video" >
                             </div>
 
 
