@@ -172,13 +172,13 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-xl-5">
+                    <div class="col-xl-12">
                         <div class="tp-service-4-title-box text-center mb-55">
                             <span class="tp-section-subtitle">
-                                {{ \App\Helpers\TranslationHelper::TranslateText(' KDO CONCIERGERIE') }}
+                                {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }}
                             </span>
-                            {{-- <h4 class="tp-section-title">Our Awesome & Best
-                       Services</h4> --}}
+                           {{--   <h4 class="tp-section-title">
+                                Découvrez nos logements et dernières publications </h4> --}}
                         </div>
                     </div>
                 </div>
@@ -228,13 +228,30 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="row justify-content-center">
-                            <div class="col-xl-5">
+                            <div class="col-xl-12">
                                 <div class="tp-service-4-title-box text-center mb-55">
-                                    <span class="tp-section-subtitle">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Les dernière publications') }}</span>
-                                    </span>
-                                    {{-- <h4 class="tp-section-title">Our Awesome & Best
-                               Services</h4> --}}
+                                    {{--  <span class="tp-section-subtitle">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText(' "Un séjour de rêve en Tunisie commence par une chambre d’exception !" 🏝️🏨') }}</span>
+                                    </span>  --}}
+                                    <style>
+                                        .blinking-text {
+    animation: blink 3s infinite;
+    font-weight: bold;
+    color: #8ee111; /* Rouge pour attirer l'attention */
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+                                    </style>
+                                 <h1 class="tp-section-title">
+                                    <span class="tp-section blinking-text">
+                                        "Un séjour de rêve en Tunisie commence par une chambre d’exception !" 🏝️🏨
+                                        </span>  
+                                     </h1>
                                 </div>
                             </div>
                         </div>
@@ -248,21 +265,33 @@
                     @else
                         @foreach ($rooms as $room)
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat2 cat4">
-                                <div class="tp-project-3-item">
+                                <div class="tp-project-3-item text-center">
                                     <div class="tp-project-3-thumb ">
                                         <img src="{{ url('public/Image/' . $room->image) }}" alt="">
                                     </div>
-                                    <div class="tp-project-3-content">
+                                    <div class="tp-project-3-content text-center">
                                         <span class="tp-product-price-2 new-price">{{ $room->price ?? '' }}
                                             <x-devise></x-devise></span>
+                                            <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
+                                            
+
+                                            <a class="tp-btn-theme"  href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}" class="btn btn-primary mt-3">
+                                                Voir détails
+                                            </a>
                                     </div>
 
-                                    <div class="tp-project-3-content">
+                                   {{--  <div class="tp-project-3-content">
                                         <h4 class="tp-project-3-title mb-20"><a class="text-anim-3"
                                                 href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}">{{ $room->name ?? '' }}</a>
                                         </h4>
 
                                     </div>
+                                    
+                                    <div class="tp-project-3-content text-center">
+                                    <a  href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}" class="btn btn-primary mt-3">
+                                        Voir détails
+                                    </a>
+                                    </div> --}}
 
                                 </div>
                             </div>
@@ -615,6 +644,17 @@
  
  <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="{{ url('public/Image/parametres/' . $config->imageeducation ?? '') }}">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-12">
+                <div class="tp-service-4-title-box text-center mb-55">
+                  {{--   <span class="tp-section-subtitle">
+                        {{ \App\Helpers\TranslationHelper::TranslateText(' KDO CONCIERGERIE') }}
+                    </span> --}}
+                     <h4 class="tp-section-title blinking-text">
+                        Découvrez la beauté de la Tunisie en images et en émotions  🌅🎬 🌍✨ </h4>
+                </div>
+            </div>
+        </div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @if ($galleries->isEmpty())
@@ -870,11 +910,13 @@
         <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-5 col-lg-6">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle">Notre conciergerie</span>
+                            <span class="tp-section-subtitle"> Conciergerie sur-mesure pour un séjour inoubliable en Tunisie. 🏖️🔑</span>
 
                         </div>
+
+                        
                     </div>
                 </div>
                 <div class="row gx-30">
@@ -925,7 +967,7 @@
                     @endforeach
                     <!-- Ajouter le bouton ici -->
                     <div class="text-center mt-30">
-                        <a href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
+                        <a class="tp-btn-theme" href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
                     </div>
                     <style>
                         .tp-btn {
@@ -961,7 +1003,7 @@
                             <div class="col-xl-5">
                                 <div class="tp-service-4-title-box text-center mb-55">
                                     <span class="tp-section-subtitle">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Galleries') }}</span>
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Laissez-vous séduire par la Tunisie, une galerie de rêves avant votre séjour ! 🌅✨') }}</span>
                                     </span>
                                     {{-- <h4 class="tp-section-title">Our Awesome & Best
                            Services</h4> --}}
@@ -1474,8 +1516,10 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="tp-blog-title-box text-center mb-60">
-                            <span class="tp-section-subtitle">Les actualités</span>
-                            <h4 class="tp-section-title"></h4>
+                            <span class="tp-section-subtitle">Restez à l'affût des dernières tendances en Tunisie, et réservez votre aventure !</span>
+                            <h4 class="tp-section-title">
+                                L'actualité de la Tunisie vous attend, votre séjour aussi !
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -1545,8 +1589,16 @@
 
 
         <!-- brand area start -->
-        <div class="tp-brand-area pb-150">
+       {{--  <div class="tp-brand-area pb-150">
             <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="tp-blog-title-box text-center mb-60">
+                            <span class="tp-section-subtitle"></span>
+                            <h4 class="tp-section-title"></h4>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="tp-brand-wrap">
@@ -1571,7 +1623,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- brand area end -->
 
 

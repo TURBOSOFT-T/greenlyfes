@@ -165,6 +165,10 @@ $configs = DB::table('configs')->first();
                           </div>
                        </div> --}}
                     </div>
+
+                    <a   class="tp-btn-theme"href="#" {{-- class="btn btn-primary py-3 px-5 animated slideInRight" --}}>
+                     {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
+                 </a>
                  </div>
               </div>
            </div>
