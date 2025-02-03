@@ -58,12 +58,7 @@ class GallerieController extends Controller
             $input['image'] = $filename;
         }
 
-       /*  $fileName = $request->video->getClientOriginalName();
-        $input = 'videos/' . $fileName;
-        $isFileUploaded = Storage::disk('public')->put($input, file_get_contents($request->video));
-        $url = Storage::disk('public')->url($input); */
- 
-     
+   
           
   /*   if ($request->hasFile('video')) {
         $input['video'] = $request->file('video')->store('videos', 'public'); // Stockage de la vidéo
@@ -73,28 +68,7 @@ class GallerieController extends Controller
         return redirect()->route('galleries.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreGallerieRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Gallerie  $gallerie
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gallerie  $gallerie
-     * @return \Illuminate\Http\Response
-     */
   
      public function edit($id)
      {
@@ -137,16 +111,16 @@ class GallerieController extends Controller
             $file->move('public/Image/', $filename);
              $input['image'] = $filename; // Ajoute le chemin de la nouvelle image aux données d'entrée
          }
-
+/* 
          if ($request->hasFile('video')) {
-            // Vérification et suppression de l'ancienne vidéo (si applicable)
+          
             if (!empty($request->video_old) && Storage::disk('public')->exists($request->video_old)) {
                 Storage::disk('public')->delete($request->video_old);
             }
     
             $videoPath = $request->file('video')->store('videos', 'public');
             $input['video'] = $videoPath;
-        }
+        } */
      
          // Met à jour l'enregistrement avec les nouvelles données
          $home->update($input);
@@ -173,14 +147,14 @@ class GallerieController extends Controller
             unlink($videoPath); // Supprimer la vidéo
         }
     }
-
+/* 
     if ($gallery->video) {
-        $videoPath = storage_path('app/public/videos/' . $gallery->video); // Chemin complet de la vidéo
+        $videoPath = storage_path('app/public/videos/' . $gallery->video); 
         if (file_exists($videoPath)) {
-            unlink($videoPath); // Supprimer la vidéo
+            unlink($videoPath); 
         }
     }
-
+ */
 
     // Supprimer l'entrée dans la base de données
     $gallery->delete();

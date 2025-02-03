@@ -320,13 +320,13 @@
 
 
       <!-- video-area-start -->
-     {{--  <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
+       <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
         <div class="container">
            <div class="row">
               <div class="col-xl-12">
                  <div class="tp-video-2-title-box text-center mb-55">
-                    <h4 class="tp-section-title">Star Nursery , Follow Us <br>
-                       For The Latest Gardening Updates</h4>
+                    <h4 class="tp-section-title">Vivez l'harmonie entre nature et modernité. <br>
+                        Un cadre de vie paisible où bien-être et sérénité se rencontrent</h4>
                  </div>
               </div>
            </div>
@@ -334,7 +334,7 @@
               <div class="row align-items-center">
                  <div class="col-xl-7 col-lg-6">
                     <div class="tp-video-2-thumb p-relative">
-                       <img src="assets/img/video/video-bg-2.jpg" alt="">
+                       <img src="{{ url('public/Image/parametres/' . $config->imagesante) }}" alt="">
                        <div class="tp-video-play-icon">
                           <a class="popup-video" href="https://www.youtube.com/watch?v=5CukehXuIHM">
                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -350,14 +350,19 @@
                  <div class="col-xl-5 col-lg-6">
                     <div class="tp-video-2-right">
                        <div class="tp-video-2-title-box mb-20">
-                          <span class="tp-section-subtitle">Only The Best Quality</span>
-                          <h4 class="tp-section-title">Your Favorite Plant
-                             Gardening Guides</h4>
+                          <span class="tp-section-subtitle">Vivre à Greenlyfe Oliviera Village</span>
+                         <p>
+                            Greenlyfe Oliviera Village est un projet immobilier qui offre une expérience de vie unique et
+                            exceptionnelle dans le cadre de votre quartier.
+                         </p>
                        </div>
                        <div class="tp-video-2-text mb-25">
-                          <p>Enthusiastically matrix future-proof platforms garden leadingedge impact digital
-                             photography services.</p>
-                       </div>
+                          <p>Greenlife Oliviera Village vous offre un cadre de vie exceptionnel alliant confort, nature et modernité. </p>
+                      <p>
+                        Profitez de services de qualité pour un quotidien serein et harmonieux.
+
+                      </p>
+                        </div>
                        <div class="tp-video-2-list-box">
                           <ul>
                              <li>
@@ -372,7 +377,7 @@
                                          fill="currentcolor" />
                                    </svg>
                                 </span>
-                                Starting Seeds Outdoors
+                                Hébergement
                              </li>
                              <li>
                                 <span>
@@ -386,7 +391,7 @@
                                          fill="currentcolor" />
                                    </svg>
                                 </span>
-                                Pest, Weed & fertilization
+                                Restauration
                              </li>
                              <li>
                                 <span>
@@ -400,7 +405,7 @@
                                          fill="currentcolor" />
                                    </svg>
                                 </span>
-                                Landscape Maintenance
+                                Bien-être et Activités
                              </li>
                              <li>
                                 <span>
@@ -414,16 +419,51 @@
                                          fill="currentcolor" />
                                    </svg>
                                 </span>
-                                Lawn & Garden Care
+                                Séjours Longs et Immersion
                              </li>
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Engagement Écologique et Social
+                             </li>
+
+                             <li>
+                                <span>
+                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                         fill="currentcolor" />
+                                      <path fill-rule="evenodd" clip-rule="evenodd"
+                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                         fill="currentcolor" />
+                                   </svg>
+                                </span>
+                                Loisirs et Culture
+                             </li>
+
+
                           </ul>
                        </div>
+
+                       <div class="text-center mt-30">
+                        <a class="tp-btn-theme" href="https://greenlife-oliviera-village.com" class="tp-btn">Voir plus</a>
+                    </div>
                     </div>
                  </div>
               </div>
            </div>
         </div>
-     </div> --}}
+     </div> 
      <!-- video-area-end -->
 
         {{-- 
