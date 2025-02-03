@@ -9,10 +9,10 @@
             $sponsors = DB::table('sponsors')->get();
         @endphp
 
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 
 
@@ -28,17 +28,17 @@
                                 <div class="container">
                                     <style>
                                         .custom-text-white {
-    color: white !important;
-}
-
+                                            color: white !important;
+                                        }
                                     </style>
                                     <div class="row justify-content-center">
                                         <div class="col-lg-10 text-center">
-                                            <p class="fs-5 fw-medium custom-text-white text-primary text-uppercase animated slideInRight">
+                                            <p
+                                                class="fs-5 fw-medium custom-text-white text-primary text-uppercase animated slideInRight">
                                                 {{ $home->title }}
                                             </p>
                                             <h1 class="display-10 mb-10 text-white animated slideInRight">
-                                                {!!  $home->body !!}
+                                                {!! $home->body !!}
                                             </h1>
                                             <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
                                                 {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
@@ -62,29 +62,31 @@
         </div>
 
 
-<style>
-    .responsive-image {
-    width: 100%;      /* L'image occupe toute la largeur */
-    height: 300px;    /* Hauteur fixe */
-    object-fit: cover; /* Ajuste le contenu sans déformer */
-}
+        <style>
+            .responsive-image {
+                width: 100%;
+                /* L'image occupe toute la largeur */
+                height: 300px;
+                /* Hauteur fixe */
+                object-fit: cover;
+                /* Ajuste le contenu sans déformer */
+            }
 
 
-@media (max-width: 768px) {
-    .responsive-image {
-        max-width: 100%; /* Pleine largeur sur mobile */
-        height: auto;
-    }
-}
-
-
-</style>
+            @media (max-width: 768px) {
+                .responsive-image {
+                    max-width: 100%;
+                    /* Pleine largeur sur mobile */
+                    height: auto;
+                }
+            }
+        </style>
 
         <!-- choose area start -->
         <div class="tp-choose-3-area tp-choose-style-2 fix p-relative pt-150 pb-110">
-            <div class="tp-choose-3-shape  d-sm-block" >
-                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300" width="400"
-                    alt="">
+            <div class="tp-choose-3-shape  d-sm-block">
+                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" height="300"
+                    width="400" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center">
@@ -121,7 +123,8 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Club House et Espaces Communautaires') }}</h5>
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Club House et Espaces Communautaires') }}
+                                    </h5>
                                     <p>
 
 
@@ -152,9 +155,9 @@
                     </div>
                     <div class="col-xl-7 col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".7s">
                         <div class="tp-choose-3-thumb-box p-relative">
-                            <div class="tp-choose-3-award"  style="width: 100%; max-width: 800px; margin: auto;">
-                                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}" alt=""
-                                    width="1200" height="600">
+                            <div class="tp-choose-3-award" style="width: 100%; max-width: 800px; margin: auto;">
+                                <img class="img-fluid" src="{{ url('public/Image/parametres/' . $config->imageabout) }}"
+                                    alt="" width="1200" height="600">
                             </div>
 
                         </div>
@@ -177,7 +180,7 @@
                             <span class="tp-section-subtitle">
                                 {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }}
                             </span>
-                           {{--   <h4 class="tp-section-title">
+                            {{--   <h4 class="tp-section-title">
                                 Découvrez nos logements et dernières publications </h4> --}}
                         </div>
                     </div>
@@ -189,26 +192,26 @@
                             <div class="swiper-container tp-service-4-active">
                                 <div class="swiper-wrapper">
                                     @if ($logements->isEmpty())
-                                    <div class="alert alert-info">
-                                        <p>Aucun logement n'est disponible pour le moment.</p>
-                                    </div>
-                                @else
-                                    @foreach ($logements as $logement)
-                                        <div class="swiper-slide">
-                                            <div class="tp-service-4-item text-center">
-                                                <div class="tp-service-4-thumb  image-container">
-                                                    <img src="{{ url('public/Image/' . $logement->image) }}"
-                                                        alt="">
-                                                </div>
-                                                <div class="tp-service-4-content">
+                                        <div class="alert alert-info">
+                                            <p>Aucun logement n'est disponible pour le moment.</p>
+                                        </div>
+                                    @else
+                                        @foreach ($logements as $logement)
+                                            <div class="swiper-slide">
+                                                <div class="tp-service-4-item text-center">
+                                                    <div class="tp-service-4-thumb  image-container">
+                                                        <img src="{{ url('public/Image/' . $logement->image) }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="tp-service-4-content">
 
-                                                    <h4 class="tp-service-4-title"><a class="text-anim-3"
-                                                            href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a>
-                                                    </h4>
+                                                        <h4 class="tp-service-4-title"><a class="text-anim-3"
+                                                                href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
                                     @endif
 
 
@@ -235,23 +238,31 @@
                                     </span>  --}}
                                     <style>
                                         .blinking-text {
-    animation: blink 3s infinite;
-    font-weight: bold;
-    color: #8ee111; /* Rouge pour attirer l'attention */
-}
+                                            animation: blink 3s infinite;
+                                            font-weight: bold;
+                                            color: #8ee111;
+                                            /* Rouge pour attirer l'attention */
+                                        }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-}
+                                        @keyframes blink {
+                                            0% {
+                                                opacity: 1;
+                                            }
 
+                                            50% {
+                                                opacity: 0;
+                                            }
+
+                                            100% {
+                                                opacity: 1;
+                                            }
+                                        }
                                     </style>
-                                 <h1 class="tp-section-title">
-                                    <span class="tp-section blinking-text">
-                                        "Un séjour de rêve en Tunisie commence par une chambre d’exception !" 🏝️🏨
-                                        </span>  
-                                     </h1>
+                                    <h1 class="tp-section-title">
+                                        <span class="tp-section blinking-text">
+                                            "Un séjour de rêve en Tunisie commence par une chambre d’exception !" 🏝️🏨
+                                        </span>
+                                    </h1>
                                 </div>
                             </div>
                         </div>
@@ -272,15 +283,17 @@
                                     <div class="tp-project-3-content text-center">
                                         <span class="tp-product-price-2 new-price">{{ $room->price ?? '' }}
                                             <x-devise></x-devise></span>
-                                            <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
-                                            
+                                        <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
 
-                                            <a class="tp-btn-theme"  href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}" class="btn btn-primary mt-3">
-                                                Voir détails
-                                            </a>
+
+                                        <a class="tp-btn-theme"
+                                            href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
+                                            class="btn btn-primary mt-3">
+                                            Voir détails
+                                        </a>
                                     </div>
 
-                                   {{--  <div class="tp-project-3-content">
+                                    {{--  <div class="tp-project-3-content">
                                         <h4 class="tp-project-3-title mb-20"><a class="text-anim-3"
                                                 href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}">{{ $room->name ?? '' }}</a>
                                         </h4>
@@ -319,152 +332,155 @@
 
 
 
-      <!-- video-area-start -->
-       <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
-        <div class="container">
-           <div class="row">
-              <div class="col-xl-12">
-                 <div class="tp-video-2-title-box text-center mb-55">
-                    <h4 class="tp-section-title">Vivez l'harmonie entre nature et modernité. <br>
-                        Un cadre de vie paisible où bien-être et sérénité se rencontrent</h4>
-                 </div>
-              </div>
-           </div>
-           <div class="tp-video-2-wrap">
-              <div class="row align-items-center">
-                 <div class="col-xl-7 col-lg-6">
-                    <div class="tp-video-2-thumb p-relative">
-                       <img src="{{ url('public/Image/parametres/' . $config->imagesante) }}" alt="">
-                       <div class="tp-video-play-icon">
-                          <a class="popup-video" href="https://www.youtube.com/watch?v=5CukehXuIHM">
-                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                   d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
-                                   fill="currentcolor" />
-                             </svg>
-                          </a>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-xl-5 col-lg-6">
-                    <div class="tp-video-2-right">
-                       <div class="tp-video-2-title-box mb-20">
-                          <span class="tp-section-subtitle">Vivre à Greenlyfe Oliviera Village</span>
-                         <p>
-                            Greenlyfe Oliviera Village est un projet immobilier qui offre une expérience de vie unique et
-                            exceptionnelle dans le cadre de votre quartier.
-                         </p>
-                       </div>
-                       <div class="tp-video-2-text mb-25">
-                          <p>Greenlife Oliviera Village vous offre un cadre de vie exceptionnel alliant confort, nature et modernité. </p>
-                      <p>
-                        Profitez de services de qualité pour un quotidien serein et harmonieux.
-
-                      </p>
+        <!-- video-area-start -->
+        <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="tp-video-2-title-box text-center mb-55">
+                            <h4 class="tp-section-title">Vivez l'harmonie entre nature et modernité. <br>
+                                Un cadre de vie paisible où bien-être et sérénité se rencontrent</h4>
                         </div>
-                       <div class="tp-video-2-list-box">
-                          <ul>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Hébergement
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Restauration
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Bien-être et Activités
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Séjours Longs et Immersion
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Engagement Écologique et Social
-                             </li>
-
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Loisirs et Culture
-                             </li>
-
-
-                          </ul>
-                       </div>
-
-                       <div class="text-center mt-30">
-                        <a class="tp-btn-theme" href="https://greenlife-oliviera-village.com" class="tp-btn">Voir plus</a>
                     </div>
+                </div>
+                <div class="tp-video-2-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="tp-video-2-thumb p-relative">
+                                <img src="{{ url('public/Image/parametres/' . $config->imagesante) }}" alt="">
+                                <div class="tp-video-play-icon">
+                                    <a class="popup-video" href="https://www.youtube.com/watch?v=5CukehXuIHM">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
+                                                fill="currentcolor" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="tp-video-2-right">
+                                <div class="tp-video-2-title-box mb-20">
+                                    <span class="tp-section-subtitle">Vivre à Greenlyfe Oliviera Village</span>
+                                    <p>
+                                        Greenlyfe Oliviera Village est un projet immobilier qui offre une expérience de vie
+                                        unique et
+                                        exceptionnelle dans le cadre de votre quartier.
+                                    </p>
+                                </div>
+                                <div class="tp-video-2-text mb-25">
+                                    <p>Greenlife Oliviera Village vous offre un cadre de vie exceptionnel alliant confort,
+                                        nature et modernité. </p>
+                                    <p>
+                                        Profitez de services de qualité pour un quotidien serein et harmonieux.
+
+                                    </p>
+                                </div>
+                                <div class="tp-video-2-list-box">
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Hébergement
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Restauration
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Bien-être et Activités
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Séjours Longs et Immersion
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Engagement Écologique et Social
+                                        </li>
+
+                                        <li>
+                                            <span>
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
+                                                        fill="currentcolor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                            Loisirs et Culture
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+
+                                <div class="text-center mt-30">
+                                    <a class="tp-btn-theme" href="https://greenlife-oliviera-village.com"
+                                        class="tp-btn"  target="_blank" rel="noopener noreferrer">Voir plus</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                 </div>
-              </div>
-           </div>
+                </div>
+            </div>
         </div>
-     </div> 
-     <!-- video-area-end -->
+        <!-- video-area-end -->
 
         {{-- 
     <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
@@ -649,8 +665,8 @@
     </div>
     </div> --}}
 
- <!-- video area start -->
-{{--  <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="assets/img/video/video-bg.jpg">
+        <!-- video area start -->
+        {{--  <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="assets/img/video/video-bg.jpg">
     <div class="container">
        <div class="row justify-content-center">
         @if ($galleries->isEmpty())
@@ -681,86 +697,91 @@
        </div>
     </div>
  </div> --}}
- 
- <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="{{ url('public/Image/parametres/' . $config->imageeducation ?? '') }}">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-12">
-                <div class="tp-service-4-title-box text-center mb-55">
-                  {{--   <span class="tp-section-subtitle">
+
+        <div class="tp-video-area tp-video-bg pt-95 pb-95"
+            data-background="{{ url('public/Image/parametres/' . $config->imageeducation ?? '') }}">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="tp-service-4-title-box text-center mb-55">
+                            {{--   <span class="tp-section-subtitle">
                         {{ \App\Helpers\TranslationHelper::TranslateText(' KDO CONCIERGERIE') }}
                     </span> --}}
-                     <h4 class="tp-section-title blinking-text">
-                        Découvrez la beauté de la Tunisie en images et en émotions  🌅🎬 🌍✨ </h4>
+                            <h4 class="tp-section-title blinking-text">
+                                Découvrez la beauté de la Tunisie en images et en émotions 🌅🎬 🌍✨ </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @if ($galleries->isEmpty())
+                            <div class="alert alert-info">
+                                <p>Aucune galerie n'est disponible pour le moment.</p>
+                            </div>
+                        @else
+                            @foreach ($galleries as $gallery)
+                                <div class="swiper-slide">
+                                    <div class="tp-video-content text-center">
+                                        <h1 class="tp-video-title mb-45" style="font-size: 14px;">
+                                            {{ $gallery->titre ?? ' ' }}</h1>
+                                        <div class="tp-video-play-icon mb-65">
+                                            <a class="popup-video"
+                                                href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="tp-video-button">
+                                            <a class="tp-btn-border-white popup-video " style="font-size: 14px;"
+                                                href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}"><span>Voir
+                                                    la Vidéo</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <!-- Boutons de navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                @if ($galleries->isEmpty())
-                    <div class="alert alert-info">
-                        <p>Aucune galerie n'est disponible pour le moment.</p>
-                    </div>
-                @else
-                    @foreach ($galleries as $gallery)
-                        <div class="swiper-slide">
-                            <div class="tp-video-content text-center">
-                                <h1 class="tp-video-title mb-45"   style="font-size: 14px;">{{ $gallery->titre ?? ' ' }}</h1>
-                                <div class="tp-video-play-icon mb-65">
-                                    <a class="popup-video" href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
-                                                fill="currentcolor" />
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="tp-video-button">
-                                    <a class="tp-btn-border-white popup-video " style="font-size: 14px;" href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}"><span>Voir la Vidéo</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-            <!-- Boutons de navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-</div>
 
 
-{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
  --}}
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 4, // Nombre de vidéos visibles en même temps
-        spaceBetween: 1, // Espace entre les vidéos
-        loop: true, // Défilement en boucle
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        autoplay: {
-            delay: 3000, // Défilement automatique toutes les 3 secondes
-            disableOnInteraction: false, // Continue même après interaction
-        },
-    });
-</script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 4, // Nombre de vidéos visibles en même temps
+                spaceBetween: 1, // Espace entre les vidéos
+                loop: true, // Défilement en boucle
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 3000, // Défilement automatique toutes les 3 secondes
+                    disableOnInteraction: false, // Continue même après interaction
+                },
+            });
+        </script>
 
 
 
- <!-- video area end -->
+        <!-- video area end -->
 
         <!-- choose area start -->
         <div class="tp-choose-area tp-choose-style-2 fix p-relative pt-150 pb-110">
@@ -945,18 +966,19 @@
         </div>
         <!-- choose area end -->
 
-        
+
         <!-- service area start -->
         <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Conciergerie sur-mesure pour un séjour inoubliable en Tunisie. 🏖️🔑</span>
+                            <span class="tp-section-subtitle"> Conciergerie sur-mesure pour un séjour inoubliable en
+                                Tunisie. 🏖️🔑</span>
 
                         </div>
 
-                        
+
                     </div>
                 </div>
                 <div class="row gx-30">
@@ -975,14 +997,14 @@
                                             height="200 " border-radius="8px" class="rounded shadow" alt="">
                                     </div>
                                     <div class="tp-service-icon">
-                                    
+
                                     </div>
                                 </div>
                                 <div class="tp-service-content">
                                     <div>
-                                        <h3>{{$produit->price ?? ' '}}  <x-devise></x-devise></h3>
-    
-                                     </div>
+                                        <h3>{{ $produit->price ?? ' ' }} <x-devise></x-devise></h3>
+
+                                    </div>
                                     <h4 class="tp-service-title"><a class="text-anim-2"
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
                                     </h4>
@@ -1058,49 +1080,50 @@
                             <div class="swiper-container tp-project-2-active">
                                 <div class="swiper-wrapper">
                                     @if ($galleries->isEmpty())
-                                    <div class="alert alert-info">
-                                        <p>Aucune gallerie n'est disponible pour le moment.</p>
-                                    </div>
-                                @else
-                                    @foreach ($galleries as $gallery)
-                                        <div class="swiper-slide">
-                                            <div class="tp-project-2-item p-relative">
+                                        <div class="alert alert-info">
+                                            <p>Aucune gallerie n'est disponible pour le moment.</p>
+                                        </div>
+                                    @else
+                                        @foreach ($galleries as $gallery)
+                                            <div class="swiper-slide">
+                                                <div class="tp-project-2-item p-relative">
 
 
 
 
 
-                                                <div class="tp-project-2-thumb">
-                                                    <img src="{{ url('public/Image/' . $gallery->image) }}"
-                                                        alt="" width="300" height="300">
-                                                </div>
-                                                <div class="tp-project-2-content z-index">
-                                                    {{--   <span>Garde</span> --}}
-                                                    <h4 class="tp-project-2-title"><a class="text-anim"
-                                                            href="#">{{ $gallery->titre ?? '' }}</a></h4>
-                                                </div>
-                                                <div class="tp-project-2-button">
-                                                    <a class="tp-btn-project" data-bs-toggle="modal"
-                                                        data-bs-target="#galleryModal" data-title="{{ $gallery->titre }}"
-                                                        data-description="{{ $gallery->description }}"
-                                                        data-image="{{ url('public/Image/' . $gallery->image) }}"
-                                                        href="#"><span>Voir plus</span>
-                                                        <i>
-                                                            <svg width="15" height="10" viewBox="0 0 15 10"
-                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
-                                                                    fill="currentcolor" />
-                                                            </svg>
-                                                        </i>
-                                                    </a>
+                                                    <div class="tp-project-2-thumb">
+                                                        <img src="{{ url('public/Image/' . $gallery->image) }}"
+                                                            alt="" width="300" height="300">
+                                                    </div>
+                                                    <div class="tp-project-2-content z-index">
+                                                        {{--   <span>Garde</span> --}}
+                                                        <h4 class="tp-project-2-title"><a class="text-anim"
+                                                                href="#">{{ $gallery->titre ?? '' }}</a></h4>
+                                                    </div>
+                                                    <div class="tp-project-2-button">
+                                                        <a class="tp-btn-project" data-bs-toggle="modal"
+                                                            data-bs-target="#galleryModal"
+                                                            data-title="{{ $gallery->titre }}"
+                                                            data-description="{{ $gallery->description }}"
+                                                            data-image="{{ url('public/Image/' . $gallery->image) }}"
+                                                            href="#"><span>Voir plus</span>
+                                                            <i>
+                                                                <svg width="15" height="10" viewBox="0 0 15 10"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
+                                                                        fill="currentcolor" />
+                                                                </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
 
                                     @endif
-                                
+
 
 
                                 </div>
@@ -1336,13 +1359,14 @@
                         <div class="tp-testimonial-wrapper">
                             <div class="swiper-container tp-testimonial-3-active">
                                 <div class="swiper-wrapper">
-                       
+
 
                                     @if ($testimonials->isEmpty())
-                                    <div class="alert alert-info">
-                                        <p> {{ \App\Helpers\TranslationHelper::TranslateText('Aucun témoignage disponible.') }}</p>
-                                    </div>
-                                @else
+                                        <div class="alert alert-info">
+                                            <p> {{ \App\Helpers\TranslationHelper::TranslateText('Aucun témoignage disponible.') }}
+                                            </p>
+                                        </div>
+                                    @else
                                         @foreach ($testimonials as $testimonial)
                                             <div class="swiper-slide">
                                                 <div class="tp-testimonial-item text-center">
@@ -1449,7 +1473,7 @@
 
 
 
-{{-- 
+        {{-- 
         <div class="tp-service-3-area tp-service-3-inner-style  fix pt-105 pb-100 p-relative">
               <div class="container">
             <div class="row">
@@ -1556,7 +1580,8 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="tp-blog-title-box text-center mb-60">
-                            <span class="tp-section-subtitle">Restez à l'affût des dernières tendances en Tunisie, et réservez votre aventure !</span>
+                            <span class="tp-section-subtitle">Restez à l'affût des dernières tendances en Tunisie, et
+                                réservez votre aventure !</span>
                             <h4 class="tp-section-title">
                                 L'actualité de la Tunisie vous attend, votre séjour aussi !
                             </h4>
@@ -1566,57 +1591,57 @@
                 <div class="row">
                     <div class="col-xl-12">
                         @if ($posts->isEmpty())
-                        <div class="alert alert-info">
-                            <p>Aucune actualité n'est disponible pour le moment.</p>
-                        </div>
-                    @else
-                        <div class="tp-blog-wrapper">
-                            <div class="swiper-container tp-blog-active">
-                                <div class="swiper-wrapper">
-                                  
-                                    @foreach ($posts as $post)
-                                        <div class="swiper-slide">
-                                            <div class="tp-blog-item">
-                                                <div class="tp-blog-thumb">
-                                                    <a
-                                                        href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">
+                            <div class="alert alert-info">
+                                <p>Aucune actualité n'est disponible pour le moment.</p>
+                            </div>
+                        @else
+                            <div class="tp-blog-wrapper">
+                                <div class="swiper-container tp-blog-active">
+                                    <div class="swiper-wrapper">
+
+                                        @foreach ($posts as $post)
+                                            <div class="swiper-slide">
+                                                <div class="tp-blog-item">
+                                                    <div class="tp-blog-thumb">
+                                                        <a
+                                                            href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">
 
 
 
-                                                        <img class="w-100" width="200" height="300"
-                                                            src="{{ url('public/Image/posts/' . $post->image) }}">
-                                                    </a>
-                                                </div>
-                                                <div class="tp-blog-content p-relative">
+                                                            <img class="w-100" width="200" height="300"
+                                                                src="{{ url('public/Image/posts/' . $post->image) }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="tp-blog-content p-relative">
 
 
-                                                    <h4 class="tp-blog-title mb-5">
-                                                        <a class="text-anim-3"
-                                                            href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">{{ $post->title }}</a>
-                                                    </h4>
-                                                    <p class="mb-0 pb-20">{{ $post->meta_description }}</p>
-                                                    <a class="tp-blog-link"
-                                                        href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">
-                                                        <i class="fa-light fa-arrow-right-long"></i>
-                                                        Voir détails
-                                                        <i class="fa-light fa-arrow-right-long"></i>
-                                                    </a>
+                                                        <h4 class="tp-blog-title mb-5">
+                                                            <a class="text-anim-3"
+                                                                href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">{{ $post->title }}</a>
+                                                        </h4>
+                                                        <p class="mb-0 pb-20">{{ $post->meta_description }}</p>
+                                                        <a class="tp-blog-link"
+                                                            href="{{ url('details-blog', ['id' => $post->id, 'slug' => Str::slug(Str::limit($post->title, 10))]) }}">
+                                                            <i class="fa-light fa-arrow-right-long"></i>
+                                                            Voir détails
+                                                            <i class="fa-light fa-arrow-right-long"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
 
 
 
+                                    </div>
+                                    <div class="tp-slider-dots z-index text-center mt-50"></div>
                                 </div>
-                                <div class="tp-slider-dots z-index text-center mt-50"></div>
+                                <div class="text-center mt-30">
+                                    <a class="tp-btn-theme" href="{{ url('blog') }}" class="tp-btn">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('Voir tout') }}
+                                    </a>
+                                </div>
                             </div>
-                            <div class="text-center mt-30">
-                                <a class="tp-btn-theme" href="{{ url('blog') }}" class="tp-btn">
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('Voir tout') }}
-                                </a>
-                            </div>
-                        </div>
                         @endif
                     </div>
                 </div>
@@ -1629,7 +1654,7 @@
 
 
         <!-- brand area start -->
-       {{--  <div class="tp-brand-area pb-150">
+        {{--  <div class="tp-brand-area pb-150">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
