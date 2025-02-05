@@ -500,7 +500,7 @@
 
                     if (!$form.data('cc-on-file')) {
                         var StripeKey =
-                            "pk_live_51QiJTFBIdslxHPPrM6Gt3PDyjoVPLsmhkg0BRtgFH798jNPn2qPcBOmdlJJqdLX0XEf2UjJI3INXbEVEf6jlltCE00Sqdhts8A";
+                            "pk_live";
 
                         e.preventDefault();
                         Stripe.setPublishableKey(StripeKey);
