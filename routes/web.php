@@ -54,6 +54,8 @@ use App\Http\Controllers\Back\{
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\DiaporamaController;
+
 use Illuminate\Http\Request;
 
 
@@ -368,6 +370,12 @@ Route::prefix('admin')->group(function () {
    //     Route::name('galleries.create')->get('galleries/create}', [BackGalleryController::class, 'create']);
 
      //  Route::delete('gallerie/{id}', [BackGalleryController::class, 'destroy'])->name('gallerie.destroy');
+
+     ///Diaporama
+     Route::resource('diaporamas', DiaporamaController::class);
+     Route::post('/convert-pdf', [DiaporamaController::class, 'convertToImages'])->name('convert.pdf');
+
+
 
         // Services
         Route::resource('services', ServiceController::class);

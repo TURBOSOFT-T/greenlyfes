@@ -3,7 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Models\{Category, Room,Page, Follow, Home, Project, Service, Post, Testimonial, Book, Gallery, Gallerie};
+use App\Models\{Category, Room,Page, Follow, Home, Project, Service, Post, Testimonial, Book, Gallery, Gallerie, PdfImage};
 use Cart;
 
 class HomeComposer
@@ -30,6 +30,7 @@ class HomeComposer
             'galleries' => Gallerie::select('*')->latest()->get(),
 
             'logements' =>Book::with('rooms')->latest()->paginate(20),
+            'images' => PdfImage::orderBy('page_number')->get(),
      
             
         ]);

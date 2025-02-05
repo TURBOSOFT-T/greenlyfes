@@ -100,12 +100,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                              
 
-                                                    <button type="button" class="btn btn-info" id="showCalendarBtn" data-bs-toggle="modal" data-bs-target="#calendarModal" data-room-id="{{ $room->id }}">
+
+                                                    <button type="button" class="btn btn-info" id="showCalendarBtn"
+                                                        data-bs-toggle="modal" data-bs-target="#calendarModal"
+                                                        data-room-id="{{ $room->id }}">
                                                         Voir les périodes Réservées
                                                     </button>
-                                                    
+
                                                 </div>
 
                                                 <div class="modal fade" id="calendarModal" tabindex="-1"
@@ -192,10 +194,10 @@
                                         <thead>
                                             <tr>
 
-                                                <th class="room-name">Chambre</th>
+                                                {{--  <th class="room-name">Chambre</th>
 
-                                                <th class="room-total">Photo</th>
-                                                <th class="room-total">Prix</th>
+                                                <th class="room-total">Photo</th> --}}
+                                                {{--  <th class="room-total">Prix</th> --}}
 
                                             </tr>
                                         </thead>
@@ -203,10 +205,10 @@
 
                                             <tr class="cart_item">
 
-                                                <td class="room-name">
+                                                {{--   <td class="room-name">
                                                     {{ $room->name }} <strong class="room-quantity">
 
-                                                </td>
+                                                </td> --}}
                                                 <td class="room-total">
                                                     <span class="amount"> <img
                                                             src="{{ url('public/Image/' . $room->image) }}"
@@ -230,7 +232,7 @@
                                     </table>
                                 </ul>
 
-                                <br><br>
+
 
 
                                 <!-- Affichage du prix total -->
@@ -239,166 +241,292 @@
                                     <div class="form-control" id="days_reserved">Nombre de jours réservés : 0</div>
 
                                 </div>
-                                <br>
-                                <br>
+
+
                                 <div class="form-control" id="prix-total">Total : 0
                                     <x-devise></x-devise>
                                 </div>
 
                             </div>
-                            <br><br><br>
+                            <br>
 
-                            <div class="tp-checkout-btn-wrapper">
-                                <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
-                                    value="Confirmer la réservation">
+                            <div class="tp-checkout-terms">
+                                <div class="tp-checkout-terms-title">Payement  par virement bancaire </div>
+                                <div class="tp-checkout-terms-content">
+                                    <ul>
+
+                                        <table style="width:100%; border-collapse: collapse; border: 2px solid black;">
+                                            <tbody>
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Kontoinhaber / Beneficiary Name / Titulaire du compte
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        R.G. Beratung & Projektentwicklung <br>Dr. Spruth AG
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Bank Name / <br>
+                                                        Nom de la banque
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        CREDIT SUISSE AG
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Bank Adresse / <br>
+                                                        Adresse de la banque
+
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Bahnhofstrasse 12, CH-7000 Chur
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Bankkontakt / <br>
+                                                        Contact / <br>
+                                                        Contact de la banque
+
+
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Thomas Philipp <br>
+                                                        Telefon: +41 81 255 62 56 <br>
+                                                        E-Mail: thomas.philipp@credit-suisse.com
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Zeichnungsberechtigter / <br>
+                                                        Account Signatory /  <br>
+                                                        Signataire autorisé
+                                                        
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        Reinhard Gerhard Spruth
+
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        IBAN USD
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        CH 85 0483 5187 1945 9200 0
+
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        IBAN CHF 
+                                                        
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        CH 22 0483 5187 1945 9100 0
+
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart_item">
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        IBAN EURO
+                                                        
+
+                                                    </td>
+                                                    <td style="border: 1px solid black; padding: 10px;">
+                                                        CH 58 0483 5187 1945 9200 1
+
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </ul>
+
+
+                                </div>
+
+
+
+                                <div class="tp-checkout-btn-wrapper">
+                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
+                                        value="Confirmer la réservation">
+                                </div>
+                               {{--  <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
+                                    data-bs-target="#StripeCardModal">Payement avec Stripe</button> --}}
                             </div>
-                           {{--  <button type="button" class="btn btn-danger btn-block"  data-bs-toggle="modal"  data-bs-target="#StripeCardModal">Payement avec Stripe</button>
-                  --}}       </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="modal fade" id="StripeCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Pay with Stripe</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
-                        <div class="modal-body  tp-checkout-bill-area">
-                            <form role="form" action="{{ url('payement') }}" method="POST"
-                                class="require-validation" data-cc-on-file="false" id="payment-form">
-        
-                                {{ csrf_field() }}
-        
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div><p class="stripe-error py-3 text-danger"></p></div>
-                                    </div>
-                                   {{--  <div class="col-md-12 required">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="StripeCardModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Pay with Stripe</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body  tp-checkout-bill-area">
+                                <form role="form" action="{{ url('payement') }}" method="POST"
+                                    class="require-validation" data-cc-on-file="false" id="payment-form">
+
+                                    {{ csrf_field() }}
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <p class="stripe-error py-3 text-danger"></p>
+                                            </div>
+                                        </div>
+                                        {{--  <div class="col-md-12 required">
                                         <div class="form-group">
                                             <label class="control-label">Name on Card</label>
                                             <input type="text" class="form-control" required size="4">
                                         </div>
                                     </div> --}}
 
-                                    <div class="form-grp">
-                                        <label for="">Name on Card :</label><span class="error-message"
-                                            id="email-error"></span><br>
-                                        <input type="text" class="form-control" name="email"
-                                             required  size="4">
+                                        <div class="form-grp">
+                                            <label for="">Name on Card :</label><span class="error-message"
+                                                id="email-error"></span><br>
+                                            <input type="text" class="form-control" name="email" required
+                                                size="4">
+                                        </div>
+
+                                        <div class="col-md-12 required">
+                                            <div class="form-group">
+                                                <label class="control-label">Card Number</label>
+                                                <input type="text" autocomplete='off' class="form-control card-number"
+                                                    required size="20">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 required">
+                                            <div class="form-group">
+                                                <label class='control-label'>CVC</label>
+                                                <input type="text" autocomplete="off" class="form-control card-cvc"
+                                                    required placeholder="ex. 311" size="4">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label"> Month</label>
+                                                <input type="text" class="form-control card-expiry-month" required
+                                                    placeholder="MM" size="2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class='control-label'> Year</label>
+                                                <input type="text" class="form-control card-expiry-year" required
+                                                    placeholder="YYYY" size="4">
+                                            </div>
+                                        </div>
+
                                     </div>
-        
-                                    <div class="col-md-12 required">
-                                        <div class="form-group">
-                                            <label class="control-label">Card Number</label>
-                                            <input type="text" autocomplete='off' class="form-control card-number" required size="20">
+
+                                    <div class="row">
+                                        <div class="col-md-12 form-group d-none">
+                                            <div class="alert-danger alert">
+                                                <h6 class="inp-error">Please correct the errors and try again.</h6>
+                                            </div>
                                         </div>
                                     </div>
-        
-                                    <div class="col-md-4 required">
-                                        <div class="form-group">
-                                            <label class='control-label'>CVC</label>
-                                            <input type="text" autocomplete="off" class="form-control card-cvc" required placeholder="ex. 311" size="4">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <hr>
+                                            <input type="hidden" name="stipe_payment_btn" value="1">
+                                            <button type="submit" class="btn btn-primary btn-sm btn-block">Payez avec
+                                                Stripe</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label"> Month</label>
-                                            <input type="text" class="form-control card-expiry-month" required placeholder="MM" size="2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class='control-label'> Year</label>
-                                            <input type="text" class="form-control card-expiry-year" required placeholder="YYYY" size="4">
-                                        </div>
-                                    </div>
-        
-                                </div>
-        
-                                <div class="row">
-                                    <div class="col-md-12 form-group d-none">
-                                        <div class="alert-danger alert">
-                                            <h6 class="inp-error">Please correct the errors and try again.</h6>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <hr>
-                                        <input type="hidden" name="stipe_payment_btn" value="1">
-                                        <button type="submit" class="btn btn-primary btn-sm btn-block">Payez avec Stripe</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
         </section>
 
 
-        
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-$(function() {
-    var $form = $(".require-validation");
-    $('form.require-validation').bind('submit', function(e) {
-        var $form = $(".require-validation"),
-            inputSelector = ['input[type=email]',
+
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript">
+            $(function() {
+                var $form = $(".require-validation");
+                $('form.require-validation').bind('submit', function(e) {
+                    var $form = $(".require-validation"),
+                        inputSelector = ['input[type=email]',
                             'input[type=password]',
                             'input[type=text]',
                             'input[type=file]',
-                            'textarea'].join(', '),
-            $inputs       = $form.find('.required').find(inputSelector),
-            $errorMessage = $form.find('.inp-error'),
-            valid         = true;
-            $errorMessage.addClass('d-none');
-        $('.has-error').removeClass('has-error');
+                            'textarea'
+                        ].join(', '),
+                        $inputs = $form.find('.required').find(inputSelector),
+                        $errorMessage = $form.find('.inp-error'),
+                        valid = true;
+                    $errorMessage.addClass('d-none');
+                    $('.has-error').removeClass('has-error');
 
-        $inputs.each(function(i, el) {
-            var $input = $(el);
-            if ($input.val() === '') {
-                $input.parent().addClass('has-error');
-                $errorMessage.removeClass('d-none');
-                e.preventDefault();
-            }
-        });
+                    $inputs.each(function(i, el) {
+                        var $input = $(el);
+                        if ($input.val() === '') {
+                            $input.parent().addClass('has-error');
+                            $errorMessage.removeClass('d-none');
+                            e.preventDefault();
+                        }
+                    });
 
-        if (!$form.data('cc-on-file')) {
-            var StripeKey = "pk_test_51QmJrMB7NGEfr3imEqtrbGBUV4nyPpgK6mZp7OHrpo18MgS30SYNOuZ5Ew3Y6y7EZq9OrVafeyr8lwj9u4QehtSb00fr8ED0PG";
+                    if (!$form.data('cc-on-file')) {
+                        var StripeKey =
+                            "pk_live_51QiJTFBIdslxHPPrM6Gt3PDyjoVPLsmhkg0BRtgFH798jNPn2qPcBOmdlJJqdLX0XEf2UjJI3INXbEVEf6jlltCE00Sqdhts8A";
 
-            e.preventDefault();
-            Stripe.setPublishableKey(StripeKey);
-            Stripe.createToken({
-                number: $('.card-number').val(),
-                cvc: $('.card-cvc').val(),
-                exp_month: $('.card-expiry-month').val(),
-                exp_year: $('.card-expiry-year').val()
-            }, stripeResponseHandler);
-        }
+                        e.preventDefault();
+                        Stripe.setPublishableKey(StripeKey);
+                        Stripe.createToken({
+                            number: $('.card-number').val(),
+                            cvc: $('.card-cvc').val(),
+                            exp_month: $('.card-expiry-month').val(),
+                            exp_year: $('.card-expiry-year').val()
+                        }, stripeResponseHandler);
+                    }
 
-    });
+                });
 
-    function stripeResponseHandler(status, response) {
-        if (response.error) {
-            $('.stripe-error').text(response.error.message);
-        } else {
-            var token = response['id'];
-            $form.find('input[type=text]').empty();
-            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
-        }
-    }
+                function stripeResponseHandler(status, response) {
+                    if (response.error) {
+                        $('.stripe-error').text(response.error.message);
+                    } else {
+                        var token = response['id'];
+                        $form.find('input[type=text]').empty();
+                        $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                        $form.get(0).submit();
+                    }
+                }
 
-});
-</script>
+            });
+        </script>
 
 
         <script>
@@ -549,7 +677,7 @@ $(function() {
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                var calendarInitialized = false; 
+                var calendarInitialized = false;
                 var calendarEl = document.getElementById('calendar');
                 $('#calendarModal').on('shown.bs.modal', function() {
                     var roomId = document.querySelector('#showCalendarBtn').getAttribute('data-room-id');
@@ -566,9 +694,9 @@ $(function() {
                             events: function(fetchInfo, successCallback, failureCallback) {
                                 $.ajax({
 
-                            
-                                url: '/check-occupied-periods/' + roomId,
-                            method: 'GET',
+
+                                    url: '/check-occupied-periods/' + roomId,
+                                    method: 'GET',
                                     success: function(data) {
                                         var events = data.map(function(period) {
                                             return {
@@ -577,7 +705,7 @@ $(function() {
                                                 end: moment(period.date_fin)
                                                     .add(1, 'days').format(
                                                         'YYYY-MM-DD'),
-                                                color: '#ff0000' 
+                                                color: '#ff0000'
                                             };
                                         });
                                         successCallback(events);
@@ -592,7 +720,7 @@ $(function() {
                         });
 
                         calendar.render();
-                        calendarInitialized = true; 
+                        calendarInitialized = true;
                     }
                 });
 

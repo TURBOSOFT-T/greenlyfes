@@ -110,8 +110,8 @@
                                         <thead>
                                             <tr>
                                                 
-                                                <th class="product-name">Product</th>
-                                                <th class="product-total">Photo</th>
+                                               {{--  <th class="product-name">Product</th>
+                                                <th class="product-total">Photo</th> --}}
 
                                             </tr>
                                         </thead>
@@ -119,10 +119,10 @@
 
                                             <tr class="cart_item">
 
-                                                <td class="product-name">
+                                              {{--   <td class="product-name">
                                                     {{ $produit->name }} <strong class="product-quantity"> 
 
-                                                </td>
+                                                </td> --}}
                                                 <td class="product-total">
                                                     <span class="amount">  <img src="{{ url('public/Image/' . $produit->image) }}" alt=""  width="200 " height="200 ">
                                                 </td>

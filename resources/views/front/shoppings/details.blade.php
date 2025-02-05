@@ -164,7 +164,7 @@
                                             
                      </div>
                      <div class="tp-shop-details__btn text-center mb-40">
-                        <a class="tp-btn-theme"  href="{{ url('commandes', $product->id) }}"><span>Commander</span></a>
+                        <a class="tp-btn-theme"  href="{{ url('commandes', $product->id) }}"><span>Acheter</span></a>
                      </div>
                      <div class="tp-shop-details__social">
                        

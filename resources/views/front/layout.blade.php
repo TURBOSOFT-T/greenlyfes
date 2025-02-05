@@ -13,9 +13,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
         <!-- Swiper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        
 
-
-
+  {{--       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+ --}}
         <!-- slider area start -->
 
         <div class="container-fluid px-0 mb-5">
@@ -169,7 +172,7 @@
 
 
         <!-- service-area-start -->
-        <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
+       {{--  <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
             <div class="tp-service-4-shape tp-float-bob-y d-none d-lg-block">
                 <img src="assets/img/shape/service/shape-4-1.png" alt="">
             </div>
@@ -180,8 +183,7 @@
                             <span class="tp-section-subtitle">
                                 {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }}
                             </span>
-                            {{--   <h4 class="tp-section-title">
-                                Découvrez nos logements et dernières publications </h4> --}}
+                           
                         </div>
                     </div>
                 </div>
@@ -222,7 +224,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- service-area-end -->
 
         <!-- project area start -->
@@ -329,7 +331,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <!-- video-area-start -->
@@ -1012,7 +1013,7 @@
                                     <div class="tp-service-link">
                                         <a
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
-                                            Details Produit
+                                            Voir Détails
                                             <span>
                                                 <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">

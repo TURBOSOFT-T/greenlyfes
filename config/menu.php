@@ -313,9 +313,9 @@ return [
                 'route' => 'galleries.index',
             ],
             [
-                'name'  => 'Ajouter gallerie',
+                'name'  => 'Diaporama',
                 'role'  => 'admin',
-                'route' => 'galleries.create',
+                'route' => 'diaporamas.index',
             ],
             [
                 'name'  => 'fake',

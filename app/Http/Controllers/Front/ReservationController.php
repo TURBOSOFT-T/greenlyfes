@@ -270,7 +270,7 @@ $items=   Reservations_item::create([
 ]);
 
 
-   
+/*    
 if(isset($_POST['stipe_payment_btn']))
 {
   return " payement avec stripe
@@ -279,7 +279,7 @@ if(isset($_POST['stipe_payment_btn']))
 
 if ($request->has('stripe_payment_btn')) {
   return redirect()->route('payement', $request->all());
-}
+} */
 
 
     return redirect()->route('thank-yous');

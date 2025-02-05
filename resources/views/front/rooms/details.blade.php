@@ -477,7 +477,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="tp-product-title-box text-center mb-55">
-                                <h4 class="tp-section-title">Les autres chambres pour: {{ $room->book->name ?? '' }}</h4>
+                                <h4 class="tp-section-title">Les autres chambres pour les mêmes categories</h4>
                             </div>
                         </div>
                     </div>
