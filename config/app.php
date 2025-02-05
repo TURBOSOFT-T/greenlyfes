@@ -55,8 +55,8 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
-  //  'STRIPE_SECRET' => env('STRIPE_SECRET',null),
-  //  'STRIPE_KEY' => env('STRIPE_KEY', null),
+  'STRIPE_SECRET' => env('STRIPE_SECRET',null),
+    'STRIPE_KEY' => env('STRIPE_KEY', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -272,8 +272,8 @@ return [
     */
 
     'description' => 'GREENLYFES est une entreprise spécialisée en intermediation  des 
-entreprises. Nous intervenons dans cinq secteurs: les études, les produits 
-artisanaux, la santé, informatique, et le tourisme',
+entreprises. Nous intervenons dans 4 secteurs: les études, les produits 
+artisanaux, la santé,  et le tourisme',
     'author' => 'GREENLYFEES ',
 
     /*
