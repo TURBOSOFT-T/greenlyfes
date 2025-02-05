@@ -500,7 +500,7 @@
 
                     if (!$form.data('cc-on-file')) {
                         var StripeKey =
-                            "pk_live";
+                            "key";
 
                         e.preventDefault();
                         Stripe.setPublishableKey(StripeKey);
