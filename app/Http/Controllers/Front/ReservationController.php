@@ -150,6 +150,7 @@ public function getOccupiedPeriods($roomId)
         'required',
         'date',
         'after_or_equal:today',  
+        'stripe_token' => 'nullable|string',
     ],
     [
       'email.required' => 'Veuillez entrer votre email',
@@ -281,6 +282,32 @@ if ($request->has('stripe_payment_btn')) {
   return redirect()->route('payement', $request->all());
 } */
 
+if(isset($_POST['stipe_payment_btn']))
+    {
+        $stripetoken = $request->input('stripeToken');
+        $STRIPE_SECRET = "YOUR_STRIPE_SECRET";
+        Stripe::setApiKey($STRIPE_SECRET);
+        \Stripe\Charge::create([
+            'amount' => 100 * 100,
+            'currency' => 'usd',
+            'description' => "Thank you for purchasing with Fabcart",
+            'source' => $stripetoken,
+            'shipping' => [
+                'name' => "User Name",
+                'phone' => "+1XXXXXXX",
+                'address' => [
+                    'line1' => "Address 1",
+                    'line2' => "Address 2",
+                    'postal_code' => "Zipcode",
+                    'city' => "City",
+                    'state' => "State",
+                    'country' => 'US',
+                ],
+            ],
+        ]);
+        return redirect('/thank-you')->with('status','Order has been placed Successfully');
+    }
+
 
     return redirect()->route('thank-yous');
   
@@ -289,16 +316,16 @@ if ($request->has('stripe_payment_btn')) {
 
  
 
-public function payement(Request $request)
+public function payement1(Request $request)
 {
     Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    $room = Room::find($request->input('room_id'));
+  //  $room = Room::find($request->input('room_id'));
 
-    $date_debut = \Carbon\Carbon::parse($request->input('date_debut'));
-    $date_fin = \Carbon\Carbon::parse($request->input('date_fin'));
-    $duration = $date_debut->diffInDays($date_fin);
-    $totalPrice = $room->getPrice() * $duration;
+   // $date_debut = \Carbon\Carbon::parse($request->input('date_debut'));
+   // $date_fin = \Carbon\Carbon::parse($request->input('date_fin'));
+   // $duration = $date_debut->diffInDays($date_fin);
+   // $totalPrice = $room->getPrice() * $duration;
 
     $session = Session::create([
         'payment_method_types' => ['card'],
@@ -306,9 +333,9 @@ public function payement(Request $request)
             'price_data' => [
                 'currency' => 'eur',
                 'product_data' => [
-                    'name' => 'Réservation - ' . $room->name,
+                    'name' => 'Réservation - ',
                 ],
-                'unit_amount' => $totalPrice, // En centimes
+                'unit_amount' => '100', // En centimes
             ],
             'quantity' => 1,
         ]],
@@ -329,7 +356,7 @@ public function cancel()
 {
     return view('cancel');
 }
-public function stripeorder(Request $request)
+public function payement(Request $request)
 {    
     if(isset($_POST['stipe_payment_btn']))
     {
