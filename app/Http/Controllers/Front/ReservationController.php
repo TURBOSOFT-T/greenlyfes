@@ -142,15 +142,14 @@ public function getOccupiedPeriods($roomId)
       'nom' => ['required', 'string', 'max:255'],
       'prenom' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
-      'email' => 'required',    
-        'address' => 'nullable',   
-        'note' => 'nullable',
+     
+      
         'date_fin' => 'required|date|after_or_equal:date_debut',
         'date_debut' => [
         'required',
         'date',
         'after_or_equal:today',  
-        'stripe_token' => 'nullable|string',
+       // 'stripe_token' => 'nullable|string',
     ],
     [
       'email.required' => 'Veuillez entrer votre email',
@@ -281,32 +280,23 @@ if(isset($_POST['stipe_payment_btn']))
 if ($request->has('stripe_payment_btn')) {
   return redirect()->route('payement', $request->all());
 } */
-
+/* 
 if(isset($_POST['stipe_payment_btn']))
     {
+  
         $stripetoken = $request->input('stripeToken');
-        $STRIPE_SECRET = "YOUR_STRIPE_SECRET";
+        $STRIPE_SECRET = config("app.stripe_priver");;
         Stripe::setApiKey($STRIPE_SECRET);
         \Stripe\Charge::create([
-            'amount' => 100 * 100,
-            'currency' => 'usd',
-            'description' => "Thank you for purchasing with Fabcart",
+         
+            'currency' => '€',
+            'description' => "payement",
             'source' => $stripetoken,
-            'shipping' => [
-                'name' => "User Name",
-                'phone' => "+1XXXXXXX",
-                'address' => [
-                    'line1' => "Address 1",
-                    'line2' => "Address 2",
-                    'postal_code' => "Zipcode",
-                    'city' => "City",
-                    'state' => "State",
-                    'country' => 'US',
-                ],
+           
             ],
         ]);
         return redirect('/thank-you')->with('status','Order has been placed Successfully');
-    }
+    } */
 
 
     return redirect()->route('thank-yous');
@@ -316,74 +306,7 @@ if(isset($_POST['stipe_payment_btn']))
 
  
 
-public function payement1(Request $request)
-{
-    Stripe::setApiKey(env('STRIPE_SECRET'));
 
-  //  $room = Room::find($request->input('room_id'));
-
-   // $date_debut = \Carbon\Carbon::parse($request->input('date_debut'));
-   // $date_fin = \Carbon\Carbon::parse($request->input('date_fin'));
-   // $duration = $date_debut->diffInDays($date_fin);
-   // $totalPrice = $room->getPrice() * $duration;
-
-    $session = Session::create([
-        'payment_method_types' => ['card'],
-        'line_items' => [[
-            'price_data' => [
-                'currency' => 'eur',
-                'product_data' => [
-                    'name' => 'Réservation - ',
-                ],
-                'unit_amount' => '100', // En centimes
-            ],
-            'quantity' => 1,
-        ]],
-        'mode' => 'payment',
-        'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url' => route('cancel'),
-    ]);
-
-    return redirect($session->url);
-}
-
-public function success(Request $request)
-{
-    return view('success');
-}
-
-public function cancel()
-{
-    return view('cancel');
-}
-public function payement(Request $request)
-{    
-    if(isset($_POST['stipe_payment_btn']))
-    {
-        $stripetoken = $request->input('stripeToken');
-        $STRIPE_SECRET = "YOUR_STRIPE_SECRET";
-        Stripe::setApiKey($STRIPE_SECRET);
-        \Stripe\Charge::create([
-            'amount' => 100 * 100,
-            'currency' => 'usd',
-            'description' => "Thank you for purchasing with Fabcart",
-            'source' => $stripetoken,
-            'shipping' => [
-                'name' => "User Name",
-                'phone' => "+1XXXXXXX",
-                'address' => [
-                    'line1' => "Address 1",
-                    'line2' => "Address 2",
-                    'postal_code' => "Zipcode",
-                    'city' => "City",
-                    'state' => "State",
-                    'country' => 'US',
-                ],
-            ],
-        ]);
-        return redirect('/thank-you')->with('status','Order has been placed Successfully');
-    }
-}
 
 
   

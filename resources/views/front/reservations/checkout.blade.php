@@ -251,7 +251,7 @@
                             <br>
 
                             <div class="tp-checkout-terms">
-                                <div class="tp-checkout-terms-title">Payement  par virement bancaire </div>
+                                 <div class="tp-checkout-terms-title">Payement  par virement bancaire </div>
                                 <div class="tp-checkout-terms-content">
                                     <ul>
 
@@ -361,16 +361,22 @@
                                     </ul>
 
 
+                                </div> 
+
+                                <br>
+
+                                <div class="item" id="card-element" >
+                                    <!-- A Stripe Element will be inserted here. -->
                                 </div>
-
-
+                                <input type="text" name="stripe-token-id" id="stripe-token-id" >
+                                <div id="card-errors"></div>
 
                                 <div class="tp-checkout-btn-wrapper">
-                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
+                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn" 
                                         value="Confirmer la réservation">
                                 </div>
-                                <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
-                                    data-bs-target="#StripeCardModal">Payement avec Stripe</button> 
+                                {{-- <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
+                                    data-bs-target="#StripeCardModal">Payement avec Stripe</button>  --}}
                             </div>
                         </div>
                         </form>
@@ -388,10 +394,10 @@
                                 </button>
                             </div>
                             <div class="modal-body  tp-checkout-bill-area">
-                                <form role="form" action="{{ url('payement') }}" method="POST"  id="payment-form">
+                                <form role="form" action="{{ route('store.reservation') }}" method="POST"  id="payment-form">
                                     
                         {{ csrf_field() }}
-                                    <div id="card-element">
+                                    <div class="item" id="card-element" >
                                         <!-- A Stripe Element will be inserted here. -->
                                     </div>
                                     <input type="text" name="stripe-token-id" id="stripe-token-id" >
