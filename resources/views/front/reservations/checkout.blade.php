@@ -364,13 +364,13 @@
                                 </div> 
 
                                 <br>
-
+{{-- 
                                 <div class="item" id="card-element" >
-                                    <!-- A Stripe Element will be inserted here. -->
+                                
                                 </div>
                                 <input type="text" name="stripe-token-id" id="stripe-token-id" >
                                 <div id="card-errors"></div>
-
+ --}}
                                 <div class="tp-checkout-btn-wrapper">
                                     <input type="submit" class="tp-btn-theme text-center w-100 check-btn" 
                                         value="Confirmer la réservation">
