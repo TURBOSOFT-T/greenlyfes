@@ -366,7 +366,7 @@
                                 <br>
                                 <div class="tp-checkout-terms">
                                     <div class="tp-checkout-terms-title">Mode de paiement</div>
-                                {{--     <div class="tp-checkout-terms-content">
+                                    <div class="tp-checkout-terms-content">
                                         <label>
                                             <input type="radio" name="payment_method" value="bank_transfer" checked>
                                             Virement bancaire
@@ -375,11 +375,11 @@
                                             <input type="radio" name="payment_method" value="stripe">
                                             Paiement par carte (Stripe)
                                         </label>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <br>
 
-                                <div id="stripe-payment-form1" {{-- style="display: none;" --}}>
+                                <div id="stripe-payment-form" style="display: none;">
 
                                     <div class="form-group">
 
@@ -418,7 +418,7 @@
                 let card = elements.create("card");
                 card.mount("#card-element");
 
-           /*      let paymentMethodRadios = document.querySelectorAll("input[name='payment_method']");
+                let paymentMethodRadios = document.querySelectorAll("input[name='payment_method']");
                 let stripePaymentForm = document.getElementById("stripe-payment-form");
 
                 paymentMethodRadios.forEach(radio => {
@@ -430,12 +430,12 @@
                         }
                     });
                 });
- */
+
                 let form = document.getElementById("reservation-form");
                 let submitButton = document.getElementById("submit-button");
 
                 form.addEventListener("submit", function(event) {
-                   /*  if (document.querySelector("input[name='payment_method']:checked").value === "stripe") { */
+                    if (document.querySelector("input[name='payment_method']:checked").value === "stripe") {
                         event.preventDefault();
                         submitButton.disabled = true;
                         stripe.createToken(card).then(function(result) {
@@ -445,11 +445,10 @@
                                 submitButton.disabled = false;
                             } else {
                                 document.getElementById("stripeToken").value = result.token.id;
-                                console.log("Token" + result.token.id);
                                 form.submit();
                             }
                         });
-                   /*  } */
+                    }
                 });
             });
         </script>
