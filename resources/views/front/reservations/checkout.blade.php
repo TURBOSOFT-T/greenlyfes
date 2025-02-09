@@ -365,8 +365,8 @@
 
                                 <br>
                                 <div class="tp-checkout-terms">
-                                    <div class="tp-checkout-terms-title">Mode de paiement</div>
-                                    <div class="tp-checkout-terms-content">
+                                    <div class="tp-checkout-terms-title">Payement avec Stripe</div>
+                                    {{-- <div class="tp-checkout-terms-content">
                                         <label>
                                             <input type="radio" name="payment_method" value="bank_transfer" checked>
                                             Virement bancaire
@@ -375,19 +375,19 @@
                                             <input type="radio" name="payment_method" value="stripe">
                                             Paiement par carte (Stripe)
                                         </label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <br>
 
-                                <div id="stripe-payment-form" style="display: none;">
-
+                                {{-- <div id="stripe-payment-form" style="display: none;">
+ --}}
                                     <div class="form-group">
 
                                         <div id="card-element"></div>
                                         <input type="hidden" name="stripeToken" id="stripeToken">
                                         <div id="card-errors" class="text-danger"></div>
 
-                                    </div>
+                                    {{-- </div> --}}
                                 </div>
                                 <br>
                                 <!-- hCaptcha -->
@@ -408,52 +408,49 @@
 
         </section>
 
+       
         <script src="https://js.stripe.com/v3/"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-
-                // Create a Stripe client.
-                let stripe = Stripe('{{ config('app.STRIPE_KEY') }}')
+                let stripe = Stripe('{{ config('app.STRIPE_KEY') }}');
+                console.log("Stripe chargé :", stripe); // 🔥 Vérification si Stripe est bien chargé
+                
                 let elements = stripe.elements();
-                let card = elements.create("card");
+                let card = elements.create("card", { 
+                    style: { 
+                        base: { fontSize: '16px', color: '#32325d' } 
+                    } 
+                });
                 card.mount("#card-element");
-
-                let paymentMethodRadios = document.querySelectorAll("input[name='payment_method']");
-                let stripePaymentForm = document.getElementById("stripe-payment-form");
-
-                paymentMethodRadios.forEach(radio => {
-                    radio.addEventListener("change", function() {
-                        if (this.value === "stripe") {
-                            stripePaymentForm.style.display = "block";
+        
+                let form = document.getElementById("reservation-form");
+                let submitButton = document.getElementById("submit-button");
+                let cardErrors = document.getElementById("card-errors");
+        
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Traitement...";
+        
+                    console.log("Tentative de création du token..."); // 🔥 Debug
+        
+                    stripe.createToken(card).then(function(result) {
+                        if (result.error) {
+                            cardErrors.textContent = result.error.message;
+                            console.error("Erreur Stripe :", result.error.message); // 🔥 Affiche l'erreur dans la console
+                            submitButton.disabled = false;
+                            submitButton.textContent = "Confirmer et payer";
                         } else {
-                            stripePaymentForm.style.display = "none";
+                            console.log("Token Stripe généré avec succès :", result.token.id); // 🔥 Confirmation du token
+                            document.getElementById("stripeToken").value = result.token.id;
+                            form.submit();
                         }
                     });
                 });
-
-                let form = document.getElementById("reservation-form");
-                let submitButton = document.getElementById("submit-button");
-
-                form.addEventListener("submit", function(event) {
-                    if (document.querySelector("input[name='payment_method']:checked").value === "stripe") {
-                        event.preventDefault();
-                        submitButton.disabled = true;
-                        stripe.createToken(card).then(function(result) {
-                            if (result.error) {
-                                document.getElementById("card-errors").textContent = result.error
-                                    .message;
-                                submitButton.disabled = false;
-                            } else {
-                                document.getElementById("stripeToken").value = result.token.id;
-                                form.submit();
-                            }
-                        });
-                    }
-                });
             });
         </script>
-
-
+        
+        
 
         <script>
             $(document).ready(function() {

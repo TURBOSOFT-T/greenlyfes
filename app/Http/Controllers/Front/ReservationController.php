@@ -270,32 +270,22 @@ $items=   Reservations_item::create([
 ]);
 
 
-
+if ($request->stripeToken) {
   Stripe::setApiKey(env('STRIPE_SECRET'));
 
-  try {
-      $charge = Charge::create([
-          "amount" => 100 * 100, // Montant en centimes
-          "currency" => "eur",
-          "source" => $request->stripeToken,
-          "description" => "Paiement réservation chambre",
-      ]);
+  $charge = Charge::create([
+      "amount" => $totalPrice * 100, // Montant en centimes
+      "currency" => "eur",
+      "source" => $request->stripeToken,
+      "description" => "Paiement réservation chambre",
+  ]);
 
-  
-          // Mise à jour du statut du paiement
-          $reservation->update([
-            'payment_status' => 'paid',
-            'payment_method' =>'stripe',
-            'transaction_id' => $charge->id,
-        ]);
-
-   
-  
-  } catch (\Exception $e) {
-     return redirect()->back()->with('error', 'Erreur lors du paiement : ' . $e->getMessage());
-
-  }
-
+  $reservation->update([
+      'payment_status' => 'paid',
+      'payment_method' => 'stripe',
+      'transaction_id' => $charge->id,
+  ]);
+}
 
 
 
