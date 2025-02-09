@@ -37,7 +37,7 @@
                                     </span>
                                 </div>
                                 <div class="tp-contact-2-text my-auto">
-                                    <b>{{ $config->telephone ?? '' }} </b>
+                                  
                                     <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp ?? ' ') }}">{{ $config->whtasapp ?? ' '  }}</a> <br>
                                     <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">{{ $config->telephone ?? ''  }}</a>
 
