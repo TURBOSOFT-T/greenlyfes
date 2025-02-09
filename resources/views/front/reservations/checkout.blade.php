@@ -251,7 +251,7 @@
                             <br>
 
                             <div class="tp-checkout-terms">
-                                 <div class="tp-checkout-terms-title">Payement  par virement bancaire </div>
+                                <div class="tp-checkout-terms-title">Payement par virement bancaire </div>
                                 <div class="tp-checkout-terms-content">
                                     <ul>
 
@@ -310,9 +310,9 @@
                                                 <tr class="cart_item">
                                                     <td style="border: 1px solid black; padding: 10px;">
                                                         Zeichnungsberechtigter / <br>
-                                                        Account Signatory /  <br>
+                                                        Account Signatory / <br>
                                                         Signataire autorisé
-                                                        
+
 
                                                     </td>
                                                     <td style="border: 1px solid black; padding: 10px;">
@@ -334,8 +334,8 @@
                                                 </tr>
                                                 <tr class="cart_item">
                                                     <td style="border: 1px solid black; padding: 10px;">
-                                                        IBAN CHF 
-                                                        
+                                                        IBAN CHF
+
 
                                                     </td>
                                                     <td style="border: 1px solid black; padding: 10px;">
@@ -346,7 +346,7 @@
                                                 <tr class="cart_item">
                                                     <td style="border: 1px solid black; padding: 10px;">
                                                         IBAN EURO
-                                                        
+
 
                                                     </td>
                                                     <td style="border: 1px solid black; padding: 10px;">
@@ -361,87 +361,99 @@
                                     </ul>
 
 
-                                </div> 
+                                </div>
 
                                 <br>
-{{-- 
-                                <div class="item" id="card-element" >
-                                
+                                <div class="tp-checkout-terms">
+                                    <div class="tp-checkout-terms-title">Mode de paiement</div>
+                                {{--     <div class="tp-checkout-terms-content">
+                                        <label>
+                                            <input type="radio" name="payment_method" value="bank_transfer" checked>
+                                            Virement bancaire
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="payment_method" value="stripe">
+                                            Paiement par carte (Stripe)
+                                        </label>
+                                    </div> --}}
                                 </div>
-                                <input type="text" name="stripe-token-id" id="stripe-token-id" >
-                                <div id="card-errors"></div>
- --}}
+                                <br>
+
+                                <div id="stripe-payment-form1" {{-- style="display: none;" --}}>
+
+                                    <div class="form-group">
+
+                                        <div id="card-element"></div>
+                                        <input type="hidden" name="stripeToken" id="stripeToken">
+                                        <div id="card-errors" class="text-danger"></div>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- hCaptcha -->
+
+
                                 <div class="tp-checkout-btn-wrapper">
-                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn" 
+                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
                                         value="Confirmer la réservation">
                                 </div>
-                                {{-- <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
-                                    data-bs-target="#StripeCardModal">Payement avec Stripe</button>  --}}
+
                             </div>
                         </div>
                         </form>
                     </div>
                 </div>
 
-                <div class="modal fade" id="StripeCardModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Pay with Stripe</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body  tp-checkout-bill-area">
-                                <form role="form" action="{{ route('store.reservation') }}" method="POST"  id="payment-form">
-                                    
-                        {{ csrf_field() }}
-                                    <div class="item" id="card-element" >
-                                        <!-- A Stripe Element will be inserted here. -->
-                                    </div>
-                                    <input type="text" name="stripe-token-id" id="stripe-token-id" >
-                                    <div id="card-errors"></div>
-                                  {{--   <button type="button" id="pay-btn">
-                                        payer
-                                    </button> --}}
 
-                                    <button type="submit"  id="pay-btn" class="btn btn-primary btn-sm btn-block">Payer</button>
-                       
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
         </section>
 
-
         <script src="https://js.stripe.com/v3/"></script>
-        <script type="text/javascript">
-            var stripe = Stripe('{{ config("app.STRIPE_KEY")  }}')
-            var elements = stripe.elements();
-            var cardElement = elements.create('card');
-            cardElement.mount('#card-element');
-    
-            function createToken() {
-                document.getElementById("pay-btn").disabled = true;
-                document.getElementById("card-errors").innerHTML = "";
-                stripe.createToken(cardElement).then(function(result) {
-    
-                    if (typeof result.error != 'undefined') {
-                        document.getElementById("pay-btn").disabled = false;
-                        document.getElementById("card-errors").innerHTML = result.error.message;
-                    }
-    
-                    /* creating token success */
-                    if (typeof result.token != 'undefined') {
-                        document.getElementById("stripe-token-id").value = result.token.id;
-                        //document.getElementById('checkout-form').submit();
-                    }
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                // Create a Stripe client.
+                let stripe = Stripe('{{ config('app.STRIPE_KEY') }}')
+                let elements = stripe.elements();
+                let card = elements.create("card");
+                card.mount("#card-element");
+
+           /*      let paymentMethodRadios = document.querySelectorAll("input[name='payment_method']");
+                let stripePaymentForm = document.getElementById("stripe-payment-form");
+
+                paymentMethodRadios.forEach(radio => {
+                    radio.addEventListener("change", function() {
+                        if (this.value === "stripe") {
+                            stripePaymentForm.style.display = "block";
+                        } else {
+                            stripePaymentForm.style.display = "none";
+                        }
+                    });
                 });
-            }
+ */
+                let form = document.getElementById("reservation-form");
+                let submitButton = document.getElementById("submit-button");
+
+                form.addEventListener("submit", function(event) {
+                   /*  if (document.querySelector("input[name='payment_method']:checked").value === "stripe") { */
+                        event.preventDefault();
+                        submitButton.disabled = true;
+                        stripe.createToken(card).then(function(result) {
+                            if (result.error) {
+                                document.getElementById("card-errors").textContent = result.error
+                                    .message;
+                                submitButton.disabled = false;
+                            } else {
+                                document.getElementById("stripeToken").value = result.token.id;
+                                console.log("Token" + result.token.id);
+                                form.submit();
+                            }
+                        });
+                   /*  } */
+                });
+            });
         </script>
+
 
 
         <script>
@@ -465,7 +477,7 @@
                             var prix_total = diffDays * prix_par_nuit;
 
 
-                            $('#prix-total').text('Prix total : ' + prix_total.toFixed(2) + 'DT');
+                            $('#prix-total').text('Prix total : ' + prix_total.toFixed(2) + '€');
                             $('#days_reserved').text('Nombre de jours réservés : ' + diffDays);
                         } else {
 

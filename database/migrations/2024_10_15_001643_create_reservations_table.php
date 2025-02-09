@@ -38,6 +38,10 @@ class CreateReservationsTable extends Migration
 
             $table->enum("mode", ["espèce","paypal","carte de credit","cheque"])->default("espèce");
             $table->enum("etat",["attente","confirmé","annulé"])->default("attente") ;
+            $table->enum('payment_method', ['stripe', 'bank_transfer'])->default('bank_transfer'); // Mode de paiement
+            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending'); // Statut du paiement
+            $table->string('transaction_id')->nullable(); // ID de transaction Stripe (si applicable)
+       
             // relation
         //    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           //  $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');

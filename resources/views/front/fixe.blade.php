@@ -175,8 +175,11 @@
                         {{ $config->email }}
                     </li>
                     <li>
-                        <i class="fal fa-phone-alt"></i>
-                        {{ $config->telephone }}
+                        <a href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">
+                            <i class="fal fa-phone-alt"></i>
+                            {{ $config->telephone }}
+                        </a>
+                      
                     </li>
                 </ul>
 
@@ -552,10 +555,15 @@
                                                 </div>
                                                 <div class="tp-footer-widget-contact-text">
                                                     <b>
-                                                        {{ \App\Helpers\TranslationHelper::TranslateText('Téléphone') }}
+                                                        {{ \App\Helpers\TranslationHelper::TranslateText('WhatsApp') }}
                                                         :</b>
 
-                                                    <a class="text-anim" href="#"> {{ $config->telephone }}</a>
+                                                        <a href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">
+                                                           
+                                                            {{ $config->telephone }}
+                                                        </a> <br>
+                                                        <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp ?? ' ') }}">{{ $config->whtasapp ?? ' ' }}</a>
+
                                                 </div>
                                             </div>
                                         </li>

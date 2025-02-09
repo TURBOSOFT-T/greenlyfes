@@ -174,8 +174,9 @@ class ReservationsDataTable extends DataTable
           
             Column::make('telephone')->title(__('Téléphone')),
             Column::make('email')->title(__('Email')),
-            Column::make('mode')->title(__('Mode de paiement')),
-            Column::make('etat')->title(__('État')), 
+        //    Column::make('mode')->title(__('Mode de paiement')),
+            Column::make('payment_status')->title(__('État du payment')), 
+            Column::make('payment_method')->title(__('Methode de payement')),  // custom column with edit, delete, view buttons
          
         
             Column::make('created_at')->title(__('Date commande')),

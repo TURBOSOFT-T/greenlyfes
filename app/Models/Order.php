@@ -44,6 +44,10 @@ class Order extends Model
         'email',
         'address',
         'order_amount',
+
+        'payment_method', 
+        'payment_status', 
+        'transaction_id'
     ];
 
     protected $dispatchesEvents = [

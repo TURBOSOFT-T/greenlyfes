@@ -46,6 +46,13 @@ class Config extends Model
             'equipe',
             'domaine',
             'des_contact',
+
+             'whtasapp',
+            'facebook',
+            'instagram',
+            'twitter',
+            'linkedin',
+            'youtube',
     ];
 
 

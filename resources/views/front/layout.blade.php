@@ -1219,8 +1219,9 @@
                                 </div>
                                 <div class="tp-contact-2-text">
                                     <span>
-                                        {{ \App\Helpers\TranslationHelper::TranslateText('Téléphone') }}:</span>
-                                    <a class="text-anim-2" href="#">{{ $config->telephone }}</a>
+                                        {{ \App\Helpers\TranslationHelper::TranslateText('WhatsApp') }}:</span>
+                                    <a class="text-anim-2" href="#">{{ $config->telephone }}</a><br>
+                                    <a class="text-anim-2" href="#">{{ $config->whtasapp ?? ' ' }}</a>
                                 </div>
                             </div>
                             <div class="tp-contact-2-box p-relative mb-25">

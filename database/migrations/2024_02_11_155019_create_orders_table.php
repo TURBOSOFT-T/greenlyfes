@@ -43,6 +43,11 @@ class CreateOrdersTable extends Migration
                 'virement',
                 'cheque'
             ])->nullable();
+
+            $table->enum('payment_method', ['stripe', 'bank_transfer'])->default('bank_transfer'); // Mode de paiement
+            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending'); // Statut du paiement
+            $table->string('transaction_id')->nullable(); // ID de transaction Stripe (si applicable)
+       
             $table->string('purchase_order', 100)->nullable();
             $table->boolean('pick')->default(false);
             $table->integer('invoice_id')->nullable();

@@ -149,7 +149,7 @@ public function getOccupiedPeriods($roomId)
         'required',
         'date',
         'after_or_equal:today',  
-       // 'stripe_token' => 'nullable|string',
+        'stripeToken' => ['nullable', 'string'],
     ],
     [
       'email.required' => 'Veuillez entrer votre email',
@@ -270,33 +270,33 @@ $items=   Reservations_item::create([
 ]);
 
 
-/*    
-if(isset($_POST['stipe_payment_btn']))
-{
-  return " payement avec stripe
-  ";
-}
 
-if ($request->has('stripe_payment_btn')) {
-  return redirect()->route('payement', $request->all());
-} */
-/* 
-if(isset($_POST['stipe_payment_btn']))
-    {
+  Stripe::setApiKey(env('STRIPE_SECRET'));
+
+  try {
+      $charge = Charge::create([
+          "amount" => 100 * 100, // Montant en centimes
+          "currency" => "eur",
+          "source" => $request->stripeToken,
+          "description" => "Paiement réservation chambre",
+      ]);
+
   
-        $stripetoken = $request->input('stripeToken');
-        $STRIPE_SECRET = config("app.stripe_priver");;
-        Stripe::setApiKey($STRIPE_SECRET);
-        \Stripe\Charge::create([
-         
-            'currency' => '€',
-            'description' => "payement",
-            'source' => $stripetoken,
-           
-            ],
+          // Mise à jour du statut du paiement
+          $reservation->update([
+            'payment_status' => 'paid',
+            'payment_method' =>'stripe',
+            'transaction_id' => $charge->id,
         ]);
-        return redirect('/thank-you')->with('status','Order has been placed Successfully');
-    } */
+
+   
+  
+  } catch (\Exception $e) {
+     return redirect()->back()->with('error', 'Erreur lors du paiement : ' . $e->getMessage());
+
+  }
+
+
 
 
     return redirect()->route('thank-yous');

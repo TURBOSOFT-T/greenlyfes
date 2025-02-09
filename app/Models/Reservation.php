@@ -34,6 +34,10 @@ class Reservation extends Model
 
             'mode',
             'etat',
+        'payment_method', 
+            'payment_status', 
+            'transaction_id'
+       
      
     ];
 

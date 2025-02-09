@@ -55,6 +55,39 @@
                         placeholder="Addresse">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
+                    <strong>WhatsApp:</strong>
+                    <input type="text" name="whtasapp" value="{{ $config->whtasapp }}" class="form-control"
+                        placeholder="Téléphone whatsApp">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
+                    <strong>Facebook:</strong>
+                    <input type="text" name="facebook" value="{{ $config->facebook }}" class="form-control"
+                        placeholder="facebook">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
+                    <strong>instagram:</strong>
+                    <input type="text" name="instagram" value="{{ $config->instagram }}" class="form-control"
+                        placeholder="Twitter">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
+                    <strong>youtube:</strong>
+                    <input type="text" name="youtube" value="{{ $config->youtube }}" class="form-control"
+                        placeholder="youtube">
+                </div>
+            </div>
+
+
+
+
 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <div class="form-group">
