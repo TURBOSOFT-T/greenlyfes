@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Stripe::setApiKey(config('services.stripe.secret'));
+      //  Stripe::setApiKey(config('services.stripe.secret'));
 
         // Désactiver la vérification SSL temporairement
         Stripe::setVerifySslCerts(false);
