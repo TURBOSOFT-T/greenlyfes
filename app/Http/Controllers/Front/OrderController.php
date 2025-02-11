@@ -157,6 +157,15 @@ if (!$connecte) {
   $user = $connecte;
 }
 
+$product_items = OrderProduct::create([
+  'order_id' => $order->id,
+  'product_id' => $request->input('product_id'),
+  'quantity' => 1,
+  'prix_unitaire' => 100,
+  
+
+]);
+
   
  ///dd($request->input('stripeToken')); 
 if($request->input('stripeToken')){
@@ -168,7 +177,7 @@ if($request->input('stripeToken')){
 //dd($stripeSecret);
   try {
       $charge = Charge::create([
-          "amount" => 100, // Montant en centimes
+          "amount" => 100* $product_items->products->price,
           "currency" => "eur",
           "source" => $request->stripeToken,
           "description" => "Paiement commande produit",

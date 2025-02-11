@@ -176,6 +176,14 @@
                                                             src="{{ url('public/Image/' . $produit->image) }}"
                                                             alt="" width="200 " height="200 ">
                                                 </td>
+                                                <br>
+                                                <td>
+                                                     <span class="amount" id="product-price"
+                                                        data-prix="{{ $produit->price }}">
+                                                        {{ number_format($produit->price, 2) }} <x-devise></x-devise>
+                                                    </span>
+                                                </td>
+
                                             </tr>
 
                                         </tbody>

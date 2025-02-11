@@ -13,6 +13,7 @@ use Stripe\Stripe;
 
 
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -38,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Stripe::setApiKey(config('services.stripe.secret'));
 
         // Désactiver la vérification SSL temporairement
-        \Stripe\Stripe::setVerifySslCerts(false);
+        Stripe::setVerifySslCerts(false);
         
         setlocale(LC_TIME, config('app.locale'));
         Paginator::useTailwind();
