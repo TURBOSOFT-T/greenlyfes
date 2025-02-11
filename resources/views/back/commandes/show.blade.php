@@ -18,6 +18,11 @@
 <p><strong>Téléphone:</strong> {{ $commande->phone }}</p>
 <p><strong>Message:</strong> {{ $commande->note }}</p>
 <p><strong>Date de Commande:</strong> {{ $commande->created_at }}</p>
+<p><strong>Status de payment:</strong> {{ $commande->payment_status }}</p>
+<p><strong>Méthode de payment:</strong> {{ $commande->payment_method }}</p>
+<p><strong>Id de la transaction:</strong> {{ $commande->transaction_id }}</p>
+
+
 
 <h2>Produits:</h2>
 <ul>

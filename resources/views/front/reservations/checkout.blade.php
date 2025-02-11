@@ -12,8 +12,8 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('css/form.css') }}">
-
+        {{--  <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+ --}}
 
 
 
@@ -24,6 +24,51 @@
         <!-- Moment.js (nécessaire pour certaines fonctionnalités) -->
         <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 
+        <style>
+            #card-element {
+                border: 1px solid #4b11ea;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .tp-checkout-terms-title {
+                color: #16d71d;
+                /* Changer la couleur du texte ici */
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .tp-checkout-terms-content label {
+                font-size: 16px;
+                font-weight: 600;
+                color: #4CAF50;
+                /* Couleur verte */
+
+
+                cursor: pointer;
+            }
+
+            .tp-checkout-terms-title {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacement entre le titre et le badge */
+}
+
+.badge {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+        </style>
         <section class="tp-checkout-area pb-150 pt-150">
 
             <div class="container">
@@ -232,7 +277,7 @@
                                     </table>
                                 </ul>
 
-
+<br>
 
 
                                 <!-- Affichage du prix total -->
@@ -248,209 +293,71 @@
                                 </div>
 
                             </div>
+                            
+
+
+                            
+
+                      <br>
+                            <div class="tp-checkout-terms">
+                                <div class="tp-checkout-terms-title">Les moyens de paiement</div>
+                                <br>
+                                <div class="tp-checkout-terms-content">
+                                    <label>
+                                        <input type="radio" name="payment_method" value="bank_transfer" checked>
+                                        Virement bancaire
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="payment_method" value="stripe">
+                                        Paiement par carte (Stripe)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="bank-info" style="display: block;">
+                                <p><strong>Informations bancaires pour le virement :</strong></p>
+                                Veuillez envoyer un chèque à “B & P Dr. Spruth”,<br>
+                                Galtschinisweg 16, CH-7324 Vilters SG, Vilters-Wangs,<br>
+                                Switzerland
+                            </div>
+
+                            <div class="tp-checkout-btn-wrapper">
+
+                                <br>
+
+                                <div class="form-group" id="stripe-form-group" style="display: none;">
+                                    <div id="card-element"></div>
+                                    <input type="hidden" name="stripeToken" id="stripeToken">
+                                    <div id="card-errors" class="text-danger"></div>
+                                </div>
+                            </div>
                             <br>
 
-                            <div class="tp-checkout-terms">
-                                <div class="tp-checkout-terms-title">Payement par virement bancaire </div>
-                                <div class="tp-checkout-terms-content">
-                                    <ul>
+                            <div class="tp-checkout-btn-wrapper">
+                                <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
+                                    onclick="submitPaymentForm()" value="Confirmer la réservation">
 
-                                        <table style="width:100%; border-collapse: collapse; border: 2px solid black;">
-                                            <tbody>
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Kontoinhaber / Beneficiary Name / Titulaire du compte
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        R.G. Beratung & Projektentwicklung <br>Dr. Spruth AG
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Bank Name / <br>
-                                                        Nom de la banque
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        CREDIT SUISSE AG
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Bank Adresse / <br>
-                                                        Adresse de la banque
-
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Bahnhofstrasse 12, CH-7000 Chur
-                                                    </td>
-                                                </tr>
-
-
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Bankkontakt / <br>
-                                                        Contact / <br>
-                                                        Contact de la banque
-
-
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Thomas Philipp <br>
-                                                        Telefon: +41 81 255 62 56 <br>
-                                                        E-Mail: thomas.philipp@credit-suisse.com
-
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Zeichnungsberechtigter / <br>
-                                                        Account Signatory / <br>
-                                                        Signataire autorisé
-
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        Reinhard Gerhard Spruth
-
-                                                    </td>
-                                                </tr>
-
-
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        IBAN USD
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        CH 85 0483 5187 1945 9200 0
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        IBAN CHF
-
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        CH 22 0483 5187 1945 9100 0
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart_item">
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        IBAN EURO
-
-
-                                                    </td>
-                                                    <td style="border: 1px solid black; padding: 10px;">
-                                                        CH 58 0483 5187 1945 9200 1
-
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-
-                                    </ul>
-
-
-                                </div>
-
-                                <br>
-                                <div class="tp-checkout-terms">
-                                    <div class="tp-checkout-terms-title">Payement avec Stripe</div>
-                                    {{-- <div class="tp-checkout-terms-content">
-                                        <label>
-                                            <input type="radio" name="payment_method" value="bank_transfer" checked>
-                                            Virement bancaire
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="payment_method" value="stripe">
-                                            Paiement par carte (Stripe)
-                                        </label>
-                                    </div> --}}
-                                </div>
-                                <br>
-
-                                {{-- <div id="stripe-payment-form" style="display: none;">
- --}}
-                                    <div class="form-group">
-
-                                        <div id="card-element"></div>
-                                        <input type="hidden" name="stripeToken" id="stripeToken">
-                                        <div id="card-errors" class="text-danger"></div>
-
-                                    {{-- </div> --}}
-                                </div>
-                                <br>
-                                <!-- hCaptcha -->
-
-
-                                <div class="tp-checkout-btn-wrapper">
-                                    <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
-                                        value="Confirmer la réservation">
-                                </div>
 
                             </div>
+
                         </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
+            </div>
+
+
+
+
+
 
 
 
         </section>
 
-       
-        <script src="https://js.stripe.com/v3/"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                let stripe = Stripe('{{ config('app.STRIPE_KEY') }}');
-                console.log("Stripe chargé :", stripe); // 🔥 Vérification si Stripe est bien chargé
-                
-                let elements = stripe.elements();
-                let card = elements.create("card", { 
-                    style: { 
-                        base: { fontSize: '16px', color: '#32325d' } 
-                    } 
-                });
-                card.mount("#card-element");
-        
-                let form = document.getElementById("reservation-form");
-                let submitButton = document.getElementById("submit-button");
-                let cardErrors = document.getElementById("card-errors");
-        
-                form.addEventListener("submit", function(event) {
-                    event.preventDefault();
-                    submitButton.disabled = true;
-                    submitButton.textContent = "Traitement...";
-        
-                    console.log("Tentative de création du token..."); // 🔥 Debug
-        
-                    stripe.createToken(card).then(function(result) {
-                        if (result.error) {
-                            cardErrors.textContent = result.error.message;
-                            console.error("Erreur Stripe :", result.error.message); // 🔥 Affiche l'erreur dans la console
-                            submitButton.disabled = false;
-                            submitButton.textContent = "Confirmer et payer";
-                        } else {
-                            console.log("Token Stripe généré avec succès :", result.token.id); // 🔥 Confirmation du token
-                            document.getElementById("stripeToken").value = result.token.id;
-                            form.submit();
-                        }
-                    });
-                });
-            });
-        </script>
-        
-        
+
+
+
 
         <script>
             $(document).ready(function() {
@@ -493,6 +400,23 @@
                     var limit = $('input[name="limit"]').val();
                     var nom = $('input[name="nom"]').val();
                     var prenom = $('input[name="prenom"]').val();
+
+                    const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+                // Si Stripe est sélectionné, vérifier si le jeton est généré
+                if (paymentMethod.value === 'stripe') {
+                    const stripeToken = document.getElementById('stripeToken').value;
+                    if (!stripeToken) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Token Stripe manquant',
+                            text: 'Veuillez générer un token Stripe avant de soumettre.',
+                            confirmButtonText: 'OK'
+                        });
+                        return; // Ne pas soumettre le formulaire
+                    }
+                    // Sinon, soumettre le formulaire normalement
+                    document.getElementById('reservation-form').submit();
+                }
 
                     // Vérification des champs obligatoires
                     if (nom.trim() === '' || prenom.trim() === '' || !date_debut || !date_fin) {
@@ -650,6 +574,159 @@
 
             });
         </script>
+
+
+        <script src="https://js.stripe.com/v3/"></script>
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var stripe = Stripe('{{ config('services.stripe.key') }}');
+                console.log("Test key:", stripe);
+                var elements = stripe.elements();
+                var card = elements.create("card");
+                card.mount("#card-element");
+                var form = document.getElementById("reservation-form");
+
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    stripe.createToken(card).then(function(result) {
+                        console.log("Token Stripe généré avec succès :", result.token.id);
+                        document.getElementById("stripeToken").value = result.token.id;
+                        form.submit();
+                        
+
+                    });
+                });
+            });
+        </script>
+
+
+
+        <script>
+            document.querySelectorAll('input[name="payment_method"]').forEach((input) => {
+                input.addEventListener('change', function() {
+                    const bankInfo = document.getElementById('bank-info');
+                    const stripeFormGroup = document.getElementById('stripe-form-group');
+                    const paymentForm = document.getElementById('reservation-form');
+
+
+                    if (this.value === 'stripe') {
+                        bankInfo.style.display = 'none';
+                        stripeFormGroup.style.display = 'block';
+
+
+                    } else if (this.value === 'bank_transfer') {
+                        bankInfo.style.display = 'block';
+                        stripeFormGroup.style.display = 'none';
+                        // paymentForm.submit(); 
+                    }
+                });
+            });
+
+            function submitPaymentForm() {
+                /*  const paymentForm = document.getElementById('reservation-form');
+                 const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+
+                 if (paymentMethod === 'bank_transfer') {
+
+                     paymentForm.submit();
+                 } */
+
+                const firstName = document.getElementById('name').value.trim();
+                const lastName = document.getElementById('prenom').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const address = document.getElementById('address').value.trim();
+                // const note = document.getElementById('note').value.trim();
+
+                // Validation des champs obligatoires
+                if (!firstName || !lastName || !email || !phone || !address) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Champs manquants',
+                        text: 'Tous les champs obligatoires doivent être remplis.',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Ne pas soumettre le formulaire
+                }
+
+                // Validation du format de l'email
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(email)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Email invalide',
+                        text: 'Veuillez entrer un email valide.',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Ne pas soumettre le formulaire
+                }
+
+                // Validation du format du numéro de téléphone
+
+                if (!(phone)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Numéro de téléphone invalide',
+                        text: 'Veuillez entrer un numéro de téléphone valide (10 chiffres).',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Ne pas soumettre le formulaire
+                }
+
+                // Validation de l'adresse
+                if (!address) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Adresse manquante',
+                        text: 'Veuillez entrer une adresse valide.',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Ne pas soumettre le formulaire
+                }
+
+                // Vérification de la méthode de paiement
+                const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+                // Si Stripe est sélectionné, vérifier si le jeton est généré
+                if (paymentMethod.value === 'stripe') {
+                    const stripeToken = document.getElementById('stripeToken').value;
+                    if (!stripeToken) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Token Stripe manquant',
+                            text: 'Veuillez générer un token Stripe avant de soumettre.',
+                            confirmButtonText: 'OK'
+                        });
+                        return; // Ne pas soumettre le formulaire
+                    }
+                    // Sinon, soumettre le formulaire normalement
+                    document.getElementById('reservation-form').submit();
+                }
+                if (!paymentMethod) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Méthode de paiement manquante',
+                        text: 'Veuillez sélectionner une méthode de paiement.',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Ne pas soumettre le formulaire
+                }
+
+                // Si tout est valide, soumettre le formulaire
+                if (paymentMethod.value === 'bank_transfer') {
+                    document.getElementById('reservation-form').submit();
+                }
+
+
+            }
+        </script>
+
+
+
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

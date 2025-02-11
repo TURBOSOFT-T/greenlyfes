@@ -21,6 +21,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 //use Illuminate\Support\Facade\Mail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 use Cart;
 class OrderController extends Controller
@@ -46,18 +48,27 @@ class OrderController extends Controller
       'name' => ['nullable', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
       'email' => 'required',
+     'payment_method' => 'required|in:bank_transfer,stripe',
       
      // 'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp',
      
-        'phone' => 'required',
+        'phone' => 'required|numeric',
         'address' => 'nullable',
       
         'note' => 'nullable',
      
     // 'frais' => 'required',
 
-    ]); 
+    ],[
+      'phone.required' => 'Le champ téléphone est obligatoire.',
+      'phone.numeric'  => 'Le champ téléphone doit être un numéro valide.',
+      'address.required' => 'Le champ adresse est obligatoire.',
+     // 'frais.required' => 'Le champ frais de livraison est obligatoire.',
+      'email.required' => 'Le champ email est obligatoire.',
+      'email.email' => 'Le champ email doit être une adresse email valide.',
+  ]); 
 
+   // dd($request->all());
 
     $connecte = Auth::user();
     $configs = config::firstOrFail();
@@ -84,13 +95,7 @@ if($connecte){
      'note' => $request->input('note'),
  
 
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'phone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ];
+  ]);
 } else{
 
   $order = new Order([
@@ -111,13 +116,7 @@ if($connecte){
     
 
 
-   ]);[
-     'email.required' => 'Veuillez entrer votre email',
-     'nom.required' => 'Veuillez entrer votre nom',
-     'phone.required' => 'Veuillez entrer votre numéro de téléphone',
-     'adresse.required' => 'Veuillez entrer votre addresse',
-
-   ];
+   ]);
 }
  /// dd($order);
 
@@ -159,7 +158,39 @@ if (!$connecte) {
 }
 
   
+ ///dd($request->input('stripeToken')); 
+if($request->input('stripeToken')){
+  $stripeSecret = config("app.STRIPE_SECRET");
+  Stripe::setApiKey($stripeSecret);
+
+
+
+//dd($stripeSecret);
+  try {
+      $charge = Charge::create([
+          "amount" => 100, // Montant en centimes
+          "currency" => "eur",
+          "source" => $request->stripeToken,
+          "description" => "Paiement commande produit",
+      ]);
+
   
+          // Mise à jour du statut du paiement
+          $order->update([
+            'payment_status' => 'paid',
+            'payment_method' =>'stripe',
+            'transaction_id' => $charge->id,
+        ]);
+
+   
+  // return response()->json(['success' => true]);
+   return redirect()->route('thank-you');
+  } catch (\Exception $e) {
+ return response()->json(['success' => false, 'message' => $e->getMessage()]);
+
+  }
+}
+
     
 
 //$produit = Product::find($request['product_id']);

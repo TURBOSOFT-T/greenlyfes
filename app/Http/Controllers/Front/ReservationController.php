@@ -142,14 +142,18 @@ public function getOccupiedPeriods($roomId)
       'nom' => ['required', 'string', 'max:255'],
       'prenom' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
+      'payment_method' => 'required|string',
+   //    'stripeToken' => $request->payment_method === 'stripe' ? 'required|string' : 'nullable',
      
-      
+
         'date_fin' => 'required|date|after_or_equal:date_debut',
         'date_debut' => [
         'required',
         'date',
         'after_or_equal:today',  
-        'stripeToken' => ['nullable', 'string'],
+     //  'stripeToken' => ['nullable|string'],
+   
+
     ],
     [
       'email.required' => 'Veuillez entrer votre email',
@@ -161,7 +165,9 @@ public function getOccupiedPeriods($roomId)
     ]
   
     ]); 
+//($request->all());
 
+//dd($request->input('stripeToken'));
     $connecte = Auth::user();
     $configs = config::firstOrFail();
 
@@ -268,23 +274,47 @@ $items=   Reservations_item::create([
 
 
 ]);
+//dd($request->input('stripeToken'));
+/* 
+if($request->input('stripeToken')) */
+if ($request->payment_method === 'stripe') {
 
-
-if ($request->stripeToken) {
+ // $stripeSecret = config("app.STRIPE_SECRET");
+ // Stripe::setApiKey($stripeSecret);
   Stripe::setApiKey(env('STRIPE_SECRET'));
 
-  $charge = Charge::create([
-      "amount" => $totalPrice * 100, // Montant en centimes
-      "currency" => "eur",
-      "source" => $request->stripeToken,
-      "description" => "Paiement réservation chambre",
-  ]);
+  try {
+      $charge = Charge::create([
+          "amount" => 100* $totalPrice, // Montant en centimes
+          "currency" => "eur",
+          "source" => $request->stripeToken,
+        ///  "client" =>  $request->input('nom'),
+          "description" => "Paiement réservation chambre",
 
-  $reservation->update([
-      'payment_status' => 'paid',
-      'payment_method' => 'stripe',
-      'transaction_id' => $charge->id,
-  ]);
+          'metadata' => [
+                  //  'order_id' => $->id,
+                    'user_id' => $user->id,
+                    'montant total' => $totalPrice . "€",
+                ],
+      ]);
+
+  
+          // Mise à jour du statut du paiement
+          $reservation->update([
+            'payment_status' => 'paid',
+            'payment_method' =>'stripe',
+            'transaction_id' => $charge->id,
+        ]);
+
+
+        
+
+   
+   return  redirect()->route('thank-yous');
+  } catch (\Exception $e) {
+ return response()->json(['success' => false, 'message' => $e->getMessage()]);
+
+  }
 }
 
 

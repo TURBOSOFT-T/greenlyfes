@@ -9,6 +9,7 @@ use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\{ Blade, View, Route };
 use Cart;
 use Illuminate\Pagination\Paginator;
+use Stripe\Stripe;
 
 
 
@@ -33,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        // Désactiver la vérification SSL temporairement
+        \Stripe\Stripe::setVerifySslCerts(false);
+        
         setlocale(LC_TIME, config('app.locale'));
         Paginator::useTailwind();
 

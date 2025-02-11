@@ -13,10 +13,20 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+  
+
+    
+   
+
     'stripe' => [
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'model' => App\User::class,
+    'key' => env('STRIPE_KEY'),
+    'secret' => env('STRIPE_SECRET'),
+    'http' => [
+        'verify' => false, // Désactive la vérification SSL
     ],
+],
+
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
