@@ -172,7 +172,7 @@
 
 
         <!-- service-area-start -->
-       {{--  <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
+        <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
             <div class="tp-service-4-shape tp-float-bob-y d-none d-lg-block">
                 <img src="assets/img/shape/service/shape-4-1.png" alt="">
             </div>
@@ -181,7 +181,9 @@
                     <div class="col-xl-12">
                         <div class="tp-service-4-title-box text-center mb-55">
                             <span class="tp-section-subtitle">
-                                {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }}
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Les tpes  bungalows  à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }} <br>
+                                {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la
+                                une pratique exceptionnelle, pour vous rendre compte de nos services et de nos avantages exclusifs!') }}
                             </span>
                            
                         </div>
@@ -224,7 +226,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div> 
         <!-- service-area-end -->
 
         <!-- project area start -->
@@ -974,8 +976,8 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Conciergerie sur-mesure pour un séjour inoubliable en
-                                Tunisie. 🏖️🔑</span>
+                            <span class="tp-section-subtitle"> Faites des aujourd'hui l acquisition d'un de nos bungalows. Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée  🏖️🔑</span>
+
 
                         </div>
 

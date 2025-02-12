@@ -261,7 +261,8 @@
                                                 fill="currentcolor" />
                                         </svg>
                                     </span>
-                                    <a class="text-anim">{{ $config->email }} </a>
+                                    <a class="text-anim">{{ $config->email }} </a><br>
+                                    <a href="#">Christophedemontecristo@gmail.com</a>
                                 </li>
 
                             </ul>
