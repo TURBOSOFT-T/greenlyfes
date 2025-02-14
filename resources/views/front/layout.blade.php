@@ -1005,7 +1005,7 @@
                                 </div>
                                 <div class="tp-service-content">
                                     <div>
-                                        <h3>{{ $produit->price ?? ' ' }} <x-devise></x-devise></h3>
+                                       {{--  <h3>{{ $produit->price ?? ' ' }} <x-devise></x-devise></h3> --}}
 
                                     </div>
                                     <h4 class="tp-service-title"><a class="text-anim-2"

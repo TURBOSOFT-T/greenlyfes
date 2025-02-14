@@ -132,7 +132,7 @@
                   <div class="tp-shop-details__right-wrap">
                      <h3 class="tp-section-title">{{$product->name}}</h3>
                      <div class="tp-shop-details__price pb-10">
-                        {{ $product->price }}   <x-devise></x-devise>
+                      {{--   {{ $product->price }}   <x-devise></x-devise> --}}
                       
                      </div>
                      <div class="tp-shop-details__ratting mb-20">
