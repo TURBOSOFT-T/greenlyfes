@@ -285,8 +285,8 @@
                                         <img src="{{ url('public/Image/' . $room->image) }}" alt="">
                                     </div>
                                     <div class="tp-project-3-content text-center">
-                                        <span class="tp-product-price-2 new-price">{{ $room->price ?? '' }}
-                                            <x-devise></x-devise></span>
+                                        <span class="tp-product-price-2 new-price">{{-- {{ $room->price ?? '' }}
+                                            <x-devise></x-devise></span> --}}
                                         <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
 
 
