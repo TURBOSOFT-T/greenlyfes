@@ -620,6 +620,50 @@
             </div>
             <!-- footer area end -->
 
+            
+        <div class="whatsapp-float">
+            <a href="https://wa.me/{{ preg_replace('/\D/', '', $config->telephone) }}" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <style>
+            .whatsapp-float {
+                position: fixed;
+                bottom: 20px;
+                /* Distance par rapport au bas */
+                right: 20px;
+                /* Distance par rapport à la droite */
+                width: 60px;
+                height: 60px;
+                background-color: #25D366;
+                /* Couleur verte WhatsApp */
+                border-radius: 50%;
+                /* Cercle */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                z-index: 1000;
+                /* Toujours visible au-dessus des autres éléments */
+            }
+    
+            .whatsapp-float a {
+                color: white;
+                font-size: 30px;
+                /* Taille de l'icône */
+                text-decoration: none;
+            }
+    
+            .whatsapp-float:hover {
+                transform: scale(1.1);
+                /* Effet zoom au survol */
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+        </style>
+    
+
             <!-- copy-right area start -->
             <div class="tp-copyright-area tp-copyright-height" style="padding: 10px 0;">
                 <div class="container">
