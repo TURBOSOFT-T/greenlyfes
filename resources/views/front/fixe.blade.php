@@ -559,10 +559,8 @@
                                                         {{ \App\Helpers\TranslationHelper::TranslateText('WhatsApp') }}
                                                         :</b>
 
-                                                        <a href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">
-                                                           
-                                                            {{ $config->telephone }}
-                                                        </a> <br>
+                                                        <a
+                                        href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">{{ $config->telephone ?? ' ' }}</a> <br>
                                                         <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp ?? ' ') }}">{{ $config->whtasapp ?? ' ' }}</a>
 
                                                 </div>
