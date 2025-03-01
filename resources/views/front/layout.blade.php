@@ -172,7 +172,7 @@
 
 
         <!-- service-area-start -->
-       {{--  <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
+        <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
             <div class="tp-service-4-shape tp-float-bob-y d-none d-lg-block">
                 <img src="assets/img/shape/service/shape-4-1.png" alt="">
             </div>
@@ -226,7 +226,7 @@
                     </div>
                 </div>
             </div>
-        </div>  --}}
+        </div>  
         <!-- service-area-end -->
 
         <!-- project area start -->
