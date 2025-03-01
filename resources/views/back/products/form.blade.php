@@ -139,6 +139,11 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label> Autres Images suplémentaires</label>
+                                    <input type="file" name="images[]" class="form-control" multiple>
+                                </div>
+
 
 
 

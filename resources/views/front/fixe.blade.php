@@ -304,7 +304,7 @@
                                     <li class="has-dropdown">
                                         <a href="#">Nos séjours</a>
                                         <ul class="submenu tp-submenu">
-                                           <li><a href="#">ACQUISITION</a></li>
+                                           <li><a href="{{ url('produits') }}">ACQUISITION</a></li>
                                            <li><a  href="{{ url('produits') }}">LOCATION</a></li>
                                           
                                            

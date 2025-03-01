@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->integer('stock')->nullable();
             $table->integer('stock_alert')->nullable();
             $table->string('image')->nullable();
+            $table->string('images')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();

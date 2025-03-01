@@ -35,6 +35,7 @@ class ProductRequest extends FormRequest
           //  'category_id' => 'exists:categories,id',
            // 'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
            'image' => 'sometimes|required|file|mimetypes:image/*',
+           'images' => 'sometimes|required|file|mimetypes:image/*',
 
             'description' => 'required|string',
     

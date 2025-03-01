@@ -73,6 +73,25 @@ class ProductController extends Controller
             $file->move('public/Image/', $filename);
             $input['image'] = $filename;
         }
+        if ($request->hasFile('images')) {
+
+            $images = [];
+            foreach ($request->file('images') as $file) {
+                
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+    
+                
+                $file->move('public/Image/', $filename);
+    
+                
+                $images[] = $filename;
+            }
+            $input['images'] = json_encode($images);
+        }
+
+
+
 
 
         $user->products()->create($input);
@@ -127,6 +146,33 @@ class ProductController extends Controller
             $input['image'] = $filename;
         }
 
+        if ($request->hasFile('images')) {
+            
+            $oldImages = json_decode($input->images);
+            if ($oldImages) {
+                foreach ($oldImages as $oldImage) {
+                    $oldImagePath = public_path('public/Image/' . $oldImage);
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
+                }
+            }
+    
+           
+            $newImages = [];
+            
+           
+            foreach ($request->file('images') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+                $file->move(public_path('public/Image'), $filename);
+                $newImages[] = $filename;
+            }
+    
+          
+            $input['images'] = json_encode($newImages);
+        }
+
         $user->products()->save($input);
 
 
@@ -142,6 +188,14 @@ class ProductController extends Controller
     {
         $img = Product::find($id);
         File::delete(public_path('/public/Image/' . $img->image));
+        if ($img->images) {
+            foreach (json_decode($img->images) as $image) {
+                if (file_exists(public_path('/public/Image/' . $image))) {
+                    unlink(public_path('/public/Image/' . $image));
+                }
+            }
+        }
+
          Product::findOrFail($id)->forceDelete();
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully');

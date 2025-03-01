@@ -26,6 +26,7 @@ class Product extends Model
         'stock_alert',
         'active',
         'image',
+        'images',
         'price',
         'user_id',
         'shop_id',
