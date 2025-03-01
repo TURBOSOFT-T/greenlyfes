@@ -25,14 +25,14 @@
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Conciergerie</h3>
+                        <h3 class="breadcrumb__title">ACQUISITION</h3>
                      </div>
                      <div class="breadcrumb__list">
                         <span><a href="/">Accueil</a></span>
                         <span class="dvdr"><i>/</i></span>
                        
                         <span class="dvdr"><i>/</i></span>
-                        <span><b>Conciergerie</b></span>
+                        <span><b>ACQUISITION</b></span>
                      </div>
                   </div>
                </div>

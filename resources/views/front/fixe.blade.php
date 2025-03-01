@@ -299,9 +299,18 @@
 
                                     </li>
 
-                                    <li><a href="{{ url('produits') }}">Conciergerie</a></li>
+                                 {{--    <li><a href="{{ url('produits') }}">Conciergerie</a></li> --}}
 
-
+                                    <li class="has-dropdown">
+                                        <a href="#">Nos séjours</a>
+                                        <ul class="submenu tp-submenu">
+                                           <li><a href="#">ACQUISITION</a></li>
+                                           <li><a  href="{{ url('produits') }}">LOCATION</a></li>
+                                          
+                                           
+                                          
+                                        </ul>
+                                     </li>
                                     {{--       <li class="has-dropdown">
                                         <a href="#">Nos activités</a>
                                         <ul class="submenu tp-submenu">
