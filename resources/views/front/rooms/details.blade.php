@@ -152,7 +152,7 @@
                             <h3 class="tp-section-title">{{ $room->name ?? ' ' }}</h3>
                             <div class="tp-shop-details__price pb-10">
 
-                               
+                                {!! $room->excerpt ?? ' ' !!}
                             </div>
                         
                             <div class="tp-shop-details__color d-flex align-items-center mb-20">

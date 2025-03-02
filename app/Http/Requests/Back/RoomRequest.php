@@ -34,6 +34,7 @@ class RoomRequest extends FormRequest
             'excerpt' => 'nullable|max:50000',
             'meta_description' => 'nullable|max:5060',
             'meta_keywords' => 'required|regex:' . $regex,
+            'short_description'=>'nullable|max:5060',
             'seo_title' => 'nullable|max:600',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
           'image' => 'sometimes|required|file|mimetypes:image/*',

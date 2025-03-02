@@ -52,6 +52,20 @@
                         placeholder="Title" required>
                 </div>
             </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="form-group">
+                    <strong>Excerpt(m²):</strong>
+                    <input type="text" name="excerpt" value="{{ $room->excerpt }}" class="form-control"
+                        placeholder="Title" required>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="form-group">
+                    <strong>Short_description(Prix):</strong>
+                    <input type="text" name="short_description" value="{{ $room->short_description }}" class="form-control"
+                        placeholder="Title" required>
+                </div>
+            </div>
 
           
 

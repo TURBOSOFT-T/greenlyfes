@@ -54,10 +54,17 @@
                                         :required="true">
                                     </x-back.input>
 
-                                    <x-back.card type='primary' title='Excerpt'>
+                                    <x-back.card type='primary' title='Excerpt( intervalle surface  en m²)'>
                                         <x-back.input name='excerpt' :value="isset($room) ? $room->excerpt : ''" input='textarea' :required="true">
                                         </x-back.input>
                                     </x-back.card>
+
+                                    <x-back.card type='primary' title='Short Description( intervalle de  prix)'>
+                                        <x-back.input name='short_description' :value="isset($room) ? $room->short_description : ''" input='textarea' :required="true">
+                                        </x-back.input>
+                                    </x-back.card>
+
+                                 
 
 
 
