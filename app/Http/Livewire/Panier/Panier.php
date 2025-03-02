@@ -25,7 +25,7 @@ class Panier extends Component
                     $surface = Surface::where('product_id', $produit->id)->first();
                     if($surface){
                         $produit->surface = $surface->value;
-                        dd($produit);
+                      //  dd($produit);
                     }
                 }
                 foreach($paniers as $produit){

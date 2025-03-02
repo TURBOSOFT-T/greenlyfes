@@ -147,15 +147,15 @@
                                 <h3>{{ $product->short_description ?? ' ' }} </h3>
 
                             </div>
-                            <br>
+                           {{--  <br>
                             <div class="tp-shop-details__text-2 mb-25">
                                 <p>{!! Str::limit($product->description, 50) !!} </p>
-                            </div>
+                            </div> --}}
                             <div class="tp-shop-details__product-info mb-35">
-
+{{-- 
                                 <ul>
                                     <li>Categorie:<span> {{ $product->categories->title ?? ' ' }}</span></li>
-                                </ul>
+                                </ul> --}}
                             </div>
 
                           
