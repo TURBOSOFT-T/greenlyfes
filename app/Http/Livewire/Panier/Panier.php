@@ -13,9 +13,9 @@ class Panier extends Component
     public function render()
     {
         $paniers_session = session('cart');
-       // $paniers = session('cart');
+        $paniers = session('cart');
         $paniers = [];
-        //  dd($paniers_session);
+    // dd($paniers_session);
         if($paniers_session){
             foreach($paniers_session as $panier){
                 $paniers[] = Product::find($panier['product_id']);  
@@ -25,18 +25,15 @@ class Panier extends Component
                     $surface = Surface::where('product_id', $produit->id)->first();
                     if($surface){
                         $produit->surface = $surface->value;
+                        dd($produit);
                     }
                 }
                 foreach($paniers as $produit){
                     $this->total += $produit->price * $produit->surface;
                 }
-             //   return view('livewire.panier.panier', compact("paniers"));
-
-
-
+    
        
-       // return view('livewire.front.panier', compact("paniers"));
-        return view('livewire.panier.panier', compact("paniers"));
+          return view('livewire.panier.panier', compact("paniers"));
     }
 
 

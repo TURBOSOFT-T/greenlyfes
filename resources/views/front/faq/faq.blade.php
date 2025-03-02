@@ -19,7 +19,7 @@ $configs = DB::table('configs')->first();
                <div class="col-xxl-12">
                   <div class="breadcrumb__content z-index text-center">
                      <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">FAQ</h3>
+                        <h3 class="breadcrumb__title">Séjour en Tunisie</h3>
                      </div>
                      <div class="breadcrumb__list">
                         <span><a href="index.html">Home</a></span>
@@ -44,7 +44,7 @@ $configs = DB::table('configs')->first();
               <div class="col-xl-12">
                  <div class="tp-faq-title-box text-center pb-50">
                     <span class="tp-section-subtitle">Informations sur les séjours en Tunisie</span>
-                    <h4 class="tp-section-title">Lisez ces astuces de voyage avant de faire une reservation pour un séjour</h4>
+                    <h4 class="tp-section-title">Lisez ces astuces de voyage avant de faire une reservation pour un séjour en Tunisie</h4>
                  </div>
               </div>
            </div>
