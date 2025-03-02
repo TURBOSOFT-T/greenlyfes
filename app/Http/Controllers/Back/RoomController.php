@@ -6,7 +6,7 @@ use App\DataTables\RoomsDataTable;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Models\{Room, Book};
+use App\Models\{Room,Attribut, Book};
 use App\Http\Requests\Back\RoomRequest;
 use App\Http\Requests\Back\RoomUpdateRequest;
 
@@ -117,6 +117,13 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
         $room = Room::find($id);
     
         $room->decodedImages = json_decode($room->images, true);
+        if ($room->attributes) {
+            $room->decodedAttributes = json_decode($room->attributes, true);
+        } else {
+            $room->decodedAttributes = [];
+        }
+    
+
         return view('back.rooms.show', compact('room'));
     }
 
@@ -129,6 +136,52 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
         return view('back.rooms.edit', compact('room', 'logements'));
      
     }
+
+    public function attributes($id)
+    {
+        $room = Room::findOrFail($id);
+        $attributes = $room->attributes()->get()->pluck('value', 'id')->toArray();
+     //   $attributes = json_decode($attributes, true);
+     //   dd($room);
+        return view('back.rooms.attributes', compact('room', 'attributes'));
+       // return view('back.rooms.attributes', compact('room'));
+    }
+
+    public function addAttribute(Request $request, $id)
+{
+    $request->validate([
+        'surface' => 'required',
+        'single_price' => 'required',
+        'double_price' => 'required',
+        
+    ]);
+
+    $room = Room::find($id);
+
+    $room->attributes()->create([
+        'attribute' => $request->surface,
+       'single_price' => $request->single_price,
+       'double_price' => $request->double_price,
+    ]);
+
+    return redirect()->route('rooms.index')->with('success', 'La chambre a bien été ajoutée');
+  
+}
+
+public function storeAttribut(Request $request)
+{
+    $request->validate([
+        'room_id' => 'required|exists:rooms,id',
+        'surface' => 'required|string',
+        'single_price' => 'required|numeric',
+        'double_price' => 'required|numeric',
+    ]);
+
+    Attribut::create($request->all());
+
+    return redirect()->route('rooms.index')->with('success', 'La chambre a bien été ajoutée');
+  
+}
 
 
 

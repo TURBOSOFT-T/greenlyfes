@@ -57,13 +57,25 @@ class RoomsDataTable extends DataTable
                 __('Ajouter Réservation'),
                 'plus-circle'
             );
+            
+ // Bouton pour les attributs
+ $attributesButton = $this->button(
+    'rooms.attributes',
+    $room->id,
+    'primary',
+    __('Attributs'),
+    'cogs'
+);
 
-            // Retourner tous les boutons combinés
-            return $viewButton . ' ' . $editButton . ' ' . $deleteButton . ' ' . $reservationButton;
+// Retourner tous les boutons combinés
+return $viewButton . ' ' . $editButton . ' ' . $deleteButton . ' ' . $reservationButton . ' ' . $attributesButton;
+
         })
         
         ->addColumn('action', 'rooms.action');
 }
+
+
 protected function button($route, $parameters, $type, $text, $icon)
 {
     $url = route($route, $parameters);

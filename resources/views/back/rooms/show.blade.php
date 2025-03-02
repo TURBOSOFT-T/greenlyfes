@@ -18,6 +18,13 @@
 
         <br>
         <p><strong>Description: </strong> {!! $room->body !!}</p>
+        <td>
+
+            @foreach($room->attributes as $surface)
+                {{ $surface->surface }} -Prix Single: {{ $surface->single_price }} €, Prix Double : {{ $surface->double_price }} €<br>
+
+            @endforeach
+        </td>
 
         <br>
         <img class="w-50" {{-- src="{{ url('public/image/Products/' . $room->image) }}" --}} src="{{ url('public/Image/' . $room->image) }}">

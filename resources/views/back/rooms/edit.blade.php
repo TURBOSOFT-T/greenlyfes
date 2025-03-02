@@ -53,6 +53,8 @@
                 </div>
             </div>
 
+          
+
             @if (isset($room) && !$errors->has('image'))
                 <div>
                     <p>
@@ -61,7 +63,7 @@
 
                     </div>
                     </p>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-12">
                         <label for="image">Image:</label>
                         <input type="file" class="form-control-file" id="image" name="image">
                     </div>
@@ -142,7 +144,7 @@
                 <input type="file"class="form-control-file"name="video" accept="video/*">
             </div>
             
-
+            
            
 
 

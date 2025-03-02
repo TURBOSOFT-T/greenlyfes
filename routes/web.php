@@ -374,6 +374,11 @@ Route::prefix('admin')->group(function () {
         // Rooms
       //  Route::resource('rooms', BackRoomController::class)->except(['show']);
         Route::name('rooms.indexnew')->get('newrooms', [BackRoomController::class, 'index']);
+        
+        Route::get('/rooms/{id}/attributes', [BackRoomController::class, 'attributes'])->name('rooms.attributes');
+        Route::post('attributs/{id}', [BackRoomController::class, 'addAttribute'])->name('attributs.store');
+        Route::post('/store-attribut', [BackRoomController::class, 'storeAttribut'])->name('store.attribut');
+
 
         ///Testimonitals
 
