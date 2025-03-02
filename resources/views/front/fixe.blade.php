@@ -141,6 +141,46 @@
         </div>
     </div>
     <!-- search popup end -->
+  <!-- search popup end -->
+
+    <!-- cart mini area start -->
+    <div class="cartmini__area">
+        <div class="cartmini__wrapper d-flex justify-content-between flex-column">
+            <div class="cartmini__top-wrapper">
+                <div class="cartmini__top p-relative">
+                    <div class="cartmini__top-title">
+                        <h4>Mon panier</h4>
+                        {{-- <a href="{{ url('clear-cart') }}" class="tp-btn-theme text-center mb-10 w-100"><i class="fa fa-trash-o"></i> Clear cart</a>
+                        --}}
+
+                    </div>
+                    <div class="cartmini__close">
+                        <button type="button" class="cartmini__close-btn cartmini-close-btn"><i
+                                class="fal fa-times"></i></button>
+                    </div>
+                </div>
+             
+                <div id="cartContent">
+                    <ul id="cartItems"></ul>
+                   
+                </div>
+                
+
+            </div>
+            <div class="cartmini__checkout">
+                <div class="cartmini__checkout-title mb-30">
+                   {{--  <h4>Total: <b><span id="montant_total_panier">00</span></b> </h4> --}}
+                   <h4>Total: <span id="cartTotal">0</span> <x-devise></x-devise></h4>
+                </div>
+
+                <div class="cartmini__checkout-btn">
+                    <a href="{{ url('panier') }}" class="tp-btn-theme text-center mb-10 w-100"> Voir le panier</a>
+                    <a href="{{ url('/commander') }}" class="tp-btn-yellow text-center w-100">Paiement</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cart mini area end -->
 
 
     <!-- tp-offcanvus-area-start -->
@@ -360,6 +400,22 @@
                                         </svg>
                                     </span>
                                 </button>
+
+                                <button class="cartmini-open-btn">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M2.5 4.99984H18.3333L15.8333 13.3332H5L2.5 4.99984ZM2.5 4.99984L1.875 2.9165M8.32667 9.1665H9.99333M9.99333 9.1665H11.66M9.99333 9.1665V7.49984M9.99333 9.1665V10.8332M9.16667 16.2498C9.16667 16.5814 9.03497 16.8993 8.80055 17.1337C8.56613 17.3681 8.24819 17.4998 7.91667 17.4998C7.58515 17.4998 7.2672 17.3681 7.03278 17.1337C6.79836 16.8993 6.66667 16.5814 6.66667 16.2498M14.1667 16.2498C14.1667 16.5814 14.035 16.8993 13.8006 17.1337C13.5661 17.3681 13.2482 17.4998 12.9167 17.4998C12.5851 17.4998 12.2672 17.3681 12.0328 17.1337C11.7984 16.8993 11.6667 16.5814 11.6667 16.2498"
+                                            stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span>
+                                        <span id="cartCount">{{ session('cart') ? count(session('cart')) : 0 }}</span>
+                                </button>
+
+                              
+                                
+                                
                           
 
                             </div>
@@ -691,7 +747,127 @@
         </div>
 
     </footer>
+<script>
 
+function ShowProduitModal(id) {
+    Livewire.dispatch("setPostId", { id: id });
+    $("#product-view").modal("toggle");
+}
+
+$(document).ready(function() {
+    showCart(); // 🛒 Affichage automatique
+});
+
+
+
+function refreshCart() {
+    $.ajax({
+        url: "{{ route('cart.get') }}",
+        type: "GET",
+        success: function(response) {
+            console.log("Contenu du Panier:", response);
+
+            let cartHTML = '';
+            if (Object.keys(response).length > 0) {
+                $.each(response, function(key, item) {
+                    cartHTML += `
+                        <div class="cart-item">
+                           <div class="cartmini__widget">
+                         <div class="cartmini__widget-item">
+
+                  <li>${item.surface} - Prix: ${item.price} <x-devise></x-devise>
+         <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
+             <i class="fa fa-trash"></i>
+         </button>
+     </li>
+
+         </div>
+              </div>
+                        </div>
+                    `;
+                });
+            } else {
+                cartHTML = "<p>Votre panier est vide</p>";
+            }
+
+            $('#cartContent').html(cartHTML);
+        }
+    });
+}
+
+$(document).ready(function() {
+    refreshCart(); // Appel automatique au chargement
+
+    $('#addToCartBtn').on('click', function() {
+        setTimeout(function() {
+            refreshCart(); // Mise à jour automatique après ajout
+        }, 500);
+    });
+});
+
+
+function showCart() {
+    $.ajax({
+        url: "{{ route('cart.show') }}",
+        type: "GET",
+        success: function(response) {
+            console.log("Panier:", response.cart);
+            console.log("Total:", response.total);
+
+            $('#cartItems').empty();
+            $.each(response.cart, function(key, item) {
+                $('#cartItems').append(`
+
+                
+                 <div class="cartmini__widget">
+                            <div class="cartmini__widget-item">
+
+                     <li>${item.surface} - Prix: ${item.price} <x-devise></x-devise>
+            <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
+                <i class="fa fa-trash"></i>
+            </button>
+        </li>
+
+            </div>
+                 </div>
+
+                `);
+            });
+
+            $('#cartTotal').text(response.total);
+           
+        }
+    });
+}
+
+function removeItem(surface) {
+    $.ajax({
+        url: "{{ route('cart.remove') }}",
+        type: "POST",
+        data: {
+            surface: surface,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function(response) {
+            console.log("Produit supprimé:", surface);
+            $('#cartCount').text(response.cart_count);
+          
+            refreshCart()
+            showCart(); 
+          
+            Swal.fire({
+                title: 'Supprimé!',
+                text: 'Produit retiré du panier',
+                icon: 'success',
+                timer: 3000
+            });
+           
+        }
+    });
+}
+
+
+</script>
     <!-- JS here -->
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/waypoints.js"></script>

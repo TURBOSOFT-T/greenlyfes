@@ -1004,13 +1004,16 @@
                                     </div>
                                 </div>
                                 <div class="tp-service-content">
+                                    <h4 class="tp-service-title"><a class="text-anim-2"
+                                        href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
+                                </h4>
                                     <div>
-                                       {{--  <h3>{{ $produit->price ?? ' ' }} <x-devise></x-devise></h3> --}}
+                                         <h3>{{ $produit->short_description ?? ' ' }} </h3> 
 
                                     </div>
-                                    <h4 class="tp-service-title"><a class="text-anim-2"
+                                    {{-- <h4 class="tp-service-title"><a class="text-anim-2"
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
-                                    </h4>
+                                    </h4> --}}
                                     {{--  <p>Petite description</p> --}}
                                     <div class="tp-service-link">
                                         <a

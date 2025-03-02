@@ -130,5 +130,12 @@ class Product extends Model
         $this->stock += $quantite;
         $this->save();
     }
+
+
+    public function surfaces()
+{
+    return $this->hasMany(Surface::class);
+}
+
     
 }

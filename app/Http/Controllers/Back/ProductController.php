@@ -100,11 +100,21 @@ class ProductController extends Controller
     }
 
 
-    public function show(string $id): Response
+    public function show1(string $id): Response
     {
         return response()->view('back.products.show', [
             'produit' => Product::findOrFail($id),
         ]);
+    }
+
+    public function show(string $id)
+    {
+         
+      //  $room = Room::find($id);
+        $produit = Product::findOrFail($id);
+    
+        $produit->decodedImages = json_decode($produit->images, true);
+        return view('back.products.show', compact('produit'));
     }
 
     public function edit(string $id): Response

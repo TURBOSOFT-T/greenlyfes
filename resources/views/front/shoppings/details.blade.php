@@ -1,90 +1,92 @@
 @extends('front.fixe')
-@section('titre','Détails sur le produit')
+@section('titre', 'Détails sur le produit')
 @section('body')
 
-<main>
-   @php
-    $config = DB::table('configs')->first();
-    $service =DB::table('services')->get();
-@endphp
+    <main>
+        @php
+            $config = DB::table('configs')->first();
+            $service = DB::table('services')->get();
+        @endphp
 
-<head>
-   @section('product')
-       <meta name="description" content="{{ $product->name ?? ' ' }}">
-       <meta name="author" content="greenlyfes.com">
-       <meta property="og:title" content="{{ $product->nom }}">
-       <meta property="og:description" content="{{ $product->description ?? '' }}">
-       <meta property="og:description" content="{{ $product->meta_description ?? '' }}">
+        <head>
+        @section('product')
+            <meta name="description" content="{{ $product->name ?? ' ' }}">
+            <meta name="author" content="greenlyfes.com">
+            <meta property="og:title" content="{{ $product->nom }}">
+            <meta property="og:description" content="{{ $product->description ?? '' }}">
+            <meta property="og:description" content="{{ $product->meta_description ?? '' }}">
 
-       <meta property="og:image:width" content="1200" >
-     
-       <meta property="og:image" content="{{ $product->image }}">
-       <meta property="og:type" content="product">
-       <meta property="og:price:amount" content="{{ $product->price }} DT">
+            <meta property="og:image:width" content="1200">
 
-       <meta property="og:availability" content="{{ $product->statut }}">
+            <meta property="og:image" content="{{ $product->image }}">
+            <meta property="og:type" content="product">
+            <meta property="og:price:amount" content="{{ $product->price }} DT">
 
-       <meta property="product:price:amount" content="{{ $product->price }} DT">
+            <meta property="og:availability" content="{{ $product->statut }}">
 
-       <meta property="logemment:availability" content="{{ $product->statut }}">
-       <meta name="robots" content="index, follow">
+            <meta property="product:price:amount" content="{{ $product->price }} DT">
 
-
-       <meta name="csrf-token" content="{{ csrf_token() }}">
-       <title>{{ isset($product) && $product->seo_title ? $product->seo_title :  config('app.name') }}</title>
-       <meta name="description" content="{{ isset($product) && $product->meta_description ? $product->meta_description : __(config('app.description')) }}">
-         @if(isset($product) && $product->meta_keywords)
-           <meta name="keywords" content="{{ $product->meta_keywords }}">
-       @endif
+            <meta property="logemment:availability" content="{{ $product->statut }}">
+            <meta name="robots" content="index, follow">
 
 
-   @endsection 
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <title>{{ isset($product) && $product->seo_title ? $product->seo_title : config('app.name') }}</title>
+            <meta name="description"
+                content="{{ isset($product) && $product->meta_description ? $product->meta_description : __(config('app.description')) }}">
+            @if (isset($product) && $product->meta_keywords)
+                <meta name="keywords" content="{{ $product->meta_keywords }}">
+            @endif
 
-</head>
+
+        @endsection
+
+    </head>
 
 
 
 
-   <main>
+    <main>
 
-      <!-- breadcrumb area start -->
-      <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
-         data-background="{{ url('public/Image/parametres/' . $config->imageindustrielle) }}">
-         <div class="container">
-            <div class="row">
-               <div class="col-xxl-12">
-                  <div class="breadcrumb__content z-index text-center">
-                     <div class="breadcrumb__section-title-box">
-                        <h3 class="breadcrumb__title">Les détails </h3>
-                     </div>
-                     <div class="breadcrumb__list">
-                        <span><a href="/">Home</a></span>
-                      
-                        <span class="dvdr"><i>/</i></span>
-                        <span><b>Détails</b></span>
-                     </div>
-                  </div>
-               </div>
+        <!-- breadcrumb area start -->
+        <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
+            data-background="{{ url('public/Image/parametres/' . $config->imageindustrielle) }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-12">
+                        <div class="breadcrumb__content z-index text-center">
+                            <div class="breadcrumb__section-title-box">
+                                <h3 class="breadcrumb__title">Les détails </h3>
+                            </div>
+                            <div class="breadcrumb__list">
+                                <span><a href="/">Home</a></span>
+
+                                <span class="dvdr"><i>/</i></span>
+                                <span><b>Détails</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- breadcrumb area end -->
+        </div>
+        <!-- breadcrumb area end -->
 
-      <!--product-details-area-start -->
-      <div class="tp-product-details-area pt-130">
-         <div class="container">
-            <div class="row align-items-center">
-               <div class="col-xl-6 col-lg-6">
-                  <div class="tp-shop-details__wrapper">
-                     <div class="tp-shop-details__tab-content-box mb-20">
-                        <div class="tab-content" id="nav-tabContent">
-                           <div class="tab-pane fade show active" id="nav-one" role="tabpanel"
-                              aria-labelledby="nav-one-tab">
-                              <div class="tp-shop-details__tab-big-img">
-                                 <img src="{{ url('public/Image/' . $product->image) }}" alt=""  width="700 " height="500 ">
-                              </div>
-                           </div>
-                           {{-- <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
+        <!--product-details-area-start -->
+        <div class="tp-product-details-area pt-130">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="tp-shop-details__wrapper">
+                            <div class="tp-shop-details__tab-content-box mb-20">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-one" role="tabpanel"
+                                        aria-labelledby="nav-one-tab">
+                                        <div class="tp-shop-details__tab-big-img">
+                                            <img src="{{ url('public/Image/' . $product->image) }}" alt=""
+                                                width="700 " height="500 ">
+                                        </div>
+                                    </div>
+                                    {{-- <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
                               <div class="tp-shop-details__tab-big-img">
                                  <img src="assets/img/product/pro-1-2.jpg" alt="">
                               </div>
@@ -99,10 +101,10 @@
                                  <img src="assets/img/product/pro-1-1.jpg" alt="">
                               </div>
                            </div> --}}
-                        </div>
-                     </div>
-                     <div class="tp-shop-details__tab-btn-box">
-                      {{--   <nav>
+                                </div>
+                            </div>
+                            <div class="tp-shop-details__tab-btn-box">
+                                {{--   <nav>
                            <div class="nav nav-tab" id="nav-tab" role="tablist">
                               <button class="nav-links active" id="nav-one-tab" data-bs-toggle="tab"
                                  data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one"
@@ -125,321 +127,323 @@
                               </button>
                            </div>
                         </nav> --}}
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xl-6 col-lg-6">
-                  <div class="tp-shop-details__right-wrap">
-                     <h3 class="tp-section-title">{{$product->name}}</h3>
-                     <div class="tp-shop-details__price pb-10">
-                      {{--   {{ $product->price }}   <x-devise></x-devise> --}}
-                      
-                     </div>
-                     <div class="tp-shop-details__ratting mb-20">
-                        {{-- <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <span class="review-text">(5)</span> --}}
-                     </div>
-                     <div class="tp-shop-details__color d-flex align-items-center mb-20">
-                        {{-- <i>Color:</i>
-                        <span class="tia"></span>
-                        <span class="black"></span>
-                        <span class="yellow"></span>
-                        <span class="ass"></span> --}}
-                     </div>
-                     <div class="tp-shop-details__text-2 mb-25">
-                        <p>{!! Str::limit($product->description, 50) !!} </p>
-                     </div>
-                     <div class="tp-shop-details__product-info mb-35">
-                        
-                        <ul>
-                           <li>Categorie:<span> {{$product->categories->title ?? ' '}}</span></li>
-                        </ul>
-                     </div>
-                     <div class="tp-shop-details__quantity-wrap  mb-30 d-flex align-items-center">
-                        
-                                            
-                     </div>
-                     <div class="tp-shop-details__btn text-center mb-40">
-                        <a class="tp-btn-theme"  href="{{ url('commandes', $product->id) }}"><span>Acheter</span></a>
-                     </div>
-                     <div class="tp-shop-details__social">
-                       
-                     </div>                    
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="productdetails-tabs mt-50">
-                  <div class="row">
-                     <div class="col-xl-12 col-lg-12 col-12">
-                        <div class="product-additional-tab">
-                           <div class="pro-details-nav theme-bg-2 mb-40">
-                              <ul class="nav nav-tabs pro-details-nav-btn justify-content-center" id="myTabs" role="tablist">
-                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-links active" id="home-tab-1" data-bs-toggle="tab"
-                                       data-bs-target="#home-1" type="button" role="tab" aria-controls="home-1"
-                                       aria-selected="true"><span>
-                                          Détails du produit</span></button>
-                                 </li>
-                                 {{-- <li class="nav-item" role="presentation">
-                                    <button class="nav-links" id="information-tab" data-bs-toggle="tab"
-                                       data-bs-target="#additional-information" type="button" role="tab"
-                                       aria-controls="additional-information" aria-selected="false"><span>Product Include</span></button>
-                                 </li>
-                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-links" id="reviews-tab" data-bs-toggle="tab"
-                                       data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews"
-                                       aria-selected="false"><span>Product Review</span></button>
-                                 </li> --}}
-                              </ul>
-                           </div>
-                           <div class="tab-content tp-content-tab" id="myTabContent-2">
-                              <div class="tab-para tab-pane fade show active" id="home-1" role="tabpanel"
-                                 aria-labelledby="home-tab-1">
-                                 <p class="mb-20 text-center">{!! $product->description !!} </p>
-                                
-                              </div>
-                              <div class="tab-pane fade" id="additional-information" role="tabpanel"
-                                 aria-labelledby="information-tab">
-                                 <div class="product__details-info table-responsive mb-50">
-                                    <table class="table table-striped">
-                                       <tbody>
-                                          <tr>
-                                             <td class="add-info">Weight</td>
-                                             <td class="add-info-list"> 2 lbs</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Dimensions</td>
-                                             <td class="add-info-list"> 12 × 16 × 19 in</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Product</td>
-                                             <td class="add-info-list"> Purchase this product on
-                                                rag-bone.com</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Color</td>
-                                             <td class="add-info-list"> Gray, Black</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Size</td>
-                                             <td class="add-info-list"> S, M, L, XL</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Model</td>
-                                             <td class="add-info-list"> Model </td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Shipping</td>
-                                             <td class="add-info-list"> Standard shipping: $5,95L</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Care Info</td>
-                                             <td class="add-info-list"> Machine Wash up to 40ºC/86ºF
-                                                Gentle Cycle</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="add-info">Brand</td>
-                                             <td class="add-info-list"> Kazen</td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                 </div>
-                              </div>
-                              <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                                 <div class="product-details-review">
-                                    <h3 class="tp-comments-title mb-35">3 reviews for “Wide Cotton Tunic
-                                       extreme hammer”</h3>
-                                    <div class="latest-comments mb-55">
-                                       <ul>
-                                          <li>
-                                             <div class="comments-box d-flex">
-                                                <div class="comments-avatar mr-25">
-                                                   <img src="assets/img/product/client.png" alt="">
-                                                </div>
-                                                <div class="comments-text">
-                                                   <div
-                                                      class="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                      <div class="avatar-name">
-                                                         <b>Siarhei Dzenisenka</b>
-                                                         <div class="comments-date mb-20">
-                                                            <span>March 27, 2018 9:51 am</span>
-                                                         </div>
-                                                      </div>
-                                                      <div class="user-rating">
-                                                         <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a>
-                                                            </li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <p class="m-0">Lorem ipsum dolor sit amet,
-                                                      consectetur adipiscing elit. Curabitur vulputate
-                                                      vestibulum Phasellus rhoncus, dolor eget viverra
-                                                      pretium, dolor tellus aliquet nunc, vitae
-                                                      ultricies erat elit eu lacus. Vestibulum non
-                                                      justo consectetur, cursus ante, tincidunt
-                                                      sapien. Nulla quis diam sit amet turpis interdum
-                                                      accumsan quis nec enim. Vivamus faucibus ex sed
-                                                      nibh egestas elementum. Mauris et bibendum dui.
-                                                      Aenean consequat pulvinar luctus. Suspendisse
-                                                      consectetur tristique tortor</p>
-                                                </div>
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div class="comments-box d-flex">
-                                                <div class="comments-avatar mr-25">
-                                                   <img src="assets/img/product/client-2.png" alt="">
-                                                </div>
-                                                <div class="comments-text">
-                                                   <div
-                                                      class="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                      <div class="avatar-name">
-                                                         <b>Tommy Jarvis </b>
-                                                         <div class="comments-date mb-20">
-                                                            <span>March 27, 2018 9:51 am</span>
-                                                         </div>
-                                                      </div>
-                                                      <div class="user-rating">
-                                                         <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a>
-                                                            </li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <p class="m-0">We have covered many special events
-                                                      such as fireworks, fairs, parades, races, walks,
-                                                      awards ceremonies, fashion shows, sporting
-                                                      events, and even a memorial service.
-                                                      Lorem ipsum dolor sit amet, consectetur
-                                                      adipiscing elit. Curabitur vulputate vestibulum
-                                                      Phasellus rhoncus, dolor eget viverra pretium,
-                                                      dolor tellus aliquet nunc, vitae ultricies erat
-                                                      elit eu lacus. Vestibulum non justo consectetur,
-                                                      cursus ante, tincidunt sapien. Nulla quis diam
-                                                      sit amet turpis interdum accumsan quis nec enim.
-                                                      Vivamus faucibus ex sed nibh egestas elementum.
-                                                      Mauris et bibendum dui. Aenean consequat
-                                                      pulvinar luctus. Suspendisse consectetur</p>
-                                                </div>
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div class="comments-box d-flex">
-                                                <div class="comments-avatar mr-25">
-                                                   <img src="assets/img/product/client-3.png" alt="">
-                                                </div>
-                                                <div class="comments-text">
-                                                   <div
-                                                      class="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                      <div class="avatar-name">
-                                                         <b>Johnny Cash</b>
-                                                         <div class="comments-date mb-20">
-                                                            <span>March 27, 2018 9:51 am</span>
-                                                         </div>
-                                                      </div>
-                                                      <div class="user-rating">
-                                                         <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a>
-                                                            </li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <p class="m-0">This is cardigan is a comfortable
-                                                      warm classic piece. Great to layer with a light
-                                                      top and you can dress up or down given the jewel
-                                                      buttons. I'm 5'8” 128lbs a 34A and the Small fit
-                                                      fine.</p>
-                                                </div>
-                                             </div>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                    <div class="product-details-comment pb-100">
-                                       <div class="comment-title mb-20">
-                                          <h3>Add a review</h3>
-                                          <p>Your email address will not be published. Required fields are
-                                             marked*</p>
-                                       </div>
-                                       <div class="comment-rating mb-20 d-flex">
-                                          <span>Overall ratings</span>
-                                          <ul>
-                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                             <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                          </ul>
-                                       </div>
-                                       <div class="comment-input-box">
-                                          <form action="#">
-                                             <div class="row">
-                                                <div class="col-xxl-12">
-                                                   <div class="comment-input">
-                                                      <textarea placeholder="Your review..."></textarea>
-                                                   </div>
-                                                </div>
-                                                <div class="col-xxl-6">
-                                                   <div class="comment-input">
-                                                      <input type="text" placeholder="Your Name*">
-                                                   </div>
-                                                </div>
-                                                <div class="col-xxl-6">
-                                                   <div class="comment-input">
-                                                      <input type="email" placeholder="Your Email*">
-                                                   </div>
-                                                </div>
-                                                <div class="col-xxl-12">
-                                                   <div class="comment-submit">
-                                                      <button type="submit" class="tp-btn-theme"><span>Submit</span></button>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </form>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="tp-shop-details__right-wrap">
+                            <h3 class="tp-section-title">{{ $product->name }}</h3>
+                            <div class="tp-shop-details__price pb-10">
+                                {{--   {{ $product->price }}   <x-devise></x-devise> --}}
+
+                            </div>
+                            <div class="tp-shop-details__ratting mb-20">
+
+                            </div>
+                            <div class="tp-shop-details__color d-flex align-items-center mb-20">
+
+                            </div>
+                            <div>
+                                <h3>{{ $product->short_description ?? ' ' }} </h3>
+
+                            </div>
+                            <br>
+                            <div class="tp-shop-details__text-2 mb-25">
+                                <p>{!! Str::limit($product->description, 50) !!} </p>
+                            </div>
+                            <div class="tp-shop-details__product-info mb-35">
+
+                                <ul>
+                                    <li>Categorie:<span> {{ $product->categories->title ?? ' ' }}</span></li>
+                                </ul>
+                            </div>
+
+                          
+                            <h4>Choisir la Surface :</h4>
+                            <div class="mb-3">
+                                @foreach ($product->surfaces as $surface)
+                                    <button class="btn btn-outline-success surface-btn"
+                                        data-price="{{ $surface->price }}" data-surface="{{ $surface->surface }}">
+                                        {{ $surface->surface }}
+                                    </button>
+                                @endforeach
+                            </div>
+
+                            <h4>Prix : <span id="showPrice">Séllectionnez une surface</span> <x-devise></x-devise></h4>
+
+                            <script>
+                                $(document).ready(function() {
+                                    $('.surface-btn').on('click', function() {
+                                        let price = $(this).data('price');
+                                        let surface = $(this).data('surface');
+
+                                        $('#showPrice').text(price);
+
+                                        // Enlève la classe active sur tous les boutons
+                                        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+
+                                        // Ajoute la classe active seulement sur le bouton cliqué
+                                        $(this).removeClass('btn-outline-success').addClass('btn-success');
+                                    });
+                                });
+                            </script>
+
+
+                            <div class="tp-shop-details__quantity-wrap  mb-30 d-flex align-items-center">
+
+
+                            </div>
+                      
+                                {{-- <a class="tp-btn-theme"
+                                onclick="AddToCart( {{ $product->id }} )" ><span>Ajouter au panier</span></a> --}}
+                           
+                                 <button type="button" class="tp-btn-theme" id="addToCartBtn">
+                                 <i class="fa fa-shopping-cart"></i> Ajouter au panier
+                             </button>
+
+                           
+                              </div>
+                            <div class="tp-shop-details__social">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="productdetails-tabs mt-50">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <div class="product-additional-tab">
+                                    <div class="pro-details-nav theme-bg-2 mb-40">
+                                        <ul class="nav nav-tabs pro-details-nav-btn justify-content-center"
+                                            id="myTabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-links active" id="home-tab-1" data-bs-toggle="tab"
+                                                    data-bs-target="#home-1" type="button" role="tab"
+                                                    aria-controls="home-1" aria-selected="true"><span>
+                                                        Détails du produit</span></button>
+                                            </li>
+                                           
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content tp-content-tab" id="myTabContent-2">
+                                        <div class="tab-para tab-pane fade show active" id="home-1"
+                                            role="tabpanel" aria-labelledby="home-tab-1">
+                                            <p class="mb-20 text-center">{!! $product->description !!} </p>
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- product-details-area-end -->
+        </div>
+        <!-- product-details-area-end -->
+        
+        <script>
+         $(document).ready(function() {
+    showCart(); // 🛒 Affichage automatique
+});
 
-    
+        </script>
+<script>
+$(document).ready(function () {
+    let selectedSurface = null; // Stocke la surface sélectionnée
 
-</main>
+    console.log("Script chargé !"); // Étape 1
+
+    // Étape 2 : Sélection de surface
+    $('.surface-btn').on('click', function () {
+        selectedSurface = $(this).data('surface'); 
+        let price = $(this).data('price');
+        selectedPrice = $(this).data('price');
+        console.log("Surface sélectionnée :", selectedSurface);
+       
+        console.log("Prix :", selectedPrice);
+
+        $('#showPrice').text(price);
+        $('#showPrice').text(selectedPrice);
+
+        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+        $(this).removeClass('btn-outline-success').addClass('btn-success');
+    });
+
+    // Étape 3 : Ajout au panier
+    $('#addToCartBtn').on('click', function () {
+        console.log("Bouton Ajouter au Panier cliqué !");
+
+        if (!selectedSurface) {
+            console.log("Aucune surface sélectionnée !");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Veuillez sélectionner une surface !',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return;
+        }
+
+        $.ajax({
+            url: "{{ route('cart.add') }}", // Route backend
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                product_id: "{{ $product->id }}",
+                surface: selectedSurface,
+                price: selectedPrice,
+               
+            },
+            beforeSend: function () {
+                console.log("Envoi des données AJAX...");
+            },
+            success: function (response) {
+                console.log("Produit ajouté avec succès !");
+                console.log(response);
+
+                
+                $('#cartCount').text(response.cart_count);
+                showCart(); 
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Produit ajouté au panier avec succès !',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            },
+            error: function (xhr) {
+                console.log("Erreur AJAX :", xhr.responseText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur lors de l\'ajout au panier',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            }
+        });
+    });
+});
+
+</script>
+
+
+<script>
+   function refreshCart() {
+       $.ajax({
+           url: "{{ route('cart.get') }}",
+           type: "GET",
+           success: function(response) {
+               console.log("Contenu du Panier:", response);
+
+               let cartHTML = '';
+               if (Object.keys(response).length > 0) {
+                   $.each(response, function(key, item) {
+                       cartHTML += `
+                           <div class="cart-item">
+                              <div class="cartmini__widget">
+                            <div class="cartmini__widget-item">
+
+                     <li>${item.surface} - Prix: ${item.price} <x-devise></x-devise>
+            <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
+                <i class="fa fa-trash"></i>
+            </button>
+        </li>
+
+            </div>
+                 </div>
+                           </div>
+                       `;
+                   });
+               } else {
+                   cartHTML = "<p>Votre panier est vide</p>";
+               }
+
+               $('#cartContent').html(cartHTML);
+           }
+       });
+   }
+
+   $(document).ready(function() {
+       refreshCart(); // Appel automatique au chargement
+
+       $('#addToCartBtn').on('click', function() {
+           setTimeout(function() {
+               refreshCart(); // Mise à jour automatique après ajout
+           }, 500);
+       });
+   });
+</script>
+
+<script>
+
+function showCart() {
+    $.ajax({
+        url: "{{ route('cart.show') }}",
+        type: "GET",
+        success: function(response) {
+            console.log("Panier:", response.cart);
+            console.log("Total:", response.total);
+
+            $('#cartItems').empty();
+            $.each(response.cart, function(key, item) {
+                $('#cartItems').append(`
+
+                
+                 <div class="cartmini__widget">
+                            <div class="cartmini__widget-item">
+
+                     <li>${item.surface} - Prix: ${item.price} <x-devise></x-devise>
+            <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
+                <i class="fa fa-trash"></i>
+            </button>
+        </li>
+
+            </div>
+                 </div>
+
+                `);
+            });
+
+            $('#cartTotal').text(response.total);
+           
+        }
+    });
+}
+
+</script>
+
+<script>
+
+   function removeItem(surface) {
+    $.ajax({
+        url: "{{ route('cart.remove') }}",
+        type: "POST",
+        data: {
+            surface: surface,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function(response) {
+            console.log("Produit supprimé:", surface);
+            $('#cartCount').text(response.cart_count);
+          
+            refreshCart()
+            showCart(); 
+          
+            Swal.fire({
+                title: 'Supprimé!',
+                text: 'Produit retiré du panier',
+                icon: 'success',
+                timer: 3000
+            });
+           
+        }
+    });
+}
+
+</script>
+
+
+    </main>
 @endsection

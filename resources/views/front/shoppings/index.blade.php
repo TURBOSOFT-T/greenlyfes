@@ -133,7 +133,7 @@
                                  <div class="tp-product-price-wrapper-2 mb-15">
                                      <span class="tp-product-price-2 new-price">
                                        
-                                       {{ $product->price }}   <x-devise></x-devise>
+                                       {{ $product->short_description ?? ' ' }}
                                     </span> 
                                  </div>
                                  <div class="tp-product-button">

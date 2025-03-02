@@ -20,7 +20,7 @@
                 <div class="row ">
                     <div class="col-12 cart">
 
-                        @livewire('Front.Panier')
+                       @livewire('panier.panier') 
 
                     </div>
                 </div>

@@ -55,6 +55,9 @@ use App\Http\Controllers\Back\{
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DiaporamaController;
+use App\Http\Controllers\SurfaceController;
+use App\Http\Controllers\panier_client;
+
 
 use Illuminate\Http\Request;
 
@@ -165,11 +168,37 @@ Route::get('products/{product}', FrontProduct::class)->name('detailsproducts.sho
 
 
 ///Commandes
-Route::get('checkout', [FrontProduct::class, 'proceed']);
-Route::get('/commandes/{id}', [OrderController::class, 'commandes'])->name('commandes');
-Route::post('/order', [OrderController::class, 'confirmOrder'])->name('order.confirm');
-Route::get('/thank-you', [FrontProduct::class, 'index'])->name('thank-you');
+//Route::get('checkout', [FrontProduct::class, 'proceed']);
+//Route::get('/commandes/{id}', [OrderController::class, 'commandes'])->name('commandes');
+//Route::post('/order', [OrderController::class, 'confirmOrder'])->name('order.confirm');
+//Route::get('/thank-you', [FrontProduct::class, 'index'])->name('thank-you');
 
+
+
+
+//gestion du panier
+Route::get('panier', [panier_client::class, 'cart'])->name('panier');
+//Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+
+Route::post('/cart/add', [panier_client::class, 'addToCart'])->name('cart.add');
+
+Route::get('/cart/get', [panier_client::class, 'getCart'])->name('cart.get');
+Route::get('/cart/show', [panier_client::class, 'showCart'])->name('cart.show');
+
+Route::post('/cart/remove', [panier_client::class, 'removeCart'])->name('cart.remove');
+
+
+Route::post('/client/ajouter_au_panier', [panier_client::class, 'add']);
+Route::get('/client/count_panier', [panier_client::class, 'count_panier']);
+Route::get('/client/mon_panier', [panier_client::class, 'contenu_mon_panier']);
+Route::get('/client/delete_produit_au_panier', [panier_client::class, 'delete_produit']);
+
+
+
+
+Route::get('/commander', [CommandeController::class, 'commander'])->name('commander');
+Route::post('/order', [CommandeController::class, 'confirmOrder'])->name('order.confirm');
+Route::get('/thank-you', [CommandeController::class, 'index'])->name('thank-you');
 
 
 ///Reservation
@@ -323,6 +352,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('products', ProductController::class);
         Route::name('products.indexnew')->get('newproducts', [ProductController::class, 'index']);
         Route::resource('saveproducts', ProductController::class);
+        Route::post('surface/store', [SurfaceController::class, 'store'])->name('surface.store');
+
 
         // Users
         Route::resource('users', BackUserController::class)->except(['show', 'create', 'store']);

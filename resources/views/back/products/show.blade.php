@@ -31,7 +31,45 @@
 
                     </div> --}}
     <br>
+    {{-- <div class="col-md-6">
+
+        <p>Les Autres images :</p>
+
+        @foreach (json_decode($produit->images) as $key => $image)
+            <img class="card-img-top mb-3 product-image" src="{{ url('public/Image/' . $image) }}"
+                style="width: 100px; height: 100px;">
+        @endforeach  
+    </div> --}}
+
+    <div class="col-md-6">
+        <p>Les Autres images :</p>
+    
+        @if ($produit->images != null && json_decode($produit->images))
+            @foreach (json_decode($produit->images) as $key => $image)
+                <div style="display: inline-block; text-align: center; margin: 5px;">
+                    <img class="card-img-top mb-3 product-image" src="{{ url('public/Image/' . $image) }}"
+                        style="width: 100px; height: 100px;">
+    
+                    <button type="button" class="btn btn-danger btn-sm deleteImage" 
+                        data-id="{{ $produit->id }}" 
+                        data-image="{{ $image }}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            @endforeach
+        @else
+            <p>Aucune image disponible 🔥</p>
+        @endif
+    </div>
+    
     <br>
+
+    <td>
+        @foreach($produit->surfaces as $surface)
+            {{ $surface->surface }} - {{ $surface->price }} $ <br>
+        @endforeach
+    </td>
+    
 
     <a href="{{ route('products.index') }}" class="btn btn-primary">Back to product List</a>
 </div>

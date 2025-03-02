@@ -46,6 +46,13 @@
                                         :required="true">
                                     </x-back.input>
 
+                                    <x-back.card type='primary' title='Description'>
+                                        <x-back.input name='short_description' {{-- id="description-editor" --}}
+                                            :value="isset($product) ? $product->short_description : ''" input='textarea' rows=1
+                                            :required="true">
+                                        </x-back.input>
+                                    </x-back.card>
+
                                     <x-back.input title='Price' name='price' :value="isset($product) ? $product->price : ''" input='number'
                                         :required="true">
                                         </x-back.input>

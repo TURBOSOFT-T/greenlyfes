@@ -71,6 +71,34 @@
         </div>
         @endif
 
+        <div class="col-md-6">
+
+            <p>Les Autres images :</p>
+
+                @if ($produit->images != null && json_decode($produit->images))
+                    @foreach (json_decode($produit->images) as $key => $image)
+                        <div style="display: inline-block; text-align: center; margin: 5px;">
+                            <img class="card-img-top mb-3 product-image" src="{{ url('public/Image/' . $image) }}"
+                                style="width: 100px; height: 100px;">
+            
+                            <button type="button" class="btn btn-danger btn-sm deleteImage" 
+                                data-id="{{ $produit->id }}" 
+                                data-image="{{ $image }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    @endforeach
+                @else
+                    <p>Aucune image disponible 🔥</p>
+                @endif
+          
+
+            <div class="form-group">
+                <label>Images</label>
+                <input type="file" name="images[]"class="form-control-file" multiple >
+            </div>
+        </div>
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <label class="form-label">Content</label>
