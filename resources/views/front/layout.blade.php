@@ -13,9 +13,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
         <!-- Swiper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-        
 
-  {{--       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+        {{--       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     
  --}}
@@ -170,9 +170,96 @@
         </div>
         <!-- choose area end -->
 
+        <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="tp-service-title-box mb-55">
+                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows.
+                                Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée 🏖️🔑</span>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row gx-30">
+                    @php
+
+                        $prods = DB::table('products')->latest()->take(9)->get();
+
+                    @endphp
+                    @foreach ($prods as $key => $produit)
+                        <div class="col-xl-4 col-lg-4 col-md-6 mb-30 wow tpfadeUp" data-wow-duration=".9s"
+                            data-wow-delay=".3s">
+                            <div class="tp-service-item text-center">
+                                <div class="tp-service-thumb-box p-relative">
+                                    <div class="tp-service-thumb">
+                                        <img src="{{ url('public/Image/' . $produit->image) }}" width="200 "
+                                            height="200 " border-radius="8px" class="rounded shadow" alt="">
+                                    </div>
+                                    <div class="tp-service-icon">
+
+                                    </div>
+                                </div>
+                                <div class="tp-service-content">
+                                    <h4 class="tp-service-title"><a class="text-anim-2"
+                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
+                                    </h4>
+                                    <div>
+                                        <h3>{{ $produit->short_description ?? ' ' }} </h3>
+
+                                    </div>
+
+                                    <div class="tp-service-link">
+                                        <a
+                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
+                                            Voir Détails
+                                            <span>
+                                                <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z"
+                                                        fill="currentcolor" />
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class="text-center mt-30">
+                        <a class="tp-btn-theme" href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
+                    </div>
+                    <style>
+                        .tp-btn {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            background-color: #0bfa3f;
+                            color: white;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            border-radius: 5px;
+                            transition: background-color 0.3s ease;
+                        }
+
+                        .tp-btn:hover {
+                            background-color: #11ea2b;
+                            text-decoration: none;
+                        }
+                    </style>
+                </div>
+
+            </div>
+
+        </div>
+        </div>
 
         <!-- service-area-start -->
-        <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
+        {{--   <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
             <div class="tp-service-4-shape tp-float-bob-y d-none d-lg-block">
                 <img src="assets/img/shape/service/shape-4-1.png" alt="">
             </div>
@@ -226,7 +313,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>  --}}
         <!-- service-area-end -->
 
         <!-- project area start -->
@@ -287,28 +374,16 @@
                                     <div class="tp-project-3-content text-center">
                                         <span class="tp-product-price-2 new-price">{{-- {{ $room->price ?? '' }}
                                             <x-devise></x-devise></span> --}}
-                                        <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
+                                            <h4 class="tp-project-3-title">{{ $room->name ?? '' }}</h4>
 
 
-                                        <a class="tp-btn-theme"
-                                            href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
-                                            class="btn btn-primary mt-3">
-                                            Voir détails
-                                        </a>
+                                            <a class="tp-btn-theme"
+                                                href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
+                                                class="btn btn-primary mt-3">
+                                                Voir détails
+                                            </a>
                                     </div>
 
-                                    {{--  <div class="tp-project-3-content">
-                                        <h4 class="tp-project-3-title mb-20"><a class="text-anim-3"
-                                                href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}">{{ $room->name ?? '' }}</a>
-                                        </h4>
-
-                                    </div>
-                                    
-                                    <div class="tp-project-3-content text-center">
-                                    <a  href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}" class="btn btn-primary mt-3">
-                                        Voir détails
-                                    </a>
-                                    </div> --}}
 
                                 </div>
                             </div>
@@ -474,8 +549,8 @@
                                 </div>
 
                                 <div class="text-center mt-30">
-                                    <a class="tp-btn-theme" href="https://greenlife-oliviera-village.com"
-                                        class="tp-btn"  target="_blank" rel="noopener noreferrer">Voir plus</a>
+                                    <a class="tp-btn-theme" href="https://greenlife-oliviera-village.com" class="tp-btn"
+                                        target="_blank" rel="noopener noreferrer">Voir plus</a>
                                 </div>
                             </div>
                         </div>
@@ -485,231 +560,13 @@
         </div>
         <!-- video-area-end -->
 
-        {{-- 
-    <div class="tp-video-2-area theme-bg-2 pt-145 pb-150">
-        <div class="container">
-           <div class="row">
-              <div class="col-xl-12">
-                 <div class="tp-video-2-title-box text-center mb-55">
-                    <h4 class="tp-section-title">Star Nursery , Follow Us <br>
-                       For The Latest Gardening Updates</h4>
-                 </div>
-              </div>
-           </div>
-           <div class="tp-video-2-wrap">
-              <div class="row align-items-center">
-                 <div class="col-xl-7 col-lg-6">
-                    <div class="tp-video-2-thumb p-relative">
-                       <img src="assets/img/video/video-bg-2.jpg" alt="">
-                       <div class="tp-video-play-icon">
-                          <a class="popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc">
-                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                   d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z"
-                                   fill="currentcolor" />
-                             </svg>
-                          </a>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-xl-5 col-lg-6">
-                    <div class="tp-video-2-right">
-                       <div class="tp-video-2-title-box mb-20">
-                          <span class="tp-section-subtitle">Only The Best Quality</span>
-                          <h4 class="tp-section-title">Your Favorite Plant
-                             Gardening Guides</h4>
-                       </div>
-                       <div class="tp-video-2-text mb-25">
-                          <p>Enthusiastically matrix future-proof platforms garden leadingedge impact digital
-                             photography services.</p>
-                       </div>
-                       <div class="tp-video-2-list-box">
-                          <ul>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Starting Seeds Outdoors
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Pest, Weed & fertilization
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Landscape Maintenance
-                             </li>
-                             <li>
-                                <span>
-                                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                         d="M10.342 14.072L11.756 15.486L16 11.243L11.757 7L10.343 8.415L12.17 10.243H4.633V12.243H12.17L10.342 14.072Z"
-                                         fill="currentcolor" />
-                                      <path fill-rule="evenodd" clip-rule="evenodd"
-                                         d="M18.778 18.778C23.074 14.482 23.074 7.518 18.778 3.222C14.482 -1.074 7.518 -1.074 3.222 3.222C-1.074 7.518 -1.074 14.482 3.222 18.778C7.518 23.074 14.482 23.074 18.778 18.778ZM17.364 17.364C19.0518 15.6762 20.0001 13.387 20.0001 11C20.0001 8.61304 19.0518 6.32384 17.364 4.636C15.6762 2.94816 13.387 1.99994 11 1.99994C8.61304 1.99994 6.32384 2.94816 4.636 4.636C2.94816 6.32384 1.99994 8.61304 1.99994 11C1.99994 13.387 2.94816 15.6762 4.636 17.364C6.32384 19.0518 8.61304 20.0001 11 20.0001C13.387 20.0001 15.6762 19.0518 17.364 17.364Z"
-                                         fill="currentcolor" />
-                                   </svg>
-                                </span>
-                                Lawn & Garden Care
-                             </li>
-                          </ul>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </div> --}}
-        <!-- project area end -->
-        {{--
-        <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-6">
-                        <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle">les dernières publications</span>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row gx-30">
-                    @php
-
-                        $prods = DB::table('products')->latest()->take(9)->get();
-
-                    @endphp
-                    @foreach ($prods as $key => $produit)
-                        <div class="col-xl-4 col-lg-4 col-md-6 mb-30 wow tpfadeUp" data-wow-duration=".9s"
-                            data-wow-delay=".3s">
-                            <div class="tp-service-item text-center">
-                                <div class="tp-service-thumb-box p-relative">
-                                    <div class="tp-service-thumb">
-                                        <img src="{{ url('public/Image/' . $produit->image) }}" width="200 "
-    height="200 " border-radius="8px" class="rounded shadow" alt="">
-    </div>
-    <div class="tp-service-icon">
-
-    </div>
-    </div>
-    <div class="tp-service-content">
-        <h4 class="tp-service-title"><a class="text-anim-2" href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
-        </h4>
-
-        <div class="tp-service-link">
-            <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
-                Details Produit
-                <span>
-                    <svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z" fill="currentcolor" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </div>
-    </div>
-    </div>
-    @endforeach
-
-    <div class="text-center mt-30">
-        <a href="{{ url('produits') }}" class="tp-btn">Voir tous les produits</a>
-    </div>
-    <style>
-        .tp-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #1723c7;
-            color: white;
-            text-transform: uppercase;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .tp-btn:hover {
-            background-color: #0f1a92;
-            text-decoration: none;
-        }
-
-    </style>
-    </div>
-
-    </div>
-
-    </div>
-    </div> --}}
-
-        <!-- video area start -->
-        {{--  <div class="tp-video-area tp-video-bg pt-95 pb-95" data-background="assets/img/video/video-bg.jpg">
-    <div class="container">
-       <div class="row justify-content-center">
-        @if ($galleries->isEmpty())
-        <div class="alert alert-info">
-            <p>Aucune gallerie n'est disponible pour le moment.</p>
-        </div>
-    @else
-        <div class="video-container d-flex flex-wrap justify-content-center">
-            @foreach ($galleries as $gallery)
-            <div class="col-xl-3 video-item mb-4">
-                <div class="tp-video-content text-center">
-                    <h4 class="tp-video-title mb-45">{{ $gallery->titre ?? ' ' }} <br></h4>
-                    <div class="tp-video-play-icon mb-65">
-                        <a class="popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.99941 3.00009L4.99941 21.0001C4.99998 21.1823 5.05024 21.361 5.14478 21.5168C5.23933 21.6726 5.37457 21.7996 5.53596 21.8843C5.69735 21.9689 5.87877 22.008 6.06069 21.9972C6.24261 21.9864 6.41815 21.9262 6.56841 21.8231L19.5684 12.8231C20.1074 12.4501 20.1074 11.5521 19.5684 11.1781L6.56841 2.17809C6.41846 2.07391 6.24284 2.01282 6.06061 2.00145C5.87839 1.99008 5.69653 2.02887 5.5348 2.1136C5.37307 2.19833 5.23765 2.32576 5.14326 2.48205C5.04887 2.63834 4.99912 2.81751 4.99941 3.00009ZM17.2424 12.0001L6.99941 19.0921L6.99941 4.90809L17.2424 12.0001Z" fill="currentcolor" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="tp-video-button">
-                        <a class="tp-btn-border-white popup-video" href="https://www.youtube.com/watch?v=PO_fBTkoznc"><span>Watch A Video</span></a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-       </div>
-    </div>
- </div> --}}
-
         <div class="tp-video-area tp-video-bg pt-95 pb-95"
             data-background="{{ url('public/Image/parametres/' . $config->imageeducation ?? '') }}">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-12">
                         <div class="tp-service-4-title-box text-center mb-55">
-                            {{--   <span class="tp-section-subtitle">
-                        {{ \App\Helpers\TranslationHelper::TranslateText(' KDO CONCIERGERIE') }}
-                    </span> --}}
+
                             <h4 class="tp-section-title blinking-text">
                                 Découvrez la beauté de la Tunisie en images et en émotions 🌅🎬 🌍✨ </h4>
                         </div>
@@ -758,10 +615,7 @@
         </div>
 
 
-        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
- --}}
         <script>
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 4, // Nombre de vidéos visibles en même temps
@@ -776,7 +630,7 @@
                     clickable: true,
                 },
                 autoplay: {
-                    delay: 3000, // Défilement automatique toutes les 3 secondes
+                    delay: 3000,
                     disableOnInteraction: false, // Continue même après interaction
                 },
             });
@@ -976,7 +830,8 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows. Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée  🏖️🔑</span>
+                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows.
+                                Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée 🏖️🔑</span>
 
 
                         </div>
@@ -1005,16 +860,13 @@
                                 </div>
                                 <div class="tp-service-content">
                                     <h4 class="tp-service-title"><a class="text-anim-2"
-                                        href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
-                                </h4>
+                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
+                                    </h4>
                                     <div>
-                                         <h3>{{ $produit->short_description ?? ' ' }} </h3> 
+                                        <h3>{{ $produit->short_description ?? ' ' }} </h3>
 
                                     </div>
-                                    {{-- <h4 class="tp-service-title"><a class="text-anim-2"
-                                            href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
-                                    </h4> --}}
-                                    {{--  <p>Petite description</p> --}}
+
                                     <div class="tp-service-link">
                                         <a
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
@@ -1033,7 +885,7 @@
                             </div>
                         </div>
                     @endforeach
-                    <!-- Ajouter le bouton ici -->
+
                     <div class="text-center mt-30">
                         <a class="tp-btn-theme" href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
                     </div>
@@ -1060,7 +912,7 @@
 
         </div>
         </div>
-        <br><br><br>
+        <br><br>
 
         <!-- project area start -->
         <div class="tp-project-2-area fix pb-130">
