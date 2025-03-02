@@ -181,7 +181,7 @@
                     <div class="col-xl-12">
                         <div class="tp-service-4-title-box text-center mb-55">
                             <span class="tp-section-subtitle">
-                                {{ \App\Helpers\TranslationHelper::TranslateText('Les tpes  bungalows  à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }} <br>
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Les types  bungalows  à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }} <br>
                                 {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la
                                 une pratique exceptionnelle, pour vous rendre compte de nos services et de nos avantages exclusifs!') }}
                             </span>
@@ -204,7 +204,7 @@
                                             <div class="swiper-slide">
                                                 <div class="tp-service-4-item text-center">
                                                     <div class="tp-service-4-thumb  image-container">
-                                                        <img src="{{ url('public/Image/' . $logement->image) }}"
+                                                        <img src="{{ url('public/Image/' . $logement->image) }}"  width="200" height="200"
                                                             alt="">
                                                     </div>
                                                     <div class="tp-service-4-content">

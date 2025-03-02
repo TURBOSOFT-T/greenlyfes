@@ -362,10 +362,11 @@
                                         </ul>
                                      </li> --}}
                                     {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
-                                     <li><a href="{{ url('blog') }}">
+                                     
+                                    <li><a href="{{ url('faq') }}">Séjour en Tunisie</a></li>
+                                    <li><a href="{{ url('blog') }}">
                                         {{ \App\Helpers\TranslationHelper::TranslateText('Actualités') }}
                                     </a></li> 
-                                    <li><a href="{{ url('faq') }}">Séjour en Tunisie</a></li>
                                     <li><a href="{{ route('contacts.create') }}">Contact</a></li>
                                     @guest
                                         <li>
