@@ -824,7 +824,7 @@
         <!-- choose area end -->
 
 
-        <!-- service area start -->
+        <!-- service area start -->{{-- 
         <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
             <div class="container">
                 <div class="row">
@@ -912,7 +912,7 @@
 
         </div>
         </div>
-        <br><br>
+        <br><br> --}}
 
         <!-- project area start -->
         <div class="tp-project-2-area fix pb-130">
