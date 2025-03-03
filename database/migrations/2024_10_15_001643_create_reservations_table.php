@@ -17,10 +17,10 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('room_id');
-        
-            $table->date('date_debut');
-            $table->date('date_fin');
-            $table->date('limit');
+            
+            $table->date('date_debut')->nullable();
+            $table->date('date_fin')->nullable();
+            $table->date('limit')->nullable();
             $table->boolean('rented')->default(false);
             $table->integer('nb_personnes')->nullable();
        //     $table->decimal('prix_total', 13, 2);
@@ -35,6 +35,7 @@ class CreateReservationsTable extends Migration
             $table->string('pays')->nullable();
             $table->string('telephone')->nullable();
             $table->string('note')->nullable();
+            $table->integer("nb_mois")->nullable();
 
             $table->enum("mode", ["espèce","paypal","carte de credit","cheque"])->default("espèce");
             $table->enum("etat",["attente","confirmé","annulé"])->default("attente") ;

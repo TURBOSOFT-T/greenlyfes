@@ -41,98 +41,8 @@ class ReservationController extends Controller
   }
 
 
-public function getReservationsByMonth(Request $request,$id)
-{
-    $roomId = $request->room_id;
-    $month = $request->month; // Le mois au format "Y-m" (ex : 2025-01)
-
-    $reservations = Reservation::where('room_id', $roomId)
-        ->whereBetween('date_debut', [$month . '-01', $month . '-31']) // Limiter aux dates du mois
-        ->get();
-    // Formater les périodes réservées
-    $reservedPeriods = $reservations->map(function ($reservation) {
-        return [
-            'start' => Carbon::parse($reservation->date_debut)->format('Y-m-d'),
-            'end' => Carbon::parse($reservation->date_fin)->format('Y-m-d')
-        ];
-    });
-
-    return response()->json($reservedPeriods);
-}
-public function checkAvailability(Request $request)
-{
-    // Validate input
-    $validated = $request->validate([
-        'room_id' => 'required|exists:rooms,id',
-        'date_debut' => 'required|date|before:date_fin',
-        'date_fin' => 'required|date|after:date_debut',
-        'limit' => 'required|date|before:date_debut', // Ensure limit is before date_debut
-    ]);
-
-    $roomId = $validated['room_id'];
-    $dateDebut = Carbon::parse($validated['date_debut']);
-    $dateFin = Carbon::parse($validated['date_fin']);
-    $limit = Carbon::parse($validated['limit']);
-
-    // Check for overlapping reservations
-    $isBooked = Reservation::where('room_id', $roomId)
-        ->where(function ($query) use ($dateDebut, $dateFin) {
-            $query->whereBetween('date_debut', [$dateDebut, $dateFin])
-                  ->orWhereBetween('date_fin', [$dateDebut, $dateFin])
-                  ->orWhere(function ($query) use ($dateDebut, $dateFin) {
-                      $query->where('date_debut', '<=', $dateDebut)
-                            ->where('date_fin', '>=', $dateFin);
-                  });
-        })->exists();
-
-    return response()->json(['isBooked' => $isBooked]);
-}
 
 
-public function calculateTotalPrice(Request $request)
-    {
-        $request->validate([
-            'room_id' => 'required|exists:rooms,id',
-            'date_debut' => 'required|date|before:date_fin',
-            'date_fin' => 'required|date|after:date_debut',
-        ]);
-
-        // Récupérer la chambre et ses informations
-        $room = Room::find($request->room_id);
-
-        // Récupérer les dates de début et de fin
-        $date_debut = Carbon::parse($request->date_debut);
-        $date_fin = Carbon::parse($request->date_fin);
-
-        // Calculer le nombre de nuits
-        $numberOfNights = $date_debut->diffInDays($date_fin);
-
-        // Calculer le prix total (prix par nuit * nombre de nuits)
-        $totalPrice = $room->price * $numberOfNights;
-
-        // Retourner la réponse en JSON avec le prix total
-        return response()->json([
-            'totalPrice' => number_format($totalPrice, 2),
-            'numberOfNights' => $numberOfNights,
-            'roomName' => $room->name,
-        ]);
-    }
-
-
-    public function checkOccupiedPeriods(Request $request)
-{
-    $occupiedPeriods = Reservation::select('date_debut', 'date_fin')->get();
-
-    return response()->json($occupiedPeriods);
-}
-
-public function getOccupiedPeriods($roomId)
-{
-    // Logique pour récupérer les périodes occupées pour cette chambre
-    $periods = Reservation::where('room_id', $roomId)->get();
-
-    return response()->json($periods);
-}
 
 
 
@@ -143,18 +53,10 @@ public function getOccupiedPeriods($roomId)
       'prenom' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
       'payment_method' => 'required|string',
-   //    'stripeToken' => $request->payment_method === 'stripe' ? 'required|string' : 'nullable',
-     
-
-        'date_fin' => 'required|date|after_or_equal:date_debut',
-        'date_debut' => [
-        'required',
-        'date',
-        'after_or_equal:today',  
-     //  'stripeToken' => ['nullable|string'],
+    //  'nb_mois' => 'required|integer|min:1',
    
 
-    ],
+  
     [
       'email.required' => 'Veuillez entrer votre email',
       'nom.required' => 'Veuillez entrer votre nom',
@@ -179,15 +81,13 @@ if($connecte){
      'nom' => $request->input('nom'),
      'prenom' => $request->input('prenom'),
      'email' => $request->input('email'),
-     'address' => $request->input('adresse'),
+     'adresse' => $request->input('adresse'),
      'telephone' => $request->input('telephone'),
      'note' => $request->input('note'),
      'user_id' => Auth::user()->id,
      'room_id' => $request->input('room_id'),
-     'date_debut' => $request->input('date_debut'),
-     'date_fin' => $request->input('date_fin'),
-     'limit' => $request->input('limit'),
-     'nb_personnes'=>$request->input('nb_personnes'),
+     
+     'nb_mois'=>$request->input('nb_mois'),
      'order_at' => now(),
   
      'note' => $request->input('note'),
@@ -199,13 +99,11 @@ if($connecte){
 'nom' => $request->input('nom'),
 'prenom' => $request->input('prenom'),
   'email' => $request->input('email'),
-  'address' => $request->input('address'),
+  'addresse' => $request->input('addresse'),
   'telephone' => $request->input('telephone'),
   'room_id' => $request->input('room_id'),
-  'date_debut' => $request->input('date_debut'),
-  'date_fin' => $request->input('date_fin'),
-  'limit' => $request->input('limit'),
-  'nb_personnes'=>$request->input('nb_personnes'),
+ 
+  'nb_mois'=>$request->input('nb_mois'),
   'note' => $request->input('note'),
   ]);
 }
@@ -220,7 +118,7 @@ if($connecte){
       'email' => $request->input('email'),
       'phone' => $request->input('phone'),
       'password' => Hash::make($request->input('phone')),
-     'adress' => $request->input('adress'),
+     'adresse' => $request->input('adresse'),
       
     ]);   
       
@@ -234,7 +132,7 @@ if (!$connecte) {
       'email' => $request->input('email'),
       'phone' => $request->input('telephone'),
       'password' => Hash::make($request->input('telephone')),
-     'adress' => $request->input('adress'),
+     'adresse' => $request->input('adresse'),
     
       ]);
   } else {
@@ -248,44 +146,33 @@ if (!$connecte) {
 
 $room = Room::find($request->input('room_id'));
 
-    // Calcul de la durée du séjour
-    $date_debut = Carbon::parse($request->input('date_debut'));
-    $date_fin = Carbon::parse($request->input('date_fin'));
-    $duration = $date_debut->diffInDays($date_fin);
-    
-    // Calcul du prix total (prix par nuit * durée)
-    $totalPrice = $room->getPrice() * $duration;
-    
+
 //dd($totalPrice);
 $items=   Reservations_item::create([
   'reservation_id' => $reservation->id,
 
 
   'room_id' => $request->input('room_id'),
-  'nb_personnes'=>$request->input('nb_personnes'),
+  'nb_mois'=>$request->input('nb_mois'),
 
    'user_id' => $user->id,
-    'prix' => $room->getPrice(),
-    'prix_unitaire' => $room->getPrice(),
-    'total' => $totalPrice,
+  
+ //   'total' => $totalPrice,
 
  'created_at' => now(),
   
 
 
 ]);
-//dd($request->input('stripeToken'));
-/* 
-if($request->input('stripeToken')) */
+
 if ($request->payment_method === 'stripe') {
 
- // $stripeSecret = config("app.STRIPE_SECRET");
- // Stripe::setApiKey($stripeSecret);
+
   Stripe::setApiKey(env('STRIPE_SECRET'));
 
   try {
       $charge = Charge::create([
-          "amount" => 100* $totalPrice, // Montant en centimes
+          "amount" => 1000, // Montant en centimes
           "currency" => "eur",
           "source" => $request->stripeToken,
         ///  "client" =>  $request->input('nom'),
@@ -294,7 +181,7 @@ if ($request->payment_method === 'stripe') {
           'metadata' => [
                   //  'order_id' => $->id,
                     'user_id' => $user->id,
-                    'montant total' => $totalPrice . "€",
+                    'montant total' => 1000 ,
                 ],
       ]);
 

@@ -21,7 +21,7 @@ class Reservation extends Model
         'rented',
         'nb_personnes',
         'prix_total',
-
+'nb_mois',
         'nom',
             'prenom',
             'email',

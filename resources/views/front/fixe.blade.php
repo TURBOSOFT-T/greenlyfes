@@ -339,8 +339,7 @@
 
                                     </li>
 
-                                 {{--    <li><a href="{{ url('produits') }}">Conciergerie</a></li> --}}
-
+                                
                                     <li class="has-dropdown">
                                         <a href="#">Logements</a>
                                         <ul class="submenu tp-submenu">
@@ -351,19 +350,8 @@
                                           
                                         </ul>
                                      </li>
-                                    {{--       <li class="has-dropdown">
-                                        <a href="#">Nos activités</a>
-                                        <ul class="submenu tp-submenu">
-                                           <li><a href="{{ url('produits') }}">Produits artisanaux</a></li>
-                                         
-                                           <li><a href="{{ url('hopitaux') }}">La santé</a></li>
-                                           
-                                          
-                                        </ul>
-                                     </li> --}}
-                                    {{--   <li><a href="{{ url('produits') }}">Produits </a></li>  --}}
-                                     
-                                    <li><a href="{{ url('faq') }}">Séjour en Tunisie</a></li>
+                               
+                                    <li><a href="{{ url('faq') }}">Séjour</a></li>
                                     <li><a href="{{ url('blog') }}">
                                         {{ \App\Helpers\TranslationHelper::TranslateText('Actualités') }}
                                     </a></li> 
@@ -372,12 +360,7 @@
                                         <li>
                                             <a href="{{ url('login') }}">Connexion</a>
                                         </li>
-                                   {{--  @else
-                                        @if (auth()->user()->role != 'user')
-                                            <li><a href="{{ url('admin') }}"
-                                                    class="nav-item nav-link">Administration</a>
-                                            </li>
-                                        @endif --}}
+                              
 
                                     @endguest
 
