@@ -891,6 +891,9 @@ function removeItem(surface) {
     <script src="/assets/js/swiper-bundle.js"></script>
     <script src="/assets/js/main.js"></script>
 
+    
+    <script src="https://js.stripe.com/v3/"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @livewireScripts
 </body>

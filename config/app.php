@@ -175,6 +175,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Stripe\Stripe::class,
+      
        // Spatie\Backup\BackupServiceProvider::class,
     //   Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
    // Barryvdh\DomPDF\ServiceProvider::class,
