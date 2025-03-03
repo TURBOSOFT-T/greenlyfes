@@ -150,27 +150,40 @@
                             </nav>
                             </div>  
                             <h3 class="tp-section-title">{{ $room->name ?? ' ' }}</h3>
-                            <div class="tp-shop-details__price pb-10">
-
-                                {!! $room->excerpt ?? ' ' !!}
-                            </div>
+                           
                         
-                            <div class="tp-shop-details__color d-flex align-items-center mb-20">
+                         
+                           
 
-                            </div>
-                            <div class="tp-shop-details__text-2 mb-25">
-                                <p style="text-align:justify">
-                                    {!! $room->meta_description ?? ' ' !!}
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Surface</th>
+                                        <th>Effectif</th>
+                                        <th>Prix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($room->attributes as $attribut)
+                                        <tr>
+                                            <td rowspan="2">{{ $attribut->surface }}</td>
+                                            <td>Une personne</td>
+                                            <td>{{ number_format($attribut->single_price, 0, ',', ' ') }} <x-devise></x-devise></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Deuxième personne</td>
+                                            <td>{{ number_format($attribut->double_price, 0, ',', ' ') }} <x-devise></x-devise></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                            
+                           
 
-                                </p>
-                            </div>
-                            <div class="tp-shop-details__product-info mb-35">
-                              
-                            </div>
 
-
-                            <h4>Choisir la Surface :</h4>
-                            <div class="mb-3">
+                          
+                      {{--       <div class="mb-3">
                                 @foreach ($room->attributes as $attribut)
                                     <button type="button" class="btn btn-outline-success surface-btn"
                                         data-single="{{ $attribut->single_price }}" data-double="{{ $attribut->double_price }}"
@@ -187,7 +200,7 @@
                             </div>
                             
                             <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
-                            
+                             --}}
                           <script>
                             $(document).ready(function() {
     let selectedSurface = null;

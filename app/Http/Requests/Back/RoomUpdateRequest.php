@@ -32,7 +32,7 @@ class RoomUpdateRequest extends FormRequest
            // 'slug' => ['required', 'max:255', new Slug, 'unique:rooms,slug' . $id],
             'excerpt' => 'nullable|max:500',
             'meta_description' => 'nullable|max:160',
-            'short_description'=>'nullable|max:5060',
+        //    'short_description'=>'nullable|max:5060',
           
             'seo_title' => 'nullable|max:60',
             'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif',
