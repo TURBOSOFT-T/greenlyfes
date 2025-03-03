@@ -140,7 +140,7 @@
                                             <button class="nav-links thumbnail-btn"
                                                 data-image="{{ url('public/Image/' . $image) }}" type="button">
                                                 <img src="{{ url('public/Image/' . $image) }}"
-                                                    alt="Thumbnail {{ $loop->index + 1 }}" loading="lazy"  height="100" width="100">
+                                                    alt="Thumbnail {{ $loop->index + 1 }}" loading="lazy"  height="50" width="50">
                                             </button>
                                         @endforeach
                                     @else

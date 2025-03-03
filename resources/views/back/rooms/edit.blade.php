@@ -62,7 +62,7 @@
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
                     <strong>Short_description(Prix):</strong>
-                    <input type="text" name="short_description" value="{{ $room->short_description }}" class="form-control"
+                    <input type="text" name="meta_description" value="{{ $room->meta_description }}" class="form-control"
                         placeholder="Title" required>
                 </div>
             </div>
