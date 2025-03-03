@@ -21,9 +21,10 @@
                             </p>
                             <br>
                             <div class="order-id">
-                                <a href="{{ url('home') }}" class="btn btn-success" style="background-color: #578b07;">
+                                <a   href="{{ route('home') }}" class="btn btn-success" style="background-color: #578b07;">
                                     Continuer
                                 </a>
+                               
                             </div>
                         </div>
                     </div>

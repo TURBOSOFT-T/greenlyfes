@@ -57,16 +57,14 @@ class ReservationController extends Controller
    
 
   
-    [
-      'email.required' => 'Veuillez entrer votre email',
-      'nom.required' => 'Veuillez entrer votre nom',
-      'prenom.required' => 'Veuillez entrer votre',
-      'telephone.required' => 'Veuillez entrer votre numéro de téléphone',
-      'adresse.required' => 'Veuillez entrer votre addresse',
- 
-    ]
   
-    ]); 
+    ]
+    , [
+      'nom.required' => 'Le champ nom est obligatoire.',
+      'prenom.required' => 'Le champ prénom est obligatoire.',
+      'payment_method.required' => 'Veuillez choisir une méthode de paiement.',
+  ]
+  ); 
 //($request->all());
 
 //dd($request->input('stripeToken'));

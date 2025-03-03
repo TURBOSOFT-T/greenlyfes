@@ -852,6 +852,29 @@ function removeItem(surface) {
 
 
 </script>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var stripe = Stripe('{{ config('services.stripe.key') }}');
+        console.log("Test key:", stripe);
+        var elements = stripe.elements();
+        var card = elements.create("card");
+        card.mount("#card-element");
+        var form = document.getElementById("reservation-form");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function(result) {
+                console.log("Token Stripe généré avec succès :", result.token.id);
+                document.getElementById("stripeToken").value = result.token.id;
+                form.submit();
+                
+
+            });
+        });
+    });
+</script>
     <!-- JS here -->
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/waypoints.js"></script>
