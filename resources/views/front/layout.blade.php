@@ -369,7 +369,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30 grid-item cat3 cat2 cat4">
                                 <div class="tp-project-3-item text-center">
                                     <div class="tp-project-3-thumb ">
-                                        <img src="{{ url('public/Image/' . $room->image) }}" alt="">
+                                        <img src="{{ url('public/Image/' . $room->image) }}" alt="" width="200" height="200">
                                     </div>
                                     <div class="tp-project-3-content text-center">
                                         <span class="tp-product-price-2 new-price"> {{ $room->name ?? '' }}
