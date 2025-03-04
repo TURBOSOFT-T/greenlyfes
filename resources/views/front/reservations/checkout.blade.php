@@ -128,13 +128,13 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                               {{--  <div class="col-md-6">
                                                     <div class="tp-checkout-input">
                                                         <label>Nombre de mois <span>*</span></label>
                                                         <input name="nb_mois" type="number" id="nb_mois" placeholder=""
                                                             required>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
 
                                                 <br><br>
@@ -222,13 +222,21 @@
                                 <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
 
 
-
+                                <div class="mb-3">
+                                    <label for="nb_mois">Nombre de mois</label>
+                                    <input type="number" class="form-control" name="nb_mois" id="nb_mois" min="1" value="1">
+                                </div>
+                                
 
                                 <br><br>
 
+                                <input type="hidden" name="prix_total" id="totalInput">
 
                                 <div class="form-control" id="prix-total">Total : 0
                                     <x-devise></x-devise>
+                                    
+                                   
+
                                 </div>
 
                             </div>
@@ -273,11 +281,12 @@
                             <br>
 
                             <div class="tp-checkout-btn-wrapper">
-                                {{--   <input type="submit" class="tp-btn-theme text-center w-100 check-btn" onclick="submitPaymentForm()" value="Confirmer la réservation">
-                             --}}
                                 <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
-                                    onclick="submitPaymentForm(event)" value="Confirmer la réservation">
+                                    onclick="submitPaymentForm()" value="Confirmer la réservation">
 
+                                {{-- <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
+                                    onclick="submitPaymentForm(event)" value="Confirmer la réservation">
+ --}}
 
                             </div>
 
@@ -289,8 +298,60 @@
 
         </section>
 
+<script>
+    $(document).ready(function () {
+    let selectedSurface = null;
+    let selectedType = null;
 
+    $('.surface-btn').on('click', function () {
+        selectedSurface = $(this).data();
+        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+        $(this).removeClass('btn-outline-success').addClass('btn-success');
+        calculateTotal();
+    });
 
+    $('.type-btn').on('click', function () {
+        selectedType = $(this).data('type');
+        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
+        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+        calculateTotal();
+    });
+
+    $('#nb_mois').on('input', function () {
+        calculateTotal();
+    });
+
+    function calculateTotal() {
+        let nbMois = parseInt($('#nb_mois').val());
+
+        if (selectedSurface && selectedType && nbMois > 0) {
+            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
+            $('#showPrice').text(price);
+            let total = price * nbMois;
+
+            $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
+
+            // Met à jour l'input caché
+            $('#totalInput').val(total);
+        } else {
+            $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
+            $('#totalInput').val(0);
+        }
+    }
+
+    $('.reserver-btn').on('click', function (e) {
+        if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($('#nb_mois').val()) <= 0) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Veuillez sélectionner une surface, un type et le nombre de mois!',
+            });
+        }
+    });
+});
+
+</script>
         <script src="https://js.stripe.com/v3/"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -334,7 +395,7 @@
             });
 
             function submitPaymentForm() {
-                e.preventDefault();
+           //     e.preventDefault();
                 const form = document.getElementById('reservation-form');
                 const nom = document.getElementById('nom').value.trim();
                 const prenom = document.getElementById('prenom').value.trim();
@@ -342,19 +403,19 @@
 
                 if (paymentMethod.value === 'stripe') {
                     const stripeToken = document.getElementById('stripeToken').value;
-                    if (!stripeToken) {
+                    if (!result.token.id) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Token Stripe manquant',
                             text: 'Veuillez générer un token Stripe avant de soumettre.',
                             confirmButtonText: 'OK'
                         });
-                        return; // Ne pas soumettre le formulaire
+                        return; 
                     }
-                    // Sinon, soumettre le formulaire normalement
+                    
                     document.getElementById('reservation-form').submit();
                 }
-              
+
                 if (nom === "" || prenom === "") {
                     Swal.fire({
                         icon: 'error',
@@ -362,10 +423,10 @@
                         text: 'Veuillez remplir tous les champs obligatoires (Nom et Prénom).',
                         confirmButtonText: 'OK'
                     });
-                    return; // Stopper la soumission
+                    return; 
                 }
 
-           
+
 
                 if (!paymentMethod) {
                     Swal.fire({
@@ -374,10 +435,10 @@
                         text: 'Veuillez sélectionner une méthode de paiement.',
                         confirmButtonText: 'OK'
                     });
-                    return; // Ne pas soumettre le formulaire
+                    return; 
                 }
 
-                // Si tout est valide, soumettre le formulaire
+                
                 if (paymentMethod.value === 'bank_transfer') {
                     document.getElementById('reservation-form').submit();
                 }
@@ -391,7 +452,7 @@
                     cancelButtonText: 'Annuler'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        form.submit(); // Envoi du formulaire
+                        form.submit(); 
                     }
                 });
 

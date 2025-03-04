@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\{
     Controllers\Controller,
 };
-use App\Models\{Reservation, Room, Reservations_item,Config};
+use App\Models\{Reservation,Attribut, Room, Reservations_item,Config};
 
 
 use App\Http\Requests\StoreReservationRequest;
@@ -69,13 +69,15 @@ class ReservationController extends Controller
       'payment_method.required' => 'Veuillez choisir une méthode de paiement.',
   ]
   ); 
-//($request->all());
+//dd($request->all());
 
 //dd($request->input('stripeToken'));
     $connecte = Auth::user();
     $configs = config::firstOrFail();
 
     $room = Room::find($request->input('room_id'));
+
+    
 
  
 if($connecte){
@@ -85,7 +87,8 @@ if($connecte){
      'email' => $request->input('email'),
      'adresse' => $request->input('adresse'),
      'telephone' => $request->input('telephone'),
-     'note' => $request->input('note'),
+     'prix_total' => $request->input('prix_total'),
+     
      'user_id' => Auth::user()->id,
      'room_id' => $request->input('room_id'),
      
@@ -104,7 +107,7 @@ if($connecte){
   'addresse' => $request->input('addresse'),
   'telephone' => $request->input('telephone'),
   'room_id' => $request->input('room_id'),
- 
+  'prix_total' => $request->input('prix_total'),
   'nb_mois'=>$request->input('nb_mois'),
   'note' => $request->input('note'),
   ]);
@@ -174,7 +177,7 @@ if ($request->payment_method === 'stripe') {
 
   try {
       $charge = Charge::create([
-          "amount" => 100000, // Montant en centimes
+          "amount" =>100 * $request->input('prix_total'), // Montant en centimes
           "currency" => "eur",
           "source" => $request->stripeToken,
         ///  "client" =>  $request->input('nom'),
@@ -183,7 +186,7 @@ if ($request->payment_method === 'stripe') {
           'metadata' => [
                   //  'order_id' => $->id,
                     'user_id' => $user->id,
-                    'montant total' => 100000 ,
+                    'montant total' => 100*$request->input('prix_total') ,
                 ],
       ]);
 
