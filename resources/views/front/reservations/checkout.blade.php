@@ -200,11 +200,12 @@
 
                                 <br>
 
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     @foreach ($room->attributes as $attribut)
                                         <button type="button" class="btn btn-outline-success surface-btn"
                                             data-single="{{ $attribut->single_price }}"
-                                            data-double="{{ $attribut->double_price }}"
+                                          
+                                           
                                             data-surface="{{ $attribut->surface }}">
                                             {{ $attribut->surface }}
                                         </button>
@@ -215,10 +216,50 @@
                                 <div class="mb-3">
                                     <button type="button" class="btn btn-outline-primary type-btn"
                                         data-type="single">Une personne</button>
+                                      
                                     <button type="button" class="btn btn-outline-primary type-btn"
                                         data-type="double">Deuxième personne</button>
                                 </div>
+ --}}
+ <div class="mb-3">
+    @foreach ($room->attributes as $attribut)
+        <button type="button" class="btn btn-outline-success surface-btn"
+            data-single="{{ $attribut->single_price }}"
+            data-double="{{ $attribut->double_price ?? 'null' }}" 
+            data-surface="{{ $attribut->surface }}">
+            {{ $attribut->surface }}
+        </button>
+    @endforeach
+</div>
 
+<div class="mb-3">
+    <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
+        Une personne
+    </button>
+    <button type="button" class="btn btn-outline-primary type-btn double-btn" data-type="double">
+        Deuxième personne
+    </button>
+</div>
+<script>
+    $('.surface-btn').each(function () {
+    let doublePrice = $(this).data('double');
+
+    if (doublePrice === 'null' || doublePrice === null) {
+        $('.double-btn').hide(); // Masquer le bouton Deuxième personne
+    }
+});
+
+$('.surface-btn').on('click', function () {
+    let doublePrice = $(this).data('double');
+
+    if (doublePrice === 'null' || doublePrice === null) {
+        $('.double-btn').hide();
+    } else {
+        $('.double-btn').show(); // Afficher si disponible
+    }
+});
+
+</script>
                                 <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
 
 

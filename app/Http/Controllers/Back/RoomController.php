@@ -151,8 +151,8 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
 {
     $request->validate([
         'surface' => 'required',
-        'single_price' => 'required',
-        'double_price' => 'required',
+        'single_price' => 'nullable',
+        'double_price' => 'nullable',
         
     ]);
 
@@ -173,8 +173,8 @@ public function storeAttribut(Request $request)
     $request->validate([
         'room_id' => 'required|exists:rooms,id',
         'surface' => 'required|string',
-        'single_price' => 'required|numeric',
-        'double_price' => 'required|numeric',
+        'single_price' => 'nullable|numeric',
+        'double_price' => 'nullable|numeric',
     ]);
 
     Attribut::create($request->all());

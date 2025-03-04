@@ -158,7 +158,7 @@
                             <table class="table table-bordered text-center">
                                 <thead>
                                     <tr>
-                                        <th>Surface</th>
+                                        <th></th>
                                         <th>Effectif</th>
                                         <th>Prix</th>
                                     </tr>
@@ -170,10 +170,13 @@
                                             <td>Une personne</td>
                                             <td>{{ number_format($attribut->single_price, 0, ',', ' ') }} <x-devise></x-devise></td>
                                         </tr>
+                                        @if($attribut->double_price)
                                         <tr>
                                             <td>Deuxième personne</td>
                                             <td>{{ number_format($attribut->double_price, 0, ',', ' ') }} <x-devise></x-devise></td>
                                         </tr>
+                                        @endif
+                                       
                                     @endforeach
                                 </tbody>
                             </table>
