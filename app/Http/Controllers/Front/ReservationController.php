@@ -174,7 +174,7 @@ if ($request->payment_method === 'stripe') {
 
   try {
       $charge = Charge::create([
-          "amount" => 1000, // Montant en centimes
+          "amount" => 100000, // Montant en centimes
           "currency" => "eur",
           "source" => $request->stripeToken,
         ///  "client" =>  $request->input('nom'),
@@ -183,7 +183,7 @@ if ($request->payment_method === 'stripe') {
           'metadata' => [
                   //  'order_id' => $->id,
                     'user_id' => $user->id,
-                    'montant total' => 1000 ,
+                    'montant total' => 100000 ,
                 ],
       ]);
 
