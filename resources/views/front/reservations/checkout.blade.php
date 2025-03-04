@@ -299,7 +299,7 @@
         </section>
 
 <script>
-    $(document).ready(function () {
+    /* $(document).ready(function () {
     let selectedSurface = null;
     let selectedType = null;
 
@@ -332,6 +332,64 @@
             $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
 
             // Met à jour l'input caché
+            $('#totalInput').val(total);
+        } else {
+            $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
+            $('#totalInput').val(0);
+        }
+    }
+
+    $('.reserver-btn').on('click', function (e) {
+        if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($('#nb_mois').val()) <= 0) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Veuillez sélectionner une surface, un type et le nombre de mois!',
+            });
+        }
+    });
+});
+ */
+
+ $(document).ready(function () {
+    let selectedSurface = $('.surface-btn').first().data(); // Prend la première surface par défaut
+    let selectedType = 'single'; // Type par défaut (single)
+    $('#nb_mois').val(1); // Nombre de mois par défaut (1 mois)
+
+    // Appliquer la sélection automatique
+    $('.surface-btn').first().removeClass('btn-outline-success').addClass('btn-success');
+    $('.type-btn[data-type="single"]').removeClass('btn-outline-primary').addClass('btn-primary');
+
+    calculateTotal(); // Appeler directement la fonction pour calculer le prix avec la combinaison par défaut
+
+    $('.surface-btn').on('click', function () {
+        selectedSurface = $(this).data();
+        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+        $(this).removeClass('btn-outline-success').addClass('btn-success');
+        calculateTotal();
+    });
+
+    $('.type-btn').on('click', function () {
+        selectedType = $(this).data('type');
+        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
+        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+        calculateTotal();
+    });
+
+    $('#nb_mois').on('input', function () {
+        calculateTotal();
+    });
+
+    function calculateTotal() {
+        let nbMois = parseInt($('#nb_mois').val());
+
+        if (selectedSurface && selectedType && nbMois > 0) {
+            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
+            $('#showPrice').text(price);
+            let total = price * nbMois;
+
+            $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
             $('#totalInput').val(total);
         } else {
             $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
@@ -437,13 +495,13 @@
                     });
                     return; 
                 }
-
+                
                 
                 if (paymentMethod.value === 'bank_transfer') {
                     document.getElementById('reservation-form').submit();
                 }
 
-                Swal.fire({
+              /*   Swal.fire({
                     title: 'Confirmation',
                     text: 'Voulez-vous confirmer votre réservation ?',
                     icon: 'warning',
@@ -455,7 +513,7 @@
                         form.submit(); 
                     }
                 });
-
+ */
 
             }
         </script>
