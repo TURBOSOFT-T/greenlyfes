@@ -175,7 +175,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows.
+                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows en Tunisie.
                                 Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée 🏖️🔑</span>
 
 
