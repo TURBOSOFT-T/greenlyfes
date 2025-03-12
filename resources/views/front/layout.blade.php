@@ -175,8 +175,9 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows en Tunisie.
-                                Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée 🏖️🔑</span>
+                            <span class="tp-section-subtitle"> Votre séjour au VILLAGE ÉCOLOGIQUE BIO OLIVIERA D'HAMMAMET TUNISIE.
+                                
+                                Pour vivre une greenlyfe qui va changer votre santé et vos humeurs voir votre âme. 🏖️🔑</span>
 
 
                         </div>
