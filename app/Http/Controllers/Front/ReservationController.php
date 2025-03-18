@@ -208,9 +208,6 @@ if ($request->payment_method === 'stripe') {
 
   }
 }
-
-
-
     return redirect()->route('thank-yous');
   
 }

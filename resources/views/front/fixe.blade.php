@@ -182,7 +182,23 @@
     </div>
     <!-- cart mini area end -->
 
+<style>
+    #cartContent {
+    max-height: 300px; /* Ajuste selon besoin */
+    overflow-y: auto; /* Active le scroll */
+    padding: 10px;
+}
 
+/* Assurer que les boutons restent fixes */
+.cartmini__checkout {
+    background: white; /* Garde la section visible */
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    bottom: 0;
+}
+
+</style>
     <!-- tp-offcanvus-area-start -->
     <div class="tpoffcanvas-area">
         <div class="tpoffcanvas">
@@ -742,9 +758,44 @@ $(document).ready(function() {
     showCart(); // 🛒 Affichage automatique
 });
 
-
-
 function refreshCart() {
+    $.ajax({
+        url: "{{ route('cart.get') }}",
+        type: "GET",
+        success: function(response) {
+            console.log("Contenu du Panier:", response);
+
+            let cartHTML = '';
+            if (Object.keys(response).length > 0) {
+                $.each(response, function(key, item) {
+                    cartHTML += `
+                        <div class="cart-item">
+                            <div class="cartmini__widget">
+                                <div class="cartmini__widget-item">
+                                    <li>
+                                        <img src="${item.product_image}" alt="${item.product_name}" width="50" height="50"> 
+                                        <strong>${item.product_name}</strong> - ${item.surface}  
+                                        <br>Prix: ${item.price} <x-devise></x-devise>
+                                        <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                cartHTML = "<p>Votre panier est vide</p>";
+            }
+
+            $('#cartContent').html(cartHTML);
+        }
+    });
+}
+
+
+function refreshCart1() {
     $.ajax({
         url: "{{ route('cart.get') }}",
         type: "GET",
@@ -822,7 +873,7 @@ function showCart() {
            
         }
     });
-}
+} 
 
 function removeItem(surface) {
     $.ajax({

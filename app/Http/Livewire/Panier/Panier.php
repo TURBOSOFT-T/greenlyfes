@@ -5,40 +5,47 @@ namespace App\Http\Livewire\Panier;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Surface;
+
 class Panier extends Component
 {
 
-    public $total =0;
+    public $total = 0;
 
     public function render()
     {
-        $paniers_session = session('cart');
-        $paniers = session('cart');
-        $paniers = [];
-    // dd($paniers_session);
-        if($paniers_session){
-            foreach($paniers_session as $panier){
-                $paniers[] = Product::find($panier['product_id']);  
-                }
-                }
-                foreach($paniers as $produit){
-                    $surface = Surface::where('product_id', $produit->id)->first();
-                    if($surface){
-                        $produit->surface = $surface->value;
-                      //  dd($produit);
-                    }
-                }
-                foreach($paniers as $produit){
-                    $this->total += $produit->price * $produit->surface;
-                }
+        $cart = session()->get('cart', []);
+        $cartWithProducts = [];
+        $total = 0;
     
-       
-          return view('livewire.panier.panier', compact("paniers"));
+        // Vérification si le panier contient des produits
+        foreach ($cart as $key => $item) {
+            // Vérifier si 'product_id' existe dans chaque item du panier
+            if (isset($item['product_id'])) {
+                $product = Product::find($item['product_id']);
+                
+                if ($product) {
+                    // Ajouter les informations du produit au panier
+                    $cartWithProducts[$key] = [
+                        'product_id' => $item['product_id'],  // Ajout de la clé product_id
+                        'surface' => $item['surface'],
+                        'price' => $item['price'],
+                        'product_name' => $product->name, // Nom du produit
+                        'product_image' => asset('public/Image/' . $product->image),
+                    ];
+                    // Calculer le total
+                    $total += $item['price'];
+                }
+            }
+        }
+
+
+        return view('livewire.panier.panier',  compact('cartWithProducts', 'total'));
     }
 
 
 
-    public function update($product_id,$quantite){
+    public function update($product_id, $quantite)
+    {
         //find produit in session car and update quantity
         $panier = session('cart', []);
         $produit_existe = false;
@@ -60,14 +67,15 @@ class Panier extends Component
 
         session(['cart' => $panier]);
 
-        $this->total =0 ;
+        $this->total = 0;
     }
 
 
 
 
 
-    public function delete($product_id){
+    public function delete($product_id)
+    {
         //delete produit from cart
         $panier = session('cart', []);
         $produit_existe = false;
@@ -89,9 +97,6 @@ class Panier extends Component
 
         session(['cart' => $panier]);
 
-        $this->total =0 ;
+        $this->total = 0;
     }
-
-
-  
 }
