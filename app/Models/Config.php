@@ -53,6 +53,7 @@ class Config extends Model
             'twitter',
             'linkedin',
             'youtube',
+            'compte',
     ];
 
 

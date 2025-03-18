@@ -306,7 +306,8 @@ $('.surface-btn').on('click', function () {
                                 <p><strong>Informations bancaires pour le virement :</strong></p>
                                 Veuillez envoyer un chèque à “B & P Dr. Spruth”,<br>
                                 Galtschinisweg 16, CH-7324 Vilters SG, Vilters-Wangs,<br>
-                                Switzerland
+                        Compte bancaire : {{ $configs->compte }} <br>
+
                             </div>
 
                             <div class="tp-checkout-btn-wrapper">

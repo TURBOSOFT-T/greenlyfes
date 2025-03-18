@@ -65,6 +65,15 @@
 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <div class="form-group">
+                    <strong>Compte bancaire:</strong>
+                    <input type="text" name="compte" value="{{ $config->compte }}" class="form-control"
+                        placeholder="Compte bancaire">
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
                     <strong>Facebook:</strong>
                     <input type="text" name="facebook" value="{{ $config->facebook }}" class="form-control"
                         placeholder="facebook">

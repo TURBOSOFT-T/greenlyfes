@@ -33,6 +33,7 @@ class UpdateConfigRequest extends FormRequest
             'mission' => 'nullable|max:60000|',
             'valeurs' => 'nullable|max:60000|',
             'domaine' => 'nullable|max:6000|',
+            'compte' => 'nullable|max:6000|',
             'desc_contact' => 'nullable|max:60000|',
             'adresse' => 'nullable|max:60000|',
             'facebook' => 'nullable|url',
