@@ -30,15 +30,46 @@ class OrderController extends Controller
 
 
     
-  public function commandes($id)
+ 
+  public function commander()
   {
-    $configs = Config::firstOrFail();
-    $produit =Product:: findOrFail($id);
-   // dd($produit);
-  
-    return view('front.commandes.checkout', compact('configs','produit'));
+    $configs = config::firstOrFail();
+   // $paniers_session = session('cart');
 
+   $paniers_session = session('cart', []);
+
+  // Vérifier que $paniers_session est bien un tableau
+  if (!is_array($paniers_session)) {
+      $paniers_session = [];
   }
+    $paniers = [];
+    $total = 0;
+    if(empty($paniers_session)){
+      request()->session()->flash('error','La panier est vide !');
+      return back();
+  }
+  
+
+   $cart = session()->get('cart', []);
+
+        $cartWithProducts = [];
+        foreach ($cart as $key => $item) {
+            $product = Product::find($item['product_id']); // Récupérer le produit associé
+            if ($product) {
+                $cartWithProducts[$key] = [
+                    'surface' => $item['surface'],
+                    'price' => $item['price'],
+                    'product_name' => $product->name, // Ajouter le nom du produit
+                    // 'product_image' => $product->image, // Ajouter l’image du produit
+                    'product_image' => asset('public/Image/' . $product->image),
+                    //     src="{{ url('public/Image/' . $produit->image) }}"
+                ];
+            }
+        }
+
+    return view('front.commandes.checkout', compact('configs', 'cartWithProducts'));
+  }
+
 
   public function confirmOrder(Request $request)
   {

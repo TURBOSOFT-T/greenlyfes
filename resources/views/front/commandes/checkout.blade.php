@@ -72,9 +72,9 @@
 
 
 
-                                <form action="{{ route('order.confirm') }}" method="post" id="payment-form">
+                                <form {{-- action="{{ route('order.confirm') }}" --}} method="post" id="payment-form">
                                     @csrf
-                                    <input type="hidden" name="product_id" value="{{ $produit->id }}" />
+                                   {{--  <input type="hidden" name="product_id" value="{{ $product->id }}" /> --}}
                                     <div class="d-flex justify-content-center pagination-lg">
                                         <div class="customer-details">
                                             <div class="row">
@@ -174,7 +174,7 @@
                                                     {{ $produit->name }} <strong class="product-quantity"> 
 
                                                 </td> --}}
-                                                <td class="product-total">
+                                               {{--  <td class="product-total">
                                                     <span class="amount"> <img
                                                             src="{{ url('public/Image/' . $produit->image) }}"
                                                             alt="" width="200 " height="200 ">
@@ -185,7 +185,7 @@
                                                         data-prix="{{ $produit->price }}">
                                                         {{ number_format($produit->price, 2) }} <x-devise></x-devise>
                                                     </span>
-                                                </td>
+                                                </td> --}}
 
                                             </tr>
 

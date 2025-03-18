@@ -196,9 +196,9 @@ Route::get('/client/delete_produit_au_panier', [panier_client::class, 'delete_pr
 
 
 
-Route::get('/commander', [CommandeController::class, 'commander'])->name('commander');
-Route::post('/order', [CommandeController::class, 'confirmOrder'])->name('order.confirm');
-Route::get('/thank-you', [CommandeController::class, 'index'])->name('thank-you');
+Route::get('/commander', [OrderController::class, 'commander'])->name('commander');
+//Route::post('/order', [CommandeController::class, 'confirmOrder'])->name('order.confirm');
+//Route::get('/thank-you', [CommandeController::class, 'index'])->name('thank-you');
 
 
 ///Reservation

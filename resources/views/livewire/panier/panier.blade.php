@@ -27,7 +27,7 @@
                     <td data-th="Produit">
                         <a href="#">{{ $details['product_name'] }}</a>
                     </td>
-                    <td data-th="Surface">{{ $details['surface'] }} m²</td>
+                    <td data-th="Surface">{{ $details['surface'] }}</td>
                     <td data-th="Prix">{{ $details['price'] }} €</td>
                     <td class="actions" data-th="">
                         <button class="remove-from-cart" wire:click="delete({{ $details['product_id'] }})">
