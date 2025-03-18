@@ -57,8 +57,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DiaporamaController;
 use App\Http\Controllers\SurfaceController;
 use App\Http\Controllers\panier_client;
-
-
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 
@@ -197,8 +196,8 @@ Route::get('/client/delete_produit_au_panier', [panier_client::class, 'delete_pr
 
 
 Route::get('/commander', [OrderController::class, 'commander'])->name('commander');
-//Route::post('/order', [CommandeController::class, 'confirmOrder'])->name('order.confirm');
-//Route::get('/thank-you', [CommandeController::class, 'index'])->name('thank-you');
+Route::post('/order', [OrderController::class, 'confirmOrder'])->name('order.confirm');
+Route::get('/thank-you', [OrderController::class, 'index'])->name('thank-you');
 
 
 ///Reservation

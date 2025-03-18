@@ -249,19 +249,16 @@ if($request->input('stripeToken')){
     return redirect()->route('thank-you');
   
 }
+public function index(Request $request)
+{
 
-
- 
+  return view('front.commandes.thankyou');
+}
 
 
 
 
   
 
-  public function index(Request $request)
-  {
-
-    return view('front.commandes.thankyou');
-  }
 
 }

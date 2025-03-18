@@ -72,9 +72,9 @@
 
 
 
-                                <form {{-- action="{{ route('order.confirm') }}" --}} method="post" id="payment-form">
+                                <form  action="{{ route('order.confirm') }}" method="post" id="payment-form">
                                     @csrf
-                                   {{--  <input type="hidden" name="product_id" value="{{ $product->id }}" /> --}}
+                                    {{--  <input type="hidden" name="product_id" value="{{ $product->id }}" /> --}}
                                     <div class="d-flex justify-content-center pagination-lg">
                                         <div class="customer-details">
                                             <div class="row">
@@ -121,15 +121,6 @@
                                                         id="address-error"></span><br>
                                                     <textarea name="address" class="form-control" id="address" cols="30" rows="" required></textarea>
                                                 </div>
-
-
-
-
-
-
-
-
-
                                                 <div class="col-md-12">
                                                     <div class="tp-checkout-input">
                                                         <label for="">Message (optional)</label>
@@ -174,7 +165,7 @@
                                                     {{ $produit->name }} <strong class="product-quantity"> 
 
                                                 </td> --}}
-                                               {{--  <td class="product-total">
+                                                {{--  <td class="product-total">
                                                     <span class="amount"> <img
                                                             src="{{ url('public/Image/' . $produit->image) }}"
                                                             alt="" width="200 " height="200 ">
@@ -220,15 +211,17 @@
                                     </div>
                                 </div>
                                 <div id="bank-info" style="display: block;">
+                                    <br>
                                     <p><strong>Informations bancaires pour le virement :</strong></p>
                                     Veuillez envoyer un chèque à “B & P Dr. Spruth”,<br>
                                     Galtschinisweg 16, CH-7324 Vilters SG, Vilters-Wangs,<br>
                                     Switzerland
+                                    Compte bancaire : {{ $configs->compte }} <br>
                                 </div>
 
                                 <div class="tp-checkout-btn-wrapper">
 
-
+                                    <br>
 
                                     <div class="form-group" id="stripe-form-group" style="display: none;">
                                         <div id="card-element"></div>
@@ -237,7 +230,7 @@
                                     </div>
                                 </div>
 
-
+                                <br>
                                 <input type="submit" id="submit-btn" onclick="submitPaymentForm()"
                                     class="tp-btn-theme text-center w-100 check-btn" value="Confirmer la commande">
                             </div>
@@ -366,7 +359,7 @@
                     const email = document.getElementById('email').value.trim();
                     const phone = document.getElementById('phone').value.trim();
                     const address = document.getElementById('address').value.trim();
-                    
+
                     if (!firstName || !lastName || !email || !phone || !address) {
                         Swal.fire({
                             icon: 'error',
