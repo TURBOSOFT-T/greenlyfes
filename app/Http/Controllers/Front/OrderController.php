@@ -99,10 +99,30 @@ class OrderController extends Controller
       'email.email' => 'Le champ email doit être une adresse email valide.',
   ]); 
 
-   // dd($request->all());
+    dd($request->all());
 
     $connecte = Auth::user();
     $configs = config::firstOrFail();
+
+    $user = new User([
+     
+      'first_name' => $request->input('first_name'),
+      'last_name' => $request->input('last_name'),
+      'email' => $request->input('email'),
+       
+      'phone' => $request->input('phone'),
+      'password' => Hash::make($request->input('phone')),
+      'address' => $request->input('address'),
+    
+    ]);
+  
+
+    $existingUsersWithEmail = User::where('email', $request['email'])->exists();
+
+    if (!$existingUsersWithEmail) {
+     
+      $user->save();
+  }
 
 
  
@@ -120,7 +140,7 @@ if($connecte){
      'phone' => $request->input('phone'),
      'note' => $request->input('note'),
      'user_id' => Auth::user()->id,
-     'product_id' => $request->input('product_id'),
+    // 'product_id' => $request->input('product_id'),
      'order_at' => now(),
    
      'note' => $request->input('note'),
@@ -139,7 +159,7 @@ if($connecte){
   'email' => $request->input('email'),
   'address' => $request->input('address'),
   'phone' => $request->input('phone'),
-  'product_id' => $request->input('product_id'),
+ // 'product_id' => $request->input('product_id'),
 
  
   'note' => $request->input('note'),
@@ -188,14 +208,30 @@ if (!$connecte) {
   $user = $connecte;
 }
 
-$product_items = OrderProduct::create([
-  'order_id' => $order->id,
-  'product_id' => $request->input('product_id'),
-  'quantity' => 1,
-  'prix_unitaire' => 100,
-  
+$cart = session()->get('cart', []);
+$cartWithProducts = [];
+$total = 0;
 
-]);
+// Vérification si le panier contient des produits
+foreach ($cart as $key => $item) {
+    // Vérifier si 'product_id' existe dans chaque item du panier
+    if (isset($item['product_id'])) {
+        $product = Product::find($item['product_id']);
+        
+        if ($product) {
+            // Ajouter les informations du produit au panier
+            $cartWithProducts[$key] = [
+                'product_id' => $item['product_id'],  // Ajout de la clé product_id
+                'surface' => $item['surface'],
+                'price' => $item['price'],
+                'product_name' => $product->name, // Nom du produit
+              ///  'product_image' => asset('public/Image/' . $product->image),
+            ];
+            // Calculer le total
+            $total += $item['price'];
+        }
+    }
+}
 
   
  ///dd($request->input('stripeToken')); 
@@ -208,7 +244,7 @@ if($request->input('stripeToken')){
 //dd($stripeSecret);
   try {
       $charge = Charge::create([
-          "amount" => 100* $product_items->products->price,
+          "amount" => 100 * $total,
           "currency" => "eur",
           "source" => $request->stripeToken,
           "description" => "Paiement commande produit",
@@ -232,17 +268,6 @@ if($request->input('stripeToken')){
 }
 
     
-
-//$produit = Product::find($request['product_id']);
-   $items = OrderProduct :: create([
-    'order_id' => $order->id,
-    'product_id' => $request->input('product_id'),
-    'user_id' => $user->id,
-    'created_at' => now(),
-
-  ]); 
-// dd($items);
-   
 
 
 

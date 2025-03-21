@@ -367,10 +367,11 @@
                                         </ul>
                                      </li>
                                
-                                    <li><a href="{{ url('faq') }}">Séjour</a></li>
+                                   
                                     <li><a href="{{ url('blog') }}">
                                         {{ \App\Helpers\TranslationHelper::TranslateText('Actualités') }}
                                     </a></li> 
+                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
                                     <li><a href="{{ route('contacts.create') }}">Contact</a></li>
                                     @guest
                                         <li>

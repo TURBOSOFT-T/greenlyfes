@@ -72,7 +72,7 @@
 
 
 
-                                <form  action="{{ route('order.confirm') }}" method="post" id="payment-form">
+                                <form action="{{ route('order.confirm') }}"  method="post" id="payment-form">
                                     @csrf
                                     {{--  <input type="hidden" name="product_id" value="{{ $product->id }}" /> --}}
                                     <div class="d-flex justify-content-center pagination-lg">

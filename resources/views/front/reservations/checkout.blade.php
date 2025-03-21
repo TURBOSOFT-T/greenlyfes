@@ -128,7 +128,7 @@
                                                     </div>
                                                 </div>
 
-                                               {{--  <div class="col-md-6">
+                                                {{--  <div class="col-md-6">
                                                     <div class="tp-checkout-input">
                                                         <label>Nombre de mois <span>*</span></label>
                                                         <input name="nb_mois" type="number" id="nb_mois" placeholder=""
@@ -221,53 +221,54 @@
                                         data-type="double">Deuxième personne</button>
                                 </div>
  --}}
- <div class="mb-3">
-    @foreach ($room->attributes as $attribut)
-        <button type="button" class="btn btn-outline-success surface-btn"
-            data-single="{{ $attribut->single_price }}"
-            data-double="{{ $attribut->double_price ?? 'null' }}" 
-            data-surface="{{ $attribut->surface }}">
-            {{ $attribut->surface }}
-        </button>
-    @endforeach
-</div>
+                                <div class="mb-3">
+                                    @foreach ($room->attributes as $attribut)
+                                        <button type="button" class="btn btn-outline-success surface-btn"
+                                            data-single="{{ $attribut->single_price }}"
+                                            data-double="{{ $attribut->double_price ?? 'null' }}"
+                                            data-surface="{{ $attribut->surface }}">
+                                            {{ $attribut->surface }}
+                                        </button>
+                                    @endforeach
+                                </div>
 
-<div class="mb-3">
-    <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
-        Une personne
-    </button>
-    <button type="button" class="btn btn-outline-primary type-btn double-btn" data-type="double">
-        Deuxième personne
-    </button>
-</div>
-<script>
-    $('.surface-btn').each(function () {
-    let doublePrice = $(this).data('double');
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
+                                        Une personne
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary type-btn double-btn"
+                                        data-type="double">
+                                        Deuxième personne
+                                    </button>
+                                </div>
+                                <script>
+                                    $('.surface-btn').each(function() {
+                                        let doublePrice = $(this).data('double');
 
-    if (doublePrice === 'null' || doublePrice === null) {
-        $('.double-btn').hide(); // Masquer le bouton Deuxième personne
-    }
-});
+                                        if (doublePrice === 'null' || doublePrice === null) {
+                                            $('.double-btn').hide(); // Masquer le bouton Deuxième personne
+                                        }
+                                    });
 
-$('.surface-btn').on('click', function () {
-    let doublePrice = $(this).data('double');
+                                    $('.surface-btn').on('click', function() {
+                                        let doublePrice = $(this).data('double');
 
-    if (doublePrice === 'null' || doublePrice === null) {
-        $('.double-btn').hide();
-    } else {
-        $('.double-btn').show(); // Afficher si disponible
-    }
-});
-
-</script>
+                                        if (doublePrice === 'null' || doublePrice === null) {
+                                            $('.double-btn').hide();
+                                        } else {
+                                            $('.double-btn').show(); // Afficher si disponible
+                                        }
+                                    });
+                                </script>
                                 <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
 
 
                                 <div class="mb-3">
                                     <label for="nb_mois">Nombre de mois</label>
-                                    <input type="number" class="form-control" name="nb_mois" id="nb_mois" min="1" value="1">
+                                    <input type="number" class="form-control" name="nb_mois" id="nb_mois"
+                                        min="1" value="1">
                                 </div>
-                                
+
 
                                 <br><br>
 
@@ -275,8 +276,8 @@ $('.surface-btn').on('click', function () {
 
                                 <div class="form-control" id="prix-total">Total : 0
                                     <x-devise></x-devise>
-                                    
-                                   
+
+
 
                                 </div>
 
@@ -306,7 +307,7 @@ $('.surface-btn').on('click', function () {
                                 <p><strong>Informations bancaires pour le virement :</strong></p>
                                 Veuillez envoyer un chèque à “B & P Dr. Spruth”,<br>
                                 Galtschinisweg 16, CH-7324 Vilters SG, Vilters-Wangs,<br>
-                        Compte bancaire : {{ $configs->compte }} <br>
+                                Compte bancaire : {{ $configs->compte }} <br>
 
                             </div>
 
@@ -326,10 +327,6 @@ $('.surface-btn').on('click', function () {
                                 <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
                                     onclick="submitPaymentForm()" value="Confirmer la réservation">
 
-                                {{-- <input type="submit" class="tp-btn-theme text-center w-100 check-btn"
-                                    onclick="submitPaymentForm(event)" value="Confirmer la réservation">
- --}}
-
                             </div>
 
                         </div>
@@ -340,118 +337,66 @@ $('.surface-btn').on('click', function () {
 
         </section>
 
-<script>
-    /* $(document).ready(function () {
-    let selectedSurface = null;
-    let selectedType = null;
+        <script>
+            $(document).ready(function() {
+                let selectedSurface = $('.surface-btn').first().data(); // Prend la première surface par défaut
+                let selectedType = 'single'; // Type par défaut (single)
+                $('#nb_mois').val(1); // Nombre de mois par défaut (1 mois)
 
-    $('.surface-btn').on('click', function () {
-        selectedSurface = $(this).data();
-        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
-        $(this).removeClass('btn-outline-success').addClass('btn-success');
-        calculateTotal();
-    });
+                // Appliquer la sélection automatique
+                $('.surface-btn').first().removeClass('btn-outline-success').addClass('btn-success');
+                $('.type-btn[data-type="single"]').removeClass('btn-outline-primary').addClass('btn-primary');
 
-    $('.type-btn').on('click', function () {
-        selectedType = $(this).data('type');
-        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
-        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
-        calculateTotal();
-    });
+                calculateTotal
+            (); // Appeler directement la fonction pour calculer le prix avec la combinaison par défaut
 
-    $('#nb_mois').on('input', function () {
-        calculateTotal();
-    });
+                $('.surface-btn').on('click', function() {
+                    selectedSurface = $(this).data();
+                    $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+                    $(this).removeClass('btn-outline-success').addClass('btn-success');
+                    calculateTotal();
+                });
 
-    function calculateTotal() {
-        let nbMois = parseInt($('#nb_mois').val());
+                $('.type-btn').on('click', function() {
+                    selectedType = $(this).data('type');
+                    $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
+                    $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+                    calculateTotal();
+                });
 
-        if (selectedSurface && selectedType && nbMois > 0) {
-            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
-            $('#showPrice').text(price);
-            let total = price * nbMois;
+                $('#nb_mois').on('input', function() {
+                    calculateTotal();
+                });
 
-            $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
+                function calculateTotal() {
+                    let nbMois = parseInt($('#nb_mois').val());
 
-            // Met à jour l'input caché
-            $('#totalInput').val(total);
-        } else {
-            $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
-            $('#totalInput').val(0);
-        }
-    }
+                    if (selectedSurface && selectedType && nbMois > 0) {
+                        let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
+                        $('#showPrice').text(price);
+                        let total = price * nbMois;
 
-    $('.reserver-btn').on('click', function (e) {
-        if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($('#nb_mois').val()) <= 0) {
-            e.preventDefault();
-            Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Veuillez sélectionner une surface, un type et le nombre de mois!',
+                        $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
+                        $('#totalInput').val(total);
+                    } else {
+                        $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
+                        $('#totalInput').val(0);
+                    }
+                }
+
+                $('.reserver-btn').on('click', function(e) {
+                    if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($(
+                            '#nb_mois').val()) <= 0) {
+                        e.preventDefault();
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Veuillez sélectionner une surface, un type et le nombre de mois!',
+                        });
+                    }
+                });
             });
-        }
-    });
-});
- */
-
- $(document).ready(function () {
-    let selectedSurface = $('.surface-btn').first().data(); // Prend la première surface par défaut
-    let selectedType = 'single'; // Type par défaut (single)
-    $('#nb_mois').val(1); // Nombre de mois par défaut (1 mois)
-
-    // Appliquer la sélection automatique
-    $('.surface-btn').first().removeClass('btn-outline-success').addClass('btn-success');
-    $('.type-btn[data-type="single"]').removeClass('btn-outline-primary').addClass('btn-primary');
-
-    calculateTotal(); // Appeler directement la fonction pour calculer le prix avec la combinaison par défaut
-
-    $('.surface-btn').on('click', function () {
-        selectedSurface = $(this).data();
-        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
-        $(this).removeClass('btn-outline-success').addClass('btn-success');
-        calculateTotal();
-    });
-
-    $('.type-btn').on('click', function () {
-        selectedType = $(this).data('type');
-        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
-        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
-        calculateTotal();
-    });
-
-    $('#nb_mois').on('input', function () {
-        calculateTotal();
-    });
-
-    function calculateTotal() {
-        let nbMois = parseInt($('#nb_mois').val());
-
-        if (selectedSurface && selectedType && nbMois > 0) {
-            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
-            $('#showPrice').text(price);
-            let total = price * nbMois;
-
-            $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
-            $('#totalInput').val(total);
-        } else {
-            $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
-            $('#totalInput').val(0);
-        }
-    }
-
-    $('.reserver-btn').on('click', function (e) {
-        if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($('#nb_mois').val()) <= 0) {
-            e.preventDefault();
-            Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Veuillez sélectionner une surface, un type et le nombre de mois!',
-            });
-        }
-    });
-});
-
-</script>
+        </script>
         <script src="https://js.stripe.com/v3/"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -495,7 +440,7 @@ $('.surface-btn').on('click', function () {
             });
 
             function submitPaymentForm() {
-           //     e.preventDefault();
+                //     e.preventDefault();
                 const form = document.getElementById('reservation-form');
                 const nom = document.getElementById('nom').value.trim();
                 const prenom = document.getElementById('prenom').value.trim();
@@ -510,9 +455,9 @@ $('.surface-btn').on('click', function () {
                             text: 'Veuillez générer un token Stripe avant de soumettre.',
                             confirmButtonText: 'OK'
                         });
-                        return; 
+                        return;
                     }
-                    
+
                     document.getElementById('reservation-form').submit();
                 }
 
@@ -523,7 +468,7 @@ $('.surface-btn').on('click', function () {
                         text: 'Veuillez remplir tous les champs obligatoires (Nom et Prénom).',
                         confirmButtonText: 'OK'
                     });
-                    return; 
+                    return;
                 }
 
 
@@ -535,27 +480,27 @@ $('.surface-btn').on('click', function () {
                         text: 'Veuillez sélectionner une méthode de paiement.',
                         confirmButtonText: 'OK'
                     });
-                    return; 
+                    return;
                 }
-                
-                
+
+
                 if (paymentMethod.value === 'bank_transfer') {
                     document.getElementById('reservation-form').submit();
                 }
 
-              /*   Swal.fire({
-                    title: 'Confirmation',
-                    text: 'Voulez-vous confirmer votre réservation ?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Oui, confirmer',
-                    cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit(); 
-                    }
-                });
- */
+                /*   Swal.fire({
+                            title: 'Confirmation',
+                            text: 'Voulez-vous confirmer votre réservation ?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, confirmer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                form.submit(); 
+                            }
+                        });
+         */
 
             }
         </script>
