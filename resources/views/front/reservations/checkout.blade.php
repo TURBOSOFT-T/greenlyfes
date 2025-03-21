@@ -296,10 +296,10 @@
                                         <input type="radio" name="payment_method" value="bank_transfer" checked>
                                         Virement bancaire
                                     </label>
-                                    <label>
+                                   {{--  <label>
                                         <input type="radio" name="payment_method" value="stripe">
                                         Paiement par carte (Stripe)
-                                    </label>
+                                    </label> --}}
                                 </div>
                             </div>
 
