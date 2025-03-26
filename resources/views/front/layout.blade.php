@@ -444,13 +444,13 @@
                                 <div class="tp-video-2-title-box mb-20">
                                     <span class="tp-section-subtitle">Vivre à Greenlyfe Oliviera Village</span>
                                     <p>
-                                        Greenlyfe Oliviera Village est un projet immobilier qui offre une expérience de vie
+                                        Greenlife Oliviera Tunisie est un projet immobilier qui offre une expérience de vie
                                         unique et
                                         exceptionnelle dans le cadre de votre quartier.
                                     </p>
                                 </div>
                                 <div class="tp-video-2-text mb-25">
-                                    <p>Greenlife Oliviera Village vous offre un cadre de vie exceptionnel alliant confort,
+                                    <p>Greenlife Oliviera Tunisie vous offre un cadre de vie exceptionnel alliant confort,
                                         nature et modernité. </p>
                                     <p>
                                         Profitez de services de qualité pour un quotidien serein et harmonieux.
