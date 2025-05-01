@@ -49,6 +49,7 @@ class CreateConfigsTable extends Migration
 
             $table->string('telephone')->nullable()->default(null);
             $table->string('whtasapp')->nullable()->default(null);
+            $table->string('whtasapp1')->nullable()->default(null);
             $table->string('facebook')->nullable()->default(null);
             $table->string('instagram')->nullable()->default(null);
             $table->string('twitter')->nullable()->default(null);

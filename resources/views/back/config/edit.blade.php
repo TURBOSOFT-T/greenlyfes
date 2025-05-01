@@ -62,6 +62,13 @@
                         placeholder="Téléphone whatsApp">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
+                    <strong>WhatsApp 2:</strong>
+                    <input type="text" name="whtasapp1" value="{{ $config->whtasapp1 }}" class="form-control"
+                        placeholder="Téléphone whatsApp">
+                </div>
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <div class="form-group">

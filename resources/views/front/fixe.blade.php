@@ -626,8 +626,8 @@
                                                         :</b>
 
                                                         <a
-                                        href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">{{ $config->telephone ?? ' ' }}</a> <br>
-                                                        <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp ?? ' ') }}">{{ $config->whtasapp ?? ' ' }}</a>
+                                        href="tel:{{ preg_replace('/\D/', '', $config->whtasapp1) }}">{{ $config->whtasapp ?? ' ' }}</a> <br>
+                                                        <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp1 ?? ' ') }}">{{ $config->whtasapp ?? ' ' }}</a>
 
                                                 </div>
                                             </div>

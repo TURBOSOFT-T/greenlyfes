@@ -38,8 +38,9 @@
                                 </div>
                                 <div class="tp-contact-2-text my-auto">
                                   
-                                    <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp ?? ' ') }}">{{ $config->whtasapp ?? ' '  }}</a> <br>
-                                    <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}">{{ $config->telephone ?? ''  }}</a>
+                                    <a
+                                        href="tel:{{ preg_replace('/\D/', '', $config->whtasapp1) }}">{{ $config->whtasapp ?? ' ' }}</a> <br>
+                                                        <a class="text-anim-2" href="tel:{{ preg_replace('/\D/', '', $config->whtasapp1 ?? ' ') }}">{{ $config->whtasapp ?? ' ' }}</a>
 
  
                                 </div>

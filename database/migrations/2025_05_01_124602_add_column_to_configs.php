@@ -14,7 +14,7 @@ class AddColumnToConfigs extends Migration
     public function up()
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->string('compte')->nullable()->default(null);
+            $table->string('whtasapp1')->nullable()->default(null);
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnToConfigs extends Migration
     public function down()
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->dropColumn('compte');
+            //
         });
     }
 }

@@ -29,6 +29,7 @@ class UpdateConfigRequest extends FormRequest
             'description' => 'nullable|max:60000',
             'email' => 'nullable|email|max:255' ,
             'telephone' => 'nullable|max:255|',
+            'whtasapp1' => 'nullable|max:255',
             'vision' => 'nullable|max:60000|',
             'mission' => 'nullable|max:60000|',
             'valeurs' => 'nullable|max:60000|',

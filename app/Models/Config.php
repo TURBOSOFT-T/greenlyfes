@@ -39,7 +39,7 @@ class Config extends Model
             'projet',
             'icon',
 
-
+'whtasapp1',
             'mission',
             'vision',
             'valeurs',
