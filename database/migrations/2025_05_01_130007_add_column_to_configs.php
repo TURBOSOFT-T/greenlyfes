@@ -14,7 +14,7 @@ class AddColumnToConfigs extends Migration
     public function up()
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->string('whtasapp1')->nullable()->default(null);
+            $table->string('email1')->nullable()->default(null);
         });
     }
 

@@ -28,6 +28,7 @@ class UpdateConfigRequest extends FormRequest
             'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
             'description' => 'nullable|max:60000',
             'email' => 'nullable|email|max:255' ,
+            'email1' => 'nullable|email|max:255' ,
             'telephone' => 'nullable|max:255|',
             'whtasapp1' => 'nullable|max:255',
             'vision' => 'nullable|max:60000|',

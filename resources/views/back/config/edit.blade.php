@@ -42,6 +42,15 @@
 
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <div class="form-group">
+                    <strong>E-mail 2:</strong>
+                    <input type="text" name="email1" value="{{ $config->email1 }}" class="form-control"
+                        placeholder="Email">
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group">
                     <strong>Téléphone:</strong>
                     <input type="text" name="telephone" value="{{ $config->telephone }}" class="form-control"
                         placeholder="Téléphone">

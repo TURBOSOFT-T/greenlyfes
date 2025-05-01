@@ -57,6 +57,7 @@ class CreateConfigsTable extends Migration
             $table->string('youtube')->nullable()->default(null);
             $table->string('addresse')->nullable()->default(null);
             $table->string('email')->nullable()->default(null);
+            $table->string('email1')->nullable()->default(null);
            
             $table->decimal("frais", 10,3)->nullable();
            

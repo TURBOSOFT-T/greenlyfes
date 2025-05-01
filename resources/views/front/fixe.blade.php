@@ -318,7 +318,7 @@
                                         </svg>
                                     </span>
                                     <a class="text-anim">{{ $config->email }} </a><br>
-                                    <a href="#">Christophedemontecristo@gmail.com</a>
+                                    <a class="text-anim" href="#"> {{ $config->email1 }}</a>
                                 </li>
 
                             </ul>
@@ -647,7 +647,8 @@
                                                 <div class="tp-footer-widget-contact-text">
                                                     <b>Email:</b>
 
-                                                    <a class="text-anim" href="#"> {{ $config->email }}</a>
+                                                    <a class="text-anim" href="#"> {{ $config->email }}</a> <br>
+                                                    <a class="text-anim" href="#"> {{ $config->email1 }}</a>
                                                 </div>
                                             </div>
                                         </li>

@@ -32,6 +32,7 @@ class Config extends Model
             'telephone',
             'addresse',
             'email',
+            'email1',
             'frais',
             'annee',
             'utilisateur',
