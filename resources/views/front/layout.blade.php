@@ -45,9 +45,7 @@
                                             <h4 class="display-10 mb-10 text-white animated slideInRight">
                                                 {!! $home->body !!}
                                             </h4>
-                                           {{--  <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
-                                                {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
-                                            </a> --}}
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -68,14 +66,22 @@
 
 
         <style>
-            .responsive-image {
+         /*    .responsive-image {
                 width: 100%;
-                /* L'image occupe toute la largeur */
+               
                 height: 300px;
-                /* Hauteur fixe */
+              
                 object-fit: cover;
-                /* Ajuste le contenu sans déformer */
-            }
+               
+            } */
+
+            /* Mettre dans ton fichier CSS global */
+.carousel-item img {
+    width: 100%;       /* largeur du carousel */
+    height: 500px;     /* hauteur fixe souhaitée */
+    object-fit: cover; /* ajuste l'image en la recadrant pour remplir */
+}
+
 
 
             @media (max-width: 768px) {
