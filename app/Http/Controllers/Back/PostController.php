@@ -128,8 +128,35 @@ private function generateUniqueSlug($slug)
         return view('back.posts.form', compact('post', 'categories'));
     }
 
+     public function update(PostRequest $request, PostRepository $repository, Post $post)
+{
+    $input = $request->except('categories', 'tags');
+
+    // Suppression de l'ancienne image si une nouvelle est uploadée
+   
+   if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/posts/', $filename);
+            $input['image'] = $filename;
+        }
+
+    // Case à cocher "active"
+    $input['active'] = $request->has('active') ? 1 : 0;
+
+    // Mise à jour du post
+    $post->update($input);
+
+    // Mise à jour des catégories et des tags
+    $this->saveCategoriesAndTags($post, $request);
+
+    return back()->with('ok', __('The post has been successfully updated'));
+}
+
   
-        public function update(Request $request, PostRepository $repository, $id)
+        public function update1(Request $request, PostRepository $repository, $id)
     {
         $user = Auth::user();
         $post = $user->posts()->findOrFail($id);

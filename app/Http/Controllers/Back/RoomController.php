@@ -192,8 +192,8 @@ public function storeAttribut(Request $request)
       
         $input = Room::findOrFail($id);
         $img = Room::find($id);
-        File::delete(public_path('/public/Image' . $img->image));
-        File::delete(public_path('/public/Image' . $img->cover));
+     //   File::delete(public_path('/public/Image' . $img->image));
+      //  File::delete(public_path('/public/Image' . $img->cover));
 
 
         if ($request->hasFile('image')) {

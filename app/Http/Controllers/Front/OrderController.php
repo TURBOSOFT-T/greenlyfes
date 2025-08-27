@@ -99,7 +99,7 @@ class OrderController extends Controller
       'email.email' => 'Le champ email doit être une adresse email valide.',
   ]); 
 
-    dd($request->all());
+   // dd($request->all());
 
     $connecte = Auth::user();
     $configs = config::firstOrFail();

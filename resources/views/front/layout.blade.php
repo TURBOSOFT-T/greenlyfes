@@ -26,7 +26,9 @@
                 <div class="carousel-inner">
                     @foreach ($homes as $key => $home)
                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                            <img class="d-block w-100" src="{{ url('public/Image/' . $home->image) }}" alt="Image">
+                            <img class="d-block w-100" src="{{ url('public/Image/' . $home->image) }} " alt="Image"
+                            
+                            >
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="container">
                                     <style>
@@ -40,12 +42,12 @@
                                                 class="fs-5 fw-medium custom-text-white text-primary text-uppercase animated slideInRight">
                                                 {{ $home->title }}
                                             </p>
-                                            <h1 class="display-10 mb-10 text-white animated slideInRight">
+                                            <h4 class="display-10 mb-10 text-white animated slideInRight">
                                                 {!! $home->body !!}
-                                            </h1>
-                                            <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
+                                            </h4>
+                                           {{--  <a href="#" class="btn btn-primary py-3 px-5 animated slideInRight">
                                                 {{ \App\Helpers\TranslationHelper::TranslateText('Voir plus') }}
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </div>
                                 </div>

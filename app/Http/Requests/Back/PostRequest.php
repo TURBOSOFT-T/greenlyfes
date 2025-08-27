@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
 
         return $rules = [
             'title' => 'required|max:255',
-            'body' => 'required|max:65000',
+            'body' => 'nullable|max:65000',
             'slug' => ['required', 'max:255', new Slug, 'unique:posts,slug' . $id],
             'excerpt' => 'required|max:500',
             'meta_description' => 'required|max:160',

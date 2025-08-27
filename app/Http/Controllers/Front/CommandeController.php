@@ -208,7 +208,7 @@ if($connecte){
 
   if (!$existingUsersWithEmail) {
    
-    Mail::to($user->email)->send(new FirstOrder($user));
+  //  Mail::to($user->email)->send(new FirstOrder($user));
 
  
     $user->save();

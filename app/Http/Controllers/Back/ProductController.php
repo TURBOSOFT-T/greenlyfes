@@ -138,16 +138,25 @@ class ProductController extends Controller
         $input =
             Product::findOrFail($id);
         $img = Product::find($id);
-        File::delete(public_path('public/Image/' . $img->image));
+      
 
      
-        if ($request->hasFile('image')) {
-            // Supprimer l'ancienne image du serveur
+  /*       if ($request->hasFile('image')) {
+        
             if ($img->image) {
                 unlink(public_path('public/Image/'. $img->image));
             }
 
 
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/', $filename);
+            $input['image'] = $filename;
+        } */
+
+           if ($request->hasFile('image')) {
 
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

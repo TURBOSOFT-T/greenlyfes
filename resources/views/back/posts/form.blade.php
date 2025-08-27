@@ -72,9 +72,12 @@
                 
                 <div class="form-group">
                     <label><strong>Description :</strong></label>
-                    <textarea class="ckeditor form-control" name="body" :value="isset($post) ? $post->body : ''" 
+                   {{--  <textarea class="ckeditor form-control"   name="body" :value="isset($post) ? $post->body : ''" 
                          input='textarea'
-                        ></textarea>
+                        ></textarea> --}}
+                         <textarea class="ckeditor form-control" name="body">
+        {{ old('body', isset($post) ? $post->body : '') }}
+    </textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">@lang('Submit')</button>
@@ -155,27 +158,27 @@
 
                     <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
                         <label for="description">Image</label>
-                        @if(isset($post) && !$errors->has('image'))
-                        <div>
-                            <p><img src="{{ asset('images/thumbs/' . $post->image) }}"></p>
-                            <button id="changeImage" class="btn btn-warning">Changer d'image</button>
-                        </div>
+                        @if (isset($post) && !$errors->has('image'))
+                            <div>
+                                <p><img src="{{ url('public/Image/posts/' . $post->image) }}" width="100" height="100">
+                                </p>
+                                <button id="changeImage" class="btn btn-warning">Changer d'image</button>
+                            </div>
                         @endif
+
                         <div id="wrapper">
-                            @if(!isset($post) || $errors->has('image'))
                             <div class="custom-file">
-                                <input type="file" id="image" name="image"
-                                    class="{{ $errors->has('image') ? ' is-invalid ' : '' }}custom-file-input"
-                                    required>
+                                <input type="file" id="image" name="image" class="custom-file-input">
                                 <label class="custom-file-label" for="image"></label>
                                 @if ($errors->has('image'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('image') }}
-                                </div>
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('image') }}
+                                    </div>
                                 @endif
                             </div>
-                            @endif
                         </div>
+
+
                     </div>
 
 
@@ -266,6 +269,7 @@
     @include('back.shared.editorScript')
 
 @endsection
+
 
 
 
