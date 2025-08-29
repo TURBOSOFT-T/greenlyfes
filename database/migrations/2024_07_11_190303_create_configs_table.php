@@ -66,7 +66,7 @@ class CreateConfigsTable extends Migration
             $table->integer('dossier')->nullable();
             $table->integer('projet')->nullable();
             $table->string('icon')->nullable()->default(null);
-              $table->string('compte')->nullable()->default(null);
+             // $table->string('compte')->nullable()->default(null);
             $table->timestamps();
         });
     }
