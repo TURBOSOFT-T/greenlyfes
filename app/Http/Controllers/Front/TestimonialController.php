@@ -43,7 +43,7 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::create($request->all());
     
         if ($request->user()) {
-            Mail::to($request->user()->email)->send(new TestimonialCreated($testimonial));
+          //  Mail::to($request->user()->email)->send(new TestimonialCreated($testimonial));
         }
 
         return back()->with ('success', 'Témoignage créé avec succès! Il sera valide après confirmation des administrateurs');

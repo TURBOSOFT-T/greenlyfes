@@ -384,7 +384,9 @@ Route::prefix('admin')->group(function () {
         Route::name('testimonials.indexnew')->get('newtestimonials', [BackResourceController::class, 'index']);
 
        Route::resource('testimonials', BackTestimonialController::class);
+        Route::resource('testimoniales',  BackTestimonialController::class);
       //  Route::resource('testimonials', BackResourceController::class)->except(['show']);
+
         Route::get('testimoniales/{id}/approve', [BackTestimonialController::class, 'approve'])->name('testimoniales.approve');
         Route::get('testimoniales/{id}/disapprove', [BackTestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
         Route::delete('testimoniales/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniales.destroy');

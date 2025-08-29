@@ -14,9 +14,20 @@ use App\Http\Requests\Front\ContactRequest;
 use App\Models\Testimonial;
 use App\Http\Requests\StoreTestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
-use Illuminate\Support\Facades\Request;
+//use Illuminate\Support\Facades\Request;
 use App\Mail\TestimonialCreated; 
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+
+use App\Models\notifications;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
+use RealRashid\SweetAlert\Facades\Alert;
+//use Illuminate\Support\Facade\Mail;
+
+use Illuminate\Support\Facades\Hash;
+
 
 class TestimonialController extends Controller
 {
@@ -108,5 +119,41 @@ class TestimonialController extends Controller
         return redirect()->route('testimonials.index')
                          ->with('error', 'Témoignage introuvable.');
     }
+
+
+
+    
+    public function edit($id)
+    {
+        $testimonial = Testimonial::find($id);
+        return view('back.temoignages.show', compact('testimonial'));
+    }
+
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'message' => 'required|string|max:500',
+    ]);
+
+    $testimonial = Testimonial::find($id);
+
+    // Si une nouvelle photo est téléchargée
+    if ($request->hasFile('photo')) {
+        $imageName = time().'.'.$request->photo->extension();  
+        $request->photo->move(public_path('uploads/testimonials'), $imageName);
+        $testimonial->photo = $imageName;
+    }
+
+    // Mise à jour du message
+    $testimonial->message = $request->message;
+
+    $testimonial->save();
+
+    return redirect()->route('testimonials.index')->with('success', 'Témoignage mis à jour avec succès.');
+}
+
+
 
 }

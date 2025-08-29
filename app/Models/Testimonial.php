@@ -15,6 +15,7 @@ class Testimonial extends Model
        'email',
        'message',
        'user_id',
+       'photo',
 
         'active',
       

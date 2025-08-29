@@ -66,14 +66,7 @@
 
 
         <style>
-         /*    .responsive-image {
-                width: 100%;
-               
-                height: 300px;
-              
-                object-fit: cover;
-               
-            } */
+      
 
             /* Mettre dans ton fichier CSS global */
 .carousel-item img {
@@ -1239,7 +1232,12 @@
                                             <div class="swiper-slide">
                                                 <div class="tp-testimonial-item text-center">
                                                     <div class="tp-testimonial-avatar">
-                                                        <img src="assets/img/testimonial/testi-3-1.png" alt="">
+                                                       {{--  <img src="assets/img/testimonial/testi-3-1.png" alt=""> --}}
+                                                        @if ($testimonial->photo)
+                                                        <img src="{{ asset('uploads/testimonials/' . $testimonial->photo) }}" alt="Photo Témoignage" width="100" height="100">
+                                                        @else
+                                                        <img src="images/author-1.jpg" alt="">
+                                                        @endif
                                                     </div>
                                                     <div class="tp-testimonial-author-info">
                                                         <p class="pb-5">{{ $testimonial->message }}

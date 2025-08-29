@@ -53,6 +53,11 @@
                 <td>{{ $temoin->message }}</td>
                 <td>
 
+                     <a href="{{ route('testimoniales.edit', $temoin->id) }}"
+                                                class="btn btn-info btn-sm">
+                                                <i class="fas fa-edit"></i> Modifier
+                                            </a>
+
                     <!-- Add your action buttons here (approve, disapprove, delete) -->
                     <!-- Approve/Disapprove Button -->
                     @if ($temoin->active)
