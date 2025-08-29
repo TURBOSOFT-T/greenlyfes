@@ -1234,7 +1234,7 @@
                                                     <div class="tp-testimonial-avatar">
                                                        {{--  <img src="assets/img/testimonial/testi-3-1.png" alt=""> --}}
                                                         @if ($testimonial->photo)
-                                                        <img src="{{ asset('uploads/testimonials/' . $testimonial->photo) }}" alt="Photo Témoignage" width="100" height="100">
+                                                        <img src="{{ asset('uploads/testimonials/' . $testimonial->photo) }}"  width="100" height="100">
                                                         @else
                                                         <img src="images/author-1.jpg" alt="">
                                                         @endif

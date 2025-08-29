@@ -146,6 +146,22 @@ class TestimonialController extends Controller
         $testimonial->photo = $imageName;
     }
 
+/*     if ($request->hasFile('photo')) {
+           
+            if ($testimonial->photo) {
+                $oldImagePath = public_path('Image/testimonial/' . $testimonial->photo);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/Image/testimonial/', $filename);
+            $input['photo'] = $filename;
+        } */
+
     // Mise à jour du message
     $testimonial->message = $request->message;
 
