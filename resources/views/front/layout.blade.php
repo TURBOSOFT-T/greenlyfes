@@ -15,11 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 
-        {{--       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    
- --}}
-        <!-- slider area start -->
+
 
         <div class="container-fluid px-0 mb-5">
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -133,7 +129,7 @@
 
 
 
-                                        {{ $config->vision ?? ' ' }}
+                                       
                                         {!! \App\Helpers\TranslationHelper::TranslateText($config->vision ?? '') !!}
                                     </p>
                                 </div>
