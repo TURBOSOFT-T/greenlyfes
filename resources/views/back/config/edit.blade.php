@@ -467,7 +467,7 @@
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="valeurs" class="form-label">Pourquoi nous choisir(Séjours et Services Proposés)</label>
-                <textarea id="valeurs" rows="4" cols="50" name="valeurs" class=" form-control"
+                <textarea id="valeurs" rows="4" cols="50" name="valeurs" class=" ckeditor form-control"
                     placeholder="Ajouter le description de vos valeurs" >{{ old('valeurs', $config->valeurs) }}</textarea>
                 @error('valeurs')
                     <p class="text-danger">{{ $message }}</p>
