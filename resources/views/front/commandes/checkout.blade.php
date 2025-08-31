@@ -340,16 +340,7 @@
                     });
                 });
 
-                /*  function submitPaymentForm() {
-                     const paymentForm = document.getElementById('payment-form');
-                     const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-
-                     if (paymentMethod === 'bank_transfer') {
-
-                         paymentForm.submit();
-                     }
-
-                 } */
+           
 
                 function submitPaymentForm() {
                     // Récupérer les valeurs des champs

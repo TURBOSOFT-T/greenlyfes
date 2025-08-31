@@ -260,6 +260,7 @@ if($request->input('stripeToken')){
 
    
   // return response()->json(['success' => true]);
+   session()->forget('cart');
    return redirect()->route('thank-you');
   } catch (\Exception $e) {
  return response()->json(['success' => false, 'message' => $e->getMessage()]);
@@ -269,7 +270,7 @@ if($request->input('stripeToken')){
 
     
 
-
+ session()->forget('cart');
 
     return redirect()->route('thank-you');
   
