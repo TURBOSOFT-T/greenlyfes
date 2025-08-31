@@ -412,31 +412,62 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+<div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+    <label for="mission" class="form-label">
+        Pourquoi nous choisir (Bungalows et Espaces Privés)
+    </label>
+    <textarea 
+        id="mission" 
+        name="mission" 
+        rows="6" 
+        class="ckeditor form-control @error('mission') is-invalid @enderror"
+        placeholder="Ajouter la description de votre mission">{{ old('mission', $config->mission) }}</textarea>
+
+    @error('mission')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="mission" class="form-label">Pourquoi nous choisir(Bungalows et Espaces Privés)</label>
-                <textarea id="mission" rows="4" cols="50" name="mission" class="form-control"
-                    placeholder="Ajouter le description de votr mission" >{{ old('mission', $config->mission) }}</textarea>
-                @error('mission')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
-            </div>
+
+        
             <br><br>
             
-            <div class="col-xs-12 col-sm-12 col-md-12">
+          {{--   <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="vision" class="form-label">Pourquoi nous choisir(Club House et Espaces Communautaires)</label>
-                <textarea id="vision" rows="4" cols="50" name="vision" class="form-control"
+                <textarea id="vision" rows="4" cols="50" name="vision"   class="vision form-control @error('vision') is-invalid @enderror"
                     placeholder="Ajouter le description de votre vision" >{{ old('vision', $config->vision) }}</textarea>
                 @error('vision')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-            </div>
+            </div> --}}
+
+            <div class="col-12 mb-3">
+    <label for="vision" class="form-label fw-bold">
+        Pourquoi nous choisir (Club House et Espaces Communautaires)
+    </label>
+
+    <textarea 
+        id="vision" 
+        name="vision" 
+        rows="6" 
+        class="ckeditor form-control @error('vision') is-invalid @enderror"
+        placeholder="Ajouter la description de votre vision">{{ old('vision', $config->vision ?? '') }}</textarea>
+
+    @error('vision')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
             <br><br>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="valeurs" class="form-label">Pourquoi nous choisir(Séjours et Services Proposés)</label>
-                <textarea id="valeurs" rows="4" cols="50" name="valeurs" class="form-control"
+                <textarea id="valeurs" rows="4" cols="50" name="valeurs" class=" form-control"
                     placeholder="Ajouter le description de vos valeurs" >{{ old('valeurs', $config->valeurs) }}</textarea>
                 @error('valeurs')
                     <p class="text-danger">{{ $message }}</p>
@@ -456,7 +487,7 @@
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="equipe" class="form-label">A propos de nous(Alimentation Saine et Locale)</label>
-                <textarea id="equipe" rows="4" cols="50" name="equipe" class="form-control"
+                <textarea id="equipe" rows="4" cols="50" name="equipe" class=" form-control"
                     placeholder="Ajouter le description de votre équipe" >{{ old('equipe', $config->equipe) }}</textarea>
                 @error('equipe')
                     <p class="text-danger">{{ $message }}</p>
@@ -466,8 +497,12 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="des_contact" class="form-label">Description page contact</label>
-                <textarea id="des_contact" rows="4" cols="50" name="des_contact" class="form-control"
-                    placeholder="Ajouter le description de la page contact" >{{ old('des_contact', $config->des_contact) }}</textarea>
+                <textarea id="des_contact" rows="4" cols="50" name="des_contact" class=" form-control"
+                    placeholder="Ajouter le description de la page contact" >{{-- {!! old('des_contact', $config->des_contact) !!} --}}
+               {!! nl2br(strip_tags($config->des_contact)) !!}
+
+
+                </textarea>
                 @error('des_contact')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -483,9 +518,17 @@
     </form>
 @endsection
 
-{{-- 
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+{{-- Script CKEditor --}}
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('description');
+    document.addEventListener("DOMContentLoaded", function() {
+        if (document.querySelector('.ckeditor')) {
+            CKEDITOR.replaceAll('ckeditor');
+        }
+    });
 </script>
- --}}
+
+
+
+
