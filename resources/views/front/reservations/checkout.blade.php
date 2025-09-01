@@ -202,80 +202,67 @@
 
                                 <div class="mb-3">
                                     @foreach ($room->attributes as $attribut)
-                                        {{-- <button type="button" class="btn btn-outline-success surface-btn"
-                                            data-single="{{ $attribut->single_price }}"
-                                            data-double="{{ $attribut->double_price ?? 'null' }}"
-                                            data-surface="{{ $attribut->surface }}">
-                                            {{ $attribut->surface }}
-                                        </button> --}}
+                                   
 
                                         <button type="button" class="btn btn-outline-success surface-btn"
-    data-single="{{ $attribut->single_price }}"
-    data-double="{{ $attribut->double_price ?? 'null' }}"
-    data-triple="{{ $attribut->triple_price ?? 'null' }}"
-    data-surface="{{ $attribut->surface }}">
-    {{ $attribut->surface }}
-</button>
-
+                                            data-single="{{ $attribut->single_price }}"
+                                            data-double="{{ $attribut->double_price ?? 'null' }}"
+                                            data-triple="{{ $attribut->triple_price ?? 'null' }}"
+                                            data-surface="{{ $attribut->surface }}">
+                                            {{ $attribut->surface }}
+                                        </button>
                                     @endforeach
                                 </div>
 
-                                {{-- <div class="mb-3">
+                             
+                                <div class="mb-3">
                                     <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
                                         Une personne
                                     </button>
                                     <button type="button" class="btn btn-outline-primary type-btn double-btn"
                                         data-type="double">
-                                        Deuxième personne
+                                        Deux personnes
                                     </button>
-                                </div> --}}
-                                <div class="mb-3">
-    <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
-        Une personne
-    </button>
-    <button type="button" class="btn btn-outline-primary type-btn double-btn" data-type="double">
-        Deux personnes
-    </button>
-    <button type="button" class="btn btn-outline-primary type-btn triple-btn" data-type="triple">
-        Trois personnes
-    </button>
-</div>
+                                    <button type="button" class="btn btn-outline-primary type-btn triple-btn"
+                                        data-type="triple">
+                                        Trois personnes
+                                    </button>
+                                </div>
 
                                 <script>
-                                 $('.surface-btn').each(function() {
-    let doublePrice = $(this).data('double');
-    let triplePrice = $(this).data('triple');
+                                    $('.surface-btn').each(function() {
+                                        let doublePrice = $(this).data('double');
+                                        let triplePrice = $(this).data('triple');
 
-    if (doublePrice === 'null' || doublePrice === null) {
-        $('.double-btn').hide();
-    } else {
-        $('.double-btn').show();
-    }
+                                        if (doublePrice === 'null' || doublePrice === null) {
+                                            $('.double-btn').hide();
+                                        } else {
+                                            $('.double-btn').show();
+                                        }
 
-    if (triplePrice === 'null' || triplePrice === null) {
-        $('.triple-btn').hide();
-    } else {
-        $('.triple-btn').show();
-    }
-});
+                                        if (triplePrice === 'null' || triplePrice === null) {
+                                            $('.triple-btn').hide();
+                                        } else {
+                                            $('.triple-btn').show();
+                                        }
+                                    });
 
-$('.surface-btn').on('click', function() {
-    let doublePrice = $(this).data('double');
-    let triplePrice = $(this).data('triple');
+                                    $('.surface-btn').on('click', function() {
+                                        let doublePrice = $(this).data('double');
+                                        let triplePrice = $(this).data('triple');
 
-    if (doublePrice === 'null' || doublePrice === null) {
-        $('.double-btn').hide();
-    } else {
-        $('.double-btn').show();
-    }
+                                        if (doublePrice === 'null' || doublePrice === null) {
+                                            $('.double-btn').hide();
+                                        } else {
+                                            $('.double-btn').show();
+                                        }
 
-    if (triplePrice === 'null' || triplePrice === null) {
-        $('.triple-btn').hide();
-    } else {
-        $('.triple-btn').show();
-    }
-});
-
+                                        if (triplePrice === 'null' || triplePrice === null) {
+                                            $('.triple-btn').hide();
+                                        } else {
+                                            $('.triple-btn').show();
+                                        }
+                                    });
                                 </script>
                                 <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
 
@@ -313,7 +300,7 @@ $('.surface-btn').on('click', function() {
                                         <input type="radio" name="payment_method" value="bank_transfer" checked>
                                         Virement bancaire
                                     </label>
-                                  
+
                                 </div>
                             </div>
 
@@ -362,7 +349,7 @@ $('.surface-btn').on('click', function() {
                 $('.type-btn[data-type="single"]').removeClass('btn-outline-primary').addClass('btn-primary');
 
                 calculateTotal
-            (); // Appeler directement la fonction pour calculer le prix avec la combinaison par défaut
+                    (); // Appeler directement la fonction pour calculer le prix avec la combinaison par défaut
 
                 $('.surface-btn').on('click', function() {
                     selectedSurface = $(this).data();
@@ -382,11 +369,16 @@ $('.surface-btn').on('click', function() {
                     calculateTotal();
                 });
 
-               /*  function calculateTotal() {
+               
+                function calculateTotal() {
                     let nbMois = parseInt($('#nb_mois').val());
 
                     if (selectedSurface && selectedType && nbMois > 0) {
-                        let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
+                        let price = 0;
+                        if (selectedType === 'single') price = selectedSurface.single;
+                        if (selectedType === 'double') price = selectedSurface.double;
+                        if (selectedType === 'triple') price = selectedSurface.triple;
+
                         $('#showPrice').text(price);
                         let total = price * nbMois;
 
@@ -396,27 +388,7 @@ $('.surface-btn').on('click', function() {
                         $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
                         $('#totalInput').val(0);
                     }
-                } */
-
-                function calculateTotal() {
-    let nbMois = parseInt($('#nb_mois').val());
-
-    if (selectedSurface && selectedType && nbMois > 0) {
-        let price = 0;
-        if (selectedType === 'single') price = selectedSurface.single;
-        if (selectedType === 'double') price = selectedSurface.double;
-        if (selectedType === 'triple') price = selectedSurface.triple;
-
-        $('#showPrice').text(price);
-        let total = price * nbMois;
-
-        $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
-        $('#totalInput').val(total);
-    } else {
-        $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
-        $('#totalInput').val(0);
-    }
-}
+                }
 
 
                 $('.reserver-btn').on('click', function(e) {
@@ -523,7 +495,7 @@ $('.surface-btn').on('click', function() {
                     document.getElementById('reservation-form').submit();
                 }
 
-               
+
 
             }
         </script>
