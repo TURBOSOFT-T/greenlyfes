@@ -923,8 +923,7 @@
                                     <span class="tp-section-subtitle">
                                         {{ \App\Helpers\TranslationHelper::TranslateText('Laissez-vous séduire par la Tunisie, une galerie de rêves avant votre séjour ! 🌅✨') }}</span>
                                     </span>
-                                    {{-- <h4 class="tp-section-title">Our Awesome & Best
-                           Services</h4> --}}
+                                
                                 </div>
                             </div>
                         </div>
@@ -1335,107 +1334,6 @@
 
 
 
-        {{-- 
-        <div class="tp-service-3-area tp-service-3-inner-style  fix pt-105 pb-100 p-relative">
-              <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="tp-testimonial-title-box text-center mb-60">
-                        <span class="tp-section-subtitle">Nos services</span>
-                  
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($services as $service)
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="tp-service-3-item text-center mb-30 p-relative">
-                        <div class="tp-service-3-icon pb-20">
-                            <span>
-                                <style>
-                                    .tp-service-thumb {
-                                        height: 100;
-                                        width: 100;
-                                        overflow: hidden;
-                                        border-radius: 10%;
-
-                                    }
-
-                                </style>
-                                <div class="tp-service-thumb">
-                                    <img src="{{ url('public/Image/Services/' . $service->image) }}" width="200" height="200" border-radius="8" class="rounded shadow" alt="">
-                                </div>
-                            </span>
-                        </div>
-                        <div class="tp-service-3-content">
-                            <h4 class="tp-service-3-title mb-20"><a class="text-anim-3" href="#">{{ $service->title }}</a></h4>
-
-
-
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#serviceModal" data-title="{{ $service->title }}" data-body="{{ $service->body }}" data-image="{{ url('public/Image/Services/' . $service->image) }}">
-                                Voir détails
-                            </button>
-
-
-                        </div>
-                    </div>
-                </div>
-                @endforeach
- 
-            <!-- Modal Structure -->
-            <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="serviceModalLabel">Détails sur le service</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4 id="modal-service-title"></h4>
-                            <p id="modal-service-body"></p>
-                            <img id="modal-service-image" src="" alt="" class="img-fluid">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var serviceModal = document.getElementById('serviceModal');
-                    serviceModal.addEventListener('show.bs.modal', function(event) {
-                        var button = event.relatedTarget;
-                        var title = button.getAttribute('data-title');
-                        var body = button.getAttribute('data-body');
-                        var image = button.getAttribute('data-image');
-
-                        var modalTitle = serviceModal.querySelector('#modal-service-title');
-                        var modalBody = serviceModal.querySelector('#modal-service-body');
-                        var modalImage = serviceModal.querySelector('#modal-service-image');
-
-                        modalTitle.textContent = title;
-                        modalBody.textContent = body;
-                        modalImage.src = image;
-                    });
-                });
-            </script>
-
-
-
-
-
-
-        </div>
-        </div>
-        </div>
- --}}
-
-
-
         <!-- blog area start -->
         <div class="tp-blog-area pt-140 pb-130 fix">
             <div class="container">
@@ -1513,45 +1411,6 @@
 
 
 
-
-
-        <!-- brand area start -->
-        {{--  <div class="tp-brand-area pb-150">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tp-blog-title-box text-center mb-60">
-                            <span class="tp-section-subtitle"></span>
-                            <h4 class="tp-section-title"></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tp-brand-wrap">
-                            <div class="swiper-container tp-brand-active">
-                                <div class="swiper-wrapper">
-                                    @foreach ($sponsors as $sponsor)
-                                        <div class="swiper-slide">
-                                            <div class="tp-brand-thumb text-center">
-                                                <img class="w-100"
-                                                    src="{{ url('public/Image/sponsors/' . $sponsor->image) }}"
-                                                    width="150" height="150" alt="">
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- brand area end -->
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

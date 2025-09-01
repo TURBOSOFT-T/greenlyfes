@@ -150,8 +150,7 @@
                 <div class="cartmini__top p-relative">
                     <div class="cartmini__top-title">
                         <h4>Mon panier</h4>
-                        {{-- <a href="{{ url('clear-cart') }}" class="tp-btn-theme text-center mb-10 w-100"><i class="fa fa-trash-o"></i> Clear cart</a>
-                        --}}
+                      
 
                     </div>
                     <div class="cartmini__close">
@@ -432,20 +431,7 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"
                                             style="padding:0%; font-size:100%;padding:0%">
 
-                                          {{--   <a href="{{ route('rents') }}" class="cursor-pointer mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-110 duration-300 ease-in-out">
-                                                Mon tableau de bord
-                                              </a> --}}
-                                            {{--  <a class="dropdown-item" href="{{ route('rents') }}">
-                                                <i class="bx bx-tachometer text-left"></i>
-                                                <span>Mes réservations</span>
-                                            </a> --}}
-
-                                            {{-- <a class="dropdown-item" href="{{ route('favories') }}">
-                                                <i class="bx bx-tachometer"></i>
-                                                <span>Mes favoris</span>
-
-                                            </a> --}}
-
+                                         
                                           
                                         @if (auth()->user()->role != 'user')
                                               <a class="dropdown-item" href="{{ url('admin') }}">
@@ -477,33 +463,7 @@
                         </style>
 
 
-                          
-{{-- 
-                            <div class="custom-dropdown">
-                                <form action="{{ route('locale.change') }}" method="POST">
-                                    @csrf
-                                    <div class="dropdown">
-                                        <button class="dropbtn">
-                                            {{ app()->getLocale() == 'fr' ? 'Français' : 'English' }}
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <button type="submit" name="locale" value="fr" class="dropdown-item">
-                                                <img src="https://img.icons8.com/color/20/france-circular.png"
-                                                    alt="fr">
-                                                
-                                                {{ \App\Helpers\TranslationHelper::TranslateText('Français') }}
-                                            </button>
-                                            <button type="submit" name="locale" value="en" class="dropdown-item">
-                                                <img src="https://img.icons8.com/color/20/great-britain-circular.png"
-                                                    alt="en">
-                                                
-                                                {{ \App\Helpers\TranslationHelper::TranslateText('Anglais') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-     --}}
+                      
                             <div class="tp-header-bar d-xl-none">
                                 <button class="tp-menu-bar"><i class="fa-solid fa-bars"></i></button>
                             </div>
@@ -557,11 +517,7 @@
                                     <p class="text-justify">{{ $config->description }}</p>
                                 </div>
                                 <div class="tp-footer-social">
-                                    {{--  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fa-brands fa-twitter"></i></a> --}}
-
+                                   
                                 </div>
                             </div>
                         </div>
@@ -797,40 +753,6 @@ function refreshCart() {
 }
 
 
-function refreshCart1() {
-    $.ajax({
-        url: "{{ route('cart.get') }}",
-        type: "GET",
-        success: function(response) {
-            console.log("Contenu du Panier:", response);
-
-            let cartHTML = '';
-            if (Object.keys(response).length > 0) {
-                $.each(response, function(key, item) {
-                    cartHTML += `
-                        <div class="cart-item">
-                           <div class="cartmini__widget">
-                         <div class="cartmini__widget-item">
-
-                  <li>${item.surface} - Prix: ${item.price} <x-devise></x-devise>
-         <button onclick="removeItem('${item.surface}')" class="btn btn-danger btn-sm ml-3">
-             <i class="fa fa-trash"></i>
-         </button>
-     </li>
-
-         </div>
-              </div>
-                        </div>
-                    `;
-                });
-            } else {
-                cartHTML = "<p>Votre panier est vide</p>";
-            }
-
-            $('#cartContent').html(cartHTML);
-        }
-    });
-}
 
 $(document).ready(function() {
     refreshCart(); // Appel automatique au chargement
