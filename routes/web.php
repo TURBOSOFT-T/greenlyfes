@@ -389,7 +389,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('testimoniales/{id}/approve', [BackTestimonialController::class, 'approve'])->name('testimoniales.approve');
         Route::get('testimoniales/{id}/disapprove', [BackTestimonialController::class, 'disapprove'])->name('testimoniales.disapprove');
-        Route::delete('testimoniales/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniales.destroy');
+       // Route::delete('testimoniales/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniales.destroy');
         Route::get('testimoniale/{id}/destroy', [BackTestimonialController::class, 'destroy'])->name('testimoniale.destroy');
 
         // Follows
