@@ -162,6 +162,7 @@ $validated['slug'] = $validated['slug'] ?? Str::slug($validated['name']);
         'attribute' => $request->surface,
        'single_price' => $request->single_price,
        'double_price' => $request->double_price,
+       'triple_price'=>$request->triple_price,
     ]);
 
     return redirect()->route('rooms.index')->with('success', 'La chambre a bien été ajoutée');

@@ -98,16 +98,25 @@
                 <input type="file" name="images[]"class="form-control-file" multiple >
             </div>
         </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <label class="form-label">Content</label>
-            <textarea rows="4" cols="50" name="description" value="{!! $produit->description !!}" class="form-control"
-                placeholder="Add content" required></textarea>
+ <div class="col-xs-12 col-sm-12 col-md-12">
+            <label class="form-label">Meta description</label>
+            <textarea rows="4" cols="50" name="short_description" value="{!! $produit->short_description !!}" class="form-control"
+                placeholder="Add content" required> {!! $produit->short_description !!}</textarea>
             @error('title')
             <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label class="form-label">Content</label>
+            <textarea rows="4" cols="50" name="description" value="{!! $produit->description !!}" class="form-control"
+                placeholder="Add content" required> {!! $produit->description !!}</textarea>
+            @error('title')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>

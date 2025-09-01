@@ -38,6 +38,7 @@ class ProductUpdateRequest extends FormRequest
            'price' => 'required|numeric',
 
             'description' => 'required|string',
+              'short_description' => 'nullable|string',
     
             'category_id' => 'exists:categories,id',
         ];

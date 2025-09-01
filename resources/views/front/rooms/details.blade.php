@@ -176,6 +176,13 @@
                                             <td>{{ number_format($attribut->double_price, 0, ',', ' ') }} <x-devise></x-devise></td>
                                         </tr>
                                         @endif
+
+                                         @if($attribut->triple_price)
+                                        <tr>
+                                            <td>Troixième personne</td>
+                                            <td>{{ number_format($attribut->triple_price, 0, ',', ' ') }} <x-devise></x-devise></td>
+                                        </tr>
+                                        @endif
                                        
                                     @endforeach
                                 </tbody>

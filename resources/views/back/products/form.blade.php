@@ -60,29 +60,6 @@
                                         :required="true">
                                     </x-back.input>
 
-                                    {{--   <x-back.input title='Stock' name='stock' :value="isset($product) ? $product->stock : ''"
-                                    input='number' :required="true">
-                                </x-back.input>
-                                <x-back.input title='Stock alert' name='stock_alert'
-                                    :value="isset($product) ? $product->stock_alert : ''" input='number'
-                                    :required="true">
-                                </x-back.input>
- --}}
-
-
-
-                                    {{-- <div>
-                                    <label for="images">Images (Many):</label>
-                                    <input type="file" name="images[]" id="images" multiple required>
-                                </div> --}}
-
-                                    {{--    <x-back.card type='primary' title='Description'>
-                                    <x-back.input name='description'
-                                        :value="isset($product) ? $product->description : ''" input='textarea' rows=10
-                                        :required="true">
-                                    </x-back.input>
-                                </x-back.card> --}}
-
 
                                     <div class="form-group">
                                         <label><strong>Description :</strong></label>

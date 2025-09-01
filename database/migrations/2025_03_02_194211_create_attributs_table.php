@@ -19,6 +19,7 @@ class CreateAttributsTable extends Migration
           
             $table->decimal('single_price', 13, 3)->nullable();
             $table->decimal('double_price', 13, 3)->nullable();
+             $table->decimal('triple_price', 10, 2)->nullable();
         
 
             $table->unsignedBigInteger('room_id')->nullable();

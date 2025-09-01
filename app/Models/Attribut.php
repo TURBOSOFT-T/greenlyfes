@@ -10,7 +10,7 @@ class Attribut extends Model
     use HasFactory;
 
 
-    protected $fillable = ['room_id', 'surface', 'single_price', 'double_price'];
+    protected $fillable = ['room_id', 'surface', 'single_price', 'double_price','triple_price'];
 
     public function room()
     {

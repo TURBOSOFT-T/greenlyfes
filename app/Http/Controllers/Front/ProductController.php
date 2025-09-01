@@ -126,10 +126,7 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
-    {
-        //
-    }
+ 
 
     /**
      * Display the specified resource.
