@@ -130,30 +130,31 @@
                         });
                     </script>
                     <div class="col-xl-6 col-lg-6">
-                  
+
                         <div class="tp-shop-details__right-wrap">
                             <div class="tp-shop-details__tab-btn-box">
-                            <nav>
-                                <div class="nav nav-tab" id="nav-tab" role="tablist">
-                                    @if (!empty($room->images) && is_array(json_decode($room->images, true)))
-                                        @foreach (json_decode($room->images) as $key => $image)
-                                            <button class="nav-links thumbnail-btn"
-                                                data-image="{{ url('public/Image/' . $image) }}" type="button">
-                                                <img src="{{ url('public/Image/' . $image) }}"
-                                                    alt="Thumbnail {{ $loop->index + 1 }}" loading="lazy"  height="50" width="50">
-                                            </button>
-                                        @endforeach
-                                    @else
-                                        <p>No additional images available.</p>
-                                    @endif
-                                </div>
-                            </nav>
-                            </div>  
+                                <nav>
+                                    <div class="nav nav-tab" id="nav-tab" role="tablist">
+                                        @if (!empty($room->images) && is_array(json_decode($room->images, true)))
+                                            @foreach (json_decode($room->images) as $key => $image)
+                                                <button class="nav-links thumbnail-btn"
+                                                    data-image="{{ url('public/Image/' . $image) }}" type="button">
+                                                    <img src="{{ url('public/Image/' . $image) }}"
+                                                        alt="Thumbnail {{ $loop->index + 1 }}" loading="lazy"
+                                                        height="50" width="50">
+                                                </button>
+                                            @endforeach
+                                        @else
+                                            <p>No additional images available.</p>
+                                        @endif
+                                    </div>
+                                </nav>
+                            </div>
                             <h3 class="tp-section-title">{{ $room->name ?? ' ' }}</h3>
-                           
-                        
-                         
-                           
+
+
+
+
 
                             <table class="table table-bordered text-center">
                                 <thead>
@@ -166,34 +167,40 @@
                                 <tbody>
                                     @foreach ($room->attributes as $attribut)
                                         <tr>
-                                            <td rowspan="2">{{ $attribut->surface }}</td>
+                                            <td
+                                                rowspan="{{ 1 + ($attribut->double_price ? 1 : 0) + ($attribut->triple_price ? 1 : 0) }}">
+                                                {{ $attribut->surface }}
+                                            </td>
                                             <td>Une personne</td>
-                                            <td>{{ number_format($attribut->single_price, 0, ',', ' ') }} <x-devise></x-devise></td>
+                                            <td>{{ number_format($attribut->single_price, 0, ',', ' ') }}
+                                                <x-devise></x-devise></td>
                                         </tr>
-                                        @if($attribut->double_price)
-                                        <tr>
-                                            <td>Deuxième personne</td>
-                                            <td>{{ number_format($attribut->double_price, 0, ',', ' ') }} <x-devise></x-devise></td>
-                                        </tr>
+
+                                        @if ($attribut->double_price)
+                                            <tr>
+                                                <td>Deux personnes</td>
+                                                <td>{{ number_format($attribut->double_price, 0, ',', ' ') }}
+                                                    <x-devise></x-devise></td>
+                                            </tr>
                                         @endif
 
-                                         @if($attribut->triple_price)
-                                        <tr>
-                                            <td>Troixième personne</td>
-                                            <td>{{ number_format($attribut->triple_price, 0, ',', ' ') }} <x-devise></x-devise></td>
-                                        </tr>
+                                        @if ($attribut->triple_price)
+                                            <tr>
+                                                <td>Trois personnes</td>
+                                                <td>{{ number_format($attribut->triple_price, 0, ',', ' ') }}
+                                                    <x-devise></x-devise></td>
+                                            </tr>
                                         @endif
-                                       
                                     @endforeach
                                 </tbody>
                             </table>
-                            
-                            
-                           
 
 
-                          
-                      {{--       <div class="mb-3">
+
+
+
+
+                            {{--       <div class="mb-3">
                                 @foreach ($room->attributes as $attribut)
                                     <button type="button" class="btn btn-outline-success surface-btn"
                                         data-single="{{ $attribut->single_price }}" data-double="{{ $attribut->double_price }}"
@@ -211,47 +218,46 @@
                             
                             <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
                              --}}
-                          <script>
-                            $(document).ready(function() {
-    let selectedSurface = null;
-    let selectedType = null;
+                            <script>
+                                $(document).ready(function() {
+                                    let selectedSurface = null;
+                                    let selectedType = null;
 
-    $('.surface-btn').on('click', function() {
-        selectedSurface = $(this).data();
-        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
-        $(this).removeClass('btn-outline-success').addClass('btn-success');
-        showPrice();
-    });
+                                    $('.surface-btn').on('click', function() {
+                                        selectedSurface = $(this).data();
+                                        $('.surface-btn').removeClass('btn-success').addClass('btn-outline-success');
+                                        $(this).removeClass('btn-outline-success').addClass('btn-success');
+                                        showPrice();
+                                    });
 
-    $('.type-btn').on('click', function() {
-        selectedType = $(this).data('type');
-        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
-        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
-        showPrice();
-    });
+                                    $('.type-btn').on('click', function() {
+                                        selectedType = $(this).data('type');
+                                        $('.type-btn').removeClass('btn-primary').addClass('btn-outline-primary');
+                                        $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+                                        showPrice();
+                                    });
 
-    function showPrice() {
-        if (selectedSurface && selectedType) {
-            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
-            $('#showPrice').text(price);
-        }
-    }
+                                    function showPrice() {
+                                        if (selectedSurface && selectedType) {
+                                            let price = selectedType === 'single' ? selectedSurface.single : selectedSurface.double;
+                                            $('#showPrice').text(price);
+                                        }
+                                    }
 
-    $('.reserver-btn').on('click', function(e) {
-        if (!selectedSurface || !selectedType) {
-            e.preventDefault();
-            Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Veuillez sélectionner une surface et le type de chambre!',
-            });
-        }
-    });
-});
+                                    $('.reserver-btn').on('click', function(e) {
+                                        if (!selectedSurface || !selectedType) {
+                                            e.preventDefault();
+                                            Swal.fire({
+                                                icon: 'warning',
+                                                title: 'Oops...',
+                                                text: 'Veuillez sélectionner une surface et le type de chambre!',
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
 
-                          </script>
 
-                         
                             <div class="tp-shop-details__btn text-center mb-40">
                                 <a class="tp-btn-theme"
                                     href="{{ url('reservation', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"

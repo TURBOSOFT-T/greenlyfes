@@ -200,39 +200,27 @@
 
                                 <br>
 
-                                {{-- <div class="mb-3">
-                                    @foreach ($room->attributes as $attribut)
-                                        <button type="button" class="btn btn-outline-success surface-btn"
-                                            data-single="{{ $attribut->single_price }}"
-                                          
-                                           
-                                            data-surface="{{ $attribut->surface }}">
-                                            {{ $attribut->surface }}
-                                        </button>
-                                    @endforeach
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <button type="button" class="btn btn-outline-primary type-btn"
-                                        data-type="single">Une personne</button>
-                                      
-                                    <button type="button" class="btn btn-outline-primary type-btn"
-                                        data-type="double">Deuxième personne</button>
-                                </div>
- --}}
                                 <div class="mb-3">
                                     @foreach ($room->attributes as $attribut)
-                                        <button type="button" class="btn btn-outline-success surface-btn"
+                                        {{-- <button type="button" class="btn btn-outline-success surface-btn"
                                             data-single="{{ $attribut->single_price }}"
                                             data-double="{{ $attribut->double_price ?? 'null' }}"
                                             data-surface="{{ $attribut->surface }}">
                                             {{ $attribut->surface }}
-                                        </button>
+                                        </button> --}}
+
+                                        <button type="button" class="btn btn-outline-success surface-btn"
+    data-single="{{ $attribut->single_price }}"
+    data-double="{{ $attribut->double_price ?? 'null' }}"
+    data-triple="{{ $attribut->triple_price ?? 'null' }}"
+    data-surface="{{ $attribut->surface }}">
+    {{ $attribut->surface }}
+</button>
+
                                     @endforeach
                                 </div>
 
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
                                         Une personne
                                     </button>
@@ -240,25 +228,54 @@
                                         data-type="double">
                                         Deuxième personne
                                     </button>
-                                </div>
+                                </div> --}}
+                                <div class="mb-3">
+    <button type="button" class="btn btn-outline-primary type-btn" data-type="single">
+        Une personne
+    </button>
+    <button type="button" class="btn btn-outline-primary type-btn double-btn" data-type="double">
+        Deux personnes
+    </button>
+    <button type="button" class="btn btn-outline-primary type-btn triple-btn" data-type="triple">
+        Trois personnes
+    </button>
+</div>
+
                                 <script>
-                                    $('.surface-btn').each(function() {
-                                        let doublePrice = $(this).data('double');
+                                 $('.surface-btn').each(function() {
+    let doublePrice = $(this).data('double');
+    let triplePrice = $(this).data('triple');
 
-                                        if (doublePrice === 'null' || doublePrice === null) {
-                                            $('.double-btn').hide(); // Masquer le bouton Deuxième personne
-                                        }
-                                    });
+    if (doublePrice === 'null' || doublePrice === null) {
+        $('.double-btn').hide();
+    } else {
+        $('.double-btn').show();
+    }
 
-                                    $('.surface-btn').on('click', function() {
-                                        let doublePrice = $(this).data('double');
+    if (triplePrice === 'null' || triplePrice === null) {
+        $('.triple-btn').hide();
+    } else {
+        $('.triple-btn').show();
+    }
+});
 
-                                        if (doublePrice === 'null' || doublePrice === null) {
-                                            $('.double-btn').hide();
-                                        } else {
-                                            $('.double-btn').show(); // Afficher si disponible
-                                        }
-                                    });
+$('.surface-btn').on('click', function() {
+    let doublePrice = $(this).data('double');
+    let triplePrice = $(this).data('triple');
+
+    if (doublePrice === 'null' || doublePrice === null) {
+        $('.double-btn').hide();
+    } else {
+        $('.double-btn').show();
+    }
+
+    if (triplePrice === 'null' || triplePrice === null) {
+        $('.triple-btn').hide();
+    } else {
+        $('.triple-btn').show();
+    }
+});
+
                                 </script>
                                 <h4>Prix : <span id="showPrice">Sélectionnez une surface</span> <x-devise></x-devise></h4>
 
@@ -296,10 +313,7 @@
                                         <input type="radio" name="payment_method" value="bank_transfer" checked>
                                         Virement bancaire
                                     </label>
-                                   {{--  <label>
-                                        <input type="radio" name="payment_method" value="stripe">
-                                        Paiement par carte (Stripe)
-                                    </label> --}}
+                                  
                                 </div>
                             </div>
 
@@ -368,7 +382,7 @@
                     calculateTotal();
                 });
 
-                function calculateTotal() {
+               /*  function calculateTotal() {
                     let nbMois = parseInt($('#nb_mois').val());
 
                     if (selectedSurface && selectedType && nbMois > 0) {
@@ -382,7 +396,28 @@
                         $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
                         $('#totalInput').val(0);
                     }
-                }
+                } */
+
+                function calculateTotal() {
+    let nbMois = parseInt($('#nb_mois').val());
+
+    if (selectedSurface && selectedType && nbMois > 0) {
+        let price = 0;
+        if (selectedType === 'single') price = selectedSurface.single;
+        if (selectedType === 'double') price = selectedSurface.double;
+        if (selectedType === 'triple') price = selectedSurface.triple;
+
+        $('#showPrice').text(price);
+        let total = price * nbMois;
+
+        $('#prix-total').html(`Total : ${total.toLocaleString()} <x-devise></x-devise>`);
+        $('#totalInput').val(total);
+    } else {
+        $('#prix-total').html(`Total : 0 <x-devise></x-devise>`);
+        $('#totalInput').val(0);
+    }
+}
+
 
                 $('.reserver-btn').on('click', function(e) {
                     if (!selectedSurface || !selectedType || $('#nb_mois').val() === '' || parseInt($(
@@ -488,19 +523,7 @@
                     document.getElementById('reservation-form').submit();
                 }
 
-                /*   Swal.fire({
-                            title: 'Confirmation',
-                            text: 'Voulez-vous confirmer votre réservation ?',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Oui, confirmer',
-                            cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                form.submit(); 
-                            }
-                        });
-         */
+               
 
             }
         </script>
