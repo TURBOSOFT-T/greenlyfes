@@ -60,8 +60,11 @@
         <div>
             <p>
 <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
-    <img class="card-img-top product-image" src="{{ url('public/Image/' . $produit->image) }}">
-
+    @if($produit->image)
+        <div class="mt-2">
+            <img src="{{ asset('public/Image/' . $produit->image) }}" alt="Image" width="120">
+        </div>
+    @endif
 </div>
             </p>
             <div class="col-xs-12 col-sm-12 col-md-12">
