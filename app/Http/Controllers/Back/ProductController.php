@@ -100,12 +100,7 @@ class ProductController extends Controller
     }
 
 
-    public function show1(string $id): Response
-    {
-        return response()->view('back.products.show', [
-            'produit' => Product::findOrFail($id),
-        ]);
-    }
+
 
     public function show(string $id)
     {
@@ -125,8 +120,60 @@ class ProductController extends Controller
     }
 
 
+public function update(ProductUpdateRequest $request, $id)
+{
+    $user = Auth::user();
+    $product = Product::findOrFail($id);
 
-    public function update(ProductUpdateRequest $request, $id)
+    // ✅ Upload image principale
+    if ($request->hasFile('image')) {
+        // supprimer l'ancienne image si elle existe
+        if ($product->image && file_exists(public_path('public/Image/' . $product->image))) {
+            unlink(public_path('public/Image/' . $product->image));
+        }
+
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $file->move(public_path('public/Image/'), $filename);
+
+        $product->image = $filename;
+    }
+
+    // ✅ Upload plusieurs images
+    if ($request->hasFile('images')) {
+        // supprimer les anciennes images
+        $oldImages = json_decode($product->images);
+        if ($oldImages) {
+            foreach ($oldImages as $oldImage) {
+                $oldImagePath = public_path('public/Image/' . $oldImage);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+        }
+
+        $newImages = [];
+        foreach ($request->file('images') as $file) {
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '_' . uniqid() . '.' . $extension;
+            $file->move(public_path('public/Image/'), $filename);
+            $newImages[] = $filename;
+        }
+
+        $product->images = json_encode($newImages);
+    }
+
+    // ✅ Mettre à jour les autres champs
+    $product->fill($request->except(['image', 'images']));
+
+    // ✅ Sauvegarder avec l’utilisateur
+    $user->products()->save($product);
+
+    return redirect()->route('products.index')->with('success', 'Produit mis à jour avec succès!');
+}
+
+    public function update1(ProductUpdateRequest $request, $id)
     {
 
 
@@ -140,21 +187,7 @@ class ProductController extends Controller
         $img = Product::find($id);
       
 
-     
-  /*       if ($request->hasFile('image')) {
-        
-            if ($img->image) {
-                unlink(public_path('public/Image/'. $img->image));
-            }
 
-
-
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('public/Image/', $filename);
-            $input['image'] = $filename;
-        } */
 
            if ($request->hasFile('image')) {
 
