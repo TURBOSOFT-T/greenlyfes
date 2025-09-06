@@ -477,7 +477,7 @@
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="domaine" class="form-label">A propos de nous(Séjours Longs et Immersion)</label>
-                <textarea id="domaine" rows="4" cols="50" name="domaine" class="form-control"
+                <textarea id="domaine" rows="4" cols="50" name="domaine" class=" ckeditor form-control"
                     placeholder="Ajouter le description de votre domaine " >{{ old('domaine', $config->domaine) }}</textarea>
                 @error('domaine')
                     <p class="text-danger">{{ $message }}</p>
@@ -487,7 +487,7 @@
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="equipe" class="form-label">A propos de nous(Alimentation Saine et Locale)</label>
-                <textarea id="equipe" rows="4" cols="50" name="equipe" class=" form-control"
+                <textarea id="equipe" rows="4" cols="50" name="equipe" class="ckeditor form-control"
                     placeholder="Ajouter le description de votre équipe" >{{ old('equipe', $config->equipe) }}</textarea>
                 @error('equipe')
                     <p class="text-danger">{{ $message }}</p>

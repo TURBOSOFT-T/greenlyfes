@@ -667,9 +667,10 @@
 
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Séjours Longs et Immersion</p>
-                                        <p>
-                                            {{ $config->domaine ?? ' ' }}
-                                        </p>
+                                     
+                                           
+                                             {!! nl2br(strip_tags($config->domaine ?? ' ')) !!}
+                                        
                                 </div>
 
                             </div>
@@ -681,9 +682,12 @@
                                 </div>
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Alimentation Saine et Locale</h5>
-                                    <p>
-                                        {{ $config->equipe ?? ' ' }}
-                                    </p>
+                                    
+                                     
+
+                                          {!! nl2br(strip_tags($config->equipe ?? ' ')) !!}
+                                        
+                                    
                                 </div>
 
 
