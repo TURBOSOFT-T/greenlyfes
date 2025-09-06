@@ -648,14 +648,17 @@
                                 <span class="tp-section-subtitle">
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Séjours et Services Proposés') }}
                                 </span>
-                                <h6>
+                                {{-- <h6>
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Transformez vos défis en opportunités avec GREENLYFE') }}
-                                </h6>
+                                </h6> --}}
+                                <p>
+                                    FINI LES IMPÔTS DE VOTRE PAYS D'ORIGINE AVEC NOTRE CARTE DE SÉJOUR D'UN AN RENOUVELEE EN FONCTION DU TEMPS DE VOTRE RÉSERVATION
+                                </p>
                             </div>
                             <div class="tp-choose-text" style="text-align: justify">
-                                <p> Greenlyfe n’est pas seulement un lieu de villégiature ; c’est un projet de vie, une communauté, et la promesse d’un avenir où bien-être, luxe, et durabilité ne font qu’un. C'est le temps de prendre son temps et de vivre mieux, entouré de tous les âges.
+                                {{-- <p> Greenlyfe n’est pas seulement un lieu de villégiature ; c’est un projet de vie, une communauté, et la promesse d’un avenir où bien-être, luxe, et durabilité ne font qu’un. C'est le temps de prendre son temps et de vivre mieux, entouré de tous les âges.
 Venez écrire le prochain chapitre de votre vie avec nous. 
-</p>
+</p> --}}
                             </div>
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
