@@ -47,7 +47,7 @@
                                     </x-back.input>
 
                                     <x-back.card type='primary' title='Description'>
-                                        <x-back.input name='short_description' {{-- id="description-editor" --}}
+                                        <x-back.input name='short_description' 
                                             :value="isset($product) ? $product->short_description : ''" input='textarea' rows=1
                                             :required="true">
                                         </x-back.input>
@@ -76,11 +76,7 @@
 
                             <div class="col-md-4">
 
-                                {{--  <x-back.card type='primary' :outline="false" title='Publication'>
-                                <x-back.input name='active' :value="isset($post) ? $post->active : false"
-                                    input='checkbox' label="Active">
-                                </x-back.input>
-                            </x-back.card> --}}
+                            
 
                                 <x-back.card type='warning' :outline="false" title='Categories' :required="true">
                                     <div class="col-xs-12 col-sm-12 col-md-12">

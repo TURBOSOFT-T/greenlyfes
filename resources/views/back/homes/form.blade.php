@@ -75,9 +75,6 @@
                                 </div>
 
                               
-
-                              {{--  <x-back.input rows="4" cols="50" title='Body' name='body' :value="isset($home) ? $home->body : ''"  input='text' :required="true">
-                               </x-back.input> --}}
                                <x-back.card type='primary' title='Description'>
                                 <x-back.input name='body'
                                     :value="isset($home) ? $home->body : ''" input='textarea' rows=5
@@ -140,22 +137,4 @@
 @endsection
 
 
-{{--
-@section('js')
-<script>
-    $(document).ready(() => {
-      $('form').on('change', '#image', e => {
-        $(e.currentTarget).next('.custom-file-label').text(e.target.files[0].name);
-      });
-      $('#changeImage').click(e => {
-        $(e.currentTarget).parent().hide();
-        $('#wrapper').html(`
-          <div id="image" class="custom-file">
-            <input type="file" id="image" name="image" class="custom-file-input" required>
-            <label class="custom-file-label" for="image"></label>
-          </div>`
-        );
-      });
-    });
-</script>
-@endsection --}}
+

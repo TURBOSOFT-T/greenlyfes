@@ -94,7 +94,7 @@
                         <div class="tp-choose-left">
                             <div class="tp-choose-title-box mb-20">
                                 <span class="tp-section-subtitle">
-                                    {{ \App\Helpers\TranslationHelper::TranslateText('Porquoi nous choisir') }} ?
+                                    {{ \App\Helpers\TranslationHelper::TranslateText('Greenlyfes Cap Bon : L\'Art de Vivre, réinventé en Tunisie') }} ?
                                 </span>
                                 <h3>
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Infrastructure et Aménagement') }}
@@ -172,9 +172,9 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Votre séjour au VILLAGE ÉCOLOGIQUE BIO OLIVIERA D'HAMMAMET TUNISIE.
+                            <span class="tp-section-subtitle">Un Village Écologique au Cœur d'un Oasis en TUNISIE.
                                 
-                                Pour vivre une greenlyfe qui va changer votre santé et vos humeurs voir votre âme. 🏖️🔑</span>
+                                Devenez pionnier de l'art de vivre Greenlyfes au Cap Bon !. 🏖️🔑</span>
 
 
                         </div>
@@ -1057,7 +1057,9 @@
 
 
                             <div class="tp-contact-3-text mb-25" style="text-align: justify">
-                                <p> {{ $config->des_contact ?? ' ' }}</p>
+                               {{--  <p> {{ $config->des_contact ?? ' ' }}</p> --}}
+
+                                 {!! nl2br(strip_tags($config->des_contact)) !!}
                             </div>
 
                             <div class="tp-contact-2-box p-relative mb-25">

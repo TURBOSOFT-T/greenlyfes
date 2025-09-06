@@ -77,33 +77,10 @@
                         :options="$specialites">
                     </x-back.input>
                 </x-back.card> 
-               {{--  <x-back.card type='warning' :outline="false" title='Spécialités' :required="true">
-
-                    @foreach ($specialites as $id => $title)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="specialites[]"
-                                id="specialite_{{ $id }}" value="{{ $title }}"
-                                @if (isset($hopital) && $hopital->specialites->pluck('title')->contains($title)) checked @endif>
-                            <label class="form-check-label" for="specialite_{{ $id }}">
-                                {{ $title }}
-                            </label>
-                        </div>
-                    @endforeach
-
-                </x-back.card>
- --}}
+              
 
 
-                {{--     <x-back.card
-                    type='danger'
-                    :outline="false"
-                    title='Tags'>
-                    <x-back.input
-                        name='tags'
-                        :value="isset($hopital) ? implode(',', $hopital->tags->pluck('tag')->toArray()) : ''"
-                        input='text'>
-                    </x-back.input>
-                </x-back.card> --}}
+              
 
                 <x-back.card type='success' :outline="false" title='Slug'>
                     <x-back.input name='slug' :value="isset($hopital) ? $hopital->slug : ''" input='text' :required="true">
@@ -118,17 +95,6 @@
                         @endisset
                     </div>
 
-                    {{--   <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white" class="btn btn-outline-secondary" type="button">Button</a>
-                      </div>
-                      <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="image" value="{{ old('image', isset($hopital) ? getImage($hopital) : '') }}" required>
-                      @if ($errors->has('image'))
-                          <div class="invalid-feedback">
-                              {{ $errors->first('image') }}
-                          </div>
-                      @endif
-                    </div> --}}
 
                     <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
                         <label for="description">Image</label>

@@ -38,9 +38,7 @@
                 <td>{{ $produit->price }}</td>
                 <td>
 
-                    {{-- <button class="btn btn-success btn-sm add_surface"    data-bs-target="#exampleModal" data-bs-toggle="modal">
-                        <i class="fas fa-plus"></i> Ajouter Surface
-                    </button> --}}
+                
 
                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#addSurfaceModal{{ $produit->id }}">
                         <i class="fas fa-plus"></i> Ajouter Surface

@@ -497,7 +497,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="des_contact" class="form-label">Description page contact</label>
-                <textarea id="des_contact" rows="4" cols="50" name="des_contact" class=" form-control"
+                <textarea id="des_contact" rows="4" cols="50" name="des_contact" class=" ckeditor form-control"
                     placeholder="Ajouter le description de la page contact" >{{-- {!! old('des_contact', $config->des_contact) !!} --}}
                {!! nl2br(strip_tags($config->des_contact)) !!}
 

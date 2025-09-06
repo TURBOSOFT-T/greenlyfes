@@ -159,24 +159,10 @@ class panier_client extends Controller
     }
 
 
-
-
-
-
-
-
-
-
     public function contenu_mon_panier()
     {
         return view('front.cart');
     }
-
-
-
-
-
-
 
 
     public function cart()

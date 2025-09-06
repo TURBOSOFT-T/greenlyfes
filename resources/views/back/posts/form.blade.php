@@ -20,8 +20,7 @@
         @endif
 
         @csrf
-        {{-- <label for="active">Active:</label>
-        <input type="checkbox" name="active" id="active"> --}}
+        
         <input type="hidden" name="post_id" value="{{ $post->id ??  ' '}}" />
         <div class="row">
             <div class="col-md-8">
@@ -57,24 +56,10 @@
                     </x-back.input>
                 </x-back.card>
 
-               {{--  <x-back.card
-                    type='primary'
-                    title='Body'>
-                    <x-back.input
-                        name='body'
-                        :value="isset($post) ? $post->body : ''"
-                        input='textarea'
-                        rows=10
-                        :required="true">
-                    </x-back.input>
-                </x-back.card> --}}
-
                 
                 <div class="form-group">
                     <label><strong>Description :</strong></label>
-                   {{--  <textarea class="ckeditor form-control"   name="body" :value="isset($post) ? $post->body : ''" 
-                         input='textarea'
-                        ></textarea> --}}
+               
                          <textarea class="ckeditor form-control" name="body">
         {{ old('body', isset($post) ? $post->body : '') }}
     </textarea>
@@ -144,17 +129,7 @@
                         @endisset
                     </div>
 
-                  {{--   <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white" class="btn btn-outline-secondary" type="button">Button</a>
-                      </div>
-                      <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="image" value="{{ old('image', isset($post) ? getImage($post) : '') }}" required>
-                      @if ($errors->has('image'))
-                          <div class="invalid-feedback">
-                              {{ $errors->first('image') }}
-                          </div>
-                      @endif
-                    </div> --}}
+              
 
                     <div class="form-group{{ $errors->has('image') ? ' is-invalid' : '' }}">
                         <label for="description">Image</label>

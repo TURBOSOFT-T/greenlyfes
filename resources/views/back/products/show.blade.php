@@ -25,21 +25,10 @@
     <p><strong>Description: </strong> {!! $produit->description !!}</p>
 
     <br>
-    <img class="w-50" {{-- src="{{ url('public/image/Products/' . $produit->image) }}" --}} src="{{ url('public/Image/' . $produit->image) }}">
-    {{-- <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" />
-                        <img class="card-img-top product-image" src="{{ url('public/Image/Products/' . $produit->image) }}">
-
-                    </div> --}}
+    <img class="w-50"  src="{{ url('public/Image/' . $produit->image) }}">
+   
     <br>
-    {{-- <div class="col-md-6">
 
-        <p>Les Autres images :</p>
-
-        @foreach (json_decode($produit->images) as $key => $image)
-            <img class="card-img-top mb-3 product-image" src="{{ url('public/Image/' . $image) }}"
-                style="width: 100px; height: 100px;">
-        @endforeach  
-    </div> --}}
 
     <div class="col-md-6">
         <p>Les Autres images :</p>
