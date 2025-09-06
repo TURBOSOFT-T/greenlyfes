@@ -666,9 +666,7 @@ Venez écrire le prochain chapitre de votre vie avec nous.
 
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Séjours Longs et Immersion</p>
-                                        <p>
-                                            VOTRE NOUVELLE VIE À L'ESSAI : LE BONHEUR EST À PORTÉE DE MAIN
-                                        </p>
+                                       
                                      
                                            
                                              {!! nl2br(strip_tags($config->domaine ?? ' ')) !!}
@@ -730,7 +728,7 @@ Venez écrire le prochain chapitre de votre vie avec nous.
                                             <h4 class="tp-funfact-2-number"><i class="purecounter"
                                                     data-purecounter-duration="1"
                                                     data-purecounter-end="{{ $config->projet ?? ' ' }}">0</i>+</h4>
-                                            <span>Project réalisés</span>
+                                            <span>Projects réalisés</span>
                                         </div>
                                         <div class="tp-funfact-2-item text-center tp-funfact-style-border mb-30">
                                             <div class="tp-funfact-2-icon">
