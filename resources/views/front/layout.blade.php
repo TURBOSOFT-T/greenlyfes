@@ -657,6 +657,15 @@
         renouvelée en fonction de la durée de votre réservation.
     </strong>
 </p>
+ <p style="font-weight: bold; text-transform: uppercase; line-height: 1.8; font-size: 11px;">
+    FINI LE TEMPS DES BUDGETS MOROSES <br>
+    FINI LES TAXES FONCIÈRES OU D'HABITATION <br>
+    FINI LES FACTURES À RALLONGE D'ÉLECTRICITÉ, GAZ OU FUEL POUR CHAUFFAGE <br>
+    FINI LES PRESSIONS ÉCONOMIQUES, SOCIALES OU POLITIQUES <br>
+    FINI L'INSÉCURITÉ <br>
+    FINI L'INCIVILITÉ
+</p>
+
 
 
                             </div>
