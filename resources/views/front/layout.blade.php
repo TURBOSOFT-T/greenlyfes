@@ -653,10 +653,9 @@
                                 </h6>
                             </div>
                             <div class="tp-choose-text" style="text-align: justify">
-                                <p> Parce que nous nous engageons à transformer vos
-                                    défis en opportunités grâce à notre mission clairement définie, notre vision ambitieuse
-                                    et nos
-                                    archives impressionnantes.</p>
+                                <p> Greenlyfe n’est pas seulement un lieu de villégiature ; c’est un projet de vie, une communauté, et la promesse d’un avenir où bien-être, luxe, et durabilité ne font qu’un. C'est le temps de prendre son temps et de vivre mieux, entouré de tous les âges.
+Venez écrire le prochain chapitre de votre vie avec nous. 
+</p>
                             </div>
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
@@ -667,6 +666,9 @@
 
                                 <div class="tp-choose-content" style="text-align: justify">
                                     <h5 class="tp-choose-title">Séjours Longs et Immersion</p>
+                                        <p>
+                                            VOTRE NOUVELLE VIE À L'ESSAI : LE BONHEUR EST À PORTÉE DE MAIN
+                                        </p>
                                      
                                            
                                              {!! nl2br(strip_tags($config->domaine ?? ' ')) !!}
