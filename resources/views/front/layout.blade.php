@@ -651,12 +651,13 @@
                                 {{-- <h6>
                                     {{ \App\Helpers\TranslationHelper::TranslateText('Transformez vos défis en opportunités avec GREENLYFE') }}
                                 </h6> --}}
-                              <p>
-    <strong>
+                             <p>
+    <strong style="text-transform: uppercase;">
         Finis les impôts de votre pays d'origine grâce à notre carte de séjour d’un an, 
         renouvelée en fonction de la durée de votre réservation.
     </strong>
 </p>
+
 
                             </div>
                             <div class="tp-choose-text" style="text-align: justify">
