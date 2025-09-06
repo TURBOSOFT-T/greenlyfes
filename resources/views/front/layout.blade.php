@@ -603,7 +603,7 @@
                             </h6> --}}
                             <p>
                                 <strong style="text-transform: uppercase;">
-                                 Les Finis ensemble les impôts de votre pays d'origine grâce à notre carte de séjour d’un an,
+                                 Les Fini ensemble les impôts de votre pays d'origine grâce à notre carte de séjour d’un an,
                                     renouvelée en fonction de la durée de votre réservation.
                                 </strong>
                             </p>
@@ -612,8 +612,8 @@
                                 FINI LES TAXES FONCIÈRES OU D'HABITATION <br>
                                 FINI LES FACTURES À RALLONGE D'ÉLECTRICITÉ, GAZ OU FUEL POUR CHAUFFAGE <br>
                                 FINI LES PRESSIONS ÉCONOMIQUES, SOCIALES OU POLITIQUES <br>
-                                FINI L'INSÉCURITÉ <br>
-                                FINI L'INCIVILITÉ
+                                FINIE L'INSÉCURITÉ <br>
+                                FINIE L'INCIVILITÉ
                             </p>
 
 
