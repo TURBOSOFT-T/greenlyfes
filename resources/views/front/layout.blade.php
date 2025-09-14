@@ -603,7 +603,7 @@
                             </h6> --}}
                             <p>
                                 <strong style="text-transform: uppercase;">
-                                  Fini ensemble les impôts de votre pays d'origine grâce à notre carte de séjour d’un an,
+                                  Fini  les impôts de votre pays d'origine grâce à notre carte de séjour d’un an,
                                     renouvelée en fonction de la durée de votre réservation.
                                 </strong>
                             </p>
