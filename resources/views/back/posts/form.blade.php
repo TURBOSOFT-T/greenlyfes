@@ -121,8 +121,8 @@
                 <x-back.card
                     type='primary'
                     :outline="false"
-                    title='Image'>
-
+                    title='Image'   accept="image/*">
+ 
                     <div id="holder" class="text-center" style="margin-bottom:15px;">
                         @isset($post)
                             <img style="width:90%;" src="{{ getImage($post, true) }}" alt="">
