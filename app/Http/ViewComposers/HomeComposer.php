@@ -24,7 +24,7 @@ class HomeComposer
             'homes' => Home::all(),
             'services'=>Service::all(),
             'project'=>Project::all(),
-            'posts'=>Post::select('*')->take('8')->get(),
+            'posts'=>Post::select('*')->latest()->take('8')->get(),
             'testimonials' => Testimonial::where('active', true)->latest()->take(50)->get(),
             'rooms' => Room::select('*')->latest()->paginate(9),
             'galleries' => Gallerie::select('*')->latest()->get(),
