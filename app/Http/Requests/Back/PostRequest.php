@@ -32,7 +32,7 @@ class PostRequest extends FormRequest
             'body' => 'nullable|max:65000',
             'slug' => ['required', 'max:255', new Slug, 'unique:posts,slug' . $id],
             'excerpt' => 'required|max:500',
-            'meta_description' => 'required|max:160',
+            'meta_description' => 'required|max:1600',
             'meta_keywords' => 'required|regex:' . $regex,
             'seo_title' => 'required|max:60',
           //  'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif',
