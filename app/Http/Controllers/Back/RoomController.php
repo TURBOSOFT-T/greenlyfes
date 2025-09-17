@@ -274,6 +274,7 @@ public function storeAttribut(Request $request)
     $input->price = $request->price;
  
     $input->description = $request->description;
+      $input->meta_description = $request->meta_description;
   
         $user->rooms()->save($input);
 

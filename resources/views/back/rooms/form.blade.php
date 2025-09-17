@@ -197,7 +197,7 @@
 
 
                                 <x-back.card type='info' :outline="false" title='SEO'>
-                                    <x-back.input title='META Description' name='meta_description' :value="isset($produc) ? $room->meta_description : ''"
+                                    <x-back.input title='META Description inclu les prix' name='meta_description' :value="isset($produc) ? $room->meta_description : ''"
                                         input='textarea' :required="true">
                                     </x-back.input>
                                     <x-back.input title='META Keywords' name='meta_keywords' :value="isset($room) ? $room->meta_keywords : ''"
