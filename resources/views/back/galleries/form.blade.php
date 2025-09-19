@@ -75,11 +75,18 @@
                                 </div> --}}
 
                               
-
+ <div class="col-xs-12 col-sm-12 col-md-12">
+                <label for="domaine" class="form-label">Description</label>
+                <textarea id="domaine" rows="4" cols="50" name="description" class=" ckeditor form-control"
+                    placeholder="Ajouter la description  " ></textarea>
+                @error('description')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
                                <x-back.card type='primary' title='Description'>
                                <x-back.input name='description'
                                     :value="isset($gallery) ? $gallery->description : ''" input='textarea' rows=5
-                                    :required="true"  >
+                                    :required="true">
                                 </x-back.input> 
 
                            
@@ -151,18 +158,6 @@
 
 @section('js')
 
-
-<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
-
-<script>
-    // cibler ton textarea par son id ou name
-    ClassicEditor
-        .create(document.querySelector('[name="description"]'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
 <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -199,6 +194,16 @@
           </div>`
         );
       });
+    });
+</script>
+
+
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (document.querySelector('.ckeditor')) {
+            CKEDITOR.replaceAll('ckeditor');
+        }
     });
 </script>
 

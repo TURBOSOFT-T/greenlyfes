@@ -881,7 +881,7 @@
                             <img id="modal-image" src="" alt="" class="img-fluid mb-4" />
                         </div>
                         <h4 id="modal-title"></h4>
-                        <p id="modal-description"></p>
+                     <p id="modal-description"></p> 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
