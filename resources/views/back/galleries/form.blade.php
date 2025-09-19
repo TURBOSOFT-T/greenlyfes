@@ -75,21 +75,17 @@
                                 </div> --}}
 
                               
- <div class="col-xs-12 col-sm-12 col-md-12">
-                <label for="domaine" class="form-label">Description</label>
-                <textarea id="domaine" rows="4" cols="50" name="description" class=" ckeditor form-control"
-                    placeholder="Ajouter la description  " ></textarea>
-                @error('description')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
-            </div>
+
                                <x-back.card type='primary' title='Description'>
                                <x-back.input name='description'
                                     :value="isset($gallery) ? $gallery->description : ''" input='textarea' rows=5
                                     :required="true">
                                 </x-back.input> 
 
-                           
+                            {{--     <div class="form-group">
+                                    <label><strong>Description :</strong></label>
+                                    <textarea class="ckeditor form-control" name="description"></textarea>
+                                </div> --}}
                             </x-back.card>
                             </x-back.card>
 
@@ -194,16 +190,6 @@
           </div>`
         );
       });
-    });
-</script>
-
-
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (document.querySelector('.ckeditor')) {
-            CKEDITOR.replaceAll('ckeditor');
-        }
     });
 </script>
 
