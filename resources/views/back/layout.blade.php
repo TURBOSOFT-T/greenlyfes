@@ -165,18 +165,18 @@ $pages = DB::table('pages')->get();
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" ></script>
-<!-- AdminLTE App -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js"></script>
 @yield('js')
 
 <style>
   .main-sidebar {
     position: fixed;
-    height: 100vh; /* Assure que la sidebar couvre toute la hauteur de l'écran */
-    overflow-y: auto; /* Permet de scroller si nécessaire */
+    height: 100vh; 
+    overflow-y: auto; 
 }
 .content-wrapper {
-    margin-left: 250px; /* Ajuste l'espace pour que le contenu ne chevauche pas la sidebar */
+    margin-left: 250px; 
 }
 
 
@@ -187,9 +187,9 @@ $pages = DB::table('pages')->get();
             top: 0;
             left: 0;
             width: 250px;
-            height: 100vh; /* Couvre toute la hauteur de l'écran */
-            background-color: #3b3232; /* Couleur personnalisée */
-            overflow-y: auto; /* Ajoute un défilement si le contenu déborde */
+            height: 100vh; 
+            background-color: #3b3232; 
+            overflow-y: auto; 
         }
 
        

@@ -256,62 +256,6 @@
         </div>
         </div>
 
-        <!-- service-area-start -->
-        {{-- <div class="tp-service-4-area fix p-relative theme-bg-2 pt-145 pb-150">
-            <div class="tp-service-4-shape tp-float-bob-y d-none d-lg-block">
-                <img src="assets/img/shape/service/shape-4-1.png" alt="">
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="tp-service-4-title-box text-center mb-55">
-                            <span class="tp-section-subtitle">
-                                {{ \App\Helpers\TranslationHelper::TranslateText('Les types  bungalows  à la une, pour un séjour inoubliable dès votre première nuit !" 🌴✨') }} <br>
-    {{ \App\Helpers\TranslationHelper::TranslateText('L\'hébergement à la
-                                une pratique exceptionnelle, pour vous rendre compte de nos services et de nos avantages exclusifs!') }}
-    </span>
-
-    </div>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="tp-service-4-wrap">
-                <div class="swiper-container tp-service-4-active">
-                    <div class="swiper-wrapper">
-                        @if ($logements->isEmpty())
-                        <div class="alert alert-info">
-                            <p>Aucun logement n'est disponible pour le moment.</p>
-                        </div>
-                        @else
-                        @foreach ($logements as $logement)
-                        <div class="swiper-slide">
-                            <div class="tp-service-4-item text-center">
-                                <div class="tp-service-4-thumb  image-container">
-                                    <img src="{{ url('public/Image/' . $logement->image) }}" width="200" height="200" alt="">
-                                </div>
-                                <div class="tp-service-4-content">
-
-                                    <h4 class="tp-service-4-title"><a class="text-anim-3" href="{{ route('details-logement', ['id' => $logement->id, 'slug' => Str::slug(Str::limit($logement->name, 10))]) }}">{{ $logement->name ?? '' }}</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        @endif
-
-
-                    </div>
-                    <div class="tp-slider-dots text-center mt-40"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div> --}}
-        <!-- service-area-end -->
-
         <!-- project area start -->
         <div class="tp-project-3-area fix pt-150 pb-150">
             <div class="container">
@@ -320,9 +264,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-12">
                                 <div class="tp-service-4-title-box text-center mb-55">
-                                    {{-- <span class="tp-section-subtitle">
-                                        {{ \App\Helpers\TranslationHelper::TranslateText(' "Un séjour de rêve en Tunisie commence par une chambre d’exception !" 🏝️🏨') }}</span>
-                                </span> --}}
+                               
                                     <style>
                                         .blinking-text {
                                             animation: blink 3s infinite;
@@ -383,11 +325,7 @@
                                                 </a>
                                             </div>
                                             <div class="col">
-                                             {{--    <a class="tp-btn-theme"
-                                                    href="{{ url('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
-                                                    class="btn btn-primary mt-3">
-                                                    Reserver
-                                                </a> --}}
+                                          
                                                 <a class="tp-btn-theme"
                                     href="{{ url('reservation', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}"
                                    ><span>Reserver</span></a>
@@ -597,7 +535,7 @@
                                             {{ $gallery->titre ?? ' ' }}</h1>
                                         <div class="tp-video-play-icon mb-65">
                                             <a class="popup-video"
-                                                href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}">
+                                                href="{{ Storage::url($gallery->video ?? '') }}">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -608,7 +546,7 @@
                                         </div>
                                         <div class="tp-video-button">
                                             <a class="tp-btn-border-white popup-video " style="font-size: 14px;"
-                                                href="{{ Storage::url($gallery->video ?? '') }}{{-- {{ asset('storage/' . $gallery->video) }} --}}"><span>Voir
+                                                href="{{ Storage::url($gallery->video ?? '') }}"><span>Voir
                                                     la Vidéo</span></a>
                                         </div>
                                     </div>
@@ -629,9 +567,9 @@
 
         <script>
             var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 4, // Nombre de vidéos visibles en même temps
-                spaceBetween: 1, // Espace entre les vidéos
-                loop: true, // Défilement en boucle
+                slidesPerView: 4, 
+                spaceBetween: 1, 
+                loop: true, 
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
@@ -642,14 +580,12 @@
                 },
                 autoplay: {
                     delay: 3000,
-                    disableOnInteraction: false, // Continue même après interaction
+                    disableOnInteraction: false, 
                 },
             });
         </script>
 
 
-
-        <!-- video area end -->
 
         <!-- choose area start -->
         <div class="tp-choose-area tp-choose-style-2 fix p-relative pt-150 pb-110">
@@ -684,9 +620,7 @@
 
                             </div>
                             <div class="tp-choose-text" style="text-align: justify">
-                                {{-- <p> Greenlyfe n’est pas seulement un lieu de villégiature ; c’est un projet de vie, une communauté, et la promesse d’un avenir où bien-être, luxe, et durabilité ne font qu’un. C'est le temps de prendre son temps et de vivre mieux, entouré de tous les âges.
-Venez écrire le prochain chapitre de votre vie avec nous. 
-</p> --}}
+                               
                             </div>
                             <div class="tp-choose-box d-flex align-items-start">
                                 <div class="tp-choose-icon">
@@ -855,93 +789,6 @@ Venez écrire le prochain chapitre de votre vie avec nous.
             </div>
         </div>
         <!-- choose area end -->
-
-
-        <!-- service area start -->{{--
-        <div class="tp-service-area tp-service-bg pt-105 z-index-2 fix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12">
-                        <div class="tp-service-title-box mb-55">
-                            <span class="tp-section-subtitle"> Faites des aujourd'hui l'acquisition d'un de nos bungalows.
-                                Soyez les premiers à bénéficier de cette offre exceptionnelle place limitée 🏖️🔑</span>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="row gx-30">
-                    @php
-
-                        $prods = DB::table('products')->latest()->take(9)->get();
-
-                    @endphp
-                    @foreach ($prods as $key => $produit)
-                        <div class="col-xl-4 col-lg-4 col-md-6 mb-30 wow tpfadeUp" data-wow-duration=".9s"
-                            data-wow-delay=".3s">
-                            <div class="tp-service-item text-center">
-                                <div class="tp-service-thumb-box p-relative">
-                                    <div class="tp-service-thumb">
-                                        <img src="{{ url('public/Image/' . $produit->image) }}" width="200 "
-    height="200 " border-radius="8px" class="rounded shadow" alt="">
-    </div>
-    <div class="tp-service-icon">
-
-    </div>
-    </div>
-    <div class="tp-service-content">
-        <h4 class="tp-service-title"><a class="text-anim-2" href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">{{ $produit->name }}</a>
-        </h4>
-        <div>
-            <h3>{{ $produit->short_description ?? ' ' }} </h3>
-
-        </div>
-
-        <div class="tp-service-link">
-            <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->name, 10))]) }}">
-                Voir Détails
-                <span>
-                    <svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1543 4.99974L9.5111 9.644L8.7559 8.88987L12.1127 5.53307H0.0668316V4.4664H12.1127L8.7559 1.11067L9.5111 0.355469L14.1543 4.99974Z" fill="currentcolor" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </div>
-    </div>
-    </div>
-    @endforeach
-
-    <div class="text-center mt-30">
-        <a class="tp-btn-theme" href="{{ url('produits') }}" class="tp-btn">Voir tout</a>
-    </div>
-    <style>
-        .tp-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #0bfa3f;
-            color: white;
-            text-transform: uppercase;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .tp-btn:hover {
-            background-color: #11ea2b;
-            text-decoration: none;
-        }
-
-    </style>
-    </div>
-
-    </div>
-
-    </div>
-    </div>
-    <br><br> --}}
 
         <!-- project area start -->
         <div class="tp-project-2-area fix pb-130">
