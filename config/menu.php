@@ -332,10 +332,21 @@ return [
                 'role'  => 'admin',
                 'route' => 'contacts.indexnew',
             ],
+
+             [
+                'name'  => 'Les  témoignages',
+                'role'  => 'admin',
+                'route' => 'testimonials.index',
+            ],
+            [
+                'name'  => 'Les nouveaux témoignages',
+                'role'  => 'admin',
+                'route' => 'testimonials.indexnew',
+            ],
         ],
     ],
 
-
+/* 
     'Témoignages' => [
         'icon' => 'envelope',
         'role'   => 'admin',
@@ -352,7 +363,7 @@ return [
                 'route' => 'testimonials.indexnew',
             ],
         ],
-    ],
+    ], */
     'Follows' => [
         'icon' => 'share-alt',
         'role'   => 'admin',

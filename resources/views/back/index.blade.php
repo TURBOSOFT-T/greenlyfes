@@ -24,17 +24,8 @@
                 </x-back.box>
             @endif
 
-            @if ($inscriptions)
-                <x-back.box type='primary' :number='$inscriptions' title='Les nouvelles inscriptions'
-                    route='inscriptions.indexnew' model='Inscription'>
-                </x-back.box>
-            @endif
+        
 
-            @if ($consultations)
-                <x-back.box type='success' :number='$consultations' title='Les nouvelles consultations'
-                    route='consultations.indexnew' model='Consultation'>
-                </x-back.box>
-            @endif
             @if ($testimonials)
                 <x-back.box type='warning' :number='$testimonials' title='Les nouveaux témoignages' route='testimonials.indexnew'
                     model='Testimonial'>
@@ -47,11 +38,6 @@
             @endif
 
 
-            @if ($books)
-                <x-back.box type='primary' :number='$books' title='Les nouveaux logements' route='books.indexnew'
-                    model='Book'>
-                </x-back.box>
-            @endif
 
             @if($reservations)
 

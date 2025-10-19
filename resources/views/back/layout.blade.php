@@ -53,16 +53,16 @@ $pages = DB::table('pages')->get();
               @lang('Déconnexion')
           </a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block d-inline-block">
+     {{--  <li class="nav-item d-none d-sm-inline-block d-inline-block">
       <a href="{{route('storage.link')}}"  class="btn btn-outline-warning btn-sm mr-3">
         Storage Link
     </a>
-      </li>
-    <li class="nav-item d-none d-sm-inline-block d-inline-block">
+      </li> --}}
+   {{--  <li class="nav-item d-none d-sm-inline-block d-inline-block">
     <a href="{{route('cache.clear')}}"  class="btn btn-outline-danger btn-sm mr-3">
       Cache Clear
     </a>
-    </li>
+    </li> --}}
     </ul>
 
 
