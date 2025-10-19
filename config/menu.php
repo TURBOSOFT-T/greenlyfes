@@ -57,7 +57,7 @@ return [
     ],
  
 
-    'Categories Logements' => [
+  /*   'Categories Logements' => [
         'icon' => 'list',
         'role'   => 'admin',
         'children' => [
@@ -77,9 +77,9 @@ return [
                 'route' => 'logements.edit',
             ],
         ],
-    ],
+    ], */
 
-    'Appartemens' => [
+/*     'Appartemens' => [
         'icon' => 'list',
         'role'   => 'redac',
         'children' => [
@@ -100,7 +100,7 @@ return [
             ],
         ],
     ],
-
+ */
 
     
     'Rooms' => [
@@ -126,118 +126,6 @@ return [
             ],
         ],
     ],
-
-   /*  'Filières' => [
-        'icon' => 'list',
-        'role'   => 'admin',
-        'children' => [
-            [
-                'name'  => 'Toutes les filières',
-                'role'  => 'admin',
-                'route' => 'filieres.index',
-            ],
-            [
-                'name'  => 'Ajouter Filière',
-                'role'  => 'admin',
-                'route' => 'filieres.create',
-            ],
-            [
-                'name'  => 'fake',
-                'role'  => 'admin',
-                'route' => 'filieres.edit',
-            ],
-        ],
-    ], */
-
-   /*  'Specialités' => [
-        'icon' => 'list',
-        'role'   => 'admin',
-        'children' => [
-            [
-                'name'  => 'Toutes les spécialités',
-                'role'  => 'admin',
-                'route' => 'specialites.index',
-            ],
-            [
-                'name'  => 'Ajouter une spécialité',
-                'role'  => 'admin',
-                'route' => 'specialites.create',
-            ],
-            [
-                'name'  => 'fake',
-                'role'  => 'admin',
-                'route' => 'specialites.edit',
-            ],
-        ],
-    ],
- */
-
-/* 
-    'Les études' => [
-        'icon' => 'list',
-        'role'   => 'admin',
-        'children' => [
-               [
-                'name'  => 'Toutes les écoles',
-                'role'  => 'admin',
-                'route' => 'ecoles.index',
-            ],   
-            [
-                'name'  => 'Ajouter un nouvelle école',
-                'role'  => 'admin',
-                'route' => 'saveecole.create',
-            ],
-            [
-                'name'  => 'Les inscriptions',
-                'role'  => 'admin',
-                'route' => 'inscriptions.index',
-            ],
-            [
-                'name'  => 'Les nouvelles inscriptions',
-                'role'  => 'admin',
-                'route' => 'inscriptions.indexnew',
-            ],
-            [
-                'name'  => 'fake',
-                'role'  => 'admin',
-                'route' => 'schools.edit',
-            ],
-        ],
-    ],
- */
-
-   /*  'La Santé' => [
-        'icon' => 'list',
-        'role'   => 'admin',
-        'children' => [
-             [
-                'name'  => 'Tous les hopitaux',
-                'role'  => 'admin',
-                'route' => 'hopitals.index',
-            ], 
-            [
-                'name'  => 'Ajouter un Hopital',
-                'role'  => 'admin',
-                'route' => 'savehopitals.create',
-            ],
-            [
-                'name'  => 'Les consultation',
-                'role'  => 'admin',
-                'route' => 'consultations.index',
-            ],
-            [
-                'name'  => 'Les nouvelles consultations',
-                'role'  => 'admin',
-                'route' => 'consultations.indexnew',
-            ],
-            [
-                'name'  => 'fake',
-                'role'  => 'admin',
-                'route' => 'hospitals.edit',
-            ],
-        ],
-    ],
- */
   'Products' => [
         'icon' => 'list',
         'role'   => 'redac',

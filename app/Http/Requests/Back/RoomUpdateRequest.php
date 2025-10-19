@@ -38,7 +38,7 @@ class RoomUpdateRequest extends FormRequest
             'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif',
           ///  'logements' => 'required',
          
-            'book_id' => 'exists:books,id',
+         //   'book_id' => 'exists:books,id',
         ];
     }
 }

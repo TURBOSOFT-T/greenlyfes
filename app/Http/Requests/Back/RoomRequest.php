@@ -41,7 +41,7 @@ class RoomRequest extends FormRequest
           'cover' => 'sometimes|required|file|mimetypes:image/*',
           ///  'logements' => 'required',
             'tags' => 'nullable|regex:' . $regex,
-            'book_id' => 'exists:books,id',
+          //  'book_id' => 'exists:books,id',
         ];
     }
 }

@@ -115,7 +115,7 @@
                                 </x-back.input>
                             </x-back.card> --}}
 
-                                <x-back.card type='warning' :outline="false" title='Categories' :required="true">
+                           {{--      <x-back.card type='warning' :outline="false" title='Categories' :required="true">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Logement:</strong>
@@ -127,7 +127,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </x-back.card>
+                                </x-back.card> --}}
 
 {{-- 
 
