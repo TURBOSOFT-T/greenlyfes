@@ -12,7 +12,7 @@
 
 
         <!-- breadcrumb area start -->
-        <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
+       {{--  <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
             data-background="{{ url('public/Image/parametres/' . $config->imagesante) }}">
             <div class="container">
                 <div class="row">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- breadcrumb area end -->
 
         <br>
