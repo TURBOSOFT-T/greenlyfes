@@ -359,8 +359,8 @@
                                         <a href="#">Logements</a>
                                         <ul class="submenu tp-submenu">
                                            <li><a href="{{ url('produits') }}">ACQUISITION</a></li>
-                                           <li><a  href="{{ url('produits') }}">LOCATION</a></li>
-                                          
+                                          {{--  <li><a  href="{{ url('produits') }}">LOCATION</a></li>
+                                          --}} 
                                            
                                           
                                         </ul>

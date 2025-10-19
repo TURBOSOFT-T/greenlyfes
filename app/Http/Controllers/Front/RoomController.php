@@ -48,11 +48,11 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
      //   $otherRooms = $room->books;
 
-     $otherRooms = $room->book->rooms()->where('id', '!=', $id)->get();
+   //  $otherRooms = $room->book->rooms()->where('id', '!=', $id)->get();
 
    
    
-        return view('front.rooms.details', compact('room','otherRooms'));
+        return view('front.rooms.details', compact('room'));
     }
 
     public function recherche(SearchRequest $request)

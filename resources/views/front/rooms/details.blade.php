@@ -46,23 +46,7 @@
     <main>
 
 
-        <div class="breadcrumb__area breadcrumb__overlay breadcrumb__height p-relative fix"
-            data-background="{{ url('public/Image/' . $room->book->cover ?? '') }}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12">
-                        <div class="breadcrumb__content z-index text-center">
-                            <div class="breadcrumb__section-title-box">
-                                <h3 class="breadcrumb__title">{{ $room->name ?? '' }}</h3>
-                            </div>
-                            <div class="breadcrumb__list">
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="tp-product-details-area pt-130">
             <div class="container">
@@ -281,54 +265,7 @@
             </div>
         </div>
 
-        <div class="tp-product-area pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tp-product-title-box text-center mb-55">
-                            <h4 class="tp-section-title">Les autres chambres pour les mêmes categories</h4>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    @foreach ($otherRooms as $room)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-30">
-                            <div class="tp-product-item-2 mb-40">
-                                <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
-                                    <div class="tp-project-3-thumb ">
-                                        <a class="tp-project-3-thumb "
-                                            href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 10))]) }}">
-                                            <img src="{{ url('public/Image/' . $room->image) }}" alt="">
-                                        </a>
-                                    </div>
-
-                                </div>
-                                <div class="tp-product-content-2">
-
-                                    <h3 class="tp-product-title-2">
-                                        <a
-                                            href="{{ route('details-room', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 10))]) }}">{{ $room->name ?? ' ' }}</a>
-                                    </h3>
-                                  
-                                    <div class="tp-product-button">
-                                        <a class="tp-btn-price w-100 text-center"
-                                            href="{{ url('reservation', ['id' => $room->id, 'slug' => Str::slug(Str::limit($room->name, 20))]) }}">
-
-                                            <span>Réserver</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-
-                </div>
-            </div>
-        </div>
-        <!-- product-area-end -->
+       
 
 
 
